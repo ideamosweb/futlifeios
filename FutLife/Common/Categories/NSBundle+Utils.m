@@ -10,4 +10,14 @@
 
 @implementation NSBundle (Utils)
 
++ (NSString *)fl_appVersion
+{
+    return [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+}
+
++ (NSString *)fl_appBuildString
+{
+    return [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
+}
+
 @end

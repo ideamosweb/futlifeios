@@ -18,9 +18,15 @@ int const ddLogLevel = LOG_LEVEL_WARN;
 // Default animation duration.
 const NSTimeInterval kDefaultAnimationDuration = 0.3;
 
-NSString *FLBaseServerUrl()
+// Default Input Scroll padding
+const CGFloat kFormTopScrollPadding = 10.0f;
+
+NSString *const kGUIDAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+const NSUInteger kGUIDLength = 100;
+
+NSString *FLApiBaseUrl()
 {
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"api.server.base.url"];
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"api.base.url"];
 }
 
 NSString *FLTestFairyAppToken()

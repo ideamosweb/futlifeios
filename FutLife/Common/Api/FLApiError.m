@@ -10,4 +10,19 @@
 
 @implementation FLApiError
 
+- (BOOL)isConnectivityError
+{
+    return kServiceErrorNotConnectedToInternet == self.httpStatusCode;
+}
+
+- (BOOL)isCancelledError
+{
+    return kServiceErrorCancelled == self.httpStatusCode;
+}
+
+- (BOOL)isUnknownError
+{
+    return kServiceErrorUnknown == self.httpStatusCode;
+}
+
 @end

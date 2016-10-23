@@ -10,4 +10,12 @@
 
 @interface UIColor (Utils)
 
++ (UIColor *)fl_randomColor;
+
++ (UIColor *)fl_colorWithHexString:(NSString *)hexString;
+
++ (UIColor *)fl_colorWithRGB:(int)red green:(int)green blue:(int)blue alpha:(CGFloat)alpha;
+
++ (UIColor*)fl_gradientFromColor:(UIColor*)c1 toColor:(UIColor*)c2 withHeight:(int)height;
+
 @end

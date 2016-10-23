@@ -7,7 +7,16 @@
 //
 
 #import "FLViewController.h"
+@class FLInputsFormManager;
 
-@interface FLFormViewController : FLViewController
+@interface FLFormViewController : FLViewController<UITextFieldDelegate>
+
+// The ScrollView for form View controller, it's needs to link in
+// interface builder or link programatically
+@property (weak, nonatomic) IBOutlet UIScrollView *formScrollView;
+
+// This property manages all the inputs and
+// validate the error messages
+@property (strong, nonatomic) FLInputsFormManager *inputsFormManager;
 
 @end

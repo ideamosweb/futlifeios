@@ -10,4 +10,7 @@
 
 @interface NSException (Utils)
 
++ (NSException *)fl_singletonExceptionWithClass:(Class)clazz;
++ (NSException *)fl_mustOverrideExceptionWithClass:(Class)clazz selector:(SEL)selector;
+
 @end

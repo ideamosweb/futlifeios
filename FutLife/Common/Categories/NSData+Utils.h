@@ -10,4 +10,7 @@
 
 @interface NSData (Utils)
 
+- (NSData *)mt_AES256EncryptWithKey:(NSString *)key;
+- (NSData *)mt_AES256DecryptWithKey:(NSString *)key;
+
 @end

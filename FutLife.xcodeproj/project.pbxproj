@@ -7,14 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772ADFA1DB4557700236CB9 /* FLConstants.m */; };
+		1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772ADFC1DB4557700236CB9 /* FLViewController.m */; };
+		1772AE011DB4558700236CB9 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE001DB4558700236CB9 /* FLAppDelegate.m */; };
+		1772AE061DB5179700236CB9 /* FLMiscUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE051DB5179700236CB9 /* FLMiscUtils.m */; };
+		1772AE0B1DB51FD800236CB9 /* NSArray+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE0A1DB51FD800236CB9 /* NSArray+Utils.m */; };
+		1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE0E1DB5223A00236CB9 /* NSData+Utils.m */; };
+		1772AE121DB522E100236CB9 /* NSError+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE111DB522E100236CB9 /* NSError+Utils.m */; };
+		1772AE161DB525C300236CB9 /* FLApiError.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE151DB525C300236CB9 /* FLApiError.m */; };
+		1772AE191DB5299700236CB9 /* NSException+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE181DB5299700236CB9 /* NSException+Utils.m */; };
+		1772AE1C1DB52BBB00236CB9 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE1B1DB52BBB00236CB9 /* NSString+Utils.m */; };
+		1772AE1F1DB5303700236CB9 /* NSUserDefaults+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE1E1DB5303700236CB9 /* NSUserDefaults+Utils.m */; };
+		1772AE221DB5320E00236CB9 /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE211DB5320E00236CB9 /* UIColor+Utils.m */; };
+		1772AE251DB5337D00236CB9 /* UIView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE241DB5337D00236CB9 /* UIView+Utils.m */; };
+		1772AE281DB5350500236CB9 /* UIWebView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE271DB5350500236CB9 /* UIWebView+Utils.m */; };
+		1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE2A1DB5368F00236CB9 /* UIImage+Utils.m */; };
+		1772AE341DB56FCE00236CB9 /* FLStartUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE321DB56FCE00236CB9 /* FLStartUpViewController.m */; };
+		1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1772AE331DB56FCE00236CB9 /* FLStartUpViewController.xib */; };
+		1772AE381DB5722000236CB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1772AE371DB5722000236CB9 /* Images.xcassets */; };
+		1772AE3B1DB57A9F00236CB9 /* NSBundle+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE3A1DB57A9F00236CB9 /* NSBundle+Utils.m */; };
+		1772AE401DB5B82600236CB9 /* FLFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE3F1DB5B82600236CB9 /* FLFormViewController.m */; };
+		1772AE461DB7DB9200236CB9 /* FLInputsFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE451DB7DB9200236CB9 /* FLInputsFormManager.m */; };
+		1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE4F1DB882DC00236CB9 /* FLToolbar.m */; };
+		1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */; };
+		179EA43C1DBC3E23004EB2CC /* FLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA43B1DBC3E23004EB2CC /* FLTextField.m */; };
+		179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179EA4431DBC72FB004EB2CC /* Localizable.strings */; };
+		179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179EA4481DBC73CC004EB2CC /* Localizable.strings */; };
+		179EA44E1DBD26C7004EB2CC /* FLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */; };
+		179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4501DBD3254004EB2CC /* FLApiManager.m */; };
+		179EA4541DBD3411004EB2CC /* FLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4531DBD3411004EB2CC /* FLModel.m */; };
 		17E6DA9F1DB3E8A4004F89C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DA9E1DB3E8A4004F89C3 /* main.m */; };
-		17E6DAA21DB3E8A4004F89C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAA11DB3E8A4004F89C3 /* AppDelegate.m */; };
-		17E6DAA51DB3E8A4004F89C3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAA41DB3E8A4004F89C3 /* ViewController.m */; };
-		17E6DAA81DB3E8A4004F89C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17E6DAA61DB3E8A4004F89C3 /* Main.storyboard */; };
 		17E6DAAA1DB3E8A4004F89C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */; };
-		17E6DAAD1DB3E8A4004F89C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17E6DAAB1DB3E8A4004F89C3 /* LaunchScreen.storyboard */; };
 		17E6DAB81DB3E8A4004F89C3 /* FutLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAB71DB3E8A4004F89C3 /* FutLifeTests.m */; };
 		17E6DAC31DB3E8A4004F89C3 /* FutLifeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAC21DB3E8A4004F89C3 /* FutLifeUITests.m */; };
+		977D94CA5E34EB2FA0DE1ABD /* libPods-FutLife Staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EB64C0CD880571DB80CE8 /* libPods-FutLife Staging.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,22 +61,79 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17E6DA9A1DB3E8A4004F89C3 /* FutLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1772ADF91DB4557700236CB9 /* FLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLConstants.h; path = Common/FLConstants.h; sourceTree = "<group>"; };
+		1772ADFA1DB4557700236CB9 /* FLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLConstants.m; path = Common/FLConstants.m; sourceTree = "<group>"; };
+		1772ADFB1DB4557700236CB9 /* FLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLViewController.h; path = Controllers/FLViewController.h; sourceTree = "<group>"; };
+		1772ADFC1DB4557700236CB9 /* FLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLViewController.m; path = Controllers/FLViewController.m; sourceTree = "<group>"; };
+		1772ADFF1DB4558700236CB9 /* FLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAppDelegate.h; sourceTree = "<group>"; };
+		1772AE001DB4558700236CB9 /* FLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAppDelegate.m; sourceTree = "<group>"; };
+		1772AE041DB5179700236CB9 /* FLMiscUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLMiscUtils.h; path = Common/FLMiscUtils.h; sourceTree = "<group>"; };
+		1772AE051DB5179700236CB9 /* FLMiscUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLMiscUtils.m; path = Common/FLMiscUtils.m; sourceTree = "<group>"; };
+		1772AE071DB518CA00236CB9 /* FLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLMacros.h; path = Common/FLMacros.h; sourceTree = "<group>"; };
+		1772AE081DB51C4A00236CB9 /* FLCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FLCategories.h; path = Common/Categories/FLCategories.h; sourceTree = "<group>"; };
+		1772AE091DB51FD800236CB9 /* NSArray+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Utils.h"; path = "Common/Categories/NSArray+Utils.h"; sourceTree = "<group>"; };
+		1772AE0A1DB51FD800236CB9 /* NSArray+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Utils.m"; path = "Common/Categories/NSArray+Utils.m"; sourceTree = "<group>"; };
+		1772AE0C1DB5210500236CB9 /* FLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FLDebug.h; path = Common/FLDebug.h; sourceTree = "<group>"; };
+		1772AE0D1DB5223A00236CB9 /* NSData+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Utils.h"; path = "Common/Categories/NSData+Utils.h"; sourceTree = "<group>"; };
+		1772AE0E1DB5223A00236CB9 /* NSData+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Utils.m"; path = "Common/Categories/NSData+Utils.m"; sourceTree = "<group>"; };
+		1772AE101DB522E100236CB9 /* NSError+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+Utils.h"; path = "Common/Categories/NSError+Utils.h"; sourceTree = "<group>"; };
+		1772AE111DB522E100236CB9 /* NSError+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+Utils.m"; path = "Common/Categories/NSError+Utils.m"; sourceTree = "<group>"; };
+		1772AE141DB525C300236CB9 /* FLApiError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLApiError.h; path = Common/Api/FLApiError.h; sourceTree = "<group>"; };
+		1772AE151DB525C300236CB9 /* FLApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLApiError.m; path = Common/Api/FLApiError.m; sourceTree = "<group>"; };
+		1772AE171DB5299700236CB9 /* NSException+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSException+Utils.h"; path = "Common/Categories/NSException+Utils.h"; sourceTree = "<group>"; };
+		1772AE181DB5299700236CB9 /* NSException+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSException+Utils.m"; path = "Common/Categories/NSException+Utils.m"; sourceTree = "<group>"; };
+		1772AE1A1DB52BBB00236CB9 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Utils.h"; path = "Common/Categories/NSString+Utils.h"; sourceTree = "<group>"; };
+		1772AE1B1DB52BBB00236CB9 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Utils.m"; path = "Common/Categories/NSString+Utils.m"; sourceTree = "<group>"; };
+		1772AE1D1DB5303700236CB9 /* NSUserDefaults+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+Utils.h"; path = "Common/Categories/NSUserDefaults+Utils.h"; sourceTree = "<group>"; };
+		1772AE1E1DB5303700236CB9 /* NSUserDefaults+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+Utils.m"; path = "Common/Categories/NSUserDefaults+Utils.m"; sourceTree = "<group>"; };
+		1772AE201DB5320E00236CB9 /* UIColor+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Utils.h"; path = "Common/Categories/UIColor+Utils.h"; sourceTree = "<group>"; };
+		1772AE211DB5320E00236CB9 /* UIColor+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Utils.m"; path = "Common/Categories/UIColor+Utils.m"; sourceTree = "<group>"; };
+		1772AE231DB5337D00236CB9 /* UIView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Utils.h"; path = "Common/Categories/UIView+Utils.h"; sourceTree = "<group>"; };
+		1772AE241DB5337D00236CB9 /* UIView+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Utils.m"; path = "Common/Categories/UIView+Utils.m"; sourceTree = "<group>"; };
+		1772AE261DB5350500236CB9 /* UIWebView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+Utils.h"; path = "Common/Categories/UIWebView+Utils.h"; sourceTree = "<group>"; };
+		1772AE271DB5350500236CB9 /* UIWebView+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+Utils.m"; path = "Common/Categories/UIWebView+Utils.m"; sourceTree = "<group>"; };
+		1772AE291DB5368F00236CB9 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Utils.h"; path = "Common/Categories/UIImage+Utils.h"; sourceTree = "<group>"; };
+		1772AE2A1DB5368F00236CB9 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utils.m"; path = "Common/Categories/UIImage+Utils.m"; sourceTree = "<group>"; };
+		1772AE311DB56FCE00236CB9 /* FLStartUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLStartUpViewController.h; path = Controllers/StartUp/FLStartUpViewController.h; sourceTree = "<group>"; };
+		1772AE321DB56FCE00236CB9 /* FLStartUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLStartUpViewController.m; path = Controllers/StartUp/FLStartUpViewController.m; sourceTree = "<group>"; };
+		1772AE331DB56FCE00236CB9 /* FLStartUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLStartUpViewController.xib; path = Views/StartUp/FLStartUpViewController.xib; sourceTree = "<group>"; };
+		1772AE371DB5722000236CB9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
+		1772AE391DB57A9F00236CB9 /* NSBundle+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+Utils.h"; path = "Common/Categories/NSBundle+Utils.h"; sourceTree = "<group>"; };
+		1772AE3A1DB57A9F00236CB9 /* NSBundle+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+Utils.m"; path = "Common/Categories/NSBundle+Utils.m"; sourceTree = "<group>"; };
+		1772AE3E1DB5B82600236CB9 /* FLFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLFormViewController.h; path = Controllers/Form/FLFormViewController.h; sourceTree = "<group>"; };
+		1772AE3F1DB5B82600236CB9 /* FLFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLFormViewController.m; path = Controllers/Form/FLFormViewController.m; sourceTree = "<group>"; };
+		1772AE441DB7DB9200236CB9 /* FLInputsFormManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLInputsFormManager.h; path = Managers/FLInputsFormManager.h; sourceTree = "<group>"; };
+		1772AE451DB7DB9200236CB9 /* FLInputsFormManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLInputsFormManager.m; path = Managers/FLInputsFormManager.m; sourceTree = "<group>"; };
+		1772AE4E1DB882DC00236CB9 /* FLToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLToolbar.h; path = Common/Forms/FLToolbar.h; sourceTree = "<group>"; };
+		1772AE4F1DB882DC00236CB9 /* FLToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLToolbar.m; path = Common/Forms/FLToolbar.m; sourceTree = "<group>"; };
+		1772AE511DB8865400236CB9 /* FLValidatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLValidatable.h; path = Common/Forms/FLValidatable.h; sourceTree = "<group>"; };
+		1772AE521DB88B4000236CB9 /* FLInputFieldValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLInputFieldValidation.h; path = Common/Forms/FLInputFieldValidation.h; sourceTree = "<group>"; };
+		1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLInputFieldValidation.m; path = Common/Forms/FLInputFieldValidation.m; sourceTree = "<group>"; };
+		179EA43A1DBC3E23004EB2CC /* FLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLTextField.h; path = Common/Forms/FLTextField.h; sourceTree = "<group>"; };
+		179EA43B1DBC3E23004EB2CC /* FLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLTextField.m; path = Common/Forms/FLTextField.m; sourceTree = "<group>"; };
+		179EA43D1DBC71D2004EB2CC /* FutLife Staging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FutLife Staging.entitlements"; sourceTree = "<group>"; };
+		179EA4421DBC72FB004EB2CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		179EA4491DBC73CC004EB2CC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/Localization/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		179EA44C1DBD26C7004EB2CC /* FLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLSessionManager.h; path = Managers/FLSessionManager.h; sourceTree = "<group>"; };
+		179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLSessionManager.m; path = Managers/FLSessionManager.m; sourceTree = "<group>"; };
+		179EA44F1DBD3254004EB2CC /* FLApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLApiManager.h; path = Managers/FLApiManager.h; sourceTree = "<group>"; };
+		179EA4501DBD3254004EB2CC /* FLApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLApiManager.m; path = Managers/FLApiManager.m; sourceTree = "<group>"; };
+		179EA4521DBD3411004EB2CC /* FLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLModel.h; path = Models/FLModel.h; sourceTree = "<group>"; };
+		179EA4531DBD3411004EB2CC /* FLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLModel.m; path = Models/FLModel.m; sourceTree = "<group>"; };
+		17E6DA9A1DB3E8A4004F89C3 /* FutLife Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FutLife Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6DA9E1DB3E8A4004F89C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		17E6DAA01DB3E8A4004F89C3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		17E6DAA11DB3E8A4004F89C3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		17E6DAA31DB3E8A4004F89C3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		17E6DAA41DB3E8A4004F89C3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		17E6DAA71DB3E8A4004F89C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		17E6DAAC1DB3E8A4004F89C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		17E6DAAE1DB3E8A4004F89C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E6DAB31DB3E8A4004F89C3 /* FutLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6DAB71DB3E8A4004F89C3 /* FutLifeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FutLifeTests.m; sourceTree = "<group>"; };
 		17E6DAB91DB3E8A4004F89C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E6DABE1DB3E8A4004F89C3 /* FutLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6DAC21DB3E8A4004F89C3 /* FutLifeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FutLifeUITests.m; sourceTree = "<group>"; };
 		17E6DAC41DB3E8A4004F89C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17E6DAD41DB3F0EB004F89C3 /* FutLife Staging-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "FutLife Staging-Info.plist"; path = "Supporting Files/FutLife Staging-Info.plist"; sourceTree = "<group>"; };
+		17E6DADD1DB3F298004F89C3 /* FutLife-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FutLife-Prefix.pch"; path = "Supporting Files/FutLife-Prefix.pch"; sourceTree = "<group>"; };
+		811EB64C0CD880571DB80CE8 /* libPods-FutLife Staging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FutLife Staging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E565894E6B91BA1194ECD774 /* Pods-FutLife Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife Staging.release.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife Staging/Pods-FutLife Staging.release.xcconfig"; sourceTree = "<group>"; };
+		FFF00865336216A941C541BB /* Pods-FutLife Staging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife Staging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife Staging/Pods-FutLife Staging.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				977D94CA5E34EB2FA0DE1ABD /* libPods-FutLife Staging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,20 +162,209 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07110D8E067B742AA45FFCE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				811EB64C0CD880571DB80CE8 /* libPods-FutLife Staging.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1772ADF41DB454F100236CB9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE4D1DB8828A00236CB9 /* Forms */,
+				1772AE131DB5247300236CB9 /* Api */,
+				1772AE031DB5172600236CB9 /* Categories */,
+				1772ADF91DB4557700236CB9 /* FLConstants.h */,
+				1772ADFA1DB4557700236CB9 /* FLConstants.m */,
+				1772AE041DB5179700236CB9 /* FLMiscUtils.h */,
+				1772AE051DB5179700236CB9 /* FLMiscUtils.m */,
+				1772AE071DB518CA00236CB9 /* FLMacros.h */,
+				1772AE0C1DB5210500236CB9 /* FLDebug.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		1772ADF51DB454FC00236CB9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE3D1DB5B7FB00236CB9 /* Form */,
+				1772AE301DB56F8100236CB9 /* StartUp */,
+				1772ADFB1DB4557700236CB9 /* FLViewController.h */,
+				1772ADFC1DB4557700236CB9 /* FLViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1772ADF61DB4550A00236CB9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE441DB7DB9200236CB9 /* FLInputsFormManager.h */,
+				1772AE451DB7DB9200236CB9 /* FLInputsFormManager.m */,
+				179EA44C1DBD26C7004EB2CC /* FLSessionManager.h */,
+				179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */,
+				179EA44F1DBD3254004EB2CC /* FLApiManager.h */,
+				179EA4501DBD3254004EB2CC /* FLApiManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		1772ADF71DB4551400236CB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				179EA4521DBD3411004EB2CC /* FLModel.h */,
+				179EA4531DBD3411004EB2CC /* FLModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1772ADF81DB4552200236CB9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE3C1DB57E7100236CB9 /* StartUp */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1772AE021DB4564C00236CB9 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		1772AE031DB5172600236CB9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE081DB51C4A00236CB9 /* FLCategories.h */,
+				1772AE091DB51FD800236CB9 /* NSArray+Utils.h */,
+				1772AE0A1DB51FD800236CB9 /* NSArray+Utils.m */,
+				1772AE0D1DB5223A00236CB9 /* NSData+Utils.h */,
+				1772AE0E1DB5223A00236CB9 /* NSData+Utils.m */,
+				1772AE101DB522E100236CB9 /* NSError+Utils.h */,
+				1772AE111DB522E100236CB9 /* NSError+Utils.m */,
+				1772AE171DB5299700236CB9 /* NSException+Utils.h */,
+				1772AE181DB5299700236CB9 /* NSException+Utils.m */,
+				1772AE1A1DB52BBB00236CB9 /* NSString+Utils.h */,
+				1772AE1B1DB52BBB00236CB9 /* NSString+Utils.m */,
+				1772AE1D1DB5303700236CB9 /* NSUserDefaults+Utils.h */,
+				1772AE1E1DB5303700236CB9 /* NSUserDefaults+Utils.m */,
+				1772AE201DB5320E00236CB9 /* UIColor+Utils.h */,
+				1772AE211DB5320E00236CB9 /* UIColor+Utils.m */,
+				1772AE231DB5337D00236CB9 /* UIView+Utils.h */,
+				1772AE241DB5337D00236CB9 /* UIView+Utils.m */,
+				1772AE261DB5350500236CB9 /* UIWebView+Utils.h */,
+				1772AE271DB5350500236CB9 /* UIWebView+Utils.m */,
+				1772AE291DB5368F00236CB9 /* UIImage+Utils.h */,
+				1772AE2A1DB5368F00236CB9 /* UIImage+Utils.m */,
+				1772AE391DB57A9F00236CB9 /* NSBundle+Utils.h */,
+				1772AE3A1DB57A9F00236CB9 /* NSBundle+Utils.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		1772AE131DB5247300236CB9 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE141DB525C300236CB9 /* FLApiError.h */,
+				1772AE151DB525C300236CB9 /* FLApiError.m */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		1772AE301DB56F8100236CB9 /* StartUp */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE311DB56FCE00236CB9 /* FLStartUpViewController.h */,
+				1772AE321DB56FCE00236CB9 /* FLStartUpViewController.m */,
+			);
+			name = StartUp;
+			sourceTree = "<group>";
+		};
+		1772AE361DB571F300236CB9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				179EA43E1DBC7235004EB2CC /* Localizations */,
+				17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */,
+				1772AE371DB5722000236CB9 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1772AE3C1DB57E7100236CB9 /* StartUp */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE331DB56FCE00236CB9 /* FLStartUpViewController.xib */,
+			);
+			name = StartUp;
+			sourceTree = "<group>";
+		};
+		1772AE3D1DB5B7FB00236CB9 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE3E1DB5B82600236CB9 /* FLFormViewController.h */,
+				1772AE3F1DB5B82600236CB9 /* FLFormViewController.m */,
+			);
+			name = Form;
+			sourceTree = "<group>";
+		};
+		1772AE4D1DB8828A00236CB9 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				1772AE4E1DB882DC00236CB9 /* FLToolbar.h */,
+				1772AE4F1DB882DC00236CB9 /* FLToolbar.m */,
+				1772AE511DB8865400236CB9 /* FLValidatable.h */,
+				1772AE521DB88B4000236CB9 /* FLInputFieldValidation.h */,
+				1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */,
+				179EA43A1DBC3E23004EB2CC /* FLTextField.h */,
+				179EA43B1DBC3E23004EB2CC /* FLTextField.m */,
+			);
+			name = Forms;
+			sourceTree = "<group>";
+		};
+		179EA43E1DBC7235004EB2CC /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				179EA44B1DBC73E2004EB2CC /* es.lproj */,
+				179EA4471DBC7390004EB2CC /* en.lproj */,
+			);
+			name = Localizations;
+			sourceTree = "<group>";
+		};
+		179EA4471DBC7390004EB2CC /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				179EA4431DBC72FB004EB2CC /* Localizable.strings */,
+			);
+			name = en.lproj;
+			sourceTree = "<group>";
+		};
+		179EA44B1DBC73E2004EB2CC /* es.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				179EA4481DBC73CC004EB2CC /* Localizable.strings */,
+			);
+			name = es.lproj;
+			sourceTree = "<group>";
+		};
 		17E6DA911DB3E8A4004F89C3 = {
 			isa = PBXGroup;
 			children = (
+				179EA43D1DBC71D2004EB2CC /* FutLife Staging.entitlements */,
 				17E6DA9C1DB3E8A4004F89C3 /* FutLife */,
 				17E6DAB61DB3E8A4004F89C3 /* FutLifeTests */,
 				17E6DAC11DB3E8A4004F89C3 /* FutLifeUITests */,
 				17E6DA9B1DB3E8A4004F89C3 /* Products */,
+				D237CB526583788EFE367E63 /* Pods */,
+				07110D8E067B742AA45FFCE9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		17E6DA9B1DB3E8A4004F89C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17E6DA9A1DB3E8A4004F89C3 /* FutLife.app */,
+				17E6DA9A1DB3E8A4004F89C3 /* FutLife Staging.app */,
 				17E6DAB31DB3E8A4004F89C3 /* FutLifeTests.xctest */,
 				17E6DABE1DB3E8A4004F89C3 /* FutLifeUITests.xctest */,
 			);
@@ -101,15 +374,17 @@
 		17E6DA9C1DB3E8A4004F89C3 /* FutLife */ = {
 			isa = PBXGroup;
 			children = (
-				17E6DAA01DB3E8A4004F89C3 /* AppDelegate.h */,
-				17E6DAA11DB3E8A4004F89C3 /* AppDelegate.m */,
-				17E6DAA31DB3E8A4004F89C3 /* ViewController.h */,
-				17E6DAA41DB3E8A4004F89C3 /* ViewController.m */,
-				17E6DAA61DB3E8A4004F89C3 /* Main.storyboard */,
-				17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */,
-				17E6DAAB1DB3E8A4004F89C3 /* LaunchScreen.storyboard */,
-				17E6DAAE1DB3E8A4004F89C3 /* Info.plist */,
+				1772ADF71DB4551400236CB9 /* Models */,
+				1772ADF81DB4552200236CB9 /* Views */,
+				1772ADF51DB454FC00236CB9 /* Controllers */,
+				1772AE021DB4564C00236CB9 /* Stores */,
+				1772ADF61DB4550A00236CB9 /* Managers */,
+				1772ADF41DB454F100236CB9 /* Common */,
 				17E6DA9D1DB3E8A4004F89C3 /* Supporting Files */,
+				1772AE361DB571F300236CB9 /* Resources */,
+				1772ADFF1DB4558700236CB9 /* FLAppDelegate.h */,
+				1772AE001DB4558700236CB9 /* FLAppDelegate.m */,
+				17E6DA9E1DB3E8A4004F89C3 /* main.m */,
 			);
 			path = FutLife;
 			sourceTree = "<group>";
@@ -117,7 +392,8 @@
 		17E6DA9D1DB3E8A4004F89C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				17E6DA9E1DB3E8A4004F89C3 /* main.m */,
+				17E6DADD1DB3F298004F89C3 /* FutLife-Prefix.pch */,
+				17E6DAD41DB3F0EB004F89C3 /* FutLife Staging-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,24 +416,36 @@
 			path = FutLifeUITests;
 			sourceTree = "<group>";
 		};
+		D237CB526583788EFE367E63 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FFF00865336216A941C541BB /* Pods-FutLife Staging.debug.xcconfig */,
+				E565894E6B91BA1194ECD774 /* Pods-FutLife Staging.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17E6DA991DB3E8A4004F89C3 /* FutLife */ = {
+		17E6DA991DB3E8A4004F89C3 /* FutLife Staging */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17E6DAC71DB3E8A4004F89C3 /* Build configuration list for PBXNativeTarget "FutLife" */;
+			buildConfigurationList = 17E6DAC71DB3E8A4004F89C3 /* Build configuration list for PBXNativeTarget "FutLife Staging" */;
 			buildPhases = (
+				4E850539753E41659FB3B2A3 /* [CP] Check Pods Manifest.lock */,
 				17E6DA961DB3E8A4004F89C3 /* Sources */,
 				17E6DA971DB3E8A4004F89C3 /* Frameworks */,
 				17E6DA981DB3E8A4004F89C3 /* Resources */,
+				02392B485E4EFF79D8A2C4DF /* [CP] Embed Pods Frameworks */,
+				8508B7D670B288D185100A4C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = FutLife;
+			name = "FutLife Staging";
 			productName = FutLife;
-			productReference = 17E6DA9A1DB3E8A4004F89C3 /* FutLife.app */;
+			productReference = 17E6DA9A1DB3E8A4004F89C3 /* FutLife Staging.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17E6DAB21DB3E8A4004F89C3 /* FutLifeTests */ = {
@@ -207,8 +495,16 @@
 				TargetAttributes = {
 					17E6DA991DB3E8A4004F89C3 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 27P587N5XD;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = L3XQ85T9WB;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					17E6DAB21DB3E8A4004F89C3 = {
 						CreatedOnToolsVersion = 8.0;
@@ -231,13 +527,14 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 17E6DA911DB3E8A4004F89C3;
 			productRefGroup = 17E6DA9B1DB3E8A4004F89C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17E6DA991DB3E8A4004F89C3 /* FutLife */,
+				17E6DA991DB3E8A4004F89C3 /* FutLife Staging */,
 				17E6DAB21DB3E8A4004F89C3 /* FutLifeTests */,
 				17E6DABD1DB3E8A4004F89C3 /* FutLifeUITests */,
 			);
@@ -249,9 +546,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E6DAAD1DB3E8A4004F89C3 /* LaunchScreen.storyboard in Resources */,
+				179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */,
+				1772AE381DB5722000236CB9 /* Images.xcassets in Resources */,
+				179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */,
+				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
 				17E6DAAA1DB3E8A4004F89C3 /* Assets.xcassets in Resources */,
-				17E6DAA81DB3E8A4004F89C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,14 +570,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02392B485E4EFF79D8A2C4DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FutLife Staging/Pods-FutLife Staging-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E850539753E41659FB3B2A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8508B7D670B288D185100A4C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FutLife Staging/Pods-FutLife Staging-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		17E6DA961DB3E8A4004F89C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E6DAA51DB3E8A4004F89C3 /* ViewController.m in Sources */,
-				17E6DAA21DB3E8A4004F89C3 /* AppDelegate.m in Sources */,
+				1772AE281DB5350500236CB9 /* UIWebView+Utils.m in Sources */,
+				1772AE401DB5B82600236CB9 /* FLFormViewController.m in Sources */,
+				1772AE0B1DB51FD800236CB9 /* NSArray+Utils.m in Sources */,
+				179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */,
+				1772AE121DB522E100236CB9 /* NSError+Utils.m in Sources */,
+				1772AE221DB5320E00236CB9 /* UIColor+Utils.m in Sources */,
+				1772AE011DB4558700236CB9 /* FLAppDelegate.m in Sources */,
+				179EA44E1DBD26C7004EB2CC /* FLSessionManager.m in Sources */,
 				17E6DA9F1DB3E8A4004F89C3 /* main.m in Sources */,
+				1772AE1C1DB52BBB00236CB9 /* NSString+Utils.m in Sources */,
+				1772AE341DB56FCE00236CB9 /* FLStartUpViewController.m in Sources */,
+				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
+				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
+				1772AE161DB525C300236CB9 /* FLApiError.m in Sources */,
+				1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */,
+				179EA4541DBD3411004EB2CC /* FLModel.m in Sources */,
+				1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */,
+				179EA43C1DBC3E23004EB2CC /* FLTextField.m in Sources */,
+				1772AE461DB7DB9200236CB9 /* FLInputsFormManager.m in Sources */,
+				1772AE251DB5337D00236CB9 /* UIView+Utils.m in Sources */,
+				1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */,
+				1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */,
+				1772AE1F1DB5303700236CB9 /* NSUserDefaults+Utils.m in Sources */,
+				1772AE191DB5299700236CB9 /* NSException+Utils.m in Sources */,
+				1772AE3B1DB57A9F00236CB9 /* NSBundle+Utils.m in Sources */,
+				1772AE061DB5179700236CB9 /* FLMiscUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,31 +673,32 @@
 /* Begin PBXTargetDependency section */
 		17E6DAB51DB3E8A4004F89C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17E6DA991DB3E8A4004F89C3 /* FutLife */;
+			target = 17E6DA991DB3E8A4004F89C3 /* FutLife Staging */;
 			targetProxy = 17E6DAB41DB3E8A4004F89C3 /* PBXContainerItemProxy */;
 		};
 		17E6DAC01DB3E8A4004F89C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17E6DA991DB3E8A4004F89C3 /* FutLife */;
+			target = 17E6DA991DB3E8A4004F89C3 /* FutLife Staging */;
 			targetProxy = 17E6DABF1DB3E8A4004F89C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		17E6DAA61DB3E8A4004F89C3 /* Main.storyboard */ = {
+		179EA4431DBC72FB004EB2CC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				17E6DAA71DB3E8A4004F89C3 /* Base */,
+				179EA4421DBC72FB004EB2CC /* en */,
 			);
-			name = Main.storyboard;
+			name = Localizable.strings;
+			path = Resources/Localization;
 			sourceTree = "<group>";
 		};
-		17E6DAAB1DB3E8A4004F89C3 /* LaunchScreen.storyboard */ = {
+		179EA4481DBC73CC004EB2CC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				17E6DAAC1DB3E8A4004F89C3 /* Base */,
+				179EA4491DBC73CC004EB2CC /* es */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -337,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -373,7 +745,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -384,6 +756,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -414,7 +787,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -423,25 +796,37 @@
 		};
 		17E6DAC81DB3E8A4004F89C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFF00865336216A941C541BB /* Pods-FutLife Staging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 27P587N5XD;
-				INFOPLIST_FILE = FutLife/Info.plist;
+				CODE_SIGN_ENTITLEMENTS = "FutLife Staging.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rene Santis (33JGT25KQ4)";
+				DEVELOPMENT_TEAM = L3XQ85T9WB;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FutLife/Supporting Files/FutLife-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/FutLife/Supporting Files/FutLife Staging-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ideamosWeb.FutLife;
+				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "FutLife Development";
 			};
 			name = Debug;
 		};
 		17E6DAC91DB3E8A4004F89C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E565894E6B91BA1194ECD774 /* Pods-FutLife Staging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 27P587N5XD;
-				INFOPLIST_FILE = FutLife/Info.plist;
+				CODE_SIGN_ENTITLEMENTS = "FutLife Staging.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rene Santis (33JGT25KQ4)";
+				DEVELOPMENT_TEAM = L3XQ85T9WB;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FutLife/Supporting Files/FutLife-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/FutLife/Supporting Files/FutLife Staging-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ideamosWeb.FutLife;
+				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "FutLife Development";
 			};
 			name = Release;
 		};
@@ -507,13 +892,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17E6DAC71DB3E8A4004F89C3 /* Build configuration list for PBXNativeTarget "FutLife" */ = {
+		17E6DAC71DB3E8A4004F89C3 /* Build configuration list for PBXNativeTarget "FutLife Staging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17E6DAC81DB3E8A4004F89C3 /* Debug */,
 				17E6DAC91DB3E8A4004F89C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17E6DACA1DB3E8A4004F89C3 /* Build configuration list for PBXNativeTarget "FutLifeTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +908,7 @@
 				17E6DACC1DB3E8A4004F89C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17E6DACD1DB3E8A4004F89C3 /* Build configuration list for PBXNativeTarget "FutLifeUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +917,7 @@
 				17E6DACF1DB3E8A4004F89C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

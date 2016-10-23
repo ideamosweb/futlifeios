@@ -10,4 +10,9 @@
 
 @interface NSArray (Utils)
 
+- (id)fl_firstObject;
+- (BOOL)fl_isEmpty;
+- (id)fl_objectAtIndex:(NSUInteger)index;
+- (id)fl_sortByDescriptorWithKey:(NSString *)key;
+
 @end

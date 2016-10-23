@@ -10,4 +10,7 @@
 
 @interface NSBundle (Utils)
 
++ (NSString *)fl_appBuildString;
++ (NSString *)fl_appVersion;
+
 @end

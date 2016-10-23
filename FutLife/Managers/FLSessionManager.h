@@ -10,4 +10,9 @@
 
 @interface FLSessionManager : AFHTTPSessionManager
 
++ (instancetype)sharedInstance;
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
+- (id)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration;
+
 @end

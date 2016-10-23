@@ -10,4 +10,7 @@
 
 @interface UIWebView (Utils)
 
+- (void)mt_loadHTMLFromFile:(NSString *)fileName;
+- (void)mt_loadHTMLFromFile:(NSString *)fileName languageCode:(NSString *)languageCode;
+
 @end

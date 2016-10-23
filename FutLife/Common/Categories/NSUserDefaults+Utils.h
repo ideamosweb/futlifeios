@@ -10,4 +10,11 @@
 
 @interface NSUserDefaults (Utils)
 
++ (NSString *)fl_stringForKey:(NSString *)key;
++ (id)fl_objectForKey:(NSString *)key;
++ (void)fl_setObject:(id)value forKey:(NSString *)key;
+
++ (NSString *)fl_decryptedStringForKey:(NSString *)key;
++ (void)fl_encryptAndSetString:(NSString *)string forKey:(NSString *)key;
+
 @end

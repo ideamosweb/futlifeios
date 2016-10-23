@@ -10,4 +10,8 @@
 
 @protocol FLValidatable <NSObject>
 
+// Validates the input field and returns the validation messages.
+// It returns an empty array when there is no validation errors.
+- (NSArray *)validate;
+
 @end

@@ -8,6 +8,8 @@
 
 #import <Mantle/Mantle.h>
 
-@interface FLModel : MTLModel
+@interface FLModel : MTLModel<MTLJSONSerializing>
+
+@property (copy, nonatomic) NSString *sessionToken;
 
 @end

@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (UINavigationController *)mainNavigationController;
+
++ (instancetype)sharedInstance;
 
 @end
 

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FLApiError;
 
 @interface NSError (Utils)
+
+- (FLApiError *)fl_apiErrorWithHttpStatusCode:(NSInteger)statusCode;
 
 @end

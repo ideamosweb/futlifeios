@@ -10,23 +10,64 @@
 
 @interface FLStartUpViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+
 @end
 
 @implementation FLStartUpViewController
 
 - (id)init
 {
-    self = [super initWithNibName:@"MTStartUpVC" bundle:[NSBundle mainBundle]];
-    if (self)
-    {
-        //init process
+    self = [super initWithNibName:@"FLStartUpViewController" bundle:[NSBundle mainBundle]];
+    if (self) {
+        //Set Masonry AutoLayout constraints to views
+        [self masMakeConstraints];
     }
     return self;
 }
 
+- (void)masMakeConstraints
+{
+    UIView *superView = self.view;
+    [self.logoImageView makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(superView);
+        make.width.equalTo(@240);
+        make.height.equalTo(@109);
+    }];
+    
+    [self.versionLabel makeConstraints:^(MASConstraintMaker *make) {
+        make.top.greaterThanOrEqualTo(superView.top);
+        make.left.greaterThanOrEqualTo(superView.left);
+        make.bottom.greaterThanOrEqualTo(superView.bottom);
+        make.right.greaterThanOrEqualTo(superView.right);
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    [self setVersionLabel];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)setVersionLabel
+{
+    NSString *currentAppVersion = [NSBundle fl_appVersion];
+    
+    if (currentAppVersion) {
+        self.versionLabel.text = [NSString stringWithFormat:@"v%@", currentAppVersion];
+    }
+}
+
+- (void)localize
+{
+    
 }
 
 @end

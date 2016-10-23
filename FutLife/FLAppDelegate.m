@@ -7,8 +7,13 @@
 //
 
 #import "FLAppDelegate.h"
+#import "FLStartUpViewController.h"
+
+const CGFloat kNavMenuWidth = 283.0f;
 
 @interface FLAppDelegate ()
+
+@property (nonatomic, strong) UINavigationController *mainNavigationController;
 
 @end
 
@@ -16,7 +21,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [self openStartUp];
+    
     return YES;
 }
 
@@ -45,6 +52,41 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
++ (instancetype)sharedInstance
+{
+    return (FLAppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
++ (UINavigationController *)mainNavigationController;
+{
+    ASSERT_CLASS([FLAppDelegate sharedInstance].mainNavigationController, UINavigationController);
+    return [FLAppDelegate sharedInstance].mainNavigationController;
+}
+
+- (void)openStartUp
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    FLStartUpViewController *startUpVC = [[FLStartUpViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:startUpVC];
+    navigationController.navigationBarHidden = YES;
+    navigationController.navigationBar.translucent = NO;
+    
+    MMDrawerController *drawerController = [[MMDrawerController alloc]
+                                            initWithCenterViewController:navigationController
+                                            leftDrawerViewController:nil];
+    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    drawerController.maximumLeftDrawerWidth = kNavMenuWidth;
+    [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0f]];
+    drawerController.showsStatusBarBackgroundView = YES;
+    drawerController.statusBarViewBackgroundColor = [UIColor blackColor];
+    
+    self.window.rootViewController = drawerController;
+    self.mainNavigationController = navigationController;
+    self.mainNavigationController.navigationBar.barTintColor = [UIColor blackColor];
+    [self.window makeKeyAndVisible];    
 }
 
 
