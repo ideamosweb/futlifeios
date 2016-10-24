@@ -1,4 +1,6 @@
 PODS:
+  - AFNetworkActivityLogger (3.0.0):
+    - AFNetworking/NSURLSession (~> 3.0)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -102,6 +104,7 @@ PODS:
   - UrbanAirship-iOS-SDK (8.0.1)
 
 DEPENDENCIES:
+  - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
   - AFNetworking (~> 3.0)
   - CocoaLumberjack (~> 1.6.2)
   - DateTools
@@ -120,7 +123,18 @@ DEPENDENCIES:
   - UICKeyChainStore
   - UrbanAirship-iOS-SDK
 
+EXTERNAL SOURCES:
+  AFNetworkActivityLogger:
+    :branch: '3_0_0'
+    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
+
+CHECKOUT OPTIONS:
+  AFNetworkActivityLogger:
+    :commit: abc565fe804f210dfda3b028c9a64e7c32e44600
+    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
+
 SPEC CHECKSUMS:
+  AFNetworkActivityLogger: e77f68d014becb33c4306a23f56a64906ff72670
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CocoaLumberjack: 5e26ebef5a48962d1713ae6cb01da30384f3f14e
@@ -146,6 +160,6 @@ SPEC CHECKSUMS:
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UrbanAirship-iOS-SDK: a4ff01ef90d5b32508818da5b8385828513702f9
 
-PODFILE CHECKSUM: f98cda5f088c949176188126c0acf3676f85d4e0
+PODFILE CHECKSUM: 668ae3132ec669b725dd232a513edd9b5e1b02df
 
 COCOAPODS: 1.0.1

@@ -8,6 +8,7 @@ target 'FutLife Staging' do
   inhibit_all_warnings! # This will disable all the warnings for all pods.
 
   pod 'AFNetworking', '~> 3.0'
+  pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
   pod 'SDWebImage', '~>3.8'
   pod 'Mantle'
   #pod 'JSONModel'

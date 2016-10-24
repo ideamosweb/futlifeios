@@ -37,9 +37,14 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 	<key>api.base.url</key>
-	<string>https://futlife.dev.com/v1/</string>
+	<string>http://localhost:8000/</string>
 </dict>
 </plist>

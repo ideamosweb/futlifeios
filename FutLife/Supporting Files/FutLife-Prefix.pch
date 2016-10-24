@@ -29,6 +29,8 @@
 // Pods
 #import <AFHTTPSessionManager.h>
 #import <AFURLSessionManager.h>
+#import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+#import <AFNetworkActivityConsoleLogger.h>
 #import <Mantle.h>
 #import <Mantle/MTLModel.h>
 #import <DDLog.h>
@@ -48,6 +50,7 @@
 
 // Managers
 #import "FLSessionManager.h"
+#import "FLApiManager.h"
 
 // Categories
 #import "FLCategories.h"

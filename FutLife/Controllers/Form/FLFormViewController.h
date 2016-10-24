@@ -7,7 +7,8 @@
 //
 
 #import "FLViewController.h"
-@class FLInputsFormManager;
+#import "FLTextField.h"
+#import "FLInputsFormManager.h"
 
 @interface FLFormViewController : FLViewController<UITextFieldDelegate>
 

@@ -90,7 +90,8 @@
     if (minTypeableLengthValidation) {
         FLInputFieldValidation *minTypeableValidation = [FLInputFieldValidation validationMinLength:minTypeableLengthValidation withErrorMessageBlock:^NSString *{
             /* TODO */
-            return @"";
+            NSLog(@"*** setMinTypeableLengthValidation");
+            return @"*** setMinTypeableLengthValidation";
         }];
         
         [self.fieldValidations addObject:minTypeableValidation];
@@ -103,6 +104,7 @@
     if (maxTypeableLengthValidation) {
         FLInputFieldValidation *maxTypeableValidation = [FLInputFieldValidation validationMaxLength:maxTypeableLengthValidation withErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setMaxTypeableLengthValidation");
             return @"";
         }];
         
@@ -116,6 +118,7 @@
     if (fixedLength) {
         FLInputFieldValidation *fixedLengthValidation = [FLInputFieldValidation validationFixedLength:fixedLength withErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setFixedLengthValidation");
             return @"";
         }];
         
@@ -128,6 +131,7 @@
     if (mandatoryValidation) {
         FLInputFieldValidation *mandatoryInputValidation = [FLInputFieldValidation validationRequiredWithErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setMandatoryValidation");
             return @"";
         }];
         
@@ -142,6 +146,7 @@
     if (email) {
         FLInputFieldValidation *emailFieldValidation = [FLInputFieldValidation validationEmailWithErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setEmail");
             return @"";
         }];
         
@@ -156,6 +161,7 @@
     if (emailNoEmptyValidation) {
         FLInputFieldValidation *emailFieldValidation = [FLInputFieldValidation validationEmailNoEmptyWithErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setEmailNoEmptyValidation");
             return @"";
         }];
         
@@ -169,6 +175,7 @@
     if (regexValidation) {
         FLInputFieldValidation *regexInputValidation = [FLInputFieldValidation validationUsingRegex:regexValidation withErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setRegexValidation");
             return @"";
         }];
         
@@ -183,6 +190,7 @@
     if (onlyNumbers) {
         FLInputFieldValidation *onlyNumbersValidation = [FLInputFieldValidation validationOnlyNumbersWithErrorMessageBlock:^NSString *{
             /* TODO */
+            NSLog(@"*** setOnlyNumbers");
             return @"";
         }];
         

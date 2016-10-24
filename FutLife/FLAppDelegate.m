@@ -23,6 +23,7 @@ const CGFloat kNavMenuWidth = 283.0f;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self openStartUp];
+    [self configApiLogs];
     
     return YES;
 }
@@ -87,6 +88,17 @@ const CGFloat kNavMenuWidth = 283.0f;
     self.mainNavigationController = navigationController;
     self.mainNavigationController.navigationBar.barTintColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];    
+}
+
+- (void)configApiLogs
+{
+    #ifdef DEBUG
+    AFNetworkActivityConsoleLogger *consoleLogger = [AFNetworkActivityConsoleLogger new];
+    [consoleLogger setLevel:AFLoggerLevelDebug];
+    [[AFNetworkActivityLogger sharedLogger] removeLogger:[[[AFNetworkActivityLogger sharedLogger] loggers] anyObject]];
+    [[AFNetworkActivityLogger sharedLogger] addLogger:consoleLogger];
+    [[AFNetworkActivityLogger sharedLogger] startLogging];
+    #endif
 }
 
 

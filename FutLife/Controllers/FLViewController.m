@@ -17,13 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     // Localize the view
     [self localize];
     
     if ([self.navigationController.viewControllers count] > 1) {
         [self addBackButton];
     }
-    
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)localize

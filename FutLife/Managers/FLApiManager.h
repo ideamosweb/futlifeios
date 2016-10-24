@@ -7,7 +7,14 @@
 //
 
 #import "FLSessionManager.h"
+#import "FLRegisterRequestModel.h"
+#import "FLRegisterResponseModel.h"
 
 @interface FLApiManager : FLSessionManager
+
++ (instancetype)sharedInstance;
+
+// Register request
+- (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(NSError *error))failure;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "FLStartUpViewController.h"
+#import "FLRegisterViewController.h"
 
 @interface FLStartUpViewController ()
 
@@ -45,15 +46,16 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     
-    [self setNeedsStatusBarAppearanceUpdate];
     [self setVersionLabel];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
+- (void)viewWillAppear:(BOOL)animated
 {
-    return UIStatusBarStyleLightContent;
+    [super viewWillAppear:animated];
+    
+    [self registerUser];
 }
 
 - (void)setVersionLabel
@@ -63,6 +65,15 @@
     if (currentAppVersion) {
         self.versionLabel.text = [NSString stringWithFormat:@"v%@", currentAppVersion];
     }
+}
+
+- (void)registerUser
+{
+    FLRegisterViewController *registerVC = [[FLRegisterViewController alloc] initWithCompletedBlock:^{
+        /* TODO */
+    }];
+    
+    [self.navigationController pushViewController:registerVC animated:YES];
 }
 
 - (void)localize

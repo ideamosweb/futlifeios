@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */; };
+		175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B061DBD718F0097C8A0 /* FLRegisterResponseModel.m */; };
+		175D2B0C1DBD786E0097C8A0 /* FLRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B0A1DBD786E0097C8A0 /* FLRegisterViewController.m */; };
+		175D2B0D1DBD786E0097C8A0 /* FLRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175D2B0B1DBD786E0097C8A0 /* FLRegisterViewController.xib */; };
 		1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772ADFA1DB4557700236CB9 /* FLConstants.m */; };
 		1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772ADFC1DB4557700236CB9 /* FLViewController.m */; };
 		1772AE011DB4558700236CB9 /* FLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE001DB4558700236CB9 /* FLAppDelegate.m */; };
@@ -61,6 +65,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		175D2B011DBD69B60097C8A0 /* FLRegisterRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLRegisterRequestModel.h; path = Models/Register/FLRegisterRequestModel.h; sourceTree = "<group>"; };
+		175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLRegisterRequestModel.m; path = Models/Register/FLRegisterRequestModel.m; sourceTree = "<group>"; };
+		175D2B051DBD718F0097C8A0 /* FLRegisterResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLRegisterResponseModel.h; path = Models/Register/FLRegisterResponseModel.h; sourceTree = "<group>"; };
+		175D2B061DBD718F0097C8A0 /* FLRegisterResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLRegisterResponseModel.m; path = Models/Register/FLRegisterResponseModel.m; sourceTree = "<group>"; };
+		175D2B091DBD786E0097C8A0 /* FLRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLRegisterViewController.h; path = Controllers/Register/FLRegisterViewController.h; sourceTree = "<group>"; };
+		175D2B0A1DBD786E0097C8A0 /* FLRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLRegisterViewController.m; path = Controllers/Register/FLRegisterViewController.m; sourceTree = "<group>"; };
+		175D2B0B1DBD786E0097C8A0 /* FLRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLRegisterViewController.xib; path = Views/Register/FLRegisterViewController.xib; sourceTree = "<group>"; };
 		1772ADF91DB4557700236CB9 /* FLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLConstants.h; path = Common/FLConstants.h; sourceTree = "<group>"; };
 		1772ADFA1DB4557700236CB9 /* FLConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLConstants.m; path = Common/FLConstants.m; sourceTree = "<group>"; };
 		1772ADFB1DB4557700236CB9 /* FLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLViewController.h; path = Controllers/FLViewController.h; sourceTree = "<group>"; };
@@ -170,6 +181,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		175D2B001DBD667A0097C8A0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				175D2B011DBD69B60097C8A0 /* FLRegisterRequestModel.h */,
+				175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */,
+				175D2B051DBD718F0097C8A0 /* FLRegisterResponseModel.h */,
+				175D2B061DBD718F0097C8A0 /* FLRegisterResponseModel.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		175D2B081DBD78300097C8A0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				175D2B091DBD786E0097C8A0 /* FLRegisterViewController.h */,
+				175D2B0A1DBD786E0097C8A0 /* FLRegisterViewController.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		175D2B0E1DBD787E0097C8A0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				175D2B0B1DBD786E0097C8A0 /* FLRegisterViewController.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		1772ADF41DB454F100236CB9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +228,7 @@
 		1772ADF51DB454FC00236CB9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				175D2B081DBD78300097C8A0 /* Register */,
 				1772AE3D1DB5B7FB00236CB9 /* Form */,
 				1772AE301DB56F8100236CB9 /* StartUp */,
 				1772ADFB1DB4557700236CB9 /* FLViewController.h */,
@@ -213,6 +253,7 @@
 		1772ADF71DB4551400236CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				175D2B001DBD667A0097C8A0 /* Register */,
 				179EA4521DBD3411004EB2CC /* FLModel.h */,
 				179EA4531DBD3411004EB2CC /* FLModel.m */,
 			);
@@ -222,6 +263,7 @@
 		1772ADF81DB4552200236CB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				175D2B0E1DBD787E0097C8A0 /* Register */,
 				1772AE3C1DB57E7100236CB9 /* StartUp */,
 			);
 			name = Views;
@@ -547,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */,
+				175D2B0D1DBD786E0097C8A0 /* FLRegisterViewController.xib in Resources */,
 				1772AE381DB5722000236CB9 /* Images.xcassets in Resources */,
 				179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */,
 				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
@@ -623,6 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */,
 				1772AE281DB5350500236CB9 /* UIWebView+Utils.m in Sources */,
 				1772AE401DB5B82600236CB9 /* FLFormViewController.m in Sources */,
 				1772AE0B1DB51FD800236CB9 /* NSArray+Utils.m in Sources */,
@@ -637,6 +681,7 @@
 				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
 				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
 				1772AE161DB525C300236CB9 /* FLApiError.m in Sources */,
+				175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */,
 				1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */,
 				179EA4541DBD3411004EB2CC /* FLModel.m in Sources */,
 				1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */,
@@ -646,6 +691,7 @@
 				1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */,
 				1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */,
 				1772AE1F1DB5303700236CB9 /* NSUserDefaults+Utils.m in Sources */,
+				175D2B0C1DBD786E0097C8A0 /* FLRegisterViewController.m in Sources */,
 				1772AE191DB5299700236CB9 /* NSException+Utils.m in Sources */,
 				1772AE3B1DB57A9F00236CB9 /* NSBundle+Utils.m in Sources */,
 				1772AE061DB5179700236CB9 /* FLMiscUtils.m in Sources */,
