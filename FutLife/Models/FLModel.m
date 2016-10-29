@@ -10,4 +10,11 @@
 
 @implementation FLModel
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{
+             @"sessionToken" : @"sessionToken"
+             };
+}
+
 @end

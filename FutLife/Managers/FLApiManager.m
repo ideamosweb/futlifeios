@@ -35,7 +35,7 @@ static NSString *const kRegisterPath = @"m/v1/register";
 
 // - POST -
 // Register request
-- (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(NSError *error))failure
+- (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure
 {
     NSDictionary *parameters = [MTLJSONAdapter JSONDictionaryFromModel:requestModel error:nil];
     
@@ -46,7 +46,7 @@ static NSString *const kRegisterPath = @"m/v1/register";
         success(response);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
+        failure([error fl_apiErrorWithHttpStatusCode:error.code]);
     }];
 }
 

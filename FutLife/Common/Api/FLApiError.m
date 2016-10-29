@@ -25,4 +25,17 @@
     return kServiceErrorUnknown == self.httpStatusCode;
 }
 
+- (NSString *)errorMessage
+{
+    if ([self isConnectivityError]) {
+        return @"Error de conexión";
+    } else if ([self isCancelledError]) {
+        return @"La operación ha sido cancelada";
+    } else if ([self isUnknownError]) {
+        return @"Algo ocurrio, por favor intente de nuevo";
+    }
+    
+    return @"Algo ocurrio, por favor intente más tarde";
+}
+
 @end

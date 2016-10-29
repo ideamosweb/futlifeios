@@ -129,7 +129,7 @@ static NSString *const kFormManagerEditableTextViewKeyPath = @"editable";
 - (void)onInputAccessoryDoneButtonTouched
 {
     // Validate the current input field before the keyboard is hidden.
-    [self validateInputField:self.currentInputField];
+    // [self validateInputField:self.currentInputField];
     [self.currentInputField resignFirstResponder];
 }
 
@@ -229,7 +229,7 @@ static NSString *const kFormManagerEditableTextViewKeyPath = @"editable";
 - (void)setCurrentInputField:(UIView *)currentInputField
 {
     // Validate the previous input field before moving to a new one.
-    [self validateInputField:self.currentInputField];
+    //[self validateInputField:self.currentInputField];
     _currentInputField = currentInputField;
 }
 
@@ -247,6 +247,21 @@ static NSString *const kFormManagerEditableTextViewKeyPath = @"editable";
     }
     
     return NO;
+}
+
+- (void)validateFormWithSuccess:(void (^)())successBlock failureBlock:(void (^)(FLError *error))failureBlock
+{
+    if ([[self validate] count] == 0) {
+        if (successBlock) {
+            successBlock();
+        }
+    } else {
+        if (failureBlock) {
+            NSString *errorMessage = [[self validate] fl_firstObject];
+            FLError *errorInstance = [[FLError alloc] initWithErrorCode:0 errorMessage:errorMessage];
+            failureBlock(errorInstance);
+        }
+    }
 }
 
 // Validate the whole form.

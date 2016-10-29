@@ -35,33 +35,66 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configTextFields];
-    
     // Let's pass the fields to inputsFormManager
     self.inputsFormManager.inputFields = @[self.nameTextfield, self.userNameTextfield, self.emailTextfield, self.passwordTextfield, self.passwordConfirmationTextfield];
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    [self configTextFields];
+}
+
+// iOS 10 hotfix TODO: remove this
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self configTextFields];
 }
 
 - (void)configTextFields
 {
     self.nameTextfield.mandatoryValidation = YES;
     self.nameTextfield.minTypeableLengthValidation = 5;
+    self.nameTextfield.maxTypeableLengthValidation = 20;
+    UIRectCorner rectTopCorner = (UIRectCornerTopLeft | UIRectCornerTopRight);
+    [self.nameTextfield setRoundedCorners:rectTopCorner cornerRadii:CGSizeMake(10.0, 10.0)];
     
     self.userNameTextfield.mandatoryValidation = YES;
     self.userNameTextfield.minTypeableLengthValidation = 5;
+    self.userNameTextfield.maxTypeableLengthValidation = 20;
     
     self.emailTextfield.mandatoryValidation = YES;
     self.emailTextfield.email = YES;
     
     self.passwordTextfield.mandatoryValidation = YES;
+    self.passwordTextfield.password = YES;
+    self.passwordTextfield.minTypeableLengthValidation = 6;
+    self.passwordTextfield.maxTypeableLengthValidation = 20;
+    
     self.passwordConfirmationTextfield.mandatoryValidation = YES;
+    self.passwordConfirmationTextfield.password = YES;
+    self.passwordConfirmationTextfield.minTypeableLengthValidation = 6;
+    self.passwordConfirmationTextfield.maxTypeableLengthValidation = 20;
+    UIRectCorner rectBottomCorner = (UIRectCornerBottomLeft | UIRectCornerBottomRight);
+    [self.passwordConfirmationTextfield setRoundedCorners:rectBottomCorner cornerRadii:CGSizeMake(10.0, 10.0)];
 }
 
 - (IBAction)onRegisterButtonTouch:(id)sender
 {
     [self.inputsFormManager.currentInputField resignFirstResponder];
-    if (self.inputsFormManager.isValid) {
+    
+    [self.inputsFormManager validateFormWithSuccess:^{
         [self registerUser];
-    }
+    } failureBlock:^(FLError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:error.errorMessage buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
+    }];
 }
 
 - (void)registerUser
@@ -71,12 +104,22 @@
     requestModel.userName = self.userNameTextfield.text;
     requestModel.email = self.emailTextfield.text;
     requestModel.password = self.passwordTextfield.text;
-    requestModel.passwordConfirmation = self.passwordConfirmationTextfield.text;
+    requestModel.passwordConfirmation = self.passwordConfirmationTextfield.text;   
     
     [[FLApiManager sharedInstance] registerRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
-        NSLog(@"***Register success");
-    } failure:^(NSError *error) {
-        NSLog(@"***Register failed");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:responseModel.message buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                self.registrationCompletedBlock();
+            }];
+            [alert show];
+        });
+    } failure:^(FLApiError *error) {        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
     }];
 }
 

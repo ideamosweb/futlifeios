@@ -8,6 +8,8 @@
 
 #import "FLStartUpViewController.h"
 #import "FLRegisterViewController.h"
+#import "FLLoginViewController.h"
+#import "FLAppDelegate.h"
 
 @interface FLStartUpViewController ()
 
@@ -46,16 +48,14 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
-    
-    [self setVersionLabel];
+    [super viewDidLoad];   
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self registerUser];
+    [self setVersionLabel];
 }
 
 - (void)setVersionLabel
@@ -65,15 +65,36 @@
     if (currentAppVersion) {
         self.versionLabel.text = [NSString stringWithFormat:@"v%@", currentAppVersion];
     }
+    
+    [self goToRegisterOrLoginUser];
+}
+
+- (void)goToRegisterOrLoginUser
+{
+    if ([FLLocalDataManager sharedInstance].registeredUser) {
+        // Go to login User
+        [self goToLogin];
+    } else {
+        [self registerUser];
+    }
 }
 
 - (void)registerUser
 {
     FLRegisterViewController *registerVC = [[FLRegisterViewController alloc] initWithCompletedBlock:^{
-        /* TODO */
+        [FLLocalDataManager sharedInstance].registeredUser = YES;
+        // Login User
+        [self goToLogin];
     }];
     
-    [self.navigationController pushViewController:registerVC animated:YES];
+    [self.navigationController pushViewController:registerVC animated:NO];
+}
+
+- (void)goToLogin
+{
+    FLLoginViewController *loginVC = [[FLLoginViewController alloc] init];
+    
+    [self.navigationController pushViewController:loginVC animated:YES];    
 }
 
 - (void)localize

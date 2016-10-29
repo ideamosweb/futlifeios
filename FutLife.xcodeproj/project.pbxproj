@@ -40,6 +40,11 @@
 		179EA44E1DBD26C7004EB2CC /* FLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */; };
 		179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4501DBD3254004EB2CC /* FLApiManager.m */; };
 		179EA4541DBD3411004EB2CC /* FLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4531DBD3411004EB2CC /* FLModel.m */; };
+		17C3C6BC1DC174C300415CBE /* FLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6BB1DC174C300415CBE /* FLAlertView.m */; };
+		17C3C6BF1DC17F9000415CBE /* FLError.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6BE1DC17F9000415CBE /* FLError.m */; };
+		17C3C6C31DC1BC2700415CBE /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6C21DC1BC2700415CBE /* FLLoginViewController.m */; };
+		17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C3C6C51DC1BC8B00415CBE /* FLLoginViewController.xib */; };
+		17C3C6C91DC1CAA100415CBE /* FLLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6C81DC1CAA100415CBE /* FLLocalDataManager.m */; };
 		17E6DA9F1DB3E8A4004F89C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DA9E1DB3E8A4004F89C3 /* main.m */; };
 		17E6DAAA1DB3E8A4004F89C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */; };
 		17E6DAB81DB3E8A4004F89C3 /* FutLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAB71DB3E8A4004F89C3 /* FutLifeTests.m */; };
@@ -131,6 +136,15 @@
 		179EA4501DBD3254004EB2CC /* FLApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLApiManager.m; path = Managers/FLApiManager.m; sourceTree = "<group>"; };
 		179EA4521DBD3411004EB2CC /* FLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLModel.h; path = Models/FLModel.h; sourceTree = "<group>"; };
 		179EA4531DBD3411004EB2CC /* FLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLModel.m; path = Models/FLModel.m; sourceTree = "<group>"; };
+		17C3C6BA1DC174C300415CBE /* FLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAlertView.h; path = Common/Views/FLAlertView.h; sourceTree = "<group>"; };
+		17C3C6BB1DC174C300415CBE /* FLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLAlertView.m; path = Common/Views/FLAlertView.m; sourceTree = "<group>"; };
+		17C3C6BD1DC17F9000415CBE /* FLError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLError.h; path = Common/FLError.h; sourceTree = "<group>"; };
+		17C3C6BE1DC17F9000415CBE /* FLError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLError.m; path = Common/FLError.m; sourceTree = "<group>"; };
+		17C3C6C11DC1BC2700415CBE /* FLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLLoginViewController.h; path = Controllers/Login/FLLoginViewController.h; sourceTree = "<group>"; };
+		17C3C6C21DC1BC2700415CBE /* FLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLoginViewController.m; path = Controllers/Login/FLLoginViewController.m; sourceTree = "<group>"; };
+		17C3C6C51DC1BC8B00415CBE /* FLLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLLoginViewController.xib; path = Views/Login/FLLoginViewController.xib; sourceTree = "<group>"; };
+		17C3C6C71DC1CAA100415CBE /* FLLocalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLLocalDataManager.h; path = Managers/FLLocalDataManager.h; sourceTree = "<group>"; };
+		17C3C6C81DC1CAA100415CBE /* FLLocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLocalDataManager.m; path = Managers/FLLocalDataManager.m; sourceTree = "<group>"; };
 		17E6DA9A1DB3E8A4004F89C3 /* FutLife Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FutLife Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6DA9E1DB3E8A4004F89C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,6 +226,7 @@
 		1772ADF41DB454F100236CB9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				17C3C6B91DC1745000415CBE /* Views */,
 				1772AE4D1DB8828A00236CB9 /* Forms */,
 				1772AE131DB5247300236CB9 /* Api */,
 				1772AE031DB5172600236CB9 /* Categories */,
@@ -221,6 +236,8 @@
 				1772AE051DB5179700236CB9 /* FLMiscUtils.m */,
 				1772AE071DB518CA00236CB9 /* FLMacros.h */,
 				1772AE0C1DB5210500236CB9 /* FLDebug.h */,
+				17C3C6BD1DC17F9000415CBE /* FLError.h */,
+				17C3C6BE1DC17F9000415CBE /* FLError.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -228,6 +245,7 @@
 		1772ADF51DB454FC00236CB9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17C3C6C01DC1BBE600415CBE /* Login */,
 				175D2B081DBD78300097C8A0 /* Register */,
 				1772AE3D1DB5B7FB00236CB9 /* Form */,
 				1772AE301DB56F8100236CB9 /* StartUp */,
@@ -246,6 +264,8 @@
 				179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */,
 				179EA44F1DBD3254004EB2CC /* FLApiManager.h */,
 				179EA4501DBD3254004EB2CC /* FLApiManager.m */,
+				17C3C6C71DC1CAA100415CBE /* FLLocalDataManager.h */,
+				17C3C6C81DC1CAA100415CBE /* FLLocalDataManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -263,6 +283,7 @@
 		1772ADF81DB4552200236CB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				17C3C6C41DC1BC3100415CBE /* Login */,
 				175D2B0E1DBD787E0097C8A0 /* Register */,
 				1772AE3C1DB57E7100236CB9 /* StartUp */,
 			);
@@ -390,6 +411,32 @@
 			name = es.lproj;
 			sourceTree = "<group>";
 		};
+		17C3C6B91DC1745000415CBE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				17C3C6BA1DC174C300415CBE /* FLAlertView.h */,
+				17C3C6BB1DC174C300415CBE /* FLAlertView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		17C3C6C01DC1BBE600415CBE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				17C3C6C11DC1BC2700415CBE /* FLLoginViewController.h */,
+				17C3C6C21DC1BC2700415CBE /* FLLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		17C3C6C41DC1BC3100415CBE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				17C3C6C51DC1BC8B00415CBE /* FLLoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		17E6DA911DB3E8A4004F89C3 = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +527,7 @@
 				17E6DA981DB3E8A4004F89C3 /* Resources */,
 				02392B485E4EFF79D8A2C4DF /* [CP] Embed Pods Frameworks */,
 				8508B7D670B288D185100A4C /* [CP] Copy Pods Resources */,
+				173429661DC28DBC008D856E /* Increase Build Number */,
 			);
 			buildRules = (
 			);
@@ -593,6 +641,7 @@
 				1772AE381DB5722000236CB9 /* Images.xcassets in Resources */,
 				179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */,
 				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
+				17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */,
 				17E6DAAA1DB3E8A4004F89C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,6 +676,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FutLife Staging/Pods-FutLife Staging-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		173429661DC28DBC008D856E /* Increase Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increase Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "def get_file_as_string(filename)\ndata = ''\nf = File.open(filename, \"r\")\nf.each_line do |line|\ndata += line\nend\nreturn data\nend\n\n\ndef handle_alpha_beta(old_value, letter, infoplist, start_of_value, end_of_value)\nparts = old_value.split(letter)\nversion_num = parts[0]\nalpha_num = parts[1].to_i\n\nalpha_num = alpha_num + 1\nnew_version = version_num.to_s + letter + alpha_num.to_s\nprint \"Assigning new version: \" + new_version + \"\\n\"\nnew_key = \"<string>#{new_version}</string>\"\n\npart_1 = infoplist[0, start_of_value - '<string>'.length];\npart_2 = new_key\npart_3 = infoplist[end_of_value + \"</string>\".length, infoplist.length - (end_of_value - start_of_value + (new_key.length - 1))]\n\nnew_info_plist = part_1 + part_2 + part_3\nnew_info_plist\nend\n\ndef find_and_increment_version_number_with_key(key, infoplist)\n\nstart_of_key = infoplist.index(key)\nstart_of_value = infoplist.index(\"<string>\", start_of_key) + \"<string>\".length\nend_of_value = infoplist.index(\"</string>\", start_of_value)\nold_value = infoplist[start_of_value, end_of_value - start_of_value]\n\nprint \"Old version for \" + key + \": \" + old_value + \"\\n\"\nprint old_value.class.to_s + \"\\n\"\nold_value_int = old_value.to_i\nprint old_value_int.class.to_s + \"\\n\"\nif (old_value.index(\"a\") != nil) # alpha\ninfoplist = handle_alpha_beta(old_value, \"a\", infoplist, start_of_value, end_of_value)\nelsif (old_value.index(\"b\") != nil) # beta\ninfoplist = handle_alpha_beta(old_value, \"b\", infoplist, start_of_value, end_of_value)\nelsif (old_value.index(\".\") != nil) # release dot version\nparts = old_value.split(\".\")\nlast_part = parts.last.to_i\nlast_part = last_part + 1\nparts = parts[0, parts.length - 1]\n\nnew_version = \"\"\nfirst = true\nparts.each do |one_part|\nif (first)\nfirst = false\nelse\nnew_version = new_version + \".\"\nend\nnew_version = new_version + one_part\nend\nnew_version = new_version.to_s + \".\" + last_part.to_s\nprint \"New version: \" + new_version.to_s + \"\\n\"\nnew_key = \"<string>#{new_version}</string>\"\ninfoplist = \"#{infoplist[0, start_of_value - '<string>'.length]}#{new_key}#{infoplist[end_of_value + '</string>'.length, infoplist.length - (end_of_value+1)]}\"\nelsif (old_value.to_i != nil) # straight integer build number\nnew_version = old_value.to_i + 1\nprint \"New version: \" + new_version.to_s + \"\\n\"\nnew_key = \"<string>#{new_version}</string>\"\n\npart_1 = infoplist[0, start_of_value - '<string>'.length]\npart_2 = new_key\npart_3 = infoplist[end_of_value + \"</string>\".length, infoplist.length - (end_of_value+1)]\ninfoplist = part_1 + part_2 + part_3\nend\ninfoplist\nend\n\n\n\nconfig = ENV['CONFIGURATION'].upcase\nconfig_build_dir = ENV['CONFIGURATION_BUILD_DIR']\n\narchive_action = false\nif (config_build_dir.include?(\"ArchiveIntermediates\"))\narchive_action = true\nend\n\nprint \"Archive: \" + archive_action.to_s + \"\\n\"\n\n\nprint config\n\nif (config == \"RELEASE\")\nprint \" incrementing build numbers\\n\"\nproject_dir = ENV['PROJECT_DIR']\ninfoplist_file = ENV['INFOPLIST_FILE']\nplist_filename = \"#{project_dir}/#{infoplist_file}\"\n\ninfoplist = get_file_as_string(infoplist_file)\ninfoplist = find_and_increment_version_number_with_key(\"CFBundleVersion\", infoplist)\nif (archive_action)\ninfoplist = find_and_increment_version_number_with_key(\"CFBundleShortVersionString\", infoplist)\nend\nFile.open(infoplist_file, 'w') {|f| f.write(infoplist) }\nelse\nprint \" not incrementing build numbers\"\nend";
 			showEnvVarsInLog = 0;
 		};
 		4E850539753E41659FB3B2A3 /* [CP] Check Pods Manifest.lock */ = {
@@ -669,6 +733,7 @@
 				175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */,
 				1772AE281DB5350500236CB9 /* UIWebView+Utils.m in Sources */,
 				1772AE401DB5B82600236CB9 /* FLFormViewController.m in Sources */,
+				17C3C6BC1DC174C300415CBE /* FLAlertView.m in Sources */,
 				1772AE0B1DB51FD800236CB9 /* NSArray+Utils.m in Sources */,
 				179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */,
 				1772AE121DB522E100236CB9 /* NSError+Utils.m in Sources */,
@@ -681,6 +746,7 @@
 				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
 				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
 				1772AE161DB525C300236CB9 /* FLApiError.m in Sources */,
+				17C3C6C91DC1CAA100415CBE /* FLLocalDataManager.m in Sources */,
 				175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */,
 				1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */,
 				179EA4541DBD3411004EB2CC /* FLModel.m in Sources */,
@@ -690,8 +756,10 @@
 				1772AE251DB5337D00236CB9 /* UIView+Utils.m in Sources */,
 				1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */,
 				1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */,
+				17C3C6BF1DC17F9000415CBE /* FLError.m in Sources */,
 				1772AE1F1DB5303700236CB9 /* NSUserDefaults+Utils.m in Sources */,
 				175D2B0C1DBD786E0097C8A0 /* FLRegisterViewController.m in Sources */,
+				17C3C6C31DC1BC2700415CBE /* FLLoginViewController.m in Sources */,
 				1772AE191DB5299700236CB9 /* NSException+Utils.m in Sources */,
 				1772AE3B1DB57A9F00236CB9 /* NSBundle+Utils.m in Sources */,
 				1772AE061DB5179700236CB9 /* FLMiscUtils.m in Sources */,
@@ -845,6 +913,7 @@
 			baseConfigurationReference = FFF00865336216A941C541BB /* Pods-FutLife Staging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "FutLife Staging.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rene Santis (33JGT25KQ4)";
 				DEVELOPMENT_TEAM = L3XQ85T9WB;
@@ -854,6 +923,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4e7ab149-4a76-42ab-b248-e1358cb88ec1";
 				PROVISIONING_PROFILE_SPECIFIER = "FutLife Development";
 			};
 			name = Debug;
@@ -863,6 +933,7 @@
 			baseConfigurationReference = E565894E6B91BA1194ECD774 /* Pods-FutLife Staging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "FutLife Staging.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rene Santis (33JGT25KQ4)";
 				DEVELOPMENT_TEAM = L3XQ85T9WB;
@@ -872,6 +943,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4e7ab149-4a76-42ab-b248-e1358cb88ec1";
 				PROVISIONING_PROFILE_SPECIFIER = "FutLife Development";
 			};
 			name = Release;

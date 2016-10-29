@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class FLApiError;
+#import "FLApiError.h"
 
 @interface NSError (Utils)
 

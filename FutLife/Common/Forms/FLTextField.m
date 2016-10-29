@@ -46,6 +46,14 @@
     self.maxTypeableLengthValidation = NSUIntegerMax;
     self.typeable = YES;
     self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    // Setup style.
+    self.leftViewMode = UITextFieldViewModeNever;
+    self.borderStyle = UITextBorderStyleNone;
+    // Padding left
+    // http://stackoverflow.com/a/4423805
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, self.frame.size.height)];
+    self.leftView = paddingView;
+    self.leftViewMode = UITextFieldViewModeAlways;
     
     /* TODO */
     // Set placeholder font.
@@ -65,6 +73,19 @@
     // Set placeholder font.
     // http://stackoverflow.com/a/18994346
     // [self setValue:[UIFont mt_robotoFontOfSize:self.font.pointSize] forKeyPath:@"_placeholderLabel.font"];
+}
+
+- (void)setRoundedCorners:(UIRectCorner)roundingCorners cornerRadii:(CGSize)cornerRadii
+{
+    // make round corners for txtfield
+    CAShapeLayer *textFieldMaskLayer = [[CAShapeLayer alloc] init];
+    
+    UIBezierPath *textFieldMaskPathWithRadius = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:roundingCorners cornerRadii:cornerRadii];
+    
+    textFieldMaskLayer.frame = self.bounds;
+    textFieldMaskLayer.path = textFieldMaskPathWithRadius.CGPath;
+    textFieldMaskLayer.fillColor = [UIColor whiteColor].CGColor;
+    [self.layer setMask:textFieldMaskLayer];
 }
 
 - (void)textFieldDidChange:(NSNotification *)notification
@@ -88,10 +109,11 @@
 - (void)setMinTypeableLengthValidation:(NSUInteger)minTypeableLengthValidation
 {
     if (minTypeableLengthValidation) {
+        _minTypeableLengthValidation = minTypeableLengthValidation;
         FLInputFieldValidation *minTypeableValidation = [FLInputFieldValidation validationMinLength:minTypeableLengthValidation withErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setMinTypeableLengthValidation");
-            return @"*** setMinTypeableLengthValidation";
+            return [NSString stringWithFormat:@"El campo debe tener minimo %lu caráteres", (unsigned long)self.minTypeableLengthValidation];
         }];
         
         [self.fieldValidations addObject:minTypeableValidation];
@@ -102,10 +124,11 @@
 - (void)setMaxTypeableLengthValidation:(NSUInteger)maxTypeableLengthValidation
 {
     if (maxTypeableLengthValidation) {
+        _maxTypeableLengthValidation = maxTypeableLengthValidation;
         FLInputFieldValidation *maxTypeableValidation = [FLInputFieldValidation validationMaxLength:maxTypeableLengthValidation withErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setMaxTypeableLengthValidation");
-            return @"";
+            return [NSString stringWithFormat:@"El campo debe tener máximo %lu caráteres", (unsigned long)self.maxTypeableLengthValidation];
         }];
         
         [self.fieldValidations addObject:maxTypeableValidation];
@@ -119,7 +142,7 @@
         FLInputFieldValidation *fixedLengthValidation = [FLInputFieldValidation validationFixedLength:fixedLength withErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setFixedLengthValidation");
-            return @"";
+            return @"EL texto no cumple con el número de caráteres establecido";
         }];
         
         [self.fieldValidations addObject:fixedLengthValidation];
@@ -132,7 +155,8 @@
         FLInputFieldValidation *mandatoryInputValidation = [FLInputFieldValidation validationRequiredWithErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setMandatoryValidation");
-            return @"";
+            NSString *fieldPlaceholder = self.placeholder;
+            return [NSString stringWithFormat:@"El campo %@ es obligatorio", fieldPlaceholder];
         }];
         
         [self.fieldValidations addObject:mandatoryInputValidation];
@@ -147,7 +171,7 @@
         FLInputFieldValidation *emailFieldValidation = [FLInputFieldValidation validationEmailWithErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setEmail");
-            return @"";
+            return @"Email invalido";
         }];
         
         [self.fieldValidations addObject:emailFieldValidation];
@@ -162,7 +186,7 @@
         FLInputFieldValidation *emailFieldValidation = [FLInputFieldValidation validationEmailNoEmptyWithErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setEmailNoEmptyValidation");
-            return @"";
+            return @"Campo email no puede ser vacio";
         }];
         
         [self.fieldValidations addObject:emailFieldValidation];
@@ -176,7 +200,7 @@
         FLInputFieldValidation *regexInputValidation = [FLInputFieldValidation validationUsingRegex:regexValidation withErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setRegexValidation");
-            return @"";
+            return @"Campo invalido";
         }];
         
         [self.fieldValidations addObject:regexInputValidation];
@@ -191,11 +215,16 @@
         FLInputFieldValidation *onlyNumbersValidation = [FLInputFieldValidation validationOnlyNumbersWithErrorMessageBlock:^NSString *{
             /* TODO */
             NSLog(@"*** setOnlyNumbers");
-            return @"";
+            return @"Este campo es númerico";
         }];
         
         [self.fieldValidations addObject:onlyNumbersValidation];
     }
+}
+
+- (void)setPassword:(BOOL)password
+{
+    self.secureTextEntry = YES;
 }
 
 - (void)setText:(NSString *)text
@@ -295,12 +324,17 @@
     return validationMessages;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+    self.layer.cornerRadius = 0.0;
+    self.layer.borderWidth = 0.0;
+    
+    // Custom Border
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
+    [self.layer addSublayer:bottomBorder];
 }
-*/
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FLValidatable.h"
+#import "FLError.h"
 @class FLInputFieldValidation;
 
 @interface FLInputsFormManager : NSObject<FLValidatable>
@@ -22,6 +23,8 @@
 @property (nonatomic, weak, readonly) UIControl *previousInputField;
 // Validation messages array
 @property (nonatomic, strong) NSArray *validationMessages;
+
+- (void)validateFormWithSuccess:(void (^)())successBlock failureBlock:(void (^)(FLError *error))failureBlock;
 
 // Send the first and last field by completion block for set the scrollView contentSize
 - (void)firstAndLastInputFieldsWithCompletion:(void (^)(UIControl *firstInput, UIControl *lastInput))completionBlock;

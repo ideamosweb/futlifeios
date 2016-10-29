@@ -30,6 +30,8 @@
 @property (assign, nonatomic, getter=isEmail) BOOL email;
 // Creates an email no empty validation
 @property (assign, nonatomic, getter=isEmailNoEmptyValidation) BOOL emailNoEmptyValidation;
+// Creates an email no empty validation
+@property (assign, nonatomic, getter=isPassword) BOOL password;
 // Validation regex
 @property (copy, nonatomic) NSString *regexValidation;
 // Creates an only numbers textfield
@@ -47,5 +49,8 @@
 
 // Validates the text field.
 - (NSArray *)validate;
+
+// Set rounded corners
+- (void)setRoundedCorners:(UIRectCorner)roundingCorners cornerRadii:(CGSize)cornerRadii;
 
 @end

@@ -33,6 +33,7 @@ static NSString *const kStringEmpty = @"";
 - (BOOL)fl_contains:(NSString *)string;
 + (NSString *)fl_truncateString:(NSString *)string toCharacterCount:(NSUInteger)count;
 
+- (CGSize)fl_sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
 
 #pragma mark - URL Encoding and Decoding
 

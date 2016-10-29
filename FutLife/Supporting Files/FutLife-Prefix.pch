@@ -43,6 +43,7 @@
 #import <DDTTYLogger.h>
 #import <UICKeyChainStore.h>
 #import <UrbanAirship-iOS-SDK/AirshipLib.h>
+#import <FXBlurView/FXBlurView.h>
 
 //define this constant if you want to use Masonry without the 'mas_' prefix
 #define MAS_SHORTHAND
@@ -51,6 +52,7 @@
 // Managers
 #import "FLSessionManager.h"
 #import "FLApiManager.h"
+#import "FLLocalDataManager.h"
 
 // Categories
 #import "FLCategories.h"
@@ -63,6 +65,7 @@
 
 // Utils
 #import "FLMiscUtils.h"
+#import "FLAlertView.h"
 
 // Debug
 #import "FLDebug.h"

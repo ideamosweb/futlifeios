@@ -19,5 +19,6 @@ static const NSInteger kServiceErrorUnknown = 9997;
 - (BOOL)isConnectivityError;
 - (BOOL)isCancelledError;
 - (BOOL)isUnknownError;
+- (NSString *)errorMessage;
 
 @end

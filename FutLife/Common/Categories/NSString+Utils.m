@@ -164,6 +164,22 @@
     
 } // truncateString
 
+- (CGSize)fl_sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size
+{
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        CGRect frame = [self boundingRectWithSize:size
+                                          options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                       attributes:@{ NSFontAttributeName:font }
+                                          context:nil];
+        
+        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+        return frame.size;
+    } else {
+        return [self sizeWithFont:font constrainedToSize:size];
+    }
+}
+
 #pragma mark - URL Encoding and Decoding
 - (NSString *)fl_urlEncode {
     return [self fl_urlEncodeUsingEncoding:NSUTF8StringEncoding];

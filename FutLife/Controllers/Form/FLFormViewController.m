@@ -69,7 +69,7 @@
     self.formScrollView.scrollIndicatorInsets = contentInsets;
     
     CGRect currentInputFrame = self.inputsFormManager.currentInputField.frame;
-    UIView *currentInputSuperView = self.inputsFormManager.currentInputField.superview;
+    UIView *currentInputSuperView = self.inputsFormManager.currentInputField.superview.superview;
     ASSERT_CLASS_OR_NIL(currentInputSuperView, UIView);
     
     // Get the frame of the input field in the scroll view.
