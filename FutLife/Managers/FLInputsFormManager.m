@@ -251,13 +251,14 @@ static NSString *const kFormManagerEditableTextViewKeyPath = @"editable";
 
 - (void)validateFormWithSuccess:(void (^)())successBlock failureBlock:(void (^)(FLError *error))failureBlock
 {
-    if ([[self validate] count] == 0) {
+    NSArray *validate = [self validate];
+    if ([validate count] == 0) {
         if (successBlock) {
             successBlock();
         }
     } else {
         if (failureBlock) {
-            NSString *errorMessage = [[self validate] fl_firstObject];
+            NSString *errorMessage = [validate fl_firstObject];
             FLError *errorInstance = [[FLError alloc] initWithErrorCode:0 errorMessage:errorMessage];
             failureBlock(errorInstance);
         }

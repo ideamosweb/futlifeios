@@ -7,6 +7,7 @@
 //
 
 #import "FLViewController.h"
+#import "FLAppDelegate.h"
 
 @interface FLViewController ()
 
@@ -17,19 +18,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNeedsStatusBarAppearanceUpdate];
+    self.showNavigationBar = NO;
     
     // Localize the view
     [self localize];
-    
-    if ([self.navigationController.viewControllers count] > 1) {
-        [self addBackButton];
-    }
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
+- (void)setShowNavigationBar:(BOOL)showNavigationBar
 {
-    return UIStatusBarStyleLightContent;
+    UINavigationController *mainNavController = (UINavigationController *)[FLAppDelegate mainNavigationController];
+    if (showNavigationBar) {
+        if (mainNavController.viewControllers.count > 1) {
+            mainNavController.navigationBarHidden = NO;
+            [mainNavController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+            mainNavController.navigationBar.shadowImage = [UIImage new];
+            mainNavController.navigationBar.translucent = YES;
+            mainNavController.view.backgroundColor = [UIColor clearColor];
+            mainNavController.navigationBar.backgroundColor = [UIColor clearColor];
+            
+            [self addBackButton];
+        }
+    } else {
+        mainNavController.navigationBarHidden = YES;
+    }
 }
 
 - (void)localize
@@ -39,7 +50,7 @@
 
 - (void)addBackButton
 {
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 17.0f)];
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 12.5f, 23.0f)];
     [backButton setImage:[UIImage imageNamed:@"NavigationBarBackButton"]
                 forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(onBackButtonTouch)

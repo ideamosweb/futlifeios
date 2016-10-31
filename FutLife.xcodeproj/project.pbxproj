@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1734296E1DC5092D008D856E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1734296D1DC5092D008D856E /* Assets.xcassets */; };
 		175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */; };
 		175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B061DBD718F0097C8A0 /* FLRegisterResponseModel.m */; };
 		175D2B0C1DBD786E0097C8A0 /* FLRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B0A1DBD786E0097C8A0 /* FLRegisterViewController.m */; };
@@ -40,13 +41,13 @@
 		179EA44E1DBD26C7004EB2CC /* FLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */; };
 		179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4501DBD3254004EB2CC /* FLApiManager.m */; };
 		179EA4541DBD3411004EB2CC /* FLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4531DBD3411004EB2CC /* FLModel.m */; };
+		17BE292F1DC6B16D007F572E /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */; };
 		17C3C6BC1DC174C300415CBE /* FLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6BB1DC174C300415CBE /* FLAlertView.m */; };
 		17C3C6BF1DC17F9000415CBE /* FLError.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6BE1DC17F9000415CBE /* FLError.m */; };
 		17C3C6C31DC1BC2700415CBE /* FLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6C21DC1BC2700415CBE /* FLLoginViewController.m */; };
 		17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C3C6C51DC1BC8B00415CBE /* FLLoginViewController.xib */; };
 		17C3C6C91DC1CAA100415CBE /* FLLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6C81DC1CAA100415CBE /* FLLocalDataManager.m */; };
 		17E6DA9F1DB3E8A4004F89C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DA9E1DB3E8A4004F89C3 /* main.m */; };
-		17E6DAAA1DB3E8A4004F89C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */; };
 		17E6DAB81DB3E8A4004F89C3 /* FutLifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAB71DB3E8A4004F89C3 /* FutLifeTests.m */; };
 		17E6DAC31DB3E8A4004F89C3 /* FutLifeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E6DAC21DB3E8A4004F89C3 /* FutLifeUITests.m */; };
 		977D94CA5E34EB2FA0DE1ABD /* libPods-FutLife Staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EB64C0CD880571DB80CE8 /* libPods-FutLife Staging.a */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1734296D1DC5092D008D856E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		175D2B011DBD69B60097C8A0 /* FLRegisterRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLRegisterRequestModel.h; path = Models/Register/FLRegisterRequestModel.h; sourceTree = "<group>"; };
 		175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLRegisterRequestModel.m; path = Models/Register/FLRegisterRequestModel.m; sourceTree = "<group>"; };
 		175D2B051DBD718F0097C8A0 /* FLRegisterResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLRegisterResponseModel.h; path = Models/Register/FLRegisterResponseModel.h; sourceTree = "<group>"; };
@@ -136,6 +138,8 @@
 		179EA4501DBD3254004EB2CC /* FLApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLApiManager.m; path = Managers/FLApiManager.m; sourceTree = "<group>"; };
 		179EA4521DBD3411004EB2CC /* FLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLModel.h; path = Models/FLModel.h; sourceTree = "<group>"; };
 		179EA4531DBD3411004EB2CC /* FLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLModel.m; path = Models/FLModel.m; sourceTree = "<group>"; };
+		17BE292D1DC6B16D007F572E /* UIViewController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Utils.h"; path = "Common/Categories/UIViewController+Utils.h"; sourceTree = "<group>"; };
+		17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Utils.m"; path = "Common/Categories/UIViewController+Utils.m"; sourceTree = "<group>"; };
 		17C3C6BA1DC174C300415CBE /* FLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAlertView.h; path = Common/Views/FLAlertView.h; sourceTree = "<group>"; };
 		17C3C6BB1DC174C300415CBE /* FLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLAlertView.m; path = Common/Views/FLAlertView.m; sourceTree = "<group>"; };
 		17C3C6BD1DC17F9000415CBE /* FLError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLError.h; path = Common/FLError.h; sourceTree = "<group>"; };
@@ -147,7 +151,6 @@
 		17C3C6C81DC1CAA100415CBE /* FLLocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLocalDataManager.m; path = Managers/FLLocalDataManager.m; sourceTree = "<group>"; };
 		17E6DA9A1DB3E8A4004F89C3 /* FutLife Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FutLife Staging.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6DA9E1DB3E8A4004F89C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17E6DAB31DB3E8A4004F89C3 /* FutLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E6DAB71DB3E8A4004F89C3 /* FutLifeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FutLifeTests.m; sourceTree = "<group>"; };
 		17E6DAB91DB3E8A4004F89C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				1772AE2A1DB5368F00236CB9 /* UIImage+Utils.m */,
 				1772AE391DB57A9F00236CB9 /* NSBundle+Utils.h */,
 				1772AE3A1DB57A9F00236CB9 /* NSBundle+Utils.m */,
+				17BE292D1DC6B16D007F572E /* UIViewController+Utils.h */,
+				17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -349,8 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				179EA43E1DBC7235004EB2CC /* Localizations */,
-				17E6DAA91DB3E8A4004F89C3 /* Assets.xcassets */,
 				1772AE371DB5722000236CB9 /* Images.xcassets */,
+				1734296D1DC5092D008D856E /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -640,9 +645,9 @@
 				175D2B0D1DBD786E0097C8A0 /* FLRegisterViewController.xib in Resources */,
 				1772AE381DB5722000236CB9 /* Images.xcassets in Resources */,
 				179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */,
+				1734296E1DC5092D008D856E /* Assets.xcassets in Resources */,
 				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
 				17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */,
-				17E6DAAA1DB3E8A4004F89C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +747,7 @@
 				179EA44E1DBD26C7004EB2CC /* FLSessionManager.m in Sources */,
 				17E6DA9F1DB3E8A4004F89C3 /* main.m in Sources */,
 				1772AE1C1DB52BBB00236CB9 /* NSString+Utils.m in Sources */,
+				17BE292F1DC6B16D007F572E /* UIViewController+Utils.m in Sources */,
 				1772AE341DB56FCE00236CB9 /* FLStartUpViewController.m in Sources */,
 				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
 				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
@@ -923,7 +929,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e7ab149-4a76-42ab-b248-e1358cb88ec1";
+				PROVISIONING_PROFILE = "17aaad55-2a09-4a90-a85c-d7e4414dffc1";
 				PROVISIONING_PROFILE_SPECIFIER = "FutLife Development";
 			};
 			name = Debug;
@@ -943,7 +949,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e7ab149-4a76-42ab-b248-e1358cb88ec1";
+				PROVISIONING_PROFILE = "17aaad55-2a09-4a90-a85c-d7e4414dffc1";
 				PROVISIONING_PROFILE_SPECIFIER = "FutLife Development";
 			};
 			name = Release;

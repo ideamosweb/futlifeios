@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet FLTextField *userNameTextfield;
 @property (weak, nonatomic) IBOutlet FLTextField *emailTextfield;
 @property (weak, nonatomic) IBOutlet FLTextField *passwordTextfield;
-@property (weak, nonatomic) IBOutlet FLTextField *passwordConfirmationTextfield;
 
 @property (nonatomic, copy) void (^registrationCompletedBlock)();
 
@@ -35,20 +34,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.showNavigationBar = YES;
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
+    
     // Let's pass the fields to inputsFormManager
-    self.inputsFormManager.inputFields = @[self.nameTextfield, self.userNameTextfield, self.emailTextfield, self.passwordTextfield, self.passwordConfirmationTextfield];
+    self.inputsFormManager.inputFields = @[self.nameTextfield, self.userNameTextfield, self.emailTextfield, self.passwordTextfield];
 }
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    
-    [self configTextFields];
-}
-
-// iOS 10 hotfix TODO: remove this
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
     [self configTextFields];
 }
@@ -72,13 +67,8 @@
     self.passwordTextfield.password = YES;
     self.passwordTextfield.minTypeableLengthValidation = 6;
     self.passwordTextfield.maxTypeableLengthValidation = 20;
-    
-    self.passwordConfirmationTextfield.mandatoryValidation = YES;
-    self.passwordConfirmationTextfield.password = YES;
-    self.passwordConfirmationTextfield.minTypeableLengthValidation = 6;
-    self.passwordConfirmationTextfield.maxTypeableLengthValidation = 20;
     UIRectCorner rectBottomCorner = (UIRectCornerBottomLeft | UIRectCornerBottomRight);
-    [self.passwordConfirmationTextfield setRoundedCorners:rectBottomCorner cornerRadii:CGSizeMake(10.0, 10.0)];
+    [self.passwordTextfield setRoundedCorners:rectBottomCorner cornerRadii:CGSizeMake(10.0, 10.0)];
 }
 
 - (IBAction)onRegisterButtonTouch:(id)sender
@@ -97,6 +87,17 @@
     }];
 }
 
+- (IBAction)onFacebookConnectButtonTouch:(id)sender
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:@"Función deshabilitada por ahora" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+            
+        }];
+        [alert show];
+    });
+    
+}
+
 - (void)registerUser
 {
     FLRegisterRequestModel *requestModel = [FLRegisterRequestModel new];
@@ -104,11 +105,10 @@
     requestModel.userName = self.userNameTextfield.text;
     requestModel.email = self.emailTextfield.text;
     requestModel.password = self.passwordTextfield.text;
-    requestModel.passwordConfirmation = self.passwordConfirmationTextfield.text;   
     
     [[FLApiManager sharedInstance] registerRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:responseModel.message buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Te has registrado en FutLife" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
                 self.registrationCompletedBlock();
             }];
             [alert show];

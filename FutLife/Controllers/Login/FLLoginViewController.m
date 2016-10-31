@@ -12,28 +12,47 @@
 
 @property (weak, nonatomic) IBOutlet FLTextField *usernameTextfield;
 @property (weak, nonatomic) IBOutlet FLTextField *passwordTextfield;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+
+@property (nonatomic, copy) void (^registerBlock)();
+@property (nonatomic, copy) void (^loginBlock)();
 
 @end
 
 @implementation FLLoginViewController
 
+- (id)initWithRegisterBlock:(void (^)())registerBlock loginBlock:(void (^)())loginBlock
+{
+    self = [super initWithNibName:@"FLLoginViewController" bundle:[NSBundle mainBundle]];
+    if (self) {
+        self.registerBlock = registerBlock;
+        self.loginBlock = loginBlock;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];    
+    
+    // Set status bar style
+    MMDrawerController *drawerVC = (MMDrawerController *)[FLAppDelegate sharedInstance].window.rootViewController;
+    drawerVC.showsStatusBarBackgroundView = YES;
+    drawerVC.statusBarViewBackgroundColor = [UIColor blackColor];
     
     // Let's pass the fields to inputsFormManager
     self.inputsFormManager.inputFields = @[self.usernameTextfield, self.passwordTextfield];
 }
 
-- (void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    [self configTextFields];
+    self.showNavigationBar = NO;
 }
 
-// iOS 10 hotfix TODO: remove this
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
     
     [self configTextFields];
 }
@@ -68,11 +87,27 @@
     }];
 }
 
+- (IBAction)onRegisterButtonTouch:(id)sender
+{
+    // Call register block to go to startUp
+    self.registerBlock();
+}
+
+- (IBAction)onForgetPasswordButtonTouch:(id)sender
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:@"Función deshabilitada por ahora" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+            
+        }];
+        [alert show];
+    });
+    
+}
+
 // TODO: Move this to a LoginManager
 - (void)loginUser
 {
-    
-    
+    self.loginBlock();
 }
 
 - (void)localize

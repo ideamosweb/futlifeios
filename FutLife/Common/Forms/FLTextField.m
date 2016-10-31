@@ -77,6 +77,7 @@
 
 - (void)setRoundedCorners:(UIRectCorner)roundingCorners cornerRadii:(CGSize)cornerRadii
 {
+    [self layoutIfNeeded];
     // make round corners for txtfield
     CAShapeLayer *textFieldMaskLayer = [[CAShapeLayer alloc] init];
     

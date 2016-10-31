@@ -9,13 +9,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLLoginViewController">
             <connections>
                 <outlet property="passwordTextfield" destination="3eJ-7A-Xgp" id="AAi-IQ-rdZ"/>
+                <outlet property="registerButton" destination="vJz-1e-Juo" id="lnO-mq-EGd"/>
                 <outlet property="usernameTextfield" destination="j1W-Ql-YUY" id="jbf-r6-Mk0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="HV7-B2-S4R"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="39O-du-pHY"/>
@@ -34,7 +35,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Usuario" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1W-Ql-YUY" customClass="FLTextField">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="5Yn-QT-pyp"/>
+                                                <constraint firstAttribute="height" constant="45" id="5Yn-QT-pyp"/>
                                                 <constraint firstAttribute="width" constant="270" id="KRk-97-qA9"/>
                                             </constraints>
                                             <nil key="textColor"/>
@@ -48,7 +49,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="4kV-K6-cJg"/>
-                                                <constraint firstAttribute="height" constant="40" id="GzO-KD-nQf"/>
+                                                <constraint firstAttribute="height" constant="45" id="GzO-KD-nQf"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -63,7 +64,7 @@
                                         <constraint firstAttribute="width" constant="270" id="6kJ-db-mI7"/>
                                         <constraint firstAttribute="trailing" secondItem="j1W-Ql-YUY" secondAttribute="trailing" id="Yum-br-Qfy"/>
                                         <constraint firstItem="j1W-Ql-YUY" firstAttribute="leading" secondItem="JXu-nt-Mf1" secondAttribute="leading" id="bAB-1S-brp"/>
-                                        <constraint firstAttribute="height" constant="80" id="cVc-ud-Z70"/>
+                                        <constraint firstAttribute="height" constant="90" id="cVc-ud-Z70"/>
                                         <constraint firstAttribute="bottom" secondItem="3eJ-7A-Xgp" secondAttribute="bottom" id="j8Y-Rz-QJ4"/>
                                         <constraint firstItem="j1W-Ql-YUY" firstAttribute="top" secondItem="JXu-nt-Mf1" secondAttribute="top" id="jke-rX-gRu"/>
                                         <constraint firstItem="3eJ-7A-Xgp" firstAttribute="top" secondItem="j1W-Ql-YUY" secondAttribute="bottom" id="lgS-d8-Hiv"/>
@@ -74,19 +75,22 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NeH-Ml-gkF">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="Oxl-O6-foL"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="144" id="Q3P-ft-EoB"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="Q3P-ft-EoB"/>
                                     </constraints>
                                     <state key="normal">
                                         <attributedString key="attributedTitle">
                                             <fragment content="Olvido su contraseña?">
                                                 <attributes>
                                                     <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="13" name="HelveticaNeue"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <font key="NSFont" size="11" name="HelveticaNeue-Italic"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                     </state>
+                                    <connections>
+                                        <action selector="onForgetPasswordButtonTouch:" destination="-1" eventType="touchUpInside" id="udJ-ym-bcG"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSI-Xz-Hoi">
                                     <constraints>
@@ -104,7 +108,7 @@
                                 <constraint firstItem="FSI-Xz-Hoi" firstAttribute="top" secondItem="gdZ-4U-WtD" secondAttribute="top" constant="318" id="3dX-bq-fWj"/>
                                 <constraint firstItem="Nq2-Cb-ybu" firstAttribute="centerX" secondItem="gdZ-4U-WtD" secondAttribute="centerX" id="6Ea-si-kBP"/>
                                 <constraint firstItem="Nq2-Cb-ybu" firstAttribute="top" secondItem="gdZ-4U-WtD" secondAttribute="top" constant="60" id="NPe-cE-ux4"/>
-                                <constraint firstAttribute="bottom" secondItem="JXu-nt-Mf1" secondAttribute="bottom" constant="308" id="Yn6-fD-vw1"/>
+                                <constraint firstAttribute="bottom" secondItem="JXu-nt-Mf1" secondAttribute="bottom" constant="298" id="Yn6-fD-vw1"/>
                                 <constraint firstItem="JXu-nt-Mf1" firstAttribute="top" secondItem="gdZ-4U-WtD" secondAttribute="top" constant="180" id="d4d-ne-IfN"/>
                                 <constraint firstItem="JXu-nt-Mf1" firstAttribute="centerX" secondItem="gdZ-4U-WtD" secondAttribute="centerX" id="gGO-mc-pby"/>
                                 <constraint firstItem="NeH-Ml-gkF" firstAttribute="trailing" secondItem="JXu-nt-Mf1" secondAttribute="trailing" id="ge3-a5-Vf6"/>
@@ -112,6 +116,35 @@
                                 <constraint firstItem="NeH-Ml-gkF" firstAttribute="top" secondItem="gdZ-4U-WtD" secondAttribute="top" constant="268" id="tEv-fs-r3j"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJz-1e-Juo">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="HaN-3k-a8E"/>
+                                <constraint firstAttribute="width" constant="207" id="Vel-a2-bGW"/>
+                            </constraints>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="¿Aún no tienes cuenta?">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" Registraste">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-BoldItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <connections>
+                                <action selector="onRegisterButtonTouch:" destination="-1" eventType="touchUpInside" id="Mhc-PT-wHp"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="gdZ-4U-WtD" firstAttribute="top" secondItem="g3y-Rv-F61" secondAttribute="top" id="TY0-u8-0ek"/>
@@ -124,11 +157,13 @@
             <color key="tintColor" red="0.258028933353042" green="0.55099911919477573" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="39O-du-pHY" secondAttribute="bottom" id="CaG-WY-luO"/>
+                <constraint firstItem="vJz-1e-Juo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EeT-a8-G3v"/>
                 <constraint firstItem="g3y-Rv-F61" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gyd-th-bXI"/>
                 <constraint firstAttribute="trailing" secondItem="39O-du-pHY" secondAttribute="trailing" id="OY3-n6-dmg"/>
                 <constraint firstItem="gdZ-4U-WtD" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" priority="250" id="VLg-xi-Akv"/>
                 <constraint firstItem="39O-du-pHY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZJ6-l7-leP"/>
                 <constraint firstAttribute="bottom" secondItem="g3y-Rv-F61" secondAttribute="bottom" id="glT-GW-sdI"/>
+                <constraint firstAttribute="bottom" secondItem="vJz-1e-Juo" secondAttribute="bottom" constant="36" id="jm2-wf-qp8"/>
                 <constraint firstItem="g3y-Rv-F61" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qEo-rE-yzG"/>
                 <constraint firstAttribute="trailing" secondItem="g3y-Rv-F61" secondAttribute="trailing" id="rM0-xp-NiD"/>
                 <constraint firstItem="39O-du-pHY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="syh-Zr-Uo9"/>
@@ -138,7 +173,7 @@
         </view>
     </objects>
     <resources>
-        <image name="background" width="1080" height="1921"/>
+        <image name="background" width="1079" height="1920"/>
         <image name="logoFL" width="718" height="326"/>
         <image name="nexticon" width="223" height="223"/>
     </resources>

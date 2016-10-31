@@ -11,6 +11,7 @@
 
 @interface FLViewController : GAITrackedViewController
 
+@property (assign, nonatomic, getter=isShowNavigationBar) BOOL showNavigationBar;
 
 @end
 

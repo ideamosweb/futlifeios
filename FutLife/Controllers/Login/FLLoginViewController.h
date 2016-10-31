@@ -10,4 +10,6 @@
 
 @interface FLLoginViewController : FLFormViewController
 
+- (id)initWithRegisterBlock:(void (^)())registerBlock loginBlock:(void (^)())loginBlock;
+
 @end

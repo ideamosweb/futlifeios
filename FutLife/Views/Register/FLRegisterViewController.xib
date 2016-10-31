@@ -11,7 +11,6 @@
                 <outlet property="emailTextfield" destination="cB1-Hq-fm8" id="XFw-Qk-cNe"/>
                 <outlet property="formScrollView" destination="bxO-p4-lJl" id="llh-cA-IKX"/>
                 <outlet property="nameTextfield" destination="Hrj-VZ-kTj" id="0fJ-8i-kRa"/>
-                <outlet property="passwordConfirmationTextfield" destination="B3u-bE-2Sw" id="KlU-gn-sxI"/>
                 <outlet property="passwordTextfield" destination="NTv-Hw-ZOw" id="oVE-Hi-nE6"/>
                 <outlet property="userNameTextfield" destination="R3G-Ar-yrx" id="oeD-7q-Sfo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,7 +37,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hrj-VZ-kTj" customClass="FLTextField">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="FbO-7f-9Lt"/>
+                                                <constraint firstAttribute="height" constant="45" id="FbO-7f-9Lt"/>
                                                 <constraint firstAttribute="width" constant="270" id="Iie-dx-f6I"/>
                                             </constraints>
                                             <nil key="textColor"/>
@@ -52,7 +51,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="4MH-A2-cu6"/>
-                                                <constraint firstAttribute="height" constant="40" id="y6b-sp-DpW"/>
+                                                <constraint firstAttribute="height" constant="45" id="y6b-sp-DpW"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -64,7 +63,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cB1-Hq-fm8" customClass="FLTextField">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="Csy-2h-MuP"/>
+                                                <constraint firstAttribute="height" constant="45" id="Csy-2h-MuP"/>
                                                 <constraint firstAttribute="width" constant="270" id="qpL-qv-Qmw"/>
                                             </constraints>
                                             <nil key="textColor"/>
@@ -78,26 +77,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="uJ1-jY-JKk"/>
-                                                <constraint firstAttribute="height" constant="40" id="x4a-Jc-z9S"/>
+                                                <constraint firstAttribute="height" constant="45" id="x4a-Jc-z9S"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="dzN-Xy-av3"/>
-                                            </connections>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirmar contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3u-bE-2Sw" customClass="FLTextField">
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="270" id="nIh-Id-z9H"/>
-                                                <constraint firstAttribute="height" constant="40" id="p6Z-Nq-xlc"/>
-                                            </constraints>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="-1" id="4NU-3d-ops"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -108,21 +94,16 @@
                                         <constraint firstItem="NTv-Hw-ZOw" firstAttribute="top" secondItem="cB1-Hq-fm8" secondAttribute="bottom" id="FXN-FS-YtX"/>
                                         <constraint firstAttribute="trailing" secondItem="cB1-Hq-fm8" secondAttribute="trailing" id="HoD-Fq-atl"/>
                                         <constraint firstAttribute="trailing" secondItem="NTv-Hw-ZOw" secondAttribute="trailing" id="MQS-Ok-ik8"/>
-                                        <constraint firstAttribute="bottom" secondItem="B3u-bE-2Sw" secondAttribute="bottom" id="OWd-bD-KVK"/>
                                         <constraint firstItem="NTv-Hw-ZOw" firstAttribute="leading" secondItem="Tbb-7j-kF6" secondAttribute="leading" id="RXY-gG-yra"/>
-                                        <constraint firstAttribute="height" constant="200" id="Snq-dK-hQO"/>
-                                        <constraint firstItem="B3u-bE-2Sw" firstAttribute="top" secondItem="NTv-Hw-ZOw" secondAttribute="bottom" id="dZE-GS-jUQ"/>
+                                        <constraint firstAttribute="height" constant="180" id="Snq-dK-hQO"/>
                                         <constraint firstItem="Hrj-VZ-kTj" firstAttribute="leading" secondItem="Tbb-7j-kF6" secondAttribute="leading" id="dzb-Yv-jDd"/>
                                         <constraint firstAttribute="width" constant="270" id="ees-Ke-cgo"/>
-                                        <constraint firstItem="B3u-bE-2Sw" firstAttribute="leading" secondItem="Tbb-7j-kF6" secondAttribute="leading" id="evC-DK-5Tz"/>
                                         <constraint firstItem="cB1-Hq-fm8" firstAttribute="top" secondItem="R3G-Ar-yrx" secondAttribute="bottom" id="fh2-QR-sTZ"/>
                                         <constraint firstItem="Hrj-VZ-kTj" firstAttribute="top" secondItem="Tbb-7j-kF6" secondAttribute="top" id="fyL-5J-Gej"/>
                                         <constraint firstAttribute="trailing" secondItem="Hrj-VZ-kTj" secondAttribute="trailing" id="j7O-Fh-IG1"/>
                                         <constraint firstItem="NTv-Hw-ZOw" firstAttribute="top" secondItem="cB1-Hq-fm8" secondAttribute="bottom" id="jMB-jm-7l4"/>
                                         <constraint firstItem="R3G-Ar-yrx" firstAttribute="top" secondItem="Hrj-VZ-kTj" secondAttribute="bottom" id="qZf-5e-Fe6"/>
                                         <constraint firstItem="cB1-Hq-fm8" firstAttribute="top" secondItem="R3G-Ar-yrx" secondAttribute="bottom" id="rNj-qe-Z8a"/>
-                                        <constraint firstItem="B3u-bE-2Sw" firstAttribute="top" secondItem="NTv-Hw-ZOw" secondAttribute="bottom" id="sbz-8U-5uf"/>
-                                        <constraint firstAttribute="trailing" secondItem="B3u-bE-2Sw" secondAttribute="trailing" id="vb7-VD-mNc"/>
                                         <constraint firstItem="R3G-Ar-yrx" firstAttribute="top" secondItem="Hrj-VZ-kTj" secondAttribute="bottom" id="yYZ-CG-5vh"/>
                                     </constraints>
                                 </view>
@@ -132,9 +113,12 @@
                                             <frame key="frameInset" width="84" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="fbicon"/>
+                                            <connections>
+                                                <action selector="onFacebookConnectButtonTouch:" destination="-1" eventType="touchUpInside" id="j8b-PK-Unu"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dne-NP-ojP">
-                                            <frame key="frameInset" minX="134" width="84" height="84"/>
+                                            <frame key="frameInset" minX="116" width="84" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="nexticon"/>
                                             <connections>
@@ -144,7 +128,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="84" id="PJt-fx-sxk"/>
-                                        <constraint firstAttribute="width" constant="215" id="Yek-mY-yx2"/>
+                                        <constraint firstAttribute="width" constant="200" id="Yek-mY-yx2"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -181,11 +165,12 @@
                 <constraint firstItem="Bmg-7u-5oG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pmI-xL-uZS"/>
                 <constraint firstItem="bxO-p4-lJl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tFf-D9-Beq"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="-257" y="-139"/>
         </view>
     </objects>
     <resources>
-        <image name="background" width="1080" height="1921"/>
+        <image name="background" width="1079" height="1920"/>
         <image name="fbicon" width="223" height="223"/>
         <image name="logoFL" width="718" height="326"/>
         <image name="nexticon" width="223" height="223"/>

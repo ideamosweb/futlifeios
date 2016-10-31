@@ -20,5 +20,6 @@
 #import "UIWebView+Utils.h"
 #import "UIImage+Utils.h"
 #import "NSBundle+Utils.h"
+#import "UIViewController+Utils.h"
 
 #endif /* FLCategories_h */

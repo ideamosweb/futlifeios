@@ -62,7 +62,7 @@ const CGFloat kNavMenuWidth = 283.0f;
 
 + (UINavigationController *)mainNavigationController;
 {
-    ASSERT_CLASS([FLAppDelegate sharedInstance].mainNavigationController, UINavigationController);
+    //ASSERT_CLASS([FLAppDelegate sharedInstance].mainNavigationController, UINavigationController);
     return [FLAppDelegate sharedInstance].mainNavigationController;
 }
 
@@ -72,7 +72,9 @@ const CGFloat kNavMenuWidth = 283.0f;
     FLStartUpViewController *startUpVC = [[FLStartUpViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:startUpVC];
     navigationController.navigationBarHidden = YES;
-    navigationController.navigationBar.translucent = NO;
+    navigationController.navigationBar.translucent = YES;
+    [navigationController setNeedsStatusBarAppearanceUpdate];
+    
     
     MMDrawerController *drawerController = [[MMDrawerController alloc]
                                             initWithCenterViewController:navigationController
@@ -81,12 +83,9 @@ const CGFloat kNavMenuWidth = 283.0f;
     drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
     drawerController.maximumLeftDrawerWidth = kNavMenuWidth;
     [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0f]];
-    drawerController.showsStatusBarBackgroundView = YES;
-    drawerController.statusBarViewBackgroundColor = [UIColor blackColor];
     
     self.window.rootViewController = drawerController;
     self.mainNavigationController = navigationController;
-    self.mainNavigationController.navigationBar.barTintColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];    
 }
 

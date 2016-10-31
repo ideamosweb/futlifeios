@@ -70,6 +70,9 @@
 // Debug
 #import "FLDebug.h"
 
+// AppDelegate
+#import "FLAppDelegate.h"
+
 #endif
 
 #endif /* FutLife_Prefix_pch */
