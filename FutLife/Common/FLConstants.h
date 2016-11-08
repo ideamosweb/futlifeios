@@ -20,6 +20,8 @@ extern NSString *const kGUIDAlphabet;
 // GUID length
 extern const NSUInteger kGUIDLength;
 
+extern NSString *const kDidSelectCarouselItemNotification;
+
 /*********************************/
 /* Constants got from info.plist */
 /*********************************/

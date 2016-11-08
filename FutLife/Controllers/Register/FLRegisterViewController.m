@@ -34,9 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.showNavigationBar = YES;
-    
-    [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
+    self.showNavigationBar = YES;    
     
     // Let's pass the fields to inputsFormManager
     self.inputsFormManager.inputFields = @[self.nameTextfield, self.userNameTextfield, self.emailTextfield, self.passwordTextfield];
@@ -105,15 +103,14 @@
     requestModel.userName = self.userNameTextfield.text;
     requestModel.email = self.emailTextfield.text;
     requestModel.password = self.passwordTextfield.text;
+    requestModel.passwordConfirmation = self.passwordTextfield.text;
     
+    [FLAppDelegate showLoadingHUD];
     [[FLApiManager sharedInstance] registerRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Te has registrado en FutLife" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-                self.registrationCompletedBlock();
-            }];
-            [alert show];
-        });
-    } failure:^(FLApiError *error) {        
+        [FLAppDelegate hideLoadingHUD];
+        self.registrationCompletedBlock();
+    } failure:^(FLApiError *error) {
+        [FLAppDelegate hideLoadingHUD];
         dispatch_async(dispatch_get_main_queue(), ^{
             FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
                 

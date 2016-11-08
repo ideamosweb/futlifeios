@@ -24,6 +24,8 @@ const CGFloat kFormTopScrollPadding = 10.0f;
 NSString *const kGUIDAlphabet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 const NSUInteger kGUIDLength = 100;
 
+NSString *const kDidSelectCarouselItemNotification = @"DidSelectCarouselItemNotification";
+
 NSString *FLApiBaseUrl()
 {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"api.base.url"];

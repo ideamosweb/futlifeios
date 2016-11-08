@@ -6,10 +6,13 @@
 //  Copyright © 2016 IdeamosWeb S.A.S. All rights reserved.
 //
 
+#import "FLAppDelegate.h"
+
 #import "FLStartUpViewController.h"
 #import "FLRegisterViewController.h"
 #import "FLLoginViewController.h"
-#import "FLAppDelegate.h"
+#import "FLChooseConsoleViewController.h"
+#import "FLChooseGameViewController.h"
 
 @interface FLStartUpViewController ()
 
@@ -64,40 +67,16 @@
 {
     [super viewWillAppear:animated];
     
-    [self performSelector:@selector(goToLogin) withObject:nil afterDelay:4.0];
+    if ([FLLocalDataManager sharedInstance].registeredUser) {
+        [self performSelector:@selector(goToLogin) withObject:nil afterDelay:4.0];
+    } else {
+        [self performSelector:@selector(goToChooseConsole) withObject:nil afterDelay:4.0];
+    }
 }
 
 - (void)animationLogo
 {
-    CGRect frame = CGRectMake(self.logoImageView.frame.origin.x, self.logoImageView.frame.origin.y, self.logoImageView.frame.size.width, self.logoImageView.frame.size.height);
-    
-    CGRect frameUP = CGRectMake(self.logoImageView.frame.origin.x - 10.0, self.logoImageView.frame.origin.y - 10.0, self.logoImageView.frame.size.width + 20.0, self.logoImageView.frame.size.height + 10.0);
-    
-    UIViewAnimationOptions options = UIViewAnimationOptionBeginFromCurrentState |
-    UIViewAnimationTransitionFlipFromRight;
-    [self.logoImageView layoutIfNeeded];
-    [self.logoImageView fl_fadeInWithDuration:0.5 completion:nil];
-    
-    [UIView transitionWithView:self.logoImageView duration:0.6 options:options animations:^{
-        self.logoImageView.transform = CGAffineTransformMakeScale(1, -1);
-    } completion:^(BOOL finished) {
-        [UIView transitionWithView:self.logoImageView duration:0.2 options:options animations:^{
-            self.logoImageView.transform = CGAffineTransformMakeScale(1, 0.8);
-        } completion:^(BOOL finished) {
-            [UIView transitionWithView:self.logoImageView duration:0.1 options:options animations:^{
-                self.logoImageView.transform = CGAffineTransformMakeScale(1, 1);
-            } completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.4 delay:0.8 options:UIViewAnimationOptionLayoutSubviews animations:^{
-                    self.logoImageView.frame = frameUP;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:0.3 animations:^{
-                        self.logoImageView.frame = frame;
-                    } completion:nil];
-                }];
-            }];
-            
-        }];
-    }];
+    [self.logoImageView fl_animationLogo];
 }
 
 - (void)setVersionLabel
@@ -113,11 +92,29 @@
 {
     FLRegisterViewController *registerVC = [[FLRegisterViewController alloc] initWithCompletedBlock:^{
         [FLLocalDataManager sharedInstance].registeredUser = YES;
-        // Login User
-        // [self goToLogin];
+        // Go to Choose Console
+        [self goToChooseConsole];
     }];
     
     [self.navigationController pushViewController:registerVC animated:YES];
+}
+
+- (void)goToChooseConsole
+{
+    FLChooseConsoleViewController *chooseConsoleVC = [[FLChooseConsoleViewController alloc] initWithCompletedBlock:^(NSArray *consoleType) {
+        [self goToChooseGameWithConsoles:consoleType];
+    }];
+    
+    [self.navigationController pushViewController:chooseConsoleVC animated:YES];
+}
+
+- (void)goToChooseGameWithConsoles:(NSArray *)consoles
+{
+    FLChooseGameViewController *chooseGameVC = [[FLChooseGameViewController alloc] initWithConsoles:consoles completedBlock:^{
+        [self goToLogin];
+    }];
+    
+    [self.navigationController pushViewController:chooseGameVC animated:YES];
 }
 
 - (void)goToLogin
@@ -126,7 +123,7 @@
         // Go to register user
         [self registerUser];
     } loginBlock:^{
-        // Go to dashoboard!
+        // Go to dashboard!
         dispatch_async(dispatch_get_main_queue(), ^{
             FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:@"Función login deshabilitada" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
                 

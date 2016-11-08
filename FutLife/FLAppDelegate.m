@@ -66,6 +66,24 @@ const CGFloat kNavMenuWidth = 283.0f;
     return [FLAppDelegate sharedInstance].mainNavigationController;
 }
 
++ (void)showLoadingHUD
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MBProgressHUD *loadingHUD = [MBProgressHUD showHUDAddedTo:[FLAppDelegate sharedInstance].window.rootViewController.view
+                                                         animated:YES];
+        loadingHUD.label.text = @"Cargando";
+        //loadingHUD.dimBackground = YES;
+        loadingHUD.mode = MBProgressHUDModeCustomView;
+    });
+}
+
++ (void)hideLoadingHUD
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:[FLAppDelegate sharedInstance].window.rootViewController.view animated:YES];
+    });
+}
+
 - (void)openStartUp
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

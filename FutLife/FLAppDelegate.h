@@ -16,5 +16,8 @@
 
 + (instancetype)sharedInstance;
 
++ (void)showLoadingHUD;
++ (void)hideLoadingHUD;
+
 @end
 

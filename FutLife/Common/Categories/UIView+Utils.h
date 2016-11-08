@@ -27,6 +27,8 @@
 
 - (void)fl_verticallyAlignInView:(UIView *)otherView;
 
+- (void)fl_animationLogo;
+
 - (void)fl_adjustHeightAfterSubviewRemoval:(UIView *)removedView;
 
 - (void)fl_adjustVerticalPositionAfterAboveViewRemoval:(UIView *)removedView;

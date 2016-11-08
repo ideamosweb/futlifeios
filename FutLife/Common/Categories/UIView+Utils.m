@@ -144,6 +144,39 @@
     self.frame = frame;
 }
 
+- (void)fl_animationLogo
+{
+    CGRect frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    
+    CGRect frameUP = CGRectMake(self.frame.origin.x - 10.0, self.frame.origin.y - 10.0, self.frame.size.width + 20.0, self.frame.size.height + 10.0);
+    
+    UIViewAnimationOptions options = UIViewAnimationOptionBeginFromCurrentState |
+    UIViewAnimationTransitionFlipFromRight;
+    [self layoutIfNeeded];
+    [self fl_fadeInWithDuration:0.5 completion:nil];
+    
+    [UIView transitionWithView:self duration:0.6 options:options animations:^{
+        self.transform = CGAffineTransformMakeScale(1, -1);
+    } completion:^(BOOL finished) {
+        [UIView transitionWithView:self duration:0.2 options:options animations:^{
+            self.transform = CGAffineTransformMakeScale(1, 0.8);
+        } completion:^(BOOL finished) {
+            [UIView transitionWithView:self duration:0.1 options:options animations:^{
+                self.transform = CGAffineTransformMakeScale(1, 1);
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.4 delay:0.8 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                    self.frame = frameUP;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.3 animations:^{
+                        self.frame = frame;
+                    } completion:nil];
+                }];
+            }];
+            
+        }];
+    }];
+}
+
 - (void)addShadowLayerWithWidth:(float)shadowWidth
 {
     CALayer *shadowLayer = [CALayer layer];
