@@ -11,9 +11,13 @@
 #define CAROUSELS_PADDING 0.0f
 #define CAROUSELS_HEIGHT 240.0f
 
+#define VIEW_ITEM_WIDTH 135.0f
+#define VIEW_ITEM_HEIGHT 192.0f
+
 @interface FLChooseGameViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *chooseMorethan1Game;
+@property (weak, nonatomic) IBOutlet UILabel *chooseMoreThanOneGameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, copy) void (^chooseGameCompletedBlock)();
 @property (strong, nonatomic) NSArray *consoles;
@@ -38,13 +42,18 @@
     
     self.showNavigationBar = YES;
     
-    [self createCarousels];
+    self.nextButton.enabled = NO;
     
-    // We need to reload data for take all the items
-    [self carouselsReloadData];
+    [self getGames];
+    
+    // Observer when an carousel item is selected
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didSelectCarouselItem)
+                                                 name:kDidSelectCarouselItemNotification
+                                               object:nil];
 }
 
-- (void)createCarousels
+- (void)createCarouselsWithViewItems:(NSArray *)viewItems
 {
     NSMutableArray *carouselsArray = [NSMutableArray new];
     iCarousel *previousCarousel = nil;
@@ -56,8 +65,8 @@
                 carousel.delegate = self;
                 carousel.dataSource = self;
                 carousel.bounceDistance = 0.3f;
-                carousel.tag = [self.consoles[i] integerValue];
-                [self.carouselItemsViewDict setObject:[self configCarouselsItemsViewsWithConsoleType:carousel.tag] forKey:[NSString stringWithFormat:CAROUSEL_STR, (long)carousel.tag]];
+                carousel.tag = i;
+                self.carouselItemsViews[carousel.tag] = [self configCarouselsViewsItems:viewItems];
                 
                 previousCarousel = carousel;
                 [carouselsArray addObject:carousel];
@@ -68,8 +77,8 @@
                 carousel.delegate = self;
                 carousel.dataSource = self;
                 carousel.bounceDistance = 0.3f;
-                carousel.tag = [self.consoles[i] integerValue];
-                [self.carouselItemsViewDict setObject:[self configCarouselsItemsViewsWithConsoleType:carousel.tag] forKey:[NSString stringWithFormat:CAROUSEL_STR, (long)carousel.tag]];
+                carousel.tag = i;
+                self.carouselItemsViews[carousel.tag] = [self configCarouselsViewsItems:viewItems];
                 
                 previousCarousel = carousel;
                 [carouselsArray addObject:carousel];
@@ -81,93 +90,58 @@
     
     // Let's add carousels for config
     self.carousels = carouselsArray;
-    
 }
 
-- (NSArray *)configCarouselsItemsViewsWithConsoleType:(FLConsoleTypes)consoleType
+- (void)getGames
 {
-    UIView *imageView1 = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 135.0f, 192.0f)];
-    
-    UIView *imageView2 = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 135.0f, 192.0f)];
-    
-    UIView *imageView3 = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 135.0f, 192.0f)];
-    
-    UIView *imageView4 = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 135.0f, 192.0f)];
-    
-    UIView *imageView5 = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 135.0f, 192.0f)];
-    
-    UIView *imageView6 = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 135.0f, 192.0f)];
-    
-    switch (consoleType) {
-        case FLConsolePlayStationS3:
-            ((UIImageView *)imageView1).image = [UIImage imageNamed:@"icon_fifa15_ps3"];
-            [imageView1 setAccessibilityIdentifier:@"icon_fifa15_ps3"];
-            ((UIImageView *)imageView2).image = [UIImage imageNamed:@"icon_fifa16_ps3"];
-            [imageView2 setAccessibilityIdentifier:@"icon_fifa16_ps3"];
-            ((UIImageView *)imageView3).image = [UIImage imageNamed:@"icon_fifa17_ps3"];
-            [imageView3 setAccessibilityIdentifier:@"icon_fifa17_ps3"];
-            ((UIImageView *)imageView4).image = [UIImage imageNamed:@"icon_pes15_ps3"];
-            [imageView4 setAccessibilityIdentifier:@"icon_pes15_ps3"];
-            ((UIImageView *)imageView5).image = [UIImage imageNamed:@"icon_pes16_ps3"];
-            [imageView5 setAccessibilityIdentifier:@"icon_pes16_ps3"];
-            ((UIImageView *)imageView6).image = [UIImage imageNamed:@"icon_pes17_ps3"];
-            [imageView6 setAccessibilityIdentifier:@"icon_pes17_ps3"];
+    __weak FLChooseGameViewController *weakSelf = self;
+    [FLAppDelegate showLoadingHUD];
+    [[FLApiManager sharedInstance] gamesRequestWithSuccess:^(FLGameResponseModel *responseModel) {
+        [FLAppDelegate hideLoadingHUD];
+        if (responseModel) {
+            [weakSelf createCarouselsWithViewItems:responseModel.data];
             
-            break;
-            
-        case FLConsolePlayStation4:
-            ((UIImageView *)imageView1).image = [UIImage imageNamed:@"icon_fifa15_ps4"];
-            [imageView1 setAccessibilityIdentifier:@"icon_fifa15_ps4"];
-            ((UIImageView *)imageView2).image = [UIImage imageNamed:@"icon_fifa16_ps4"];
-            [imageView2 setAccessibilityIdentifier:@"icon_fifa16_ps4"];
-            ((UIImageView *)imageView3).image = [UIImage imageNamed:@"icon_fifa17_ps4"];
-            [imageView3 setAccessibilityIdentifier:@"icon_fifa17_ps4"];
-            ((UIImageView *)imageView4).image = [UIImage imageNamed:@"icon_pes15_ps4"];
-            [imageView4 setAccessibilityIdentifier:@"icon_pes15_ps4"];
-            ((UIImageView *)imageView5).image = [UIImage imageNamed:@"icon_pes16_ps4"];
-            [imageView5 setAccessibilityIdentifier:@"icon_pes16_ps4"];
-            ((UIImageView *)imageView6).image = [UIImage imageNamed:@"icon_pes17_ps4"];
-            [imageView6 setAccessibilityIdentifier:@"icon_pes17_ps4"];
-            
-            break;
-            
-        case FLConsoleXbox360:
-            ((UIImageView *)imageView1).image = [UIImage imageNamed:@"icon_fifa15_xbox360"];
-            [imageView1 setAccessibilityIdentifier:@"icon_fifa15_xbox360"];
-            ((UIImageView *)imageView2).image = [UIImage imageNamed:@"icon_fifa16_xbox360"];
-            [imageView2 setAccessibilityIdentifier:@"icon_fifa16_xbox360"];
-            ((UIImageView *)imageView3).image = [UIImage imageNamed:@"icon_fifa17_xbox360"];
-            [imageView3 setAccessibilityIdentifier:@"icon_fifa17_xbox360"];
-            ((UIImageView *)imageView4).image = [UIImage imageNamed:@"icon_pes15_xbox360"];
-            [imageView4 setAccessibilityIdentifier:@"icon_pes15_xbox360"];
-            ((UIImageView *)imageView5).image = [UIImage imageNamed:@"icon_pes16_xbox360"];
-            [imageView5 setAccessibilityIdentifier:@"icon_pes16_xbox360"];
-            ((UIImageView *)imageView6).image = [UIImage imageNamed:@"icon_pes17_xbox360"];
-            [imageView6 setAccessibilityIdentifier:@"icon_pes17_xbox360"];
-            
-            break;
-            
-        case FLConsoleXboxOne:
-            ((UIImageView *)imageView1).image = [UIImage imageNamed:@"icon_fifa15_xboxOne"];
-            [imageView1 setAccessibilityIdentifier:@"icon_fifa15_xboxOne"];
-            ((UIImageView *)imageView2).image = [UIImage imageNamed:@"icon_fifa16_xboxOne"];
-            [imageView2 setAccessibilityIdentifier:@"icon_fifa16_xboxOne"];
-            ((UIImageView *)imageView3).image = [UIImage imageNamed:@"icon_fifa17_xboxOne"];
-            [imageView3 setAccessibilityIdentifier:@"icon_fifa17_xboxOne"];
-            ((UIImageView *)imageView4).image = [UIImage imageNamed:@"icon_pes15_xboxOne"];
-            [imageView4 setAccessibilityIdentifier:@"icon_pes15_xboxOne"];
-            ((UIImageView *)imageView5).image = [UIImage imageNamed:@"icon_pes16_xboxOne"];
-            [imageView5 setAccessibilityIdentifier:@"icon_pes16_xboxOne"];
-            ((UIImageView *)imageView6).image = [UIImage imageNamed:@"icon_pes17_xboxOne"];
-            [imageView6 setAccessibilityIdentifier:@"icon_pes17_xboxOne"];
-            
-            break;
-            
-        default:
-            break;
+            // We need to reload data for take all the items
+            [weakSelf carouselsReloadData];
+        }
+    } failure:^(FLApiError *error) {
+        [FLAppDelegate hideLoadingHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
+    }];
+}
+
+- (NSArray *)configCarouselsViewsItems:(NSArray *)viewsItems
+{
+    NSMutableArray *carouselsItemsViews = [NSMutableArray array];
+    for (FLGameModel *game in viewsItems) {
+        
+        UIView *imageView = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, VIEW_ITEM_WIDTH, VIEW_ITEM_HEIGHT)];
+        [((UIImageView *)imageView) setImageWithURL:[NSURL URLWithString:game.avatar] placeholderImage:nil];
+        
+        [carouselsItemsViews addObject:imageView];
     }
     
-    return @[imageView1, imageView2, imageView3, imageView4, imageView5, imageView6];
+    return carouselsItemsViews;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didSelectCarouselItem
+{
+    self.nextButton.enabled = (self.indexSelectedItems.count > 0);
+}
+
+- (IBAction)onNextButtonTouch:(id)sender
+{
+    
 }
 
 - (void)localize

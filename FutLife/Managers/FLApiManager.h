@@ -7,9 +7,13 @@
 //
 
 #import "FLSessionManager.h"
+#import "FLApiError.h"
+
 #import "FLRegisterRequestModel.h"
 #import "FLRegisterResponseModel.h"
-#import "FLApiError.h"
+
+#import "FLGameModel.h"
+#import "FLConsoleModel.h"
 
 @interface FLApiManager : FLSessionManager
 
@@ -17,5 +21,11 @@
 
 // Register request
 - (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+
+// Get Consoles
+- (NSURLSessionDataTask *)consolesRequestWithSuccess:(void (^)(FLConsoleResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+
+// Get Games
+- (NSURLSessionDataTask *)gamesRequestWithSuccess:(void (^)(FLGameResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 @end

@@ -1,14 +1,14 @@
 //
-//  FLGameModel.m
+//  FLConsoleModel.m
 //  FutLife
 //
-//  Created by Rene Santis on 11/2/16.
+//  Created by Rene Santis on 11/13/16.
 //  Copyright © 2016 IdeamosWeb S.A.S. All rights reserved.
 //
 
-#import "FLGameModel.h"
+#import "FLConsoleModel.h"
 
-@implementation FLGameModel
+@implementation FLConsoleModel
 
 + (NSDateFormatter *)dateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -26,7 +26,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"gameId" : @"id",
+             @"consoleId" : @"id",
              @"name" : @"name",
              @"year" : @"year",
              @"avatar" : @"avatar",
@@ -55,14 +55,6 @@
     }];
 }
 
-+ (NSValueTransformer *)yearJSONTransformer
-{
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
-        NSString *valueId = [NSString stringWithFormat:@"%@", (NSNumber *)value];
-        return [self.numberFormatter numberFromString:valueId];
-    }];
-}
-
 + (NSValueTransformer *)createdAtJSONTransformer
 {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {
@@ -83,7 +75,7 @@
 
 @end
 
-@implementation FLGameResponseModel
+@implementation FLConsoleResponseModel
 
 #pragma mark - Mantle JSONKeyPathsByPropertyKey
 
@@ -97,7 +89,7 @@
 #pragma mark - JSON Transformers
 
 + (NSValueTransformer *)dataJSONTransformer {
-    return [MTLJSONAdapter arrayTransformerWithModelClass:FLGameModel.class];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[FLConsoleModel class]];
 }
 
 @end

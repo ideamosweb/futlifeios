@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         self.carousels = [NSArray new];
-        self.carouselItemsViewDict = [NSMutableDictionary new];
+        self.carouselItemsViews = [NSMutableArray new];
     }
     
     return self;
@@ -33,7 +33,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.carousels = [NSArray new];
-        self.carouselItemsViewDict = [NSMutableDictionary new];
+        self.carouselItemsViews = [NSMutableArray new];
     }
     
     return self;
@@ -104,7 +104,7 @@
     iCarousel *currentCarousel = [self getCurrentCarouselFrom:carousel];
     
     if (currentCarousel) {
-        return [[self.carouselItemsViewDict objectForKey:[NSString stringWithFormat:CAROUSEL_STR, (long)currentCarousel.tag]] count];
+        return [self.carouselItemsViews[currentCarousel.tag] count];
     }
     
     return 0;
@@ -117,7 +117,7 @@
     if (currentCarousel) {
         //create new view if no view is available for recycling
         if (view == nil) {
-            view = [self.carouselItemsViewDict objectForKey:[NSString stringWithFormat:CAROUSEL_STR, (long)currentCarousel.tag]][index];
+            view = self.carouselItemsViews[currentCarousel.tag][index];
         }
     }
     
@@ -128,52 +128,27 @@
 {
     UIView *itemView = [carousel itemViewAtIndex:index];
     if ([self checkSelectedItem:index withCarousel:carousel]) {
-        /**** TODO: Fix image sizes for selected, this is a workaround ****/
-        // Set "selected" state image to a item selected
-        NSString *imageName = [(UIImageView *)itemView accessibilityIdentifier];
-        if (itemView.frame.size.width > 135.0f) {
-            CGRect frame = itemView.frame;
-            frame.origin.x = itemView.frame.origin.x - 15.0f;
-            frame.origin.y = itemView.frame.origin.y - 15.0f;
-            frame.size.width = itemView.frame.size.width + 30;
-            frame.size.height = itemView.frame.size.height + 30;
-            itemView.frame = frame;
-        } else {
-            CGRect frame = itemView.frame;
-            frame.origin.x = itemView.frame.origin.x - 7.5f;
-            frame.origin.y = itemView.frame.origin.y - 11.5f;
-            frame.size.width = itemView.frame.size.width + 15;
-            frame.size.height = itemView.frame.size.height + 23;
-            itemView.frame = frame;
-        }
-        [((UIImageView *)itemView) setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected", imageName]]];
+        // Set yellow shadow to itemView
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:itemView.bounds];
+        itemView.layer.masksToBounds = NO;
+        itemView.layer.shadowColor = [UIColor yellowColor].CGColor;
+        itemView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        itemView.layer.shadowOpacity = 0.5f;
+        itemView.layer.shadowPath = shadowPath.CGPath;
         
         [self.indexSelectedItems addObject:@(index + 1)];
         [self.selectedItems addObject:@(index)];
     } else {
-        if (self.selectedItems.count > 0) {
-            // Back to "normal" steate
-            NSString *imageName = [(UIImageView *)itemView accessibilityIdentifier];
-            if (itemView.frame.size.width > 150.0f) {
-                CGRect frame = itemView.frame;
-                frame.origin.x = itemView.frame.origin.x + 15.0f;
-                frame.origin.y = itemView.frame.origin.y + 15.0f;
-                frame.size.width = itemView.frame.size.width - 30;
-                frame.size.height = itemView.frame.size.height - 30;
-                itemView.frame = frame;
-            } else {
-                CGRect frame = itemView.frame;
-                frame.origin.x = 0.0;
-                frame.origin.y = 0.0;
-                frame.size.width = 135.0;
-                frame.size.height = 192.0;
-                itemView.frame = frame;
-            }
-            [((UIImageView *)itemView) setImage:[UIImage imageNamed:imageName]];
-            
-            [self.selectedItems removeObject:@(index)];
-            [self.indexSelectedItems removeObject:@(index + 1)];
-        }
+        // Back to "normal" steate
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:itemView.bounds];
+        itemView.layer.masksToBounds = NO;
+        itemView.layer.shadowColor = [UIColor clearColor].CGColor;
+        itemView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        itemView.layer.shadowOpacity = 0.5f;
+        itemView.layer.shadowPath = shadowPath.CGPath;
+        
+        [self.selectedItems removeObject:@(index)];
+        [self.indexSelectedItems removeObject:@(index + 1)];
     }
     
     // Post notification to notify selection of an item
@@ -197,25 +172,22 @@
             return NO;
         } case iCarouselOptionSpacing: {
             //add a bit of spacing between the item views
-            if (carousel.currentItemView.frame.size.width > 135.0f) {
-                return value * 1.3f;
-            }
             return value * 1.3f;
         }case iCarouselOptionOffsetMultiplier: {
             return 1.0f;
         } case iCarouselOptionVisibleItems: {
             iCarousel *currentCarousel = [self getCurrentCarouselFrom:carousel];
             
-            if (currentCarousel) {
-                return [[self.carouselItemsViewDict objectForKey:[NSString stringWithFormat:CAROUSEL_STR, (long)currentCarousel.tag]] count];
+            if (currentCarousel && [self.carouselItemsViews count] > 0) {
+                return [self.carouselItemsViews[currentCarousel.tag] count];
             }
             
             return 0.0f;
         } case iCarouselOptionCount: {
             iCarousel *currentCarousel = [self getCurrentCarouselFrom:carousel];
             
-            if (currentCarousel) {
-                return [[self.carouselItemsViewDict objectForKey:[NSString stringWithFormat:CAROUSEL_STR, (long)currentCarousel.tag]] count] * 4.0f;
+            if (currentCarousel && [self.carouselItemsViews count] > 0) {
+                return [self.carouselItemsViews[currentCarousel.tag] count] * 3.0f;
             }
             
             return 15.0f;

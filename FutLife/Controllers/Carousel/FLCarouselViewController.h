@@ -18,7 +18,7 @@
 @interface FLCarouselViewController : FLViewController<iCarouselDataSource, iCarouselDelegate>
 
 @property (strong, nonatomic) NSArray *carousels;
-@property (strong, nonatomic) NSMutableDictionary *carouselItemsViewDict;
+@property (strong, nonatomic) NSMutableArray *carouselItemsViews;
 @property (strong, nonatomic) NSMutableArray *selectedItems;
 @property (strong, nonatomic) NSMutableArray *indexSelectedItems;
 @property (weak, nonatomic) IBOutlet UIView *contentView;

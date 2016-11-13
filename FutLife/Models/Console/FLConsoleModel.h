@@ -1,24 +1,16 @@
 //
-//  FLGameModel.h
+//  FLConsoleModel.h
 //  FutLife
 //
-//  Created by Rene Santis on 11/2/16.
+//  Created by Rene Santis on 11/13/16.
 //  Copyright © 2016 IdeamosWeb S.A.S. All rights reserved.
 //
 
 #import "FLModel.h"
 
-typedef NS_ENUM(NSInteger, FLConsoleTypes)
-{
-    FLConsolePlayStationS3 = 1,
-    FLConsolePlayStation4,
-    FLConsoleXbox360,
-    FLConsoleXboxOne
-};
+@interface FLConsoleModel : FLModel
 
-@interface FLGameModel : FLModel
-
-@property (strong, nonatomic) NSNumber *gameId;
+@property (strong, nonatomic) NSNumber *consoleId;
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) NSNumber *year;
 @property (copy, nonatomic) NSString *avatar;
@@ -29,7 +21,7 @@ typedef NS_ENUM(NSInteger, FLConsoleTypes)
 
 @end
 
-@interface FLGameResponseModel : FLModel
+@interface FLConsoleResponseModel : FLModel
 
 @property (copy, nonatomic) NSArray *data;
 @property (assign, nonatomic, getter=isSuccess) BOOL success;

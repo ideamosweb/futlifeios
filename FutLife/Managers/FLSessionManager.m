@@ -42,7 +42,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        
+        // Nothing to do (?)
     }
     
     return self;
@@ -52,7 +52,7 @@
 {
     self = [super initWithSessionConfiguration:configuration];
     if (self) {
-        
+        // Nothing to do (?)
     }
     
     return self;

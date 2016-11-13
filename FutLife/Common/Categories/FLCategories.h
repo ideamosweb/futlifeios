@@ -21,5 +21,6 @@
 #import "UIImage+Utils.h"
 #import "NSBundle+Utils.h"
 #import "UIViewController+Utils.h"
+#import "UIImageView+AFNetworking.h"
 
 #endif /* FLCategories_h */
