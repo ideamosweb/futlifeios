@@ -11,6 +11,6 @@
 
 @interface FLChooseGameViewController : FLCarouselViewController
 
-- (id)initWithConsoles:(NSArray *)consoles completedBlock:(void (^)())chooseGameCompletedBlock;
+- (id)initWithConsoles:(NSArray *)consoles completedBlock:(void (^)(NSArray *consoles, NSArray *games))chooseGameCompletedBlock;
 
 @end

@@ -28,6 +28,20 @@ static NSString * const kEncryptionKeyKeyChainKey = @"encryptionKey";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (id)fl_dataObjectForKey:(NSString *)key
+{
+    NSData *dataObject = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:dataObject];
+}
+
++ (void)fl_setDataObject:(id)value forKey:(NSString *)key
+{
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:value];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 + (NSString *)fl_decryptedStringForKey:(NSString *)key
 {
     NSString *encryptionKey = [UICKeyChainStore stringForKey:kEncryptionKeyKeyChainKey];

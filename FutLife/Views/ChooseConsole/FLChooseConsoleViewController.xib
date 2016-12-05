@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,8 +26,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Won-Rh-Vxb"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Won-Rh-Vxb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESCOGE TU CONSOLA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97V-Rf-iGJ">
+                    <rect key="frame" x="28" y="107" width="319" height="42"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="319" id="RFb-en-U0Y"/>
                         <constraint firstAttribute="height" constant="42" id="Tgs-9h-maP"/>
@@ -34,6 +40,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PUEDES ESCOGER MAS DE UNA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-vF-xBc">
+                    <rect key="frame" x="85" y="151" width="206" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="206" id="Cf6-iB-5gb"/>
                         <constraint firstAttribute="height" constant="21" id="xT1-wm-nVX"/>
@@ -43,6 +50,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-BG-7NR" customClass="iCarousel">
+                    <rect key="frame" x="0.0" y="214" width="375" height="240"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="KyH-l4-hKM"/>
                     </constraints>
@@ -52,13 +60,14 @@
                     </connections>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGO-GH-cE8">
+                    <rect key="frame" x="297" y="597" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="YrV-t4-3GD"/>
                         <constraint firstAttribute="width" constant="50" id="Yyr-2j-uG2"/>
                     </constraints>
                     <state key="normal" image="nexticon"/>
                     <connections>
-                        <action selector="onNextButtonTouch:" destination="-1" eventType="touchUpInside" id="0RG-7T-UBI"/>
+                        <action selector="onNextButtonTouch:" destination="-1" eventType="touchUpInside" id="b2g-mU-0Xx"/>
                     </connections>
                 </button>
             </subviews>

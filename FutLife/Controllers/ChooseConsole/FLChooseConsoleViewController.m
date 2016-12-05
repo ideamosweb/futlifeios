@@ -13,10 +13,13 @@
 #define VIEW_ITEM_HEIGHT 220.0f
 
 
-@interface FLChooseConsoleViewController ()
+@interface FLChooseConsoleViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet iCarousel *consoleCarousel;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) NSArray *consoles;
+@property (strong, nonatomic) NSMutableArray *selectedConsoles;
+@property (strong, nonatomic) UITableView *selectedConsolesTable;
 
 @property (nonatomic, copy) void (^chooseConsoleCompletedBlock)();
 
@@ -65,9 +68,39 @@
     
     // Observer when an carousel item is selected
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didSelectCarouselItem)
+                                             selector:@selector(didSelectCarouselItem:)
                                                  name:kDidSelectCarouselItemNotification
                                                object:nil];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // Add SelectedConsoles
+    [self addSelectedConsoles];
+}
+
+- (void)addSelectedConsoles
+{
+    self.selectedConsoles = [[NSMutableArray alloc] init];
+    UILabel *selectedConsolesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, CGRectGetMaxY(self.consoleCarousel.frame) + 40.0f, [FLMiscUtils screenViewFrame].size.width, 20.0f)];
+    selectedConsolesLabel.text = @"CONSOLAS SELECCIONADAS:";
+    selectedConsolesLabel.font = [UIFont fontWithName:@"Bebas" size:15.0f];
+    selectedConsolesLabel.textColor = [UIColor whiteColor];
+    selectedConsolesLabel.textAlignment = NSTextAlignmentLeft;
+    
+    CGRect selectedConsolesTableFrame = CGRectMake(0, CGRectGetMaxY(selectedConsolesLabel.frame) + 10.0f, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetMaxY(selectedConsolesLabel.frame) + 10.0f);
+    self.selectedConsolesTable = [[UITableView alloc] initWithFrame:selectedConsolesTableFrame];
+    self.selectedConsolesTable.delegate = self;
+    self.selectedConsolesTable.dataSource = self;
+    self.selectedConsolesTable.scrollEnabled = NO;
+    self.selectedConsolesTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.selectedConsolesTable.backgroundColor = [UIColor clearColor];
+    self.selectedConsolesTable.clipsToBounds = NO;
+    
+    [self.view insertSubview:selectedConsolesLabel belowSubview:self.nextButton];
+    [self.view insertSubview:self.selectedConsolesTable belowSubview:self.nextButton];
 }
 
 - (void)getConsoles
@@ -77,6 +110,7 @@
         [FLAppDelegate hideLoadingHUD];
         if (responseModel) {
             self.carouselItemsViews[self.consoleCarousel.tag] = [self configCarouselsItemsViews:responseModel.data];
+            self.consoles = responseModel.data;
             
             // We need to reload data for take all the items
             [self carouselsReloadData];
@@ -97,14 +131,86 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didSelectCarouselItem
+- (void)didSelectCarouselItem:(NSNotification *)item
 {
     self.nextButton.enabled = (self.indexSelectedItems.count > 0);
+    
+    // Let's update selected tableView
+    NSNumber *index = (NSNumber *)item.object;
+    NSNumber *indexToDelete = nil;
+    NSMutableArray *indexesToReload = [NSMutableArray new];
+    FLConsoleModel *console = [self.consoles objectAtIndex:[index integerValue]];
+    if ([self.selectedConsoles containsObject:console]) {
+        NSInteger indexObject = [self.selectedConsoles indexOfObject:console];
+        // Retrive indexes to reload
+        for (int i = 0; i < [self.selectedConsoles count]; i++) {
+            if (i != indexObject) {
+                [indexesToReload addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            }
+        }
+        
+        [self.selectedConsoles removeObject:console];
+        indexToDelete = @(indexObject);
+    } else {
+        [self.selectedConsoles addObject:console];
+    }
+    
+    NSMutableArray *indexPathToInsert = [NSMutableArray array];
+    [indexPathToInsert addObject:[NSIndexPath indexPathForRow:[self.selectedConsoles count] - 1 inSection:0]];
+    
+    [self.selectedConsolesTable beginUpdates];
+    
+    if (indexToDelete) {
+        [self.selectedConsolesTable deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[indexToDelete integerValue] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        
+        [self.selectedConsolesTable reloadRowsAtIndexPaths:indexesToReload withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.selectedConsolesTable insertRowsAtIndexPaths:indexPathToInsert withRowAnimation:UITableViewRowAnimationFade];        
+    }
+    
+    [self.selectedConsolesTable endUpdates];
+}
+
+#pragma mark - UITableView delegate methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (self.selectedConsoles && [self.selectedConsoles count] > 0) {
+        return [self.selectedConsoles count];
+    }
+    
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 25.0f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    if (cell) {
+        FLConsoleModel *console = [self.selectedConsoles objectAtIndex:indexPath.row];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.font = [UIFont fontWithName:@"Bebas" size:14.0f];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", console.name];
+        
+        cell.userInteractionEnabled = NO;
+    }
+    
+    return cell;
 }
 
 - (IBAction)onNextButtonTouch:(id)sender
 {
-    self.chooseConsoleCompletedBlock(self.indexSelectedItems);
+    NSMutableArray *consolesArray = [NSMutableArray new];
+    for (NSNumber *item in self.indexSelectedItems) {
+        FLConsoleModel *console = [self.consoles objectAtIndex:[item integerValue] - 1];
+        [consolesArray addObject:console];
+    }
+    
+    self.chooseConsoleCompletedBlock(consolesArray);
 }
 
 - (void)localize

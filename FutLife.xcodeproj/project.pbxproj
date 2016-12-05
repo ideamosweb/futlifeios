@@ -41,6 +41,12 @@
 		179EA44E1DBD26C7004EB2CC /* FLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA44D1DBD26C7004EB2CC /* FLSessionManager.m */; };
 		179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4501DBD3254004EB2CC /* FLApiManager.m */; };
 		179EA4541DBD3411004EB2CC /* FLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA4531DBD3411004EB2CC /* FLModel.m */; };
+		17B3711B1DF126210035442D /* FLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B371191DF126210035442D /* FLProfileViewController.m */; };
+		17B3711C1DF126210035442D /* FLProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B3711A1DF126210035442D /* FLProfileViewController.xib */; };
+		17B371211DF12EEE0035442D /* FLProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B3711F1DF12EEE0035442D /* FLProfileCell.m */; };
+		17B371221DF12EEE0035442D /* FLProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B371201DF12EEE0035442D /* FLProfileCell.xib */; };
+		17B371261DF137F90035442D /* FLUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B371251DF137F90035442D /* FLUserModel.m */; };
+		17B3712A1DF466F80035442D /* FLCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B371291DF466F80035442D /* FLCustomCell.m */; };
 		17BE292F1DC6B16D007F572E /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */; };
 		17C2C2271DD836BE0036D899 /* FLConsoleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C2C2261DD836BE0036D899 /* FLConsoleModel.m */; };
 		17C3C6BC1DC174C300415CBE /* FLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C3C6BB1DC174C300415CBE /* FLAlertView.m */; };
@@ -148,6 +154,16 @@
 		179EA4501DBD3254004EB2CC /* FLApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLApiManager.m; path = Managers/FLApiManager.m; sourceTree = "<group>"; };
 		179EA4521DBD3411004EB2CC /* FLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLModel.h; path = Models/FLModel.h; sourceTree = "<group>"; };
 		179EA4531DBD3411004EB2CC /* FLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLModel.m; path = Models/FLModel.m; sourceTree = "<group>"; };
+		17B371181DF126210035442D /* FLProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLProfileViewController.h; path = Controllers/Profile/FLProfileViewController.h; sourceTree = "<group>"; };
+		17B371191DF126210035442D /* FLProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLProfileViewController.m; path = Controllers/Profile/FLProfileViewController.m; sourceTree = "<group>"; };
+		17B3711A1DF126210035442D /* FLProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLProfileViewController.xib; path = Views/Profile/FLProfileViewController.xib; sourceTree = "<group>"; };
+		17B3711E1DF12EEE0035442D /* FLProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLProfileCell.h; path = Controllers/Profile/FLProfileCell.h; sourceTree = "<group>"; };
+		17B3711F1DF12EEE0035442D /* FLProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLProfileCell.m; path = Controllers/Profile/FLProfileCell.m; sourceTree = "<group>"; };
+		17B371201DF12EEE0035442D /* FLProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLProfileCell.xib; path = Views/Profile/FLProfileCell.xib; sourceTree = "<group>"; };
+		17B371241DF137F90035442D /* FLUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLUserModel.h; path = Models/User/FLUserModel.h; sourceTree = "<group>"; };
+		17B371251DF137F90035442D /* FLUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLUserModel.m; path = Models/User/FLUserModel.m; sourceTree = "<group>"; };
+		17B371281DF466F80035442D /* FLCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLCustomCell.h; path = Common/Views/FLCustomCell.h; sourceTree = "<group>"; };
+		17B371291DF466F80035442D /* FLCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLCustomCell.m; path = Common/Views/FLCustomCell.m; sourceTree = "<group>"; };
 		17BE292D1DC6B16D007F572E /* UIViewController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Utils.h"; path = "Common/Categories/UIViewController+Utils.h"; sourceTree = "<group>"; };
 		17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Utils.m"; path = "Common/Categories/UIViewController+Utils.m"; sourceTree = "<group>"; };
 		17C2C2251DD836BE0036D899 /* FLConsoleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLConsoleModel.h; path = Models/Console/FLConsoleModel.h; sourceTree = "<group>"; };
@@ -276,6 +292,7 @@
 		1772ADF51DB454FC00236CB9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17B371171DF125E20035442D /* Profile */,
 				17E16B861DCA8856008B6AED /* ChooseGame */,
 				17E16B6D1DC84FAE008B6AED /* ChooseConsole */,
 				17E16B691DC84F50008B6AED /* Carousel */,
@@ -307,6 +324,7 @@
 		1772ADF71DB4551400236CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				17B371231DF137AE0035442D /* User */,
 				17C2C2241DD836800036D899 /* Console */,
 				17E16B901DCB9F5D008B6AED /* Game */,
 				175D2B001DBD667A0097C8A0 /* Register */,
@@ -319,6 +337,7 @@
 		1772ADF81DB4552200236CB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				17B3711D1DF126370035442D /* Profile */,
 				17E16B8C1DCA889F008B6AED /* ChooseGame */,
 				17E16B731DC85047008B6AED /* ChooseConsole */,
 				17C3C6C41DC1BC3100415CBE /* Login */,
@@ -452,6 +471,35 @@
 			name = es.lproj;
 			sourceTree = "<group>";
 		};
+		17B371171DF125E20035442D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17B371181DF126210035442D /* FLProfileViewController.h */,
+				17B371191DF126210035442D /* FLProfileViewController.m */,
+				17B3711E1DF12EEE0035442D /* FLProfileCell.h */,
+				17B3711F1DF12EEE0035442D /* FLProfileCell.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		17B3711D1DF126370035442D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17B3711A1DF126210035442D /* FLProfileViewController.xib */,
+				17B371201DF12EEE0035442D /* FLProfileCell.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		17B371231DF137AE0035442D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				17B371241DF137F90035442D /* FLUserModel.h */,
+				17B371251DF137F90035442D /* FLUserModel.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		17C2C2241DD836800036D899 /* Console */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +516,8 @@
 				17E16B671DC84EF4008B6AED /* iCarousel.m */,
 				17C3C6BA1DC174C300415CBE /* FLAlertView.h */,
 				17C3C6BB1DC174C300415CBE /* FLAlertView.m */,
+				17B371281DF466F80035442D /* FLCustomCell.h */,
+				17B371291DF466F80035442D /* FLCustomCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -758,12 +808,14 @@
 			files = (
 				179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */,
 				175D2B0D1DBD786E0097C8A0 /* FLRegisterViewController.xib in Resources */,
+				17B3711C1DF126210035442D /* FLProfileViewController.xib in Resources */,
 				1772AE381DB5722000236CB9 /* Images.xcassets in Resources */,
 				17E16B851DCA4F22008B6AED /* BEBAS___.TTF in Resources */,
 				179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */,
 				1734296E1DC5092D008D856E /* Assets.xcassets in Resources */,
 				17E16B721DC85020008B6AED /* FLChooseConsoleViewController.xib in Resources */,
 				17E16B8B1DCA888E008B6AED /* FLChooseGameViewController.xib in Resources */,
+				17B371221DF12EEE0035442D /* FLProfileCell.xib in Resources */,
 				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
 				17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */,
 			);
@@ -870,8 +922,10 @@
 				17BE292F1DC6B16D007F572E /* UIViewController+Utils.m in Sources */,
 				1772AE341DB56FCE00236CB9 /* FLStartUpViewController.m in Sources */,
 				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
+				17B3711B1DF126210035442D /* FLProfileViewController.m in Sources */,
 				17C2C2271DD836BE0036D899 /* FLConsoleModel.m in Sources */,
 				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
+				17B371261DF137F90035442D /* FLUserModel.m in Sources */,
 				1772AE161DB525C300236CB9 /* FLApiError.m in Sources */,
 				17C3C6C91DC1CAA100415CBE /* FLLocalDataManager.m in Sources */,
 				175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */,
@@ -881,6 +935,7 @@
 				179EA43C1DBC3E23004EB2CC /* FLTextField.m in Sources */,
 				1772AE461DB7DB9200236CB9 /* FLInputsFormManager.m in Sources */,
 				1772AE251DB5337D00236CB9 /* UIView+Utils.m in Sources */,
+				17B3712A1DF466F80035442D /* FLCustomCell.m in Sources */,
 				1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */,
 				17E16B681DC84EF4008B6AED /* iCarousel.m in Sources */,
 				1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */,
@@ -889,6 +944,7 @@
 				1772AE1F1DB5303700236CB9 /* NSUserDefaults+Utils.m in Sources */,
 				175D2B0C1DBD786E0097C8A0 /* FLRegisterViewController.m in Sources */,
 				17C3C6C31DC1BC2700415CBE /* FLLoginViewController.m in Sources */,
+				17B371211DF12EEE0035442D /* FLProfileCell.m in Sources */,
 				1772AE191DB5299700236CB9 /* NSException+Utils.m in Sources */,
 				17E16B8F1DCAF6D1008B6AED /* FLGameModel.m in Sources */,
 				1772AE3B1DB57A9F00236CB9 /* NSBundle+Utils.m in Sources */,

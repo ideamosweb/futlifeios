@@ -14,19 +14,21 @@
 #define VIEW_ITEM_WIDTH 135.0f
 #define VIEW_ITEM_HEIGHT 192.0f
 
-@interface FLChooseGameViewController ()
+@interface FLChooseGameViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *chooseMoreThanOneGameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, copy) void (^chooseGameCompletedBlock)();
 @property (strong, nonatomic) NSArray *consoles;
+@property (strong, nonatomic) NSArray *games;
+@property (assign, nonatomic, getter=isShowMultipleCarousels) BOOL ShowMultipleCarousels;
 
 @end
 
 @implementation FLChooseGameViewController
 
-- (id)initWithConsoles:(NSArray *)consoles completedBlock:(void (^)())chooseGameCompletedBlock
+- (id)initWithConsoles:(NSArray *)consoles completedBlock:(void (^)(NSArray *consoles, NSArray *games))chooseGameCompletedBlock
 {
     self = [super initWithNibName:@"FLChooseGameViewController" bundle:[NSBundle mainBundle]];
     if (self) {
@@ -44,11 +46,16 @@
     
     self.nextButton.enabled = NO;
     
+    // For show more than one carousel in view, please turn to YES this property
+    self.ShowMultipleCarousels = NO;
+    
     [self getGames];
+    
+    // [self addPickerView];
     
     // Observer when an carousel item is selected
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didSelectCarouselItem)
+                                             selector:@selector(didSelectCarouselItem:)
                                                  name:kDidSelectCarouselItemNotification
                                                object:nil];
 }
@@ -57,8 +64,9 @@
 {
     NSMutableArray *carouselsArray = [NSMutableArray new];
     iCarousel *previousCarousel = nil;
-    if (self.consoles.count > 0) {
-        for (int i = 0; i < self.consoles.count; i++) {
+    NSInteger numberOfCarousels = (!self.ShowMultipleCarousels) ? 1 : self.consoles.count;
+    if (numberOfCarousels) {
+        for (int i = 0; i < numberOfCarousels; i++) {
             if (!previousCarousel) {
                 iCarousel *carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, CAROUSELS_MARGIN_TOP, [FLMiscUtils screenViewFrame].size.width, CAROUSELS_HEIGHT)];
                 carousel.type = iCarouselTypeRotary;
@@ -100,6 +108,7 @@
         [FLAppDelegate hideLoadingHUD];
         if (responseModel) {
             [weakSelf createCarouselsWithViewItems:responseModel.data];
+            weakSelf.games = responseModel.data;
             
             // We need to reload data for take all the items
             [weakSelf carouselsReloadData];
@@ -134,13 +143,43 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didSelectCarouselItem
+- (void)didSelectCarouselItem:(NSNotification *)item
 {
+    
     self.nextButton.enabled = (self.indexSelectedItems.count > 0);
 }
 
+- (void)addPickerView
+{
+    UIPickerView *consolesPickerView = [[UIPickerView alloc] init];
+    consolesPickerView.delegate = self;
+    consolesPickerView.dataSource = self;
+    
+    [self.view addSubview:consolesPickerView];
+}
+
+#pragma mark - UIPickerView delegate methods
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.consoles count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    FLConsoleModel *console = self.consoles[row];
+    return console.name;
+}
+
+
+
 - (IBAction)onNextButtonTouch:(id)sender
 {
+    self.chooseGameCompletedBlock(self.consoles, self.games);
     
 }
 

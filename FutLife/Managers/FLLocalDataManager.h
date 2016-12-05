@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLUserModel.h"
 
 @interface FLLocalDataManager : NSObject
 
 + (instancetype)sharedInstance;
 
 @property (assign, nonatomic) BOOL registeredUser;
+@property (strong, nonatomic) FLUserModel *user;
+@property (strong, nonatomic) UIImage *avatar;
 
 @end

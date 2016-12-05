@@ -9,6 +9,8 @@
 #import "FLLocalDataManager.h"
 
 static NSString *const kRegisteredUser = @"RegisteredUser";
+static NSString *const kUser = @"User";
+static NSString *const kUserAvatar = @"Avatar";
 
 @implementation FLLocalDataManager
 
@@ -44,6 +46,26 @@ static NSString *const kRegisteredUser = @"RegisteredUser";
 - (BOOL)registeredUser
 {
     return [[NSUserDefaults fl_objectForKey:kRegisteredUser] boolValue];
+}
+
+- (void)setUser:(FLUserModel *)user
+{
+    [NSUserDefaults fl_setDataObject:user forKey:kUser];
+}
+
+- (FLUserModel *)user
+{
+    return [NSUserDefaults fl_dataObjectForKey:kUser];
+}
+
+- (void)setAvatar:(UIImage *)avatar
+{
+    [NSUserDefaults fl_setDataObject:avatar forKey:kUserAvatar];
+}
+
+- (UIImage *)avatar
+{
+    return [NSUserDefaults fl_dataObjectForKey:kUserAvatar];
 }
 
 @end

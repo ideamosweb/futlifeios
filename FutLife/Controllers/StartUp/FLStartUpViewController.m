@@ -13,6 +13,7 @@
 #import "FLLoginViewController.h"
 #import "FLChooseConsoleViewController.h"
 #import "FLChooseGameViewController.h"
+#import "FLProfileViewController.h"
 
 @interface FLStartUpViewController ()
 
@@ -67,8 +68,8 @@
 {
     [super viewWillAppear:animated];
     
-    if ([FLLocalDataManager sharedInstance].registeredUser) {
-        [self performSelector:@selector(goToLogin) withObject:nil afterDelay:4.0];
+    if (![FLLocalDataManager sharedInstance].registeredUser) {
+        [self performSelector:@selector(registerUser) withObject:nil afterDelay:4.0];
     } else {
         [self performSelector:@selector(goToChooseConsole) withObject:nil afterDelay:4.0];
     }
@@ -90,10 +91,12 @@
 
 - (void)registerUser
 {
+    __weak __typeof(self)weakSelf = self;
     FLRegisterViewController *registerVC = [[FLRegisterViewController alloc] initWithCompletedBlock:^{
         [FLLocalDataManager sharedInstance].registeredUser = YES;
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         // Go to Choose Console
-        [self goToChooseConsole];
+        [strongSelf goToChooseConsole];
     }];
     
     [self.navigationController pushViewController:registerVC animated:YES];
@@ -101,8 +104,10 @@
 
 - (void)goToChooseConsole
 {
+    __weak __typeof(self)weakSelf = self;
     FLChooseConsoleViewController *chooseConsoleVC = [[FLChooseConsoleViewController alloc] initWithCompletedBlock:^(NSArray *consoleType) {
-        [self goToChooseGameWithConsoles:consoleType];
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf goToChooseGameWithConsoles:consoleType];
     }];
     
     [self.navigationController pushViewController:chooseConsoleVC animated:YES];
@@ -110,18 +115,31 @@
 
 - (void)goToChooseGameWithConsoles:(NSArray *)consoles
 {
-    FLChooseGameViewController *chooseGameVC = [[FLChooseGameViewController alloc] initWithConsoles:consoles completedBlock:^{
-        [self goToLogin];
+    __weak __typeof(self)weakSelf = self;
+    FLChooseGameViewController *chooseGameVC = [[FLChooseGameViewController alloc] initWithConsoles:consoles completedBlock:^(NSArray *consoleType, NSArray *games) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf goToUserProfileWithConsoles:consoleType games:games];
     }];
     
     [self.navigationController pushViewController:chooseGameVC animated:YES];
 }
 
+- (void)goToUserProfileWithConsoles:(NSArray *)consoles games:(NSArray *)games
+{
+    FLProfileViewController *profileVC = [[FLProfileViewController alloc] initWithConsoles:consoles games:games ompletedBlock:^{
+        
+    }];
+    
+    [self.navigationController pushViewController:profileVC animated:YES];
+}
+
 - (void)goToLogin
 {
+    __weak __typeof(self)weakSelf = self;
     FLLoginViewController *loginVC = [[FLLoginViewController alloc] initWithRegisterBlock:^{
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         // Go to register user
-        [self registerUser];
+        [strongSelf registerUser];
     } loginBlock:^{
         // Go to dashboard!
         dispatch_async(dispatch_get_main_queue(), ^{

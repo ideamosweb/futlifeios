@@ -139,7 +139,7 @@
         [self.indexSelectedItems addObject:@(index + 1)];
         [self.selectedItems addObject:@(index)];
     } else {
-        // Back to "normal" steate
+        // Back to "normal" state
         UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:itemView.bounds];
         itemView.layer.masksToBounds = NO;
         itemView.layer.shadowColor = [UIColor clearColor].CGColor;
