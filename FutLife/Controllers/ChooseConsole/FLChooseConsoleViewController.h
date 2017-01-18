@@ -11,6 +11,6 @@
 
 @interface FLChooseConsoleViewController : FLCarouselViewController
 
-- (id)initWithCompletedBlock:(void (^)(NSArray *consoleType))chooseConsoleCompletedBlock;
+- (id)initWithNavBar:(BOOL)navBar completedBlock:(void (^)(NSArray *consoleType))chooseConsoleCompletedBlock;
 
 @end

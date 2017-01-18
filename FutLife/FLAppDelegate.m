@@ -8,6 +8,7 @@
 
 #import "FLAppDelegate.h"
 #import "FLStartUpViewController.h"
+#import "FLTimeLineHomeViewController.h"
 
 const CGFloat kNavMenuWidth = 283.0f;
 
@@ -72,8 +73,14 @@ const CGFloat kNavMenuWidth = 283.0f;
         MBProgressHUD *loadingHUD = [MBProgressHUD showHUDAddedTo:[FLAppDelegate sharedInstance].window.rootViewController.view
                                                          animated:YES];
         loadingHUD.label.text = @"Cargando";
+        
+        MBBackgroundView *bgView = [MBBackgroundView new];
+        bgView.style = MBProgressHUDBackgroundStyleBlur;
+        bgView.color = [UIColor lightGrayColor];
+        loadingHUD.customView = bgView;
+        
         //loadingHUD.dimBackground = YES;
-        loadingHUD.mode = MBProgressHUDModeCustomView;
+        loadingHUD.mode = MBProgressHUDModeIndeterminate;
     });
 }
 
@@ -105,6 +112,14 @@ const CGFloat kNavMenuWidth = 283.0f;
     self.window.rootViewController = drawerController;
     self.mainNavigationController = navigationController;
     [self.window makeKeyAndVisible];    
+}
+
+- (void)openTimeLineHome
+{
+    FLTimeLineHomeViewController *timeLinehomeVC = [[FLTimeLineHomeViewController alloc] init];
+    UINavigationController *navigationController = [self mainNavigationController];
+    [navigationController pushViewController:timeLinehomeVC animated:YES];
+    [navigationController setViewControllers:@[timeLinehomeVC]];
 }
 
 - (void)configApiLogs

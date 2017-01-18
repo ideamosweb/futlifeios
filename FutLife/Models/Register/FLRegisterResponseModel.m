@@ -14,9 +14,16 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"message" : @"message",
-             @"success" : @"success"
+             @"token" : @"token",
+             @"success" : @"success",
+             @"data" : @"data"
              };
+}
+
+#pragma mark - JSON Transformers
+
++ (NSValueTransformer *)dataJSONTransformer {
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:FLUserModel.class];
 }
 
 @end

@@ -7,10 +7,12 @@
 //
 
 #import "FLModel.h"
+#import "FLUserModel.h"
 
 @interface FLRegisterResponseModel : FLModel
 
-@property (copy, nonatomic) NSString *message;
+@property (copy, nonatomic) NSString *token;
 @property (assign, nonatomic, getter=isSuccess) BOOL success;
+@property (strong, nonatomic) FLUserModel *data;
 
 @end

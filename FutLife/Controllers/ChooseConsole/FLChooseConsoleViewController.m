@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSArray *consoles;
 @property (strong, nonatomic) NSMutableArray *selectedConsoles;
 @property (strong, nonatomic) UITableView *selectedConsolesTable;
+@property (assign, nonatomic, getter=isNavBar) BOOL navBar;
 
 @property (nonatomic, copy) void (^chooseConsoleCompletedBlock)();
 
@@ -27,11 +28,12 @@
 
 @implementation FLChooseConsoleViewController
 
-- (id)initWithCompletedBlock:(void (^)(NSArray *consoleType))chooseConsoleCompletedBlock
+- (id)initWithNavBar:(BOOL)navBar completedBlock:(void (^)(NSArray *consoleType))chooseConsoleCompletedBlock
 {    
     self = [super initWithNibName:@"FLChooseConsoleViewController" bundle:[NSBundle mainBundle]];
     if (self) {
         self.chooseConsoleCompletedBlock = chooseConsoleCompletedBlock;
+        self.navBar = navBar;
     }
     
     return self;
@@ -43,7 +45,7 @@
     for (FLConsoleModel *console in consoles) {
         
         UIView *imageView = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, VIEW_ITEM_WIDTH, VIEW_ITEM_HEIGHT)];
-        [((UIImageView *)imageView) setImageWithURL:[NSURL URLWithString:console.avatar] placeholderImage:nil];
+        [((UIImageView *)imageView) setImageWithURL:[NSURL URLWithString:console.avatar] placeholderImage:[UIImage imageNamed:@"loading_placeholder"]];
         
         [carouselsItemsViews addObject:imageView];
     }
@@ -54,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.showNavigationBar = YES;
+    self.showNavigationBar = self.navBar;
     
     self.nextButton.enabled = NO;
     self.consoleCarousel.type = iCarouselTypeRotary;
@@ -86,7 +88,7 @@
     self.selectedConsoles = [[NSMutableArray alloc] init];
     UILabel *selectedConsolesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, CGRectGetMaxY(self.consoleCarousel.frame) + 40.0f, [FLMiscUtils screenViewFrame].size.width, 20.0f)];
     selectedConsolesLabel.text = @"CONSOLAS SELECCIONADAS:";
-    selectedConsolesLabel.font = [UIFont fontWithName:@"Bebas" size:15.0f];
+    selectedConsolesLabel.font = [UIFont fl_bebasFontOfSize:20.0f];
     selectedConsolesLabel.textColor = [UIColor whiteColor];
     selectedConsolesLabel.textAlignment = NSTextAlignmentLeft;
     
@@ -193,7 +195,7 @@
         FLConsoleModel *console = [self.selectedConsoles objectAtIndex:indexPath.row];
         cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.font = [UIFont fontWithName:@"Bebas" size:14.0f];
+        cell.textLabel.font = [UIFont fl_bebasFontOfSize:18.0f];
         cell.textLabel.text = [NSString stringWithFormat:@"%@", console.name];
         
         cell.userInteractionEnabled = NO;

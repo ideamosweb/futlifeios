@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DE5CA829322A7ECE06B6913F9CF4C4F2'
+               BlueprintIdentifier = '10D1F957FA257F7F1DB3E1448C4CCC6B'
                BlueprintName = 'GZIP'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libGZIP.a'>

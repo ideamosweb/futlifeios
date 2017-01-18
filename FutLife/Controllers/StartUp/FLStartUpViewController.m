@@ -14,6 +14,7 @@
 #import "FLChooseConsoleViewController.h"
 #import "FLChooseGameViewController.h"
 #import "FLProfileViewController.h"
+#import "FLBannersViewController.h"
 
 @interface FLStartUpViewController ()
 
@@ -62,17 +63,8 @@
     
     [self setVersionLabel];
     [self animationLogo];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
-    if (![FLLocalDataManager sharedInstance].registeredUser) {
-        [self performSelector:@selector(registerUser) withObject:nil afterDelay:4.0];
-    } else {
-        [self performSelector:@selector(goToChooseConsole) withObject:nil afterDelay:4.0];
-    }
+    [self performSelector:@selector(showBanners) withObject:nil afterDelay:4.0];
 }
 
 - (void)animationLogo
@@ -89,6 +81,25 @@
     }
 }
 
+- (void)showBanners
+{
+    __weak __typeof(self)weakSelf = self;
+    FLBannersViewController *bannersVC = [[FLBannersViewController alloc] initWithCompletionBlock:^{
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (![FLLocalDataManager sharedInstance].registeredUser) {
+            [strongSelf registerUser];
+        } else {
+            [strongSelf goToChooseConsoleWithNavBar:NO];
+            //[strongSelf goToTimeLineHome];
+            //[strongSelf goToLogin];
+            //[strongSelf registerUser];
+        }
+    }];
+    
+    //[self.navigationController pushViewController:bannersVC animated:YES];
+    [self presentViewController:bannersVC animated:YES completion:nil];
+}
+
 - (void)registerUser
 {
     __weak __typeof(self)weakSelf = self;
@@ -96,16 +107,16 @@
         [FLLocalDataManager sharedInstance].registeredUser = YES;
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         // Go to Choose Console
-        [strongSelf goToChooseConsole];
+        [strongSelf goToChooseConsoleWithNavBar:YES];
     }];
     
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 
-- (void)goToChooseConsole
+- (void)goToChooseConsoleWithNavBar:(BOOL)navBar
 {
     __weak __typeof(self)weakSelf = self;
-    FLChooseConsoleViewController *chooseConsoleVC = [[FLChooseConsoleViewController alloc] initWithCompletedBlock:^(NSArray *consoleType) {
+    FLChooseConsoleViewController *chooseConsoleVC = [[FLChooseConsoleViewController alloc] initWithNavBar:navBar completedBlock:^(NSArray *consoleType) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf goToChooseGameWithConsoles:consoleType];
     }];
@@ -118,6 +129,7 @@
     __weak __typeof(self)weakSelf = self;
     FLChooseGameViewController *chooseGameVC = [[FLChooseGameViewController alloc] initWithConsoles:consoles completedBlock:^(NSArray *consoleType, NSArray *games) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
+        //[strongSelf goToTimeLineHome];
         [strongSelf goToUserProfileWithConsoles:consoleType games:games];
     }];
     
@@ -126,7 +138,7 @@
 
 - (void)goToUserProfileWithConsoles:(NSArray *)consoles games:(NSArray *)games
 {
-    FLProfileViewController *profileVC = [[FLProfileViewController alloc] initWithConsoles:consoles games:games ompletedBlock:^{
+    FLProfileViewController *profileVC = [[FLProfileViewController alloc] initWithConsoles:consoles games:games confirmButton:true completedBlock:^{
         
     }];
     
@@ -142,15 +154,22 @@
         [strongSelf registerUser];
     } loginBlock:^{
         // Go to dashboard!
-        dispatch_async(dispatch_get_main_queue(), ^{
-            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:@"Función login deshabilitada" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-                
-            }];
-            [alert show];
-        });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:@"Función login deshabilitada" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+//                
+//            }];
+//            [alert show];
+//        });
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf goToTimeLineHome];
     }];
     
     [self.navigationController pushViewController:loginVC animated:NO];
+}
+
+- (void)goToTimeLineHome
+{
+    [[FLAppDelegate sharedInstance] openTimeLineHome];
 }
 
 - (void)localize

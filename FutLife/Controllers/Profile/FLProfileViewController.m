@@ -11,6 +11,7 @@
 #import "FLConsoleModel.h"
 #import "FLGameModel.h"
 #import "FLUserModel.h"
+#import "FLRegisterRequestModel.h"
 
 @interface FLProfileViewController () <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *gamesButton;
 @property (weak, nonatomic) IBOutlet UIView *selectedButtonView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) NSIndexPath *selectedCellIndexPath;
+@property (weak, nonatomic) IBOutlet UIButton *completeRegisterButtom;
 
 @property (strong, nonatomic) UITableView *consolesTableView;
 @property (strong, nonatomic) UITableView *gamesTableView;
@@ -29,21 +32,26 @@
 @property (strong, nonatomic) NSArray *games;
 @property (strong, nonatomic) NSArray *consoles;
 
+@property (assign, nonatomic) BOOL confirmButton;
+
 @property (nonatomic, copy) void (^profileCompletedBlock)();
 
 @end
 
 static float const kTableViewHeight = 480.0f;
+static const CGFloat kProfileCellHeight = 44.0f;
+static const CGFloat kProfileCellConsolesHeight = 22.0f;
 
 @implementation FLProfileViewController
 
-- (id)initWithConsoles:(NSArray *)consoles games:(NSArray *)games ompletedBlock:(void (^)())profileCompletedBlock
+- (id)initWithConsoles:(NSArray *)consoles games:(NSArray *)games confirmButton:(BOOL)confirmButton completedBlock:(void (^)())profileCompletedBlock
 {
     self = [super initWithNibName:@"FLProfileViewController" bundle:[NSBundle mainBundle]];
     if (self) {
         self.consoles = consoles;
         self.games = games;
         self.profileCompletedBlock = profileCompletedBlock;
+        self.confirmButton = confirmButton;
     }
     
     return self;
@@ -58,6 +66,15 @@ static float const kTableViewHeight = 480.0f;
         FLUserModel *user = [FLLocalDataManager sharedInstance].user;
         self.nameLabel.text = user.name;
         self.userNameLabel.text = user.userName;        
+    }
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    self.navigationItem.title = (self.confirmButton) ? @"Resumen" : @"Perfil";
+    
+    if (self.confirmButton) {
+        self.completeRegisterButtom.hidden = false;
     }
     
     [self.userAvatarImage fl_MakeCircularView];
@@ -101,7 +118,14 @@ static float const kTableViewHeight = 480.0f;
     UIImage *avatar = [FLLocalDataManager sharedInstance].avatar;
     if (avatar) {
         self.userAvatarImage.image = avatar;
-    }
+    }   
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.view bringSubviewToFront:self.completeRegisterButtom];
 }
 
 - (IBAction)onUserAvatarButtonTouch:(id)sender
@@ -138,6 +162,35 @@ static float const kTableViewHeight = 480.0f;
         CGRect selectedButtonViewFrame = self.selectedButtonView.frame;
         selectedButtonViewFrame.origin.x = CGRectGetMinX(self.gamesButton.frame);
         self.selectedButtonView.frame = selectedButtonViewFrame;
+    }];
+}
+
+- (IBAction)onConfirmButtonTouch:(id)sender
+{
+    FLUserModel *userModel = [FLLocalDataManager sharedInstance].user;
+    FLComplementRegisterRequestModel *requestModel = [FLComplementRegisterRequestModel new];
+    requestModel.userId = userModel.userId;
+    requestModel.userName = userModel.userName;
+    
+    UIImage *avatar = [FLLocalDataManager sharedInstance].avatar;
+    NSData *imageData = UIImagePNGRepresentation(avatar);
+    //requestModel.avatar = imageData;
+    requestModel.preferences = @[];
+    
+    __weak __typeof(self)weakSelf = self;
+    [FLAppDelegate showLoadingHUD];
+    [[FLApiManager sharedInstance] registerComplementRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
+        [FLAppDelegate hideLoadingHUD];
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.profileCompletedBlock();
+    } failure:^(FLApiError *error) {
+        [FLAppDelegate hideLoadingHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
     }];
 }
 
@@ -182,24 +235,64 @@ static float const kTableViewHeight = 480.0f;
 {
     FLProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:[FLProfileCell cellIdentifier]];
     if (cell) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (tableView == self.consolesTableView) {
             FLConsoleModel *console = self.consoles[indexPath.row];
             
             [cell setGameImageName:console.avatar gameName:console.name gameYear:console.year gameNumber:[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]];
+            cell.userInteractionEnabled = false;
         } else {
             FLGameModel *game = self.games[indexPath.row];
             
             [cell setGameImageName:game.avatar gameName:game.name gameYear:game.year gameNumber:[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]];
+            if (game.consoles) {
+                // Autolayout bug (?) pass tableView width for get the expected width of cell
+                [cell setConsoles:game.consoles width:tableView.frame.size.width];
+            }
             
-        }
+            cell.userInteractionEnabled = true;
+            
+        }        
     }
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.selectedCellIndexPath) {
+        if ([self.selectedCellIndexPath compare:indexPath] == NSOrderedSame) {
+            self.selectedCellIndexPath = nil;
+            [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            return nil;
+        } else {
+            [tableView reloadRowsAtIndexPaths:@[self.selectedCellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    } else {
+        self.selectedCellIndexPath = indexPath;
+        [tableView reloadRowsAtIndexPaths:@[self.selectedCellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
     
+    return indexPath;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.selectedCellIndexPath && [self.selectedCellIndexPath compare:indexPath] == NSOrderedSame) {
+        if (tableView == self.gamesTableView) {
+            FLGameModel *game = [self.games fl_objectAtIndex:indexPath.row];
+            if (!(game.consoles) || [game.consoles count] == 0) {
+                return kProfileCellHeight;
+            }
+            
+            return kProfileCellHeight + kProfileCellConsolesHeight;
+        }
+        
+        return kProfileCellHeight;
+    } else {
+        return kProfileCellHeight;
+    }
 }
 
 #pragma mark - UIImagePickerController delegate methods

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Home</key>
+	<dict>
+		<key>selector</key>
+		<string>onHomeTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-Home</string>
+	</dict>
+	<key>Profile</key>
+	<dict>
+		<key>selector</key>
+		<string>onProfileTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-Profile</string>
+	</dict>
+	<key>Settings</key>
+	<dict>
+		<key>selector</key>
+		<string>onSettingsTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-Settings</string>
+	</dict>
+	<key>AboutUs</key>
+	<dict>
+		<key>selector</key>
+		<string>onAboutUsTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-AboutUs</string>
+	</dict>
+	<key>Help</key>
+	<dict>
+		<key>selector</key>
+		<string>onHelpTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-Help</string>
+	</dict>
+	<key>Suggestions</key>
+	<dict>
+		<key>selector</key>
+		<string>onSuggestionTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-Suggestions</string>
+	</dict>
+	<key>SendEmail</key>
+	<dict>
+		<key>selector</key>
+		<string>onSendEmailTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-SendEmail</string>
+	</dict>
+	<key>LogOut</key>
+	<dict>
+		<key>selector</key>
+		<string>onLogOutTapped:</string>
+		<key>slidingMenuImage</key>
+		<string>SlidingMenuIcon-LogOut</string>
+	</dict>
+</dict>
+</plist>

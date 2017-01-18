@@ -96,6 +96,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - pop (1.0.9)
   - Reachability (3.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -118,6 +119,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MMDrawerController (~> 0.5.1)
   - MRProgress
+  - pop (~> 1.0)
   - Reachability
   - SDWebImage (~> 3.8)
   - UICKeyChainStore
@@ -155,11 +157,12 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UrbanAirship-iOS-SDK: a4ff01ef90d5b32508818da5b8385828513702f9
 
-PODFILE CHECKSUM: 668ae3132ec669b725dd232a513edd9b5e1b02df
+PODFILE CHECKSUM: a03600f7b1ea1e3adf7f027c74168f46f6f04e9d
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0.beta.1

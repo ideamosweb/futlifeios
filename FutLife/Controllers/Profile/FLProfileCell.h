@@ -12,5 +12,6 @@
 @interface FLProfileCell : FLCustomCell
 
 - (void)setGameImageName:(NSString *)gameImageName gameName:(NSString *)gameName gameYear:(NSNumber *)gameYear gameNumber:(NSString *)gameNumber;
+- (void)setConsoles:(NSArray *)consoles width:(CGFloat)width;
 
 @end

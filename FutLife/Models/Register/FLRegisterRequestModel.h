@@ -17,3 +17,12 @@
 @property (copy, nonatomic) NSString *passwordConfirmation;
 
 @end
+
+@interface FLComplementRegisterRequestModel : FLModel
+
+@property (strong, nonatomic) NSNumber *userId;
+@property (copy, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSData *avatar;
+@property (strong, nonatomic) NSArray *preferences;
+
+@end

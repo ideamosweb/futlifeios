@@ -15,6 +15,9 @@
 #import "FLGameModel.h"
 #import "FLConsoleModel.h"
 
+#import "FLLoginRequestModel.h"
+#import "FLLoginResponseModel.h"
+
 @interface FLApiManager : FLSessionManager
 
 + (instancetype)sharedInstance;
@@ -22,10 +25,16 @@
 // Register request
 - (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
+// Register complement request
+- (NSURLSessionDataTask *)registerComplementRequestWithModel:(FLComplementRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+
 // Get Consoles
 - (NSURLSessionDataTask *)consolesRequestWithSuccess:(void (^)(FLConsoleResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Get Games
 - (NSURLSessionDataTask *)gamesRequestWithSuccess:(void (^)(FLGameResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+
+// Login request
+- (NSURLSessionDataTask *)loginRequestWithModel:(FLLoginRequestModel *)requestModel success:(void (^)(FLLoginResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 @end

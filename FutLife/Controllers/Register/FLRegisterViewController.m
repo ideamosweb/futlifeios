@@ -105,35 +105,26 @@
     requestModel.email = self.emailTextfield.text;
     requestModel.password = self.passwordTextfield.text;
     requestModel.passwordConfirmation = self.passwordTextfield.text;
+    // self.registrationCompletedBlock();
     
-    FLUserModel *user = [FLUserModel new];
-    user.name = self.nameTextfield.text;
-    user.userName = self.userNameTextfield.text;
-    
-    [FLLocalDataManager sharedInstance].user = user;
-    
-    self.registrationCompletedBlock();
-    
-//    __weak __typeof(self)weakSelf = self;
-//    [FLAppDelegate showLoadingHUD];
-//    [[FLApiManager sharedInstance] registerRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
-//        [FLAppDelegate hideLoadingHUD];
-//        __strong __typeof(weakSelf)strongSelf = weakSelf;
-//        FLUserModel *user = [FLUserModel new];
-//        user.name = strongSelf.nameTextfield.text;
-//        user.userName = strongSelf.userNameTextfield.text;
-//        [FLLocalDataManager sharedInstance].user = user;
-//        
-//        strongSelf.registrationCompletedBlock();
-//    } failure:^(FLApiError *error) {
-//        [FLAppDelegate hideLoadingHUD];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-//                
-//            }];
-//            [alert show];
-//        });
-//    }];
+    __weak __typeof(self)weakSelf = self;
+    [FLAppDelegate showLoadingHUD];
+    [[FLApiManager sharedInstance] registerRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
+        [FLAppDelegate hideLoadingHUD];
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        FLUserModel *user = (FLUserModel *)responseModel.data;
+        [FLLocalDataManager sharedInstance].user = user;
+        
+        strongSelf.registrationCompletedBlock();
+    } failure:^(FLApiError *error) {
+        [FLAppDelegate hideLoadingHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
+    }];
 }
 
 - (void)localize

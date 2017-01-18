@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172947511E1EA1C900EB4DBA /* FLBannersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1729474F1E1EA1C900EB4DBA /* FLBannersViewController.m */; };
+		172947521E1EA1C900EB4DBA /* FLBannersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172947501E1EA1C900EB4DBA /* FLBannersViewController.xib */; };
+		172947571E1EA48600EB4DBA /* FLPageBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 172947551E1EA48600EB4DBA /* FLPageBannerViewController.m */; };
+		172947581E1EA48600EB4DBA /* FLPageBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172947561E1EA48600EB4DBA /* FLPageBannerViewController.xib */; };
 		1734296E1DC5092D008D856E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1734296D1DC5092D008D856E /* Assets.xcassets */; };
 		175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */; };
 		175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 175D2B061DBD718F0097C8A0 /* FLRegisterResponseModel.m */; };
@@ -35,6 +39,21 @@
 		1772AE461DB7DB9200236CB9 /* FLInputsFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE451DB7DB9200236CB9 /* FLInputsFormManager.m */; };
 		1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE4F1DB882DC00236CB9 /* FLToolbar.m */; };
 		1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */; };
+		1790943F1E2442770040B1B6 /* FLNavMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1790943D1E2442770040B1B6 /* FLNavMenuViewController.m */; };
+		179094401E2442770040B1B6 /* FLNavMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1790943E1E2442770040B1B6 /* FLNavMenuViewController.xib */; };
+		179094441E2452F40040B1B6 /* FLMenuItemsDefinitions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 179094431E2452F40040B1B6 /* FLMenuItemsDefinitions.plist */; };
+		179094471E2456630040B1B6 /* FLMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179094461E2456630040B1B6 /* FLMenuManager.m */; };
+		179500B91E2D6F5200BA0A59 /* FLTimeLineHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500B71E2D6F5200BA0A59 /* FLTimeLineHomeViewController.m */; };
+		179500BD1E2D748700BA0A59 /* FLTimeLineHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179500BC1E2D748700BA0A59 /* FLTimeLineHomeViewController.xib */; };
+		179500C01E2E6B2C00BA0A59 /* UIFont+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500BF1E2E6B2C00BA0A59 /* UIFont+Utils.m */; };
+		179500D61E2E7F4800BA0A59 /* BebasNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 179500D11E2E7F4800BA0A59 /* BebasNeue-Bold.ttf */; };
+		179500D71E2E7F4800BA0A59 /* BebasNeue-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 179500D21E2E7F4800BA0A59 /* BebasNeue-Book.ttf */; };
+		179500D81E2E7F4800BA0A59 /* BebasNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 179500D31E2E7F4800BA0A59 /* BebasNeue-Light.ttf */; };
+		179500D91E2E7F4800BA0A59 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 179500D41E2E7F4800BA0A59 /* BebasNeue-Regular.ttf */; };
+		179500DA1E2E7F4800BA0A59 /* BebasNeue-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 179500D51E2E7F4800BA0A59 /* BebasNeue-Thin.ttf */; };
+		179500DE1E2F06F800BA0A59 /* FLLoginRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500DD1E2F06F800BA0A59 /* FLLoginRequestModel.m */; };
+		179500E11E2F072A00BA0A59 /* FLLoginResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500E01E2F072A00BA0A59 /* FLLoginResponseModel.m */; };
+		179500E41E2F11EC00BA0A59 /* FLLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500E31E2F11EC00BA0A59 /* FLLoginManager.m */; };
 		179EA43C1DBC3E23004EB2CC /* FLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA43B1DBC3E23004EB2CC /* FLTextField.m */; };
 		179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179EA4431DBC72FB004EB2CC /* Localizable.strings */; };
 		179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179EA4481DBC73CC004EB2CC /* Localizable.strings */; };
@@ -87,6 +106,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1729474E1E1EA1C900EB4DBA /* FLBannersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLBannersViewController.h; path = Controllers/Banners/FLBannersViewController.h; sourceTree = "<group>"; };
+		1729474F1E1EA1C900EB4DBA /* FLBannersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLBannersViewController.m; path = Controllers/Banners/FLBannersViewController.m; sourceTree = "<group>"; };
+		172947501E1EA1C900EB4DBA /* FLBannersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLBannersViewController.xib; path = Views/Banners/FLBannersViewController.xib; sourceTree = "<group>"; };
+		172947541E1EA48600EB4DBA /* FLPageBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLPageBannerViewController.h; path = Controllers/Banners/FLPageBannerViewController.h; sourceTree = "<group>"; };
+		172947551E1EA48600EB4DBA /* FLPageBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLPageBannerViewController.m; path = Controllers/Banners/FLPageBannerViewController.m; sourceTree = "<group>"; };
+		172947561E1EA48600EB4DBA /* FLPageBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLPageBannerViewController.xib; path = Views/Banners/FLPageBannerViewController.xib; sourceTree = "<group>"; };
 		1734296D1DC5092D008D856E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		175D2B011DBD69B60097C8A0 /* FLRegisterRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLRegisterRequestModel.h; path = Models/Register/FLRegisterRequestModel.h; sourceTree = "<group>"; };
 		175D2B021DBD69B60097C8A0 /* FLRegisterRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLRegisterRequestModel.m; path = Models/Register/FLRegisterRequestModel.m; sourceTree = "<group>"; };
@@ -143,6 +168,28 @@
 		1772AE511DB8865400236CB9 /* FLValidatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLValidatable.h; path = Common/Forms/FLValidatable.h; sourceTree = "<group>"; };
 		1772AE521DB88B4000236CB9 /* FLInputFieldValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLInputFieldValidation.h; path = Common/Forms/FLInputFieldValidation.h; sourceTree = "<group>"; };
 		1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLInputFieldValidation.m; path = Common/Forms/FLInputFieldValidation.m; sourceTree = "<group>"; };
+		1790943C1E2442770040B1B6 /* FLNavMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLNavMenuViewController.h; path = Controllers/NavigationMenu/FLNavMenuViewController.h; sourceTree = "<group>"; };
+		1790943D1E2442770040B1B6 /* FLNavMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLNavMenuViewController.m; path = Controllers/NavigationMenu/FLNavMenuViewController.m; sourceTree = "<group>"; };
+		1790943E1E2442770040B1B6 /* FLNavMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLNavMenuViewController.xib; path = Views/NavigationMenu/FLNavMenuViewController.xib; sourceTree = "<group>"; };
+		179094431E2452F40040B1B6 /* FLMenuItemsDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FLMenuItemsDefinitions.plist; path = Resources/Config/FLMenuItemsDefinitions.plist; sourceTree = "<group>"; };
+		179094451E2456630040B1B6 /* FLMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLMenuManager.h; path = Managers/FLMenuManager.h; sourceTree = "<group>"; };
+		179094461E2456630040B1B6 /* FLMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLMenuManager.m; path = Managers/FLMenuManager.m; sourceTree = "<group>"; };
+		179500B61E2D6F5200BA0A59 /* FLTimeLineHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLTimeLineHomeViewController.h; path = Controllers/TimeLineHome/FLTimeLineHomeViewController.h; sourceTree = "<group>"; };
+		179500B71E2D6F5200BA0A59 /* FLTimeLineHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLTimeLineHomeViewController.m; path = Controllers/TimeLineHome/FLTimeLineHomeViewController.m; sourceTree = "<group>"; };
+		179500BC1E2D748700BA0A59 /* FLTimeLineHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLTimeLineHomeViewController.xib; path = Views/TimeLineHome/FLTimeLineHomeViewController.xib; sourceTree = "<group>"; };
+		179500BE1E2E6B2C00BA0A59 /* UIFont+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Utils.h"; path = "Common/Categories/UIFont+Utils.h"; sourceTree = "<group>"; };
+		179500BF1E2E6B2C00BA0A59 /* UIFont+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Utils.m"; path = "Common/Categories/UIFont+Utils.m"; sourceTree = "<group>"; };
+		179500D11E2E7F4800BA0A59 /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
+		179500D21E2E7F4800BA0A59 /* BebasNeue-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Book.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Book.ttf"; sourceTree = "<group>"; };
+		179500D31E2E7F4800BA0A59 /* BebasNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Light.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Light.ttf"; sourceTree = "<group>"; };
+		179500D41E2E7F4800BA0A59 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		179500D51E2E7F4800BA0A59 /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
+		179500DC1E2F06F800BA0A59 /* FLLoginRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLLoginRequestModel.h; path = Models/Login/FLLoginRequestModel.h; sourceTree = "<group>"; };
+		179500DD1E2F06F800BA0A59 /* FLLoginRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLoginRequestModel.m; path = Models/Login/FLLoginRequestModel.m; sourceTree = "<group>"; };
+		179500DF1E2F072A00BA0A59 /* FLLoginResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLLoginResponseModel.h; path = Models/Login/FLLoginResponseModel.h; sourceTree = "<group>"; };
+		179500E01E2F072A00BA0A59 /* FLLoginResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLoginResponseModel.m; path = Models/Login/FLLoginResponseModel.m; sourceTree = "<group>"; };
+		179500E21E2F11EC00BA0A59 /* FLLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLLoginManager.h; path = Managers/FLLoginManager.h; sourceTree = "<group>"; };
+		179500E31E2F11EC00BA0A59 /* FLLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLoginManager.m; path = Managers/FLLoginManager.m; sourceTree = "<group>"; };
 		179EA43A1DBC3E23004EB2CC /* FLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLTextField.h; path = Common/Forms/FLTextField.h; sourceTree = "<group>"; };
 		179EA43B1DBC3E23004EB2CC /* FLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLTextField.m; path = Common/Forms/FLTextField.m; sourceTree = "<group>"; };
 		179EA43D1DBC71D2004EB2CC /* FutLife Staging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FutLife Staging.entitlements"; sourceTree = "<group>"; };
@@ -242,6 +289,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1729474D1E1EA18500EB4DBA /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				1729474E1E1EA1C900EB4DBA /* FLBannersViewController.h */,
+				1729474F1E1EA1C900EB4DBA /* FLBannersViewController.m */,
+				172947541E1EA48600EB4DBA /* FLPageBannerViewController.h */,
+				172947551E1EA48600EB4DBA /* FLPageBannerViewController.m */,
+			);
+			name = Banners;
+			sourceTree = "<group>";
+		};
+		172947531E1EA1E600EB4DBA /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				172947501E1EA1C900EB4DBA /* FLBannersViewController.xib */,
+				172947561E1EA48600EB4DBA /* FLPageBannerViewController.xib */,
+			);
+			name = Banners;
+			sourceTree = "<group>";
+		};
 		175D2B001DBD667A0097C8A0 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +359,9 @@
 		1772ADF51DB454FC00236CB9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				179500B51E2D6F0B00BA0A59 /* TimeLineHome */,
+				1790943B1E24421A0040B1B6 /* NavigationMenu */,
+				1729474D1E1EA18500EB4DBA /* Banners */,
 				17B371171DF125E20035442D /* Profile */,
 				17E16B861DCA8856008B6AED /* ChooseGame */,
 				17E16B6D1DC84FAE008B6AED /* ChooseConsole */,
@@ -317,6 +387,10 @@
 				179EA4501DBD3254004EB2CC /* FLApiManager.m */,
 				17C3C6C71DC1CAA100415CBE /* FLLocalDataManager.h */,
 				17C3C6C81DC1CAA100415CBE /* FLLocalDataManager.m */,
+				179094451E2456630040B1B6 /* FLMenuManager.h */,
+				179094461E2456630040B1B6 /* FLMenuManager.m */,
+				179500E21E2F11EC00BA0A59 /* FLLoginManager.h */,
+				179500E31E2F11EC00BA0A59 /* FLLoginManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -324,6 +398,7 @@
 		1772ADF71DB4551400236CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				179500DB1E2EB96600BA0A59 /* Login */,
 				17B371231DF137AE0035442D /* User */,
 				17C2C2241DD836800036D899 /* Console */,
 				17E16B901DCB9F5D008B6AED /* Game */,
@@ -337,6 +412,9 @@
 		1772ADF81DB4552200236CB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				179500BB1E2D746800BA0A59 /* TimeLineHome */,
+				179094411E24427F0040B1B6 /* NavigationMenu */,
+				172947531E1EA1E600EB4DBA /* Banners */,
 				17B3711D1DF126370035442D /* Profile */,
 				17E16B8C1DCA889F008B6AED /* ChooseGame */,
 				17E16B731DC85047008B6AED /* ChooseConsole */,
@@ -382,6 +460,8 @@
 				1772AE3A1DB57A9F00236CB9 /* NSBundle+Utils.m */,
 				17BE292D1DC6B16D007F572E /* UIViewController+Utils.h */,
 				17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */,
+				179500BE1E2E6B2C00BA0A59 /* UIFont+Utils.h */,
+				179500BF1E2E6B2C00BA0A59 /* UIFont+Utils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -407,6 +487,7 @@
 		1772AE361DB571F300236CB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				179094421E2452CA0040B1B6 /* Config */,
 				17E16B801DCA4ECE008B6AED /* Fonts */,
 				179EA43E1DBC7235004EB2CC /* Localizations */,
 				1772AE371DB5722000236CB9 /* Images.xcassets */,
@@ -444,6 +525,71 @@
 				179EA43B1DBC3E23004EB2CC /* FLTextField.m */,
 			);
 			name = Forms;
+			sourceTree = "<group>";
+		};
+		1790943B1E24421A0040B1B6 /* NavigationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1790943C1E2442770040B1B6 /* FLNavMenuViewController.h */,
+				1790943D1E2442770040B1B6 /* FLNavMenuViewController.m */,
+			);
+			name = NavigationMenu;
+			sourceTree = "<group>";
+		};
+		179094411E24427F0040B1B6 /* NavigationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1790943E1E2442770040B1B6 /* FLNavMenuViewController.xib */,
+			);
+			name = NavigationMenu;
+			sourceTree = "<group>";
+		};
+		179094421E2452CA0040B1B6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				179094431E2452F40040B1B6 /* FLMenuItemsDefinitions.plist */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		179500B51E2D6F0B00BA0A59 /* TimeLineHome */ = {
+			isa = PBXGroup;
+			children = (
+				179500B61E2D6F5200BA0A59 /* FLTimeLineHomeViewController.h */,
+				179500B71E2D6F5200BA0A59 /* FLTimeLineHomeViewController.m */,
+			);
+			name = TimeLineHome;
+			sourceTree = "<group>";
+		};
+		179500BB1E2D746800BA0A59 /* TimeLineHome */ = {
+			isa = PBXGroup;
+			children = (
+				179500BC1E2D748700BA0A59 /* FLTimeLineHomeViewController.xib */,
+			);
+			name = TimeLineHome;
+			sourceTree = "<group>";
+		};
+		179500C11E2E6FA700BA0A59 /* BebasNeue */ = {
+			isa = PBXGroup;
+			children = (
+				179500D11E2E7F4800BA0A59 /* BebasNeue-Bold.ttf */,
+				179500D21E2E7F4800BA0A59 /* BebasNeue-Book.ttf */,
+				179500D31E2E7F4800BA0A59 /* BebasNeue-Light.ttf */,
+				179500D41E2E7F4800BA0A59 /* BebasNeue-Regular.ttf */,
+				179500D51E2E7F4800BA0A59 /* BebasNeue-Thin.ttf */,
+			);
+			name = BebasNeue;
+			sourceTree = "<group>";
+		};
+		179500DB1E2EB96600BA0A59 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				179500DC1E2F06F800BA0A59 /* FLLoginRequestModel.h */,
+				179500DD1E2F06F800BA0A59 /* FLLoginRequestModel.m */,
+				179500DF1E2F072A00BA0A59 /* FLLoginResponseModel.h */,
+				179500E01E2F072A00BA0A59 /* FLLoginResponseModel.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		179EA43E1DBC7235004EB2CC /* Localizations */ = {
@@ -568,6 +714,7 @@
 		17E16B801DCA4ECE008B6AED /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				179500C11E2E6FA700BA0A59 /* BebasNeue */,
 				17E16B831DCA4EF7008B6AED /* bebas */,
 			);
 			name = Fonts;
@@ -806,17 +953,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				179500DA1E2E7F4800BA0A59 /* BebasNeue-Thin.ttf in Resources */,
 				179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */,
 				175D2B0D1DBD786E0097C8A0 /* FLRegisterViewController.xib in Resources */,
+				179500D91E2E7F4800BA0A59 /* BebasNeue-Regular.ttf in Resources */,
+				179500D81E2E7F4800BA0A59 /* BebasNeue-Light.ttf in Resources */,
 				17B3711C1DF126210035442D /* FLProfileViewController.xib in Resources */,
+				172947581E1EA48600EB4DBA /* FLPageBannerViewController.xib in Resources */,
+				172947521E1EA1C900EB4DBA /* FLBannersViewController.xib in Resources */,
 				1772AE381DB5722000236CB9 /* Images.xcassets in Resources */,
 				17E16B851DCA4F22008B6AED /* BEBAS___.TTF in Resources */,
 				179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */,
 				1734296E1DC5092D008D856E /* Assets.xcassets in Resources */,
 				17E16B721DC85020008B6AED /* FLChooseConsoleViewController.xib in Resources */,
+				179500D61E2E7F4800BA0A59 /* BebasNeue-Bold.ttf in Resources */,
 				17E16B8B1DCA888E008B6AED /* FLChooseGameViewController.xib in Resources */,
+				179500BD1E2D748700BA0A59 /* FLTimeLineHomeViewController.xib in Resources */,
+				179094441E2452F40040B1B6 /* FLMenuItemsDefinitions.plist in Resources */,
 				17B371221DF12EEE0035442D /* FLProfileCell.xib in Resources */,
 				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
+				179500D71E2E7F4800BA0A59 /* BebasNeue-Book.ttf in Resources */,
+				179094401E2442770040B1B6 /* FLNavMenuViewController.xib in Resources */,
 				17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -880,7 +1037,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8508B7D670B288D185100A4C /* [CP] Copy Pods Resources */ = {
@@ -905,9 +1062,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				179500E11E2F072A00BA0A59 /* FLLoginResponseModel.m in Sources */,
 				175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */,
 				1772AE281DB5350500236CB9 /* UIWebView+Utils.m in Sources */,
 				1772AE401DB5B82600236CB9 /* FLFormViewController.m in Sources */,
+				172947571E1EA48600EB4DBA /* FLPageBannerViewController.m in Sources */,
 				17C3C6BC1DC174C300415CBE /* FLAlertView.m in Sources */,
 				1772AE0B1DB51FD800236CB9 /* NSArray+Utils.m in Sources */,
 				179EA4511DBD3254004EB2CC /* FLApiManager.m in Sources */,
@@ -922,16 +1081,21 @@
 				17BE292F1DC6B16D007F572E /* UIViewController+Utils.m in Sources */,
 				1772AE341DB56FCE00236CB9 /* FLStartUpViewController.m in Sources */,
 				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
+				179500DE1E2F06F800BA0A59 /* FLLoginRequestModel.m in Sources */,
+				1790943F1E2442770040B1B6 /* FLNavMenuViewController.m in Sources */,
 				17B3711B1DF126210035442D /* FLProfileViewController.m in Sources */,
 				17C2C2271DD836BE0036D899 /* FLConsoleModel.m in Sources */,
 				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
 				17B371261DF137F90035442D /* FLUserModel.m in Sources */,
 				1772AE161DB525C300236CB9 /* FLApiError.m in Sources */,
+				179500B91E2D6F5200BA0A59 /* FLTimeLineHomeViewController.m in Sources */,
 				17C3C6C91DC1CAA100415CBE /* FLLocalDataManager.m in Sources */,
 				175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */,
 				1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */,
 				179EA4541DBD3411004EB2CC /* FLModel.m in Sources */,
+				179094471E2456630040B1B6 /* FLMenuManager.m in Sources */,
 				1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */,
+				172947511E1EA1C900EB4DBA /* FLBannersViewController.m in Sources */,
 				179EA43C1DBC3E23004EB2CC /* FLTextField.m in Sources */,
 				1772AE461DB7DB9200236CB9 /* FLInputsFormManager.m in Sources */,
 				1772AE251DB5337D00236CB9 /* UIView+Utils.m in Sources */,
@@ -947,7 +1111,9 @@
 				17B371211DF12EEE0035442D /* FLProfileCell.m in Sources */,
 				1772AE191DB5299700236CB9 /* NSException+Utils.m in Sources */,
 				17E16B8F1DCAF6D1008B6AED /* FLGameModel.m in Sources */,
+				179500E41E2F11EC00BA0A59 /* FLLoginManager.m in Sources */,
 				1772AE3B1DB57A9F00236CB9 /* NSBundle+Utils.m in Sources */,
+				179500C01E2E6B2C00BA0A59 /* UIFont+Utils.m in Sources */,
 				1772AE061DB5179700236CB9 /* FLMiscUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

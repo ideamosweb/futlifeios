@@ -75,8 +75,10 @@
 {
     [self.inputsFormManager.currentInputField resignFirstResponder];
     
+    __weak __typeof(self)weakSelf = self;
     [self.inputsFormManager validateFormWithSuccess:^{
-        [self loginUser];
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf loginUser];
     } failureBlock:^(FLError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:error.errorMessage buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
@@ -104,10 +106,28 @@
     
 }
 
-// TODO: Move this to a LoginManager
 - (void)loginUser
 {
-    self.loginBlock();
+    FLLoginRequestModel *request = [FLLoginRequestModel new];
+    request.userName = self.usernameTextfield.text;
+    request.password = self.passwordTextfield.text;
+    
+    __weak __typeof(self)weakSelf = self;
+    [FLAppDelegate showLoadingHUD];
+    
+    [[FLLoginManager sharedInstance] loginWithRequest:request successBlock:^{
+        [FLAppDelegate hideLoadingHUD];
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.loginBlock();
+    } failure:^(FLApiError *error) {
+        [FLAppDelegate hideLoadingHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
+    }];
 }
 
 - (void)localize

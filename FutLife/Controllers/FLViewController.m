@@ -35,6 +35,10 @@
             mainNavController.navigationBar.translucent = YES;
             mainNavController.view.backgroundColor = [UIColor clearColor];
             mainNavController.navigationBar.backgroundColor = [UIColor clearColor];
+            self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+            self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+            [self.navigationController.navigationBar
+             setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
             
             [self addBackButton];
         }

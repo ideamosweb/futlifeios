@@ -10,6 +10,6 @@
 
 @interface FLProfileViewController : FLViewController
 
-- (id)initWithConsoles:(NSArray *)consoles games:(NSArray *)games ompletedBlock:(void (^)())profileCompletedBlock;
+- (id)initWithConsoles:(NSArray *)consoles games:(NSArray *)games confirmButton:(BOOL)confirmButton completedBlock:(void (^)())profileCompletedBlock;
 
 @end

@@ -28,4 +28,5 @@ target 'FutLife Staging' do
   pod 'UrbanAirship-iOS-SDK'
   pod 'DateTools'
   pod 'Masonry'
+  pod 'pop', '~> 1.0'
 end

@@ -9,12 +9,12 @@
 #import "FLChooseGameViewController.h"
 #define CAROUSELS_MARGIN_TOP 10.0f
 #define CAROUSELS_PADDING 0.0f
-#define CAROUSELS_HEIGHT 240.0f
+#define CAROUSELS_HEIGHT 330.0f
 
-#define VIEW_ITEM_WIDTH 135.0f
-#define VIEW_ITEM_HEIGHT 192.0f
+#define VIEW_ITEM_WIDTH 225.0f
+#define VIEW_ITEM_HEIGHT 282.0f
 
-@interface FLChooseGameViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface FLChooseGameViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, FLAlertViewProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *chooseMoreThanOneGameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
@@ -22,6 +22,8 @@
 @property (nonatomic, copy) void (^chooseGameCompletedBlock)();
 @property (strong, nonatomic) NSArray *consoles;
 @property (strong, nonatomic) NSArray *games;
+@property (strong, nonatomic) NSMutableArray *gamesSelected;
+@property (strong, nonatomic) NSMutableArray *consolesSelected;
 @property (assign, nonatomic, getter=isShowMultipleCarousels) BOOL ShowMultipleCarousels;
 
 @end
@@ -52,6 +54,9 @@
     [self getGames];
     
     // [self addPickerView];
+    
+    self.consolesSelected = [NSMutableArray new];
+    self.gamesSelected = [NSMutableArray new];
     
     // Observer when an carousel item is selected
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -130,7 +135,7 @@
     for (FLGameModel *game in viewsItems) {
         
         UIView *imageView = (UIView *)[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, VIEW_ITEM_WIDTH, VIEW_ITEM_HEIGHT)];
-        [((UIImageView *)imageView) setImageWithURL:[NSURL URLWithString:game.avatar] placeholderImage:nil];
+        [((UIImageView *)imageView) setImageWithURL:[NSURL URLWithString:game.avatar] placeholderImage:[UIImage imageNamed:@"loading_placeholder"]];
         
         [carouselsItemsViews addObject:imageView];
     }
@@ -143,10 +148,45 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - iCarousel delegate methods
 - (void)didSelectCarouselItem:(NSNotification *)item
 {
+    NSNumber *index = (NSNumber *)item.object;
+    __weak __typeof(self)weakSelf = self;
     
-    self.nextButton.enabled = (self.indexSelectedItems.count > 0);
+    NSMutableArray *consolesName = [NSMutableArray new];
+    for (int i = 0; i < [self.consoles count]; i++) {
+        FLConsoleModel *console = self.consoles[i];
+        [consolesName addObject:console.name];
+    }
+    
+    if ([self.selectedItems containsObject:index]) {
+        [[[FLAlertView alloc] initWithNumberOfOptions:self.consoles.count title:@"Selecciona la consola" optionsText:consolesName optionsOn:nil buttonTitles:@[@"Aceptar"] buttonTypes:@[] delegate:self clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            FLGameModel *game = [strongSelf.games objectAtIndex:[index integerValue]];
+            
+            if ([strongSelf.consolesSelected count] > 0) {
+                game.consoles = [strongSelf.consolesSelected mutableCopy];
+                [strongSelf.gamesSelected addObject:game];
+                
+                strongSelf.nextButton.enabled = (strongSelf.indexSelectedItems.count > 0);
+                
+                 [strongSelf.consolesSelected removeAllObjects];
+            } else {
+                iCarousel *carousel = strongSelf.carousels[0];
+                [strongSelf carousel:carousel didSelectItemAtIndex:[index integerValue]];
+            }            
+        }] show];
+    } else {
+        FLGameModel *game = [self.games objectAtIndex:[index integerValue]];
+        if ([self.gamesSelected containsObject:game]) {
+            [self.gamesSelected removeObject:game];
+        }
+        
+        self.nextButton.enabled = (self.indexSelectedItems.count > 0 && [self.consolesSelected count] > 0);
+        
+        [self.consolesSelected removeAllObjects];
+    }
 }
 
 - (void)addPickerView
@@ -179,13 +219,39 @@
 
 - (IBAction)onNextButtonTouch:(id)sender
 {
-    self.chooseGameCompletedBlock(self.consoles, self.games);
+    self.chooseGameCompletedBlock(self.consoles, self.gamesSelected);
     
 }
 
 - (void)localize
 {
     
+}
+
+#pragma mark - FLAlertView protocol methods
+
+- (void)onSelectConsoleSwitch:(id)sender
+{
+    ASSERT_CLASS(sender, UISwitch);
+    FLConsoleModel *console = nil;
+    UISwitch *switchView = (UISwitch *)sender;
+    if ([self.consoles objectAtIndex:switchView.tag - 1] != [NSNull null]) {
+        console = [self.consoles objectAtIndex:switchView.tag - 1];
+    }
+    
+    if (switchView.isOn) {
+        if (console) {
+            if (![self.consolesSelected containsObject:console]) {
+                [self.consolesSelected addObject:console];
+            }
+        }
+    } else {
+        if (console) {
+            if ([self.consolesSelected containsObject:console]) {
+                [self.consolesSelected removeObject:console];
+            }
+        }
+    }
 }
 
 @end

@@ -27,6 +27,8 @@ typedef NS_ENUM(NSInteger, FLConsoleTypes)
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSDate *updatedAt;
 
+@property (strong, nonatomic) NSArray *consoles;
+
 @end
 
 @interface FLGameResponseModel : FLModel

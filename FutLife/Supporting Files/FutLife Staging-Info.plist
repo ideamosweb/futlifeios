@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.8</string>
+	<string>1.0.11</string>
 	<key>CFBundleVersion</key>
-	<string>1008</string>
+	<string>1011</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -31,6 +31,11 @@
 	<string>Used to access photo library</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BebasNeue-Thin.ttf</string>
+		<string>BebasNeue-Regular.ttf</string>
+		<string>BebasNeue-Light.ttf</string>
+		<string>BebasNeue-Book.ttf</string>
+		<string>BebasNeue-Bold.ttf</string>
 		<string>Bebas Regular</string>
 	</array>
 	<key>UIBackgroundModes</key>

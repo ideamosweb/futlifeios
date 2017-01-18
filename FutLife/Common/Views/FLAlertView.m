@@ -16,6 +16,9 @@ const CGFloat kAlertViewMaxMessageViewHeight = 90.0f;
 const CGFloat kAlertViewMessageFontSize = 12.0f;
 const CGFloat kAlertViewButtonHeight = 34.0f;
 const CGFloat kAlertViewButtonSpacing = 5.0f;
+const CGFloat kOptionSwitchViewHeight = 44.0f;
+const CGFloat kOptionSwitchPaddingHorizontal = 10.0f;
+const CGFloat kOptionSwitchPaddingTop = 3.0f;
 
 @interface FLAlertView ()
 
@@ -102,6 +105,107 @@ const CGFloat kAlertViewButtonSpacing = 5.0f;
                         clickedButtonIndexBlock([buttons indexOfObject:clickedButton]);
                     }
                 }];
+}
+
+- (id)initWithNumberOfOptions:(NSInteger)options title:(NSString *)title optionsText:(NSArray *)optionsText optionsOn:(NSArray *)optionsOn buttonTitles:(NSArray *)buttonTitles buttonTypes:(NSArray *)buttonTypes delegate:(id)delegate clickedButtonAtIndex:(void (^)(NSUInteger clickedButtonIndex))clickedButtonIndexBlock
+{
+    BOOL hasTitle = (title && ![title fl_isEmpty]);
+    NSUInteger buttonCount = [buttonTitles count];
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    CGFloat alertWidth = screenSize.width - kAlertViewExternalPadding;
+    CGFloat buttonsHeight = kAlertViewButtonHeight;
+    if (buttonCount > 2) {
+        buttonsHeight += (kAlertViewButtonSpacing + buttonsHeight) * (buttonCount - 1);
+    }
+    
+    if (delegate) {
+        self.delegate = delegate;
+    }
+    
+    UIView *contentOptionsView = [UIView new];
+    UIView *previousView = nil;
+    for (int i = 0; i  < options; i++) {
+        UISwitch *optionSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(10.0f, 7.0f, 30.0f, 20.0f)];
+        optionSwitch.tag = i + 1;
+        [optionSwitch addTarget:self action:@selector(onSelectConsoleSwitch:) forControlEvents:UIControlEventValueChanged];
+        optionSwitch.on = [optionsOn[i] boolValue];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(optionSwitch.frame) + 15.0f, 15.0f, alertWidth - (kOptionSwitchPaddingHorizontal * 4) - CGRectGetWidth(optionSwitch.frame), 15.0f)];
+        label.textColor = [UIColor blackColor];
+        label.font = [UIFont fontWithName:@"Bebas" size:15.0f];
+        label.text = (NSString *)optionsText[i];
+        if (!previousView) {
+            UIView *optionsView = [[UIView alloc] initWithFrame:CGRectMake(kOptionSwitchPaddingHorizontal, 0.0f, alertWidth - (kOptionSwitchPaddingHorizontal * 4), kOptionSwitchViewHeight)];
+            [optionsView addSubview:optionSwitch];
+            [optionsView addSubview:label];
+            
+            if (i < options - 1) {
+                UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(optionsView.frame) - 1, CGRectGetWidth(optionsView.frame), 1)];
+                separatorView.backgroundColor = [UIColor colorWithRed:216.0f/255.0f green:219.0f/255.0f blue:223.0f/255.0f alpha:1.0f];
+                [optionsView addSubview:separatorView];
+            }
+            
+            contentOptionsView.frame = optionsView.frame;
+            [contentOptionsView addSubview:optionsView];
+            
+            previousView = optionsView;
+        } else {
+            UIView *optionsView = [[UIView alloc] initWithFrame:CGRectMake(kOptionSwitchPaddingHorizontal, CGRectGetMaxY(previousView.frame), alertWidth - (kOptionSwitchPaddingHorizontal * 4), kOptionSwitchViewHeight)];
+            [optionsView addSubview:optionSwitch];
+            [optionsView addSubview:label];
+            
+            if (i < options - 1) {
+                UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(optionsView.frame) - 1, CGRectGetWidth(optionsView.frame), 1)];
+                separatorView.backgroundColor = [UIColor colorWithRed:216.0f/255.0f green:219.0f/255.0f blue:223.0f/255.0f alpha:1.0f];
+                [optionsView addSubview:separatorView];
+            }
+            
+            CGRect contentOptionsViewFrame = contentOptionsView.frame;
+            contentOptionsViewFrame.size.height = contentOptionsView.frame.size.height + previousView.frame.size.height;
+            contentOptionsView.frame = contentOptionsViewFrame;
+            
+            [contentOptionsView addSubview:optionsView];
+            
+            previousView = optionsView;
+        }
+    }
+    
+    CGFloat alertHeight = 2.0f * kAlertViewInnerPadding + kAlertViewTitleFontSize * hasTitle + contentOptionsView.frame.size.height + kOptionSwitchPaddingTop + kAlertViewButtonSpacing * 2.0f + buttonsHeight;
+    
+    // Setup container.
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, alertWidth, alertHeight)];
+    contentView.center = CGPointMake(screenSize.width / 2.0f, screenSize.height / 2.0f);
+    contentView.backgroundColor = [UIColor whiteColor];
+    contentView.layer.cornerRadius = 10.0;
+    // Setup title
+    CGFloat messageViewY = kAlertViewInnerPadding;
+    if (hasTitle) {
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kAlertViewInnerPadding, kAlertViewInnerPadding + 5.0f, alertWidth - 2.0f * kAlertViewInnerPadding, kAlertViewTitleFontSize)];
+        titleLabel.text = title;
+        titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        titleLabel.textColor = [UIColor blackColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        [contentView addSubview:titleLabel];
+        
+        messageViewY = CGRectGetMaxY(titleLabel.frame);
+    }
+    
+    CGRect contentOptionsViewFrame = contentOptionsView.frame;
+    contentOptionsViewFrame.origin.y = messageViewY + kOptionSwitchPaddingTop;
+    contentOptionsView.frame = contentOptionsViewFrame;
+    
+    [contentView addSubview:contentOptionsView];
+    
+    // Setup buttons
+    NSArray *buttons = [self setupButtonsWithTitles:buttonTitles types:buttonTypes contentView:contentView posY:CGRectGetMaxY(contentOptionsView.frame)];
+    
+    return [self initWithContentView:contentView
+                buttonsInContentView:buttons inputFieldsInContentView:nil clickedButton: ^(UIButton *clickedButton) {
+                    if (clickedButtonIndexBlock)
+                    {
+                        clickedButtonIndexBlock([buttons indexOfObject:clickedButton]);
+                    }
+                }];
+    
 }
 
 - (UITextView *)setupMessageViewWithText:(NSString *)message contentView:(UIView *)contentView posY:(CGFloat)messageViewY
@@ -288,6 +392,15 @@ const CGFloat kAlertViewButtonSpacing = 5.0f;
         UIView *alertView = self.contentView;
         alertView.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
     } completion:nil];
+}
+
+#pragma mark - Protocol delegate methods
+
+- (void)onSelectConsoleSwitch:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(onSelectConsoleSwitch:)]) {
+        [self.delegate onSelectConsoleSwitch:sender];
+    }    
 }
 
 @end

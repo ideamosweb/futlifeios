@@ -13,7 +13,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{
-             @"sessionToken" : @"sessionToken"
+             @"sessionToken" : @"token"
              };
 }
 

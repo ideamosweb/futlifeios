@@ -23,3 +23,16 @@
 }
 
 @end
+
+@implementation FLComplementRegisterRequestModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"userId": @"user_id",
+             @"userName": @"username",
+             @"avatar": @"avatar",
+             @"preferences": @"preferences"
+             };
+}
+
+@end
