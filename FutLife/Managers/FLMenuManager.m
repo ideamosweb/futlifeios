@@ -7,6 +7,8 @@
 //
 
 #import "FLMenuManager.h"
+#import "FLProfileViewController.h"
+#import "FLLoginViewController.h"
 
 @implementation FLMenuManager
 
@@ -51,7 +53,17 @@
 
 - (void)onProfileTapped:(id)sender
 {
+    DDLogInfo(@"%@", NSStringFromSelector(_cmd));
+    DDLogInfo(@"%@", self.currentViewController.title);
     
+    if (![self.currentViewController isKindOfClass:[FLProfileViewController class]]) {
+        UINavigationController *nav = [FLAppDelegate mainNavigationController];
+        NSArray *consoles = [FLLocalDataManager sharedInstance].consoles;
+        NSArray *games = [FLLocalDataManager sharedInstance].games;
+        self.currentViewController = [[FLProfileViewController alloc] initWithConsoles:consoles games:games confirmButton:false completedBlock:nil];
+        
+        [nav fl_pushViewControllerFromRoot:self.currentViewController animated:YES];
+    }
 }
 
 - (void)onSettingsTapped:(id)sender
@@ -81,7 +93,16 @@
 
 - (void)onLogOutTapped:(id)sender
 {
+    DDLogInfo(@"%@", NSStringFromSelector(_cmd));
+    DDLogInfo(@"%@", self.currentViewController.title);
     
+    if (![self.currentViewController isKindOfClass:[FLLoginViewController class]]) {
+        [[FLLoginManager sharedInstance] logOut];
+        //UINavigationController *nav = [FLAppDelegate mainNavigationController];
+        //self.currentViewController = [[FLLoginViewController alloc] init];
+        
+        //[nav fl_pushViewControllerFromRoot:self.currentViewController animated:YES];
+    }
 }
 
 @end

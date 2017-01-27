@@ -11,6 +11,7 @@
 @interface FLUserModel : FLModel
 
 @property (strong, nonatomic) NSNumber *userId;
+@property (copy, nonatomic) NSString *avatar;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *email;
 @property (copy, nonatomic) NSString *userName;
@@ -19,5 +20,12 @@
 @property (assign, nonatomic, getter=isActive) BOOL active;
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSDate *updatedAt;
+
+@end
+
+@interface FLUsersResponse : FLModel
+
+@property (strong, nonatomic) NSArray *data;
+@property (assign, nonatomic) BOOL success;
 
 @end

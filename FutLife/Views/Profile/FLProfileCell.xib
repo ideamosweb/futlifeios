@@ -130,7 +130,7 @@
                 <outlet property="gameNumberLabel" destination="jaM-ko-FKA" id="GgM-d2-BbP"/>
                 <outlet property="gameYearLabel" destination="f8P-rm-Zcd" id="N9j-Hn-tW8"/>
             </connections>
-            <point key="canvasLocation" x="-253" y="33"/>
+            <point key="canvasLocation" x="-343" y="27"/>
         </tableViewCell>
     </objects>
     <resources>

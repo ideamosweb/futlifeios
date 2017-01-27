@@ -61,6 +61,7 @@
     self.nextButton.enabled = NO;
     self.consoleCarousel.type = iCarouselTypeRotary;
     self.consoleCarousel.bounceDistance = 0.3f;
+    self.consoleCarousel.scrollSpeed = 0.3f;
     
     // Let's add carousels items
     self.carousels = @[self.consoleCarousel];
@@ -107,15 +108,17 @@
 
 - (void)getConsoles
 {
+    __weak __typeof(self)weakSelf = self;
     [FLAppDelegate showLoadingHUD];
     [[FLApiManager sharedInstance] consolesRequestWithSuccess:^(FLConsoleResponseModel *responseModel) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         [FLAppDelegate hideLoadingHUD];
         if (responseModel) {
-            self.carouselItemsViews[self.consoleCarousel.tag] = [self configCarouselsItemsViews:responseModel.data];
-            self.consoles = responseModel.data;
+            strongSelf.carouselItemsViews[self.consoleCarousel.tag] = [self configCarouselsItemsViews:responseModel.data];
+            strongSelf.consoles = responseModel.data;
             
             // We need to reload data for take all the items
-            [self carouselsReloadData];
+            [strongSelf carouselsReloadData];
         }
     } failure:^(FLApiError *error) {
         [FLAppDelegate hideLoadingHUD];
@@ -212,6 +215,7 @@
         [consolesArray addObject:console];
     }
     
+    [FLLocalDataManager sharedInstance].consoles = consolesArray;   
     self.chooseConsoleCompletedBlock(consolesArray);
 }
 

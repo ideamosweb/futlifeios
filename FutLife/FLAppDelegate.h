@@ -19,6 +19,7 @@
 + (void)showLoadingHUD;
 + (void)hideLoadingHUD;
 
+- (void)openStartUp;
 - (void)openTimeLineHome;
 
 @end

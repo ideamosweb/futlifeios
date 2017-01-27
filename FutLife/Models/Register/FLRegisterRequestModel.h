@@ -18,11 +18,17 @@
 
 @end
 
-@interface FLComplementRegisterRequestModel : FLModel
+@interface FLRegisterPreferencesModel : FLModel
+
+@property (strong, nonatomic) NSNumber *gameId;
+@property (strong, nonatomic) NSNumber *consoleId;
+@property (assign, nonatomic) BOOL active;
+
+@end
+
+@interface FLRegisterPreferencesRequestModel : FLModel
 
 @property (strong, nonatomic) NSNumber *userId;
-@property (copy, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSData *avatar;
 @property (strong, nonatomic) NSArray *preferences;
 
 @end

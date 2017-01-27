@@ -105,7 +105,6 @@
     requestModel.email = self.emailTextfield.text;
     requestModel.password = self.passwordTextfield.text;
     requestModel.passwordConfirmation = self.passwordTextfield.text;
-    // self.registrationCompletedBlock();
     
     __weak __typeof(self)weakSelf = self;
     [FLAppDelegate showLoadingHUD];
@@ -113,7 +112,9 @@
         [FLAppDelegate hideLoadingHUD];
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         FLUserModel *user = (FLUserModel *)responseModel.data;
+        user.sessionToken = responseModel.token;
         [FLLocalDataManager sharedInstance].user = user;
+        [FLLocalDataManager sharedInstance].sessionToken = responseModel.token;
         
         strongSelf.registrationCompletedBlock();
     } failure:^(FLApiError *error) {

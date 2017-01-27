@@ -27,6 +27,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"userId" : @"id",
+             @"avatar" : @"avatar",
              @"name" : @"name",
              @"email" : @"email",
              @"userName" : @"username",
@@ -62,6 +63,25 @@
     } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
         return [self.dateFormatter stringFromDate:date];
     }];
+}
+
+@end
+
+@implementation FLUsersResponse
+
+#pragma mark - Mantle JSONKeyPathsByPropertyKey
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"data" : @"data",
+             @"success" : @"success"
+             };
+}
+
+#pragma mark - JSON Transformers
+
++ (NSValueTransformer *)dataJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:FLUserModel.class];
 }
 
 @end

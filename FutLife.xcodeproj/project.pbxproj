@@ -54,6 +54,13 @@
 		179500DE1E2F06F800BA0A59 /* FLLoginRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500DD1E2F06F800BA0A59 /* FLLoginRequestModel.m */; };
 		179500E11E2F072A00BA0A59 /* FLLoginResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500E01E2F072A00BA0A59 /* FLLoginResponseModel.m */; };
 		179500E41E2F11EC00BA0A59 /* FLLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500E31E2F11EC00BA0A59 /* FLLoginManager.m */; };
+		179500E71E31262F00BA0A59 /* UINavigationController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500E61E31262F00BA0A59 /* UINavigationController+Utils.m */; };
+		179500EA1E326AF600BA0A59 /* FLTemporalSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500E91E326AF600BA0A59 /* FLTemporalSessionManager.m */; };
+		179500EF1E36587800BA0A59 /* FLTabsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500EE1E36587800BA0A59 /* FLTabsViewController.m */; };
+		179500F41E3660B800BA0A59 /* FLUsersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500F21E3660B800BA0A59 /* FLUsersListViewController.m */; };
+		179500F51E3660B800BA0A59 /* FLUsersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179500F31E3660B800BA0A59 /* FLUsersListViewController.xib */; };
+		179500F91E37B63400BA0A59 /* FLUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 179500F81E37B63400BA0A59 /* FLUserListCell.m */; };
+		179500FC1E37C1A900BA0A59 /* FLUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179500FA1E37B67900BA0A59 /* FLUserListCell.xib */; };
 		179EA43C1DBC3E23004EB2CC /* FLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 179EA43B1DBC3E23004EB2CC /* FLTextField.m */; };
 		179EA4411DBC72FB004EB2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179EA4431DBC72FB004EB2CC /* Localizable.strings */; };
 		179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 179EA4481DBC73CC004EB2CC /* Localizable.strings */; };
@@ -190,6 +197,18 @@
 		179500E01E2F072A00BA0A59 /* FLLoginResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLoginResponseModel.m; path = Models/Login/FLLoginResponseModel.m; sourceTree = "<group>"; };
 		179500E21E2F11EC00BA0A59 /* FLLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLLoginManager.h; path = Managers/FLLoginManager.h; sourceTree = "<group>"; };
 		179500E31E2F11EC00BA0A59 /* FLLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLLoginManager.m; path = Managers/FLLoginManager.m; sourceTree = "<group>"; };
+		179500E51E31262F00BA0A59 /* UINavigationController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Utils.h"; path = "Common/Categories/UINavigationController+Utils.h"; sourceTree = "<group>"; };
+		179500E61E31262F00BA0A59 /* UINavigationController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Utils.m"; path = "Common/Categories/UINavigationController+Utils.m"; sourceTree = "<group>"; };
+		179500E81E326AF600BA0A59 /* FLTemporalSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLTemporalSessionManager.h; path = Managers/FLTemporalSessionManager.h; sourceTree = "<group>"; };
+		179500E91E326AF600BA0A59 /* FLTemporalSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLTemporalSessionManager.m; path = Managers/FLTemporalSessionManager.m; sourceTree = "<group>"; };
+		179500ED1E36587800BA0A59 /* FLTabsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLTabsViewController.h; path = Controllers/Tabs/FLTabsViewController.h; sourceTree = "<group>"; };
+		179500EE1E36587800BA0A59 /* FLTabsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLTabsViewController.m; path = Controllers/Tabs/FLTabsViewController.m; sourceTree = "<group>"; };
+		179500F11E3660B800BA0A59 /* FLUsersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLUsersListViewController.h; path = Controllers/UsersList/FLUsersListViewController.h; sourceTree = "<group>"; };
+		179500F21E3660B800BA0A59 /* FLUsersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLUsersListViewController.m; path = Controllers/UsersList/FLUsersListViewController.m; sourceTree = "<group>"; };
+		179500F31E3660B800BA0A59 /* FLUsersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLUsersListViewController.xib; path = Views/UsersList/FLUsersListViewController.xib; sourceTree = "<group>"; };
+		179500F71E37B63400BA0A59 /* FLUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLUserListCell.h; path = Controllers/UsersList/FLUserListCell.h; sourceTree = "<group>"; };
+		179500F81E37B63400BA0A59 /* FLUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLUserListCell.m; path = Controllers/UsersList/FLUserListCell.m; sourceTree = "<group>"; };
+		179500FA1E37B67900BA0A59 /* FLUserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLUserListCell.xib; path = Views/UsersList/FLUserListCell.xib; sourceTree = "<group>"; };
 		179EA43A1DBC3E23004EB2CC /* FLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLTextField.h; path = Common/Forms/FLTextField.h; sourceTree = "<group>"; };
 		179EA43B1DBC3E23004EB2CC /* FLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLTextField.m; path = Common/Forms/FLTextField.m; sourceTree = "<group>"; };
 		179EA43D1DBC71D2004EB2CC /* FutLife Staging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FutLife Staging.entitlements"; sourceTree = "<group>"; };
@@ -359,6 +378,8 @@
 		1772ADF51DB454FC00236CB9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				179500F01E36606F00BA0A59 /* UsersList */,
+				179500EC1E36584100BA0A59 /* Tabs */,
 				179500B51E2D6F0B00BA0A59 /* TimeLineHome */,
 				1790943B1E24421A0040B1B6 /* NavigationMenu */,
 				1729474D1E1EA18500EB4DBA /* Banners */,
@@ -391,6 +412,8 @@
 				179094461E2456630040B1B6 /* FLMenuManager.m */,
 				179500E21E2F11EC00BA0A59 /* FLLoginManager.h */,
 				179500E31E2F11EC00BA0A59 /* FLLoginManager.m */,
+				179500E81E326AF600BA0A59 /* FLTemporalSessionManager.h */,
+				179500E91E326AF600BA0A59 /* FLTemporalSessionManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -412,6 +435,7 @@
 		1772ADF81DB4552200236CB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				179500F61E3660D400BA0A59 /* UsersList */,
 				179500BB1E2D746800BA0A59 /* TimeLineHome */,
 				179094411E24427F0040B1B6 /* NavigationMenu */,
 				172947531E1EA1E600EB4DBA /* Banners */,
@@ -462,6 +486,8 @@
 				17BE292E1DC6B16D007F572E /* UIViewController+Utils.m */,
 				179500BE1E2E6B2C00BA0A59 /* UIFont+Utils.h */,
 				179500BF1E2E6B2C00BA0A59 /* UIFont+Utils.m */,
+				179500E51E31262F00BA0A59 /* UINavigationController+Utils.h */,
+				179500E61E31262F00BA0A59 /* UINavigationController+Utils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -590,6 +616,35 @@
 				179500E01E2F072A00BA0A59 /* FLLoginResponseModel.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		179500EC1E36584100BA0A59 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				179500ED1E36587800BA0A59 /* FLTabsViewController.h */,
+				179500EE1E36587800BA0A59 /* FLTabsViewController.m */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
+		179500F01E36606F00BA0A59 /* UsersList */ = {
+			isa = PBXGroup;
+			children = (
+				179500F11E3660B800BA0A59 /* FLUsersListViewController.h */,
+				179500F21E3660B800BA0A59 /* FLUsersListViewController.m */,
+				179500F71E37B63400BA0A59 /* FLUserListCell.h */,
+				179500F81E37B63400BA0A59 /* FLUserListCell.m */,
+			);
+			name = UsersList;
+			sourceTree = "<group>";
+		};
+		179500F61E3660D400BA0A59 /* UsersList */ = {
+			isa = PBXGroup;
+			children = (
+				179500F31E3660B800BA0A59 /* FLUsersListViewController.xib */,
+				179500FA1E37B67900BA0A59 /* FLUserListCell.xib */,
+			);
+			name = UsersList;
 			sourceTree = "<group>";
 		};
 		179EA43E1DBC7235004EB2CC /* Localizations */ = {
@@ -953,9 +1008,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				179500FC1E37C1A900BA0A59 /* FLUserListCell.xib in Resources */,
 				179500DA1E2E7F4800BA0A59 /* BebasNeue-Thin.ttf in Resources */,
 				179EA44A1DBC73CC004EB2CC /* Localizable.strings in Resources */,
 				175D2B0D1DBD786E0097C8A0 /* FLRegisterViewController.xib in Resources */,
+				179500F51E3660B800BA0A59 /* FLUsersListViewController.xib in Resources */,
 				179500D91E2E7F4800BA0A59 /* BebasNeue-Regular.ttf in Resources */,
 				179500D81E2E7F4800BA0A59 /* BebasNeue-Light.ttf in Resources */,
 				17B3711C1DF126210035442D /* FLProfileViewController.xib in Resources */,
@@ -1062,6 +1119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				179500F91E37B63400BA0A59 /* FLUserListCell.m in Sources */,
 				179500E11E2F072A00BA0A59 /* FLLoginResponseModel.m in Sources */,
 				175D2B031DBD69B60097C8A0 /* FLRegisterRequestModel.m in Sources */,
 				1772AE281DB5350500236CB9 /* UIWebView+Utils.m in Sources */,
@@ -1086,13 +1144,16 @@
 				17B3711B1DF126210035442D /* FLProfileViewController.m in Sources */,
 				17C2C2271DD836BE0036D899 /* FLConsoleModel.m in Sources */,
 				1772AE0F1DB5223A00236CB9 /* NSData+Utils.m in Sources */,
+				179500EF1E36587800BA0A59 /* FLTabsViewController.m in Sources */,
 				17B371261DF137F90035442D /* FLUserModel.m in Sources */,
+				179500F41E3660B800BA0A59 /* FLUsersListViewController.m in Sources */,
 				1772AE161DB525C300236CB9 /* FLApiError.m in Sources */,
 				179500B91E2D6F5200BA0A59 /* FLTimeLineHomeViewController.m in Sources */,
 				17C3C6C91DC1CAA100415CBE /* FLLocalDataManager.m in Sources */,
 				175D2B071DBD718F0097C8A0 /* FLRegisterResponseModel.m in Sources */,
 				1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */,
 				179EA4541DBD3411004EB2CC /* FLModel.m in Sources */,
+				179500E71E31262F00BA0A59 /* UINavigationController+Utils.m in Sources */,
 				179094471E2456630040B1B6 /* FLMenuManager.m in Sources */,
 				1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */,
 				172947511E1EA1C900EB4DBA /* FLBannersViewController.m in Sources */,
@@ -1102,6 +1163,7 @@
 				17B3712A1DF466F80035442D /* FLCustomCell.m in Sources */,
 				1772ADFD1DB4557700236CB9 /* FLConstants.m in Sources */,
 				17E16B681DC84EF4008B6AED /* iCarousel.m in Sources */,
+				179500EA1E326AF600BA0A59 /* FLTemporalSessionManager.m in Sources */,
 				1772ADFE1DB4557700236CB9 /* FLViewController.m in Sources */,
 				17E16B6C1DC84F8A008B6AED /* FLCarouselViewController.m in Sources */,
 				17C3C6BF1DC17F9000415CBE /* FLError.m in Sources */,

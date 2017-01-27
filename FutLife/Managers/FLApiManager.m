@@ -8,11 +8,15 @@
 
 #import "FLApiManager.h"
 
+static NSString *const kApiTokenQuery = @"?token=%@";
+
 static NSString *const kApiRegisterPath = @"m/v1/register";
-static NSString *const kApiRegisterComplementPath = @"m/v1/user/avatar";
+static NSString *const kApiRegisterPreferencesPath = @"m/v1/user/preferences%@";
+static NSString *const kApiRegisterAvatarPath = @"m/v1/user/avatar%@";
 static NSString *const kApiGamesPath = @"m/v1/games/get";
 static NSString *const kApiConsolesPath = @"m/v1/consoles/get";
 static NSString *const kApiLoginPath = @"m/v1/login";
+static NSString *const kApiGetAllPath = @"m/v1/user/get/all%@";
 
 @implementation FLApiManager
 
@@ -55,16 +59,39 @@ static NSString *const kApiLoginPath = @"m/v1/login";
 }
 
 // - POST -
-// Register complement request
-- (NSURLSessionDataTask *)registerComplementRequestWithModel:(FLComplementRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure
+// Register preferences request
+- (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure
 {
-    NSData *imageData = requestModel.avatar;
     NSDictionary *parameters = [MTLJSONAdapter JSONDictionaryFromModel:requestModel error:nil];
+    NSString *token = [FLLocalDataManager sharedInstance].sessionToken;
+    NSString *queryParam = [NSString stringWithFormat:kApiTokenQuery, token];
     
-    return [self POST:kApiRegisterComplementPath parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//        [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];   // add image to formData
-//        
-//        [formData appendPartWithFormData:[@"sdsd" dataUsingEncoding:NSUTF8StringEncoding] name:@"key1"];
+    return [self POST:[NSString stringWithFormat:kApiRegisterPreferencesPath, queryParam] parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+        NSError *error;
+        FLRegisterResponseModel *response = [MTLJSONAdapter modelOfClass:[FLRegisterResponseModel class] fromJSONDictionary:responseDictionary error:&error];
+        success(response);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure([error fl_apiErrorWithHttpStatusCode:error.code]);
+    }];
+}
+
+// - POST -
+// Avatar request
+- (NSURLSessionDataTask *)avatarRequestWithData:(NSData *)data success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure
+{
+    NSData *imageData = data;
+    NSString *token = [FLTemporalSessionManager sharedInstance].sessionToken;
+    NSString *queryParam = [NSString stringWithFormat:kApiTokenQuery, token];
+    //NSDictionary *parameters = [MTLJSONAdapter JSONDictionaryFromModel:requestModel error:nil];
+    
+    return [self POST:[NSString stringWithFormat:kApiRegisterAvatarPath, queryParam] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        if (imageData) {
+            [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];   // add image to formData
+            
+            [formData appendPartWithFormData:[@"sdsd" dataUsingEncoding:NSUTF8StringEncoding] name:@"avatar"];
+        }
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         NSError *error;
@@ -115,6 +142,23 @@ static NSString *const kApiLoginPath = @"m/v1/login";
         NSError *error;
         FLLoginResponseModel *response = [MTLJSONAdapter modelOfClass:[FLLoginResponseModel class] fromJSONDictionary:responseDictionary error:&error];
         
+        success(response);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure([error fl_apiErrorWithHttpStatusCode:error.code]);
+    }];
+}
+
+// - GET -
+// TimeLine get all users
+- (NSURLSessionDataTask *)getAllWithSuccess:(void (^)(FLUsersResponse *responseModel))success failure:(void (^)(FLApiError *error))failure
+{
+    // Set token as param to url
+    NSString *token = [FLLocalDataManager sharedInstance].sessionToken;
+    NSString *queryParam = [NSString stringWithFormat:kApiTokenQuery, token];
+    return [self GET:[NSString stringWithFormat:kApiGetAllPath, queryParam] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+        NSError *error;
+        FLUsersResponse *response = [MTLJSONAdapter modelOfClass:[FLUsersResponse class] fromJSONDictionary:responseDictionary error:&error];
         success(response);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure([error fl_apiErrorWithHttpStatusCode:error.code]);

@@ -61,10 +61,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setVersionLabel];
-    [self animationLogo];
-    
-    [self performSelector:@selector(showBanners) withObject:nil afterDelay:4.0];
+    // Control login behaviour
+    if (![FLTemporalSessionManager sharedInstance].isLogOut) {
+        [self setVersionLabel];
+        [self animationLogo];
+        
+        if ([FLLocalDataManager sharedInstance].completedRegister || [FLLocalDataManager sharedInstance].logged) {
+            [self performSelector:@selector(goToTimeLineHome) withObject:nil afterDelay:4.0];
+        } else {
+            [self performSelector:@selector(showBanners) withObject:nil afterDelay:4.0];
+        }
+    } else {
+        [self goToLogin];
+    }
 }
 
 - (void)animationLogo
@@ -86,63 +95,80 @@
     __weak __typeof(self)weakSelf = self;
     FLBannersViewController *bannersVC = [[FLBannersViewController alloc] initWithCompletionBlock:^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        if (![FLLocalDataManager sharedInstance].registeredUser) {
-            [strongSelf registerUser];
-        } else {
-            [strongSelf goToChooseConsoleWithNavBar:NO];
-            //[strongSelf goToTimeLineHome];
-            //[strongSelf goToLogin];
-            //[strongSelf registerUser];
-        }
+        [strongSelf checkLoginOrRegisterProcess];
     }];
     
     //[self.navigationController pushViewController:bannersVC animated:YES];
     [self presentViewController:bannersVC animated:YES completion:nil];
 }
 
+- (void)checkLoginOrRegisterProcess
+{
+    if (![FLLocalDataManager sharedInstance].registeredUser) {
+        [self goToLogin];
+    } else {
+        if (![FLLocalDataManager sharedInstance].registeredUser) {
+            [self registerUser];
+        } else if (![FLLocalDataManager sharedInstance].chosenConsole) {
+            [self goToChooseConsoleWithNavBar:YES];
+        } else if (![FLLocalDataManager sharedInstance].chosenGame) {
+            [self goToChooseGameWithConsoles:[FLLocalDataManager sharedInstance].consoles];
+        } else if (![FLLocalDataManager sharedInstance].completedRegister) {
+            [self goToUserProfileWithConsoles:[FLLocalDataManager sharedInstance].consoles games:[FLLocalDataManager sharedInstance].games];
+        } else {
+            [self goToTimeLineHome];
+        }
+    }
+}
+
 - (void)registerUser
 {
     __weak __typeof(self)weakSelf = self;
     FLRegisterViewController *registerVC = [[FLRegisterViewController alloc] initWithCompletedBlock:^{
+        // Set registered user
         [FLLocalDataManager sharedInstance].registeredUser = YES;
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         // Go to Choose Console
         [strongSelf goToChooseConsoleWithNavBar:YES];
     }];
     
-    [self.navigationController pushViewController:registerVC animated:YES];
+    [[FLAppDelegate mainNavigationController] pushViewController:registerVC animated:YES];
 }
 
 - (void)goToChooseConsoleWithNavBar:(BOOL)navBar
 {
     __weak __typeof(self)weakSelf = self;
     FLChooseConsoleViewController *chooseConsoleVC = [[FLChooseConsoleViewController alloc] initWithNavBar:navBar completedBlock:^(NSArray *consoleType) {
+        [FLLocalDataManager sharedInstance].chosenConsole = YES;
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf goToChooseGameWithConsoles:consoleType];
     }];
     
-    [self.navigationController pushViewController:chooseConsoleVC animated:YES];
+    [[FLAppDelegate mainNavigationController] pushViewController:chooseConsoleVC animated:YES];
 }
 
 - (void)goToChooseGameWithConsoles:(NSArray *)consoles
 {
     __weak __typeof(self)weakSelf = self;
     FLChooseGameViewController *chooseGameVC = [[FLChooseGameViewController alloc] initWithConsoles:consoles completedBlock:^(NSArray *consoleType, NSArray *games) {
+        [FLLocalDataManager sharedInstance].chosenGame = true;
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         //[strongSelf goToTimeLineHome];
         [strongSelf goToUserProfileWithConsoles:consoleType games:games];
     }];
     
-    [self.navigationController pushViewController:chooseGameVC animated:YES];
+    [[FLAppDelegate mainNavigationController] pushViewController:chooseGameVC animated:YES];
 }
 
 - (void)goToUserProfileWithConsoles:(NSArray *)consoles games:(NSArray *)games
 {
+    __weak __typeof(self)weakSelf = self;
     FLProfileViewController *profileVC = [[FLProfileViewController alloc] initWithConsoles:consoles games:games confirmButton:true completedBlock:^{
-        
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf goToTimeLineHome];
     }];
     
-    [self.navigationController pushViewController:profileVC animated:YES];
+    [[FLAppDelegate mainNavigationController] pushViewController:profileVC animated:YES];
 }
 
 - (void)goToLogin
@@ -154,17 +180,17 @@
         [strongSelf registerUser];
     } loginBlock:^{
         // Go to dashboard!
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:@"Función login deshabilitada" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-//                
-//            }];
-//            [alert show];
-//        });
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         [strongSelf goToTimeLineHome];
     }];
     
-    [self.navigationController pushViewController:loginVC animated:NO];
+    if ([FLTemporalSessionManager sharedInstance].isLogOut) {
+        [FLTemporalSessionManager sharedInstance].logOut = false;
+        UINavigationController *navigationController = [FLAppDelegate mainNavigationController];
+        [navigationController fl_pushViewControllerFromRoot:loginVC animated:YES];
+    } else {
+        [[FLAppDelegate mainNavigationController] pushViewController:loginVC animated:YES];
+    }
 }
 
 - (void)goToTimeLineHome

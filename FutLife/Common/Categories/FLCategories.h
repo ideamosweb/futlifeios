@@ -23,5 +23,6 @@
 #import "UIViewController+Utils.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIFont+Utils.h"
+#import "UINavigationController+Utils.h"
 
 #endif /* FLCategories_h */

@@ -20,4 +20,10 @@
              };
 }
 
+#pragma mark - JSON Transformers
+
++ (NSValueTransformer *)dataJSONTransformer {
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:FLUserModel.class];
+}
+
 @end

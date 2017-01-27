@@ -78,6 +78,7 @@
                 carousel.delegate = self;
                 carousel.dataSource = self;
                 carousel.bounceDistance = 0.3f;
+                carousel.scrollSpeed = 0.3f;
                 carousel.tag = i;
                 self.carouselItemsViews[carousel.tag] = [self configCarouselsViewsItems:viewItems];
                 
@@ -90,6 +91,7 @@
                 carousel.delegate = self;
                 carousel.dataSource = self;
                 carousel.bounceDistance = 0.3f;
+                carousel.scrollSpeed = 0.3f;
                 carousel.tag = i;
                 self.carouselItemsViews[carousel.tag] = [self configCarouselsViewsItems:viewItems];
                 
@@ -160,32 +162,40 @@
         [consolesName addObject:console.name];
     }
     
-    if ([self.selectedItems containsObject:index]) {
-        [[[FLAlertView alloc] initWithNumberOfOptions:self.consoles.count title:@"Selecciona la consola" optionsText:consolesName optionsOn:nil buttonTitles:@[@"Aceptar"] buttonTypes:@[] delegate:self clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-            __strong __typeof(weakSelf)strongSelf = weakSelf;
-            FLGameModel *game = [strongSelf.games objectAtIndex:[index integerValue]];
+    if (self.consoles.count > 1) {
+        if ([self.selectedItems containsObject:index]) {
+            [[[FLAlertView alloc] initWithNumberOfOptions:self.consoles.count title:@"Selecciona la consola" optionsText:consolesName optionsOn:nil buttonTitles:@[@"Aceptar"] buttonTypes:@[] delegate:self clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                __strong __typeof(weakSelf)strongSelf = weakSelf;
+                FLGameModel *game = [strongSelf.games objectAtIndex:[index integerValue]];
+                
+                if ([strongSelf.consolesSelected count] > 0) {
+                    game.consoles = [strongSelf.consolesSelected mutableCopy];
+                    [strongSelf.gamesSelected addObject:game];
+                    
+                    strongSelf.nextButton.enabled = (strongSelf.indexSelectedItems.count > 0);
+                    
+                    [strongSelf.consolesSelected removeAllObjects];
+                } else {
+                    iCarousel *carousel = strongSelf.carousels[0];
+                    [strongSelf carousel:carousel didSelectItemAtIndex:[index integerValue]];
+                }
+            }] show];
+        } else {
+            FLGameModel *game = [self.games objectAtIndex:[index integerValue]];
+            if ([self.gamesSelected containsObject:game]) {
+                [self.gamesSelected removeObject:game];
+            }
             
-            if ([strongSelf.consolesSelected count] > 0) {
-                game.consoles = [strongSelf.consolesSelected mutableCopy];
-                [strongSelf.gamesSelected addObject:game];
-                
-                strongSelf.nextButton.enabled = (strongSelf.indexSelectedItems.count > 0);
-                
-                 [strongSelf.consolesSelected removeAllObjects];
-            } else {
-                iCarousel *carousel = strongSelf.carousels[0];
-                [strongSelf carousel:carousel didSelectItemAtIndex:[index integerValue]];
-            }            
-        }] show];
-    } else {
-        FLGameModel *game = [self.games objectAtIndex:[index integerValue]];
-        if ([self.gamesSelected containsObject:game]) {
-            [self.gamesSelected removeObject:game];
+            self.nextButton.enabled = (self.indexSelectedItems.count > 0 && [self.consolesSelected count] > 0);
+            
+            [self.consolesSelected removeAllObjects];
         }
+    } else if (self.consoles.count == 1) {
+        FLGameModel *game = [self.games objectAtIndex:[index integerValue]];
+        game.consoles = self.consoles;
+        [self.gamesSelected addObject:game];
         
-        self.nextButton.enabled = (self.indexSelectedItems.count > 0 && [self.consolesSelected count] > 0);
-        
-        [self.consolesSelected removeAllObjects];
+        self.nextButton.enabled = (self.indexSelectedItems.count > 0);
     }
 }
 
@@ -219,6 +229,7 @@
 
 - (IBAction)onNextButtonTouch:(id)sender
 {
+    [FLLocalDataManager sharedInstance].games = self.gamesSelected;
     self.chooseGameCompletedBlock(self.consoles, self.gamesSelected);
     
 }

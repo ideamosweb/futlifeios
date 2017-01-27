@@ -167,22 +167,77 @@ static const CGFloat kProfileCellConsolesHeight = 22.0f;
 
 - (IBAction)onConfirmButtonTouch:(id)sender
 {
-    FLUserModel *userModel = [FLLocalDataManager sharedInstance].user;
-    FLComplementRegisterRequestModel *requestModel = [FLComplementRegisterRequestModel new];
-    requestModel.userId = userModel.userId;
-    requestModel.userName = userModel.userName;
-    
-    UIImage *avatar = [FLLocalDataManager sharedInstance].avatar;
-    NSData *imageData = UIImagePNGRepresentation(avatar);
-    //requestModel.avatar = imageData;
-    requestModel.preferences = @[];
-    
     __weak __typeof(self)weakSelf = self;
-    [FLAppDelegate showLoadingHUD];
-    [[FLApiManager sharedInstance] registerComplementRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
-        [FLAppDelegate hideLoadingHUD];
+    
+//    FLUserModel *userModel = [FLLocalDataManager sharedInstance].user;
+//    FLRegisterPreferencesRequestModel *requestModel = [FLRegisterPreferencesRequestModel new];
+//    requestModel.userId = userModel.userId;
+//    
+//    // TODO:
+//    NSMutableArray *preferences = [NSMutableArray new];
+//    if ([FLLocalDataManager sharedInstance].games) {
+//        for (FLGameModel *game in [FLLocalDataManager sharedInstance].games) {
+//            FLRegisterPreferencesModel *preference = [FLRegisterPreferencesModel new];
+//            preference.gameId = game.gameId;
+//        }
+//    }
+    
+//    requestModel.preferences = [FLLocalDataManager sharedInstance].games;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+                        FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                            __strong __typeof(weakSelf)strongSelf = weakSelf;
+        
+                            [FLLocalDataManager sharedInstance].completedRegister = true;
+                            strongSelf.profileCompletedBlock();
+                        }];
+                        [alert show];
+                    });   
+    
+    
+//    [FLAppDelegate showLoadingHUD];
+//    [[FLApiManager sharedInstance] registerPreferencesRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
+//        __strong __typeof(weakSelf)strongSelf = weakSelf;
+//        UIImage *avatar = [FLLocalDataManager sharedInstance].avatar;
+//        if (avatar) {
+//            [strongSelf performAvatarRequest:avatar];
+//        } else {
+//            [FLAppDelegate hideLoadingHUD];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+//                    __strong __typeof(weakSelf)strongSelf = weakSelf;
+//                    
+//                    [FLLocalDataManager sharedInstance].completedRegister = true;
+//                    strongSelf.profileCompletedBlock();
+//                }];
+//                [alert show];
+//            });
+//        }
+//    } failure:^(FLApiError *error) {
+//        [FLAppDelegate hideLoadingHUD];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+//                
+//            }];
+//            [alert show];
+//        });
+//    }];
+}
+
+- (void)performAvatarRequest:(UIImage *)avatar
+{
+     __weak __typeof(self)weakSelf = self;
+    NSData *imageData = UIImagePNGRepresentation(avatar);
+    [[FLApiManager sharedInstance] avatarRequestWithData:imageData success:^(FLRegisterResponseModel *responseModel) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        strongSelf.profileCompletedBlock();
+        [FLAppDelegate hideLoadingHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                [FLLocalDataManager sharedInstance].completedRegister = true;
+                strongSelf.profileCompletedBlock();
+            }];
+            [alert show];
+        });
     } failure:^(FLApiError *error) {
         [FLAppDelegate hideLoadingHUD];
         dispatch_async(dispatch_get_main_queue(), ^{

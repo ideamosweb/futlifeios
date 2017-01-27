@@ -7,6 +7,7 @@
 //
 
 #import "FLRegisterRequestModel.h"
+#import "FLGameModel.h"
 
 @implementation FLRegisterRequestModel
 
@@ -24,15 +25,31 @@
 
 @end
 
-@implementation FLComplementRegisterRequestModel
+@implementation FLRegisterPreferencesModel
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"userId": @"user_id",
-             @"userName": @"username",
-             @"avatar": @"avatar",
+             @"userId": @"game_id",
+             @"preferences": @"console_id",
+             @"active" : @"active"
+             };
+}
+
+@end
+
+@implementation FLRegisterPreferencesRequestModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"userId": @"user_id",             
              @"preferences": @"preferences"
              };
+}
+
+#pragma mark - JSON Transformers
+
++ (NSValueTransformer *)preferencesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:FLGameModel.class];
 }
 
 @end

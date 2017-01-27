@@ -6,8 +6,10 @@
 //  Copyright © 2017 IdeamosWeb S.A.S. All rights reserved.
 //
 
-#import "FLViewController.h"
+#import "FLTabsViewController.h"
 
-@interface FLTimeLineHomeViewController : FLViewController
+@interface FLTimeLineHomeViewController : FLTabsViewController
+
+- (id)init;
 
 @end

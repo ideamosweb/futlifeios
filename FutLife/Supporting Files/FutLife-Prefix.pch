@@ -55,6 +55,7 @@
 #import "FLApiManager.h"
 #import "FLLocalDataManager.h"
 #import "FLLoginManager.h"
+#import "FLTemporalSessionManager.h"
 
 // Categories
 #import "FLCategories.h"

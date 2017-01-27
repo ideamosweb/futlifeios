@@ -16,5 +16,12 @@
 @property (assign, nonatomic) BOOL registeredUser;
 @property (strong, nonatomic) FLUserModel *user;
 @property (strong, nonatomic) UIImage *avatar;
+@property (assign, nonatomic) BOOL chosenGame;
+@property (assign, nonatomic) BOOL chosenConsole;
+@property (assign, nonatomic) BOOL completedRegister;
+@property (assign, nonatomic) BOOL logged;
+@property (strong, nonatomic) NSArray *consoles;
+@property (strong, nonatomic) NSArray *games;
+@property (copy, nonatomic) NSString *sessionToken;
 
 @end

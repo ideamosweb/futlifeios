@@ -12,6 +12,7 @@
 #import "FLRegisterRequestModel.h"
 #import "FLRegisterResponseModel.h"
 
+#import "FLUserModel.h"
 #import "FLGameModel.h"
 #import "FLConsoleModel.h"
 
@@ -25,8 +26,11 @@
 // Register request
 - (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
-// Register complement request
-- (NSURLSessionDataTask *)registerComplementRequestWithModel:(FLComplementRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+// Register preferences request
+- (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+
+// Avatar request
+- (NSURLSessionDataTask *)avatarRequestWithData:(NSData *)data success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Get Consoles
 - (NSURLSessionDataTask *)consolesRequestWithSuccess:(void (^)(FLConsoleResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
@@ -36,5 +40,8 @@
 
 // Login request
 - (NSURLSessionDataTask *)loginRequestWithModel:(FLLoginRequestModel *)requestModel success:(void (^)(FLLoginResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+
+// TimeLine get all users request
+- (NSURLSessionDataTask *)getAllWithSuccess:(void (^)(FLUsersResponse *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 @end

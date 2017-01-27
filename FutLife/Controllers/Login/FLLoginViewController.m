@@ -33,13 +33,8 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
-    
-    // Set status bar style
-    MMDrawerController *drawerVC = (MMDrawerController *)[FLAppDelegate sharedInstance].window.rootViewController;
-    drawerVC.showsStatusBarBackgroundView = YES;
-    drawerVC.statusBarViewBackgroundColor = [UIColor blackColor];
-    
+    [super viewDidLoad];
+        
     // Let's pass the fields to inputsFormManager
     self.inputsFormManager.inputFields = @[self.usernameTextfield, self.passwordTextfield];
 }

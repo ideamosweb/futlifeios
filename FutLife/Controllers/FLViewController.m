@@ -28,18 +28,18 @@
 {
     UINavigationController *mainNavController = (UINavigationController *)[FLAppDelegate mainNavigationController];
     if (showNavigationBar) {
-        if (mainNavController.viewControllers.count > 1) {
-            mainNavController.navigationBarHidden = NO;
-            [mainNavController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-            mainNavController.navigationBar.shadowImage = [UIImage new];
-            mainNavController.navigationBar.translucent = YES;
-            mainNavController.view.backgroundColor = [UIColor clearColor];
-            mainNavController.navigationBar.backgroundColor = [UIColor clearColor];
-            self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-            self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-            [self.navigationController.navigationBar
-             setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-            
+        mainNavController.navigationBarHidden = NO;
+        [mainNavController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        mainNavController.navigationBar.shadowImage = [UIImage new];
+        mainNavController.navigationBar.translucent = YES;
+        mainNavController.view.backgroundColor = [UIColor clearColor];
+        mainNavController.navigationBar.backgroundColor = [UIColor clearColor];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        [self.navigationController.navigationBar
+         setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        
+        if (mainNavController.viewControllers.count > 1) {            
             [self addBackButton];
         }
     } else {

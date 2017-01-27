@@ -72,7 +72,7 @@ const CGFloat kNavMenuWidth = 283.0f;
     dispatch_async(dispatch_get_main_queue(), ^{
         MBProgressHUD *loadingHUD = [MBProgressHUD showHUDAddedTo:[FLAppDelegate sharedInstance].window.rootViewController.view
                                                          animated:YES];
-        loadingHUD.label.text = @"Cargando";
+        loadingHUD.label.text = @"Cargando...";
         
         MBBackgroundView *bgView = [MBBackgroundView new];
         bgView.style = MBProgressHUDBackgroundStyleBlur;
@@ -93,33 +93,39 @@ const CGFloat kNavMenuWidth = 283.0f;
 
 - (void)openStartUp
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    FLStartUpViewController *startUpVC = [[FLStartUpViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:startUpVC];
-    navigationController.navigationBarHidden = YES;
-    navigationController.navigationBar.translucent = YES;
-    [navigationController setNeedsStatusBarAppearanceUpdate];
-    
-    
-    MMDrawerController *drawerController = [[MMDrawerController alloc]
-                                            initWithCenterViewController:navigationController
-                                            leftDrawerViewController:nil];
-    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
-    drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
-    drawerController.maximumLeftDrawerWidth = kNavMenuWidth;
-    [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0f]];
-    
-    self.window.rootViewController = drawerController;
-    self.mainNavigationController = navigationController;
-    [self.window makeKeyAndVisible];    
+    if (![FLTemporalSessionManager sharedInstance].isLogOut) {
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        FLStartUpViewController *startUpVC = [[FLStartUpViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:startUpVC];
+        navigationController.navigationBarHidden = YES;
+        navigationController.navigationBar.translucent = YES;
+        [navigationController setNeedsStatusBarAppearanceUpdate];
+        
+        
+        MMDrawerController *drawerController = [[MMDrawerController alloc]
+                                                initWithCenterViewController:navigationController
+                                                leftDrawerViewController:nil];
+        drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+        drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+        drawerController.maximumLeftDrawerWidth = kNavMenuWidth;
+        [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0f]];
+        
+        self.window.rootViewController = drawerController;
+        self.mainNavigationController = navigationController;
+        [self.window makeKeyAndVisible];
+    } else {
+        FLStartUpViewController *startUpVC = [[FLStartUpViewController alloc] init];
+        [startUpVC viewDidLoad];        
+    }
 }
 
 - (void)openTimeLineHome
 {
     FLTimeLineHomeViewController *timeLinehomeVC = [[FLTimeLineHomeViewController alloc] init];
     UINavigationController *navigationController = [self mainNavigationController];
+    navigationController.viewControllers = @[];
     [navigationController pushViewController:timeLinehomeVC animated:YES];
-    [navigationController setViewControllers:@[timeLinehomeVC]];
+    //[navigationController setViewControllers:@[timeLinehomeVC]];
 }
 
 - (void)configApiLogs

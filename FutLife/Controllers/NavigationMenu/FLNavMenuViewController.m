@@ -186,6 +186,8 @@ NSString * const kMainNavMenuResuseIdentifierCell = @"NavMainMenuCell";
     
     [cell setBackgroundColor:[UIColor colorWithRed:2.0f/255.0f green:14.0f/255.0f blue:23.0f/255.0f alpha:1.0f]];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont fl_boldHelveticaFontOfSize:15.0];
     if (indexPath.section % 2 == 1) {
@@ -203,6 +205,32 @@ NSString * const kMainNavMenuResuseIdentifierCell = @"NavMainMenuCell";
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger realSection = indexPath.section / 2;
+    SEL selector = nil;
+    if (realSection == kMainNavMenuUserDataSection) {
+        selector = NSSelectorFromString(self.userDataRowsData[indexPath.row][2]);
+    } else if (realSection == kMainNavMenuContactSection) {
+        selector = NSSelectorFromString(self.contactRowsData[indexPath.row][2]);
+    } else {
+        selector = NSSelectorFromString(self.logOutRowsData[indexPath.row][2]);
+        [[FLLoginManager sharedInstance] logOut];
+        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+    }
+    
+//    self.menuManager.currentViewController = nil;
+//    
+//    
+//    
+//    if ([self.menuManager respondsToSelector:selector]) {
+//        IMP imp = [self.menuManager methodForSelector:selector];
+//        void (*func)(id, SEL, id) = (void *)imp;
+//        func(self.menuManager, selector, nil);
+//        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+//    }
 }
 
 - (void)localize
