@@ -172,7 +172,13 @@
                     game.consoles = [strongSelf.consolesSelected mutableCopy];
                     [strongSelf.gamesSelected addObject:game];
                     
-                    strongSelf.nextButton.enabled = (strongSelf.indexSelectedItems.count > 0);
+                    if (strongSelf.indexSelectedItems.count > 0) {
+                        strongSelf.nextButton.enabled = YES;
+                    } else {
+                        strongSelf.nextButton.enabled = NO;
+                        strongSelf.gamesSelected = [NSMutableArray new];
+                    }
+                    //strongSelf.nextButton.enabled = (strongSelf.indexSelectedItems.count > 0);
                     
                     [strongSelf.consolesSelected removeAllObjects];
                 } else {
@@ -186,7 +192,14 @@
                 [self.gamesSelected removeObject:game];
             }
             
-            self.nextButton.enabled = (self.indexSelectedItems.count > 0 && [self.consolesSelected count] > 0);
+            if (self.indexSelectedItems.count > 0 && [self.consolesSelected count] > 0) {
+                self.nextButton.enabled = YES;
+            } else {
+                self.nextButton.enabled = NO;
+                self.gamesSelected = [NSMutableArray new];
+            }
+            
+            //self.nextButton.enabled = (self.indexSelectedItems.count > 0 && [self.consolesSelected count] > 0);
             
             [self.consolesSelected removeAllObjects];
         }

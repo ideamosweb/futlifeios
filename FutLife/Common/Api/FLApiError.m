@@ -27,15 +27,19 @@
 
 - (NSString *)errorMessage
 {
-    if ([self isConnectivityError]) {
-        return @"Error de conexión";
-    } else if ([self isCancelledError]) {
-        return @"La operación ha sido cancelada";
-    } else if ([self isUnknownError]) {
-        return @"Algo ocurrio, por favor intente de nuevo";
+    if (!self.message) {
+        if ([self isConnectivityError]) {
+            return @"Error de conexión";
+        } else if ([self isCancelledError]) {
+            return @"La operación ha sido cancelada";
+        } else if ([self isUnknownError]) {
+            return @"Ha ocurrido un error, por favor intente de nuevo";
+        }
+        
+        return @"Ha ocurrido un error, por favor intente más tarde";
     }
     
-    return @"Algo ocurrio, por favor intente más tarde";
+    return self.message;
 }
 
 @end

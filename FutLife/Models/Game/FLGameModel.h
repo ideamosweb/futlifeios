@@ -31,6 +31,14 @@ typedef NS_ENUM(NSInteger, FLConsoleTypes)
 
 @end
 
+@interface FLGameRequestModel : FLModel
+
+@property (strong, nonatomic) NSNumber *gameId;
+@property (assign, nonatomic, getter=isActive) BOOL active;
+@property (strong, nonatomic) NSArray *consoles;
+
+@end
+
 @interface FLGameResponseModel : FLModel
 
 @property (copy, nonatomic) NSArray *data;

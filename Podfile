@@ -13,6 +13,7 @@ target 'FutLife Staging' do
   pod 'Mantle'
   #pod 'JSONModel'
   #pod 'RestKit'
+  pod 'BLKFlexibleHeightBar'
   pod 'MMDrawerController', '~> 0.5.1'
   pod 'JRSwizzle', '~> 1.0'
   pod 'CocoaLumberjack', '~> 1.6.2'

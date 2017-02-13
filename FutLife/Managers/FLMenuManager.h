@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UIViewController *currentViewController;
 
 - (void)onHomeTapped:(id)sender;
-- (void)onProfileTapped:(id)sender;
+- (void)onProfileTapped:(id)sender withAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name;
 - (void)onSettingsTapped:(id)sender;
 - (void)onAboutUsTapped:(id)sender;
 - (void)onHelpTapped:(id)sender;

@@ -7,8 +7,9 @@
 //
 
 #import "FLTabsViewController.h"
+#import "FLUserListProtocol.h"
 
-@interface FLTimeLineHomeViewController : FLTabsViewController
+@interface FLTimeLineHomeViewController : FLTabsViewController<FLUserListProtocol>
 
 - (id)init;
 

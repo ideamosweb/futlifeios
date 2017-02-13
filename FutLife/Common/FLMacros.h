@@ -27,6 +27,10 @@
 ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? \
 [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
 
+/** Float: Navaigation Bar Height **/
+#define NAVIGATION_BAR_DEFAULT_HEIGHT 44.0f
+
+
 // Device Info
 #define IS_IPHONE_5 (IS_IPHONE && ([[UIScreen mainScreen] bounds].size.height == 568.0) && ((IS_OS_8_OR_LATER && [UIScreen mainScreen].nativeScale == [UIScreen mainScreen].scale) || !IS_OS_8_OR_LATER)) /** BOOL: Detect if device is an iPhone5 or not **/
 

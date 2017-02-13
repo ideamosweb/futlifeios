@@ -23,9 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RB8-wc-CmD">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RB8-wc-CmD">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="4oa-sK-iAS"/>
@@ -33,13 +32,19 @@
                     </connections>
                 </tableView>
             </subviews>
-            <point key="canvasLocation" x="33.5" y="128.5"/>
+            <constraints>
+                <constraint firstItem="RB8-wc-CmD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UHo-Bd-0g6"/>
+                <constraint firstItem="RB8-wc-CmD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WUT-In-36P"/>
+                <constraint firstAttribute="trailing" secondItem="RB8-wc-CmD" secondAttribute="trailing" id="rhz-Dl-JJg"/>
+                <constraint firstAttribute="bottom" secondItem="RB8-wc-CmD" secondAttribute="bottom" id="yzE-eg-Pub"/>
+            </constraints>
+            <point key="canvasLocation" x="-234" y="136"/>
         </view>
         <view contentMode="scaleToFill" id="gCp-Qp-wZ1">
             <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerBg.leftMenu" translatesAutoresizingMaskIntoConstraints="NO" id="DCN-LI-Ljf">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerBg.leftMenu" translatesAutoresizingMaskIntoConstraints="NO" id="DCN-LI-Ljf">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-x9-Vy3">
@@ -72,10 +77,10 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-15.5" y="846"/>
+            <point key="canvasLocation" x="-169" y="833"/>
         </view>
     </objects>
     <resources>
-        <image name="headerBg.leftMenu" width="843" height="633"/>
+        <image name="headerBg.leftMenu" width="375" height="180"/>
     </resources>
 </document>

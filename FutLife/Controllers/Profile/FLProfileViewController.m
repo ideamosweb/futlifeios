@@ -12,6 +12,7 @@
 #import "FLGameModel.h"
 #import "FLUserModel.h"
 #import "FLRegisterRequestModel.h"
+#import "AssetsLibrary/AssetsLibrary.h"
 
 @interface FLProfileViewController () <UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
@@ -169,75 +170,64 @@ static const CGFloat kProfileCellConsolesHeight = 22.0f;
 {
     __weak __typeof(self)weakSelf = self;
     
-//    FLUserModel *userModel = [FLLocalDataManager sharedInstance].user;
-//    FLRegisterPreferencesRequestModel *requestModel = [FLRegisterPreferencesRequestModel new];
-//    requestModel.userId = userModel.userId;
-//    
-//    // TODO:
-//    NSMutableArray *preferences = [NSMutableArray new];
-//    if ([FLLocalDataManager sharedInstance].games) {
-//        for (FLGameModel *game in [FLLocalDataManager sharedInstance].games) {
-//            FLRegisterPreferencesModel *preference = [FLRegisterPreferencesModel new];
-//            preference.gameId = game.gameId;
-//        }
-//    }
+    FLUserModel *userModel = [FLLocalDataManager sharedInstance].user;
+    FLRegisterPreferencesRequestModel *requestModel = [FLRegisterPreferencesRequestModel new];
+    requestModel.userId = userModel.userId;
     
-//    requestModel.preferences = [FLLocalDataManager sharedInstance].games;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-                        FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-                            __strong __typeof(weakSelf)strongSelf = weakSelf;
+    /*** TODO improve this or move to other side ***/
+    NSArray *games = [FLLocalDataManager sharedInstance].games;
+    NSMutableArray *gamesRequest = [NSMutableArray new];
+    NSMutableArray *consolesRequest = [NSMutableArray new];
+    for (FLGameModel *game in games) {
+        FLGameRequestModel *gameRequest = [FLGameRequestModel new];
+        gameRequest.gameId = game.gameId;
+        gameRequest.active = game.active;
+        for (FLConsoleModel *console in game.consoles) {
+            FLConsoleRequestModel *consoleRequest = [FLConsoleRequestModel new];
+            consoleRequest.consoleId = console.consoleId;
+            consoleRequest.active = console.active;
+            
+            [consolesRequest addObject:consoleRequest];
+        }
         
-                            [FLLocalDataManager sharedInstance].completedRegister = true;
-                            strongSelf.profileCompletedBlock();
-                        }];
-                        [alert show];
-                    });   
+        gameRequest.consoles = consolesRequest;
+        [gamesRequest addObject:gameRequest];
+    }
     
+    requestModel.games = gamesRequest;
     
-//    [FLAppDelegate showLoadingHUD];
-//    [[FLApiManager sharedInstance] registerPreferencesRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
-//        __strong __typeof(weakSelf)strongSelf = weakSelf;
-//        UIImage *avatar = [FLLocalDataManager sharedInstance].avatar;
-//        if (avatar) {
-//            [strongSelf performAvatarRequest:avatar];
-//        } else {
-//            [FLAppDelegate hideLoadingHUD];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-//                    __strong __typeof(weakSelf)strongSelf = weakSelf;
-//                    
-//                    [FLLocalDataManager sharedInstance].completedRegister = true;
-//                    strongSelf.profileCompletedBlock();
-//                }];
-//                [alert show];
-//            });
-//        }
-//    } failure:^(FLApiError *error) {
-//        [FLAppDelegate hideLoadingHUD];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
-//                
-//            }];
-//            [alert show];
-//        });
-//    }];
-}
-
-- (void)performAvatarRequest:(UIImage *)avatar
-{
-     __weak __typeof(self)weakSelf = self;
-    NSData *imageData = UIImagePNGRepresentation(avatar);
-    [[FLApiManager sharedInstance] avatarRequestWithData:imageData success:^(FLRegisterResponseModel *responseModel) {
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
+    [FLAppDelegate showLoadingHUD];
+    [[FLApiManager sharedInstance] registerPreferencesRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
         [FLAppDelegate hideLoadingHUD];
         dispatch_async(dispatch_get_main_queue(), ^{
             FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                __strong __typeof(weakSelf)strongSelf = weakSelf;
+                
                 [FLLocalDataManager sharedInstance].completedRegister = true;
                 strongSelf.profileCompletedBlock();
             }];
             [alert show];
         });
+    } failure:^(FLApiError *error) {
+        [FLAppDelegate hideLoadingHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
+    }];
+}
+
+- (void)performAvatarRequestWithUrl:(NSURL *)imageUrl imageData:(NSData *)imageData
+{
+    __weak __typeof(self)weakSelf = self;
+    [FLAppDelegate showLoadingHUD];
+    [[FLApiManager sharedInstance] avatarRequestWithImageUrl:imageUrl imageData:imageData success:^(FLRegisterResponseModel *responseModel) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [FLAppDelegate hideLoadingHUD];
+        [FLLocalDataManager sharedInstance].avatar = [UIImage imageWithData:imageData];
+        strongSelf.userAvatarImage.image = [FLLocalDataManager sharedInstance].avatar;
     } failure:^(FLApiError *error) {
         [FLAppDelegate hideLoadingHUD];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -351,13 +341,21 @@ static const CGFloat kProfileCellConsolesHeight = 22.0f;
 }
 
 #pragma mark - UIImagePickerController delegate methods
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    //Retrieve the actual UIImage
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
-    [self.userAvatarImage setImage:image];
+    //Get the image url from AssetsLibrary
+    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
     
-    [FLLocalDataManager sharedInstance].avatar = image;
+    [picker dismissViewControllerAnimated:YES completion:^{
+        if (path) {
+            NSData *imageFileData = UIImageJPEGRepresentation(image, 0.33f);
+            
+            [self performAvatarRequestWithUrl:path imageData:imageFileData];
+        }
+    }];
 }
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -107,9 +107,12 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     NSUInteger index = viewController.view.tag;
-    
+    FLPageBannerViewController *currentViewController = (FLPageBannerViewController *)self.bannerVCs[index];
     if (index == 0) {
+        currentViewController.firstOrLastPage = YES;
         return nil;
+    } else {
+        currentViewController.firstOrLastPage = NO;
     }
     
     index--;
@@ -121,8 +124,13 @@
     NSUInteger index = viewController.view.tag;
     index++;
     
+    FLPageBannerViewController *currentViewController = (FLPageBannerViewController *)self.bannerVCs[index - 1];
+    
     if (index == self.bannerVCs.count) {
+        currentViewController.firstOrLastPage = YES;
         return nil;
+    } else {
+        currentViewController.firstOrLastPage = NO;
     }
     
     return self.bannerVCs[index];
@@ -134,13 +142,20 @@
         return;
     }
     FLPageBannerViewController *currentViewController = (FLPageBannerViewController *)[pageViewController viewControllers][0];
-    self.pageControl.currentPage = currentViewController.index;
-    [currentViewController removeElementsFromSuperView];
+    self.pageControl.currentPage = currentViewController.index;    
     [currentViewController configContentImages];
     
-    for (FLPageBannerViewController *currentViewController in previousViewControllers) {
-        [currentViewController removeElementsFromSuperView];
+    for (FLPageBannerViewController *previouVC in previousViewControllers) {
+        [previouVC removeElementsFromSuperView];
     }
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    if (pageViewController) {
+        
+    }
+    
 }
 
 @end

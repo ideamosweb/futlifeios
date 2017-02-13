@@ -73,7 +73,7 @@ NSString * const kMainNavMenuResuseIdentifierCell = @"NavMainMenuCell";
 {
     self.logOutRowsData = [NSMutableArray new];
     
-    [self.logOutRowsData addObject:@[@"Cerrar Sesión", @"logout.leftMenuIcon", @"onLogOutTapped:"]];
+    [self.logOutRowsData addObject:@[@"Cerrar Sesión", @"logout.leftMenuIcon", @""]];
 }
 
 - (void)viewDidLoad {
@@ -217,20 +217,19 @@ NSString * const kMainNavMenuResuseIdentifierCell = @"NavMainMenuCell";
         selector = NSSelectorFromString(self.contactRowsData[indexPath.row][2]);
     } else {
         selector = NSSelectorFromString(self.logOutRowsData[indexPath.row][2]);
-        [[FLLoginManager sharedInstance] logOut];
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+        [[FLLoginManager sharedInstance] logOut];
     }
     
-//    self.menuManager.currentViewController = nil;
-//    
-//    
-//    
-//    if ([self.menuManager respondsToSelector:selector]) {
-//        IMP imp = [self.menuManager methodForSelector:selector];
-//        void (*func)(id, SEL, id) = (void *)imp;
-//        func(self.menuManager, selector, nil);
-//        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
-//    }
+    self.menuManager.currentViewController = nil;
+    
+    // Check if there is a method for push to a something viewController
+    if ([self.menuManager respondsToSelector:selector]) {
+        IMP imp = [self.menuManager methodForSelector:selector];
+        void (*func)(id, SEL, id) = (void *)imp;
+        func(self.menuManager, selector, nil);
+        [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+    }
 }
 
 - (void)localize

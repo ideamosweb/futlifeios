@@ -13,15 +13,14 @@ NSString * const kContentAnimationKey = @"contentAnimationKey";
 
 static const NSInteger kPageBannerSlide1 = 0;
 static const NSInteger kPageBannerSlide2 = 1;
-static const NSInteger kPageBannerSlide3 = 2;
 
 @interface FLPageBannerViewController ()
 
 @property (weak,nonatomic) IBOutlet UIImageView *bgImageView;
+@property (weak,nonatomic) IBOutlet UIImageView *titleImageView;
+@property (weak,nonatomic) IBOutlet UIImageView *contentImageView;
 @property (strong, nonatomic) UIImage *titleImage;
-@property (strong, nonatomic) UIImageView *titleImageView;
 @property (strong, nonatomic) UIImage *contentImage;
-@property (strong, nonatomic) UIImageView *contentImageView;
 @property (strong, nonatomic) UIImage *bgImage;
 @property (assign, nonatomic, getter=isLoaded) BOOL loaded;
 
@@ -47,8 +46,14 @@ static const NSInteger kPageBannerSlide3 = 2;
     
     [self.bgImageView setImage:self.bgImage];
     
-    //self.index = 0;
     self.loaded = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.titleImageView bringSubviewToFront:self.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,33 +61,27 @@ static const NSInteger kPageBannerSlide3 = 2;
     [super viewDidAppear:animated];
     
     if (self.index == 0 && self.isLoaded) {
-        [self performSelector:@selector(configContentImages) withObject:nil afterDelay:0.5];
+        [self perFormConfigContentImages];
         
         self.loaded = NO;
     }
+    
+    [self.titleImageView bringSubviewToFront:self.view];
+    [self.contentImageView sendSubviewToBack:self.view];
+}
+
+- (void)perFormConfigContentImages
+{
+    [self performSelector:@selector(configContentImages) withObject:nil afterDelay:0.5];
 }
 
 - (void)configContentImages
 {
-    self.titleImageView = [[UIImageView alloc] initWithImage:self.titleImage];
-    CGRect titleImageFrame = self.titleImageView.frame;
-    titleImageFrame.origin.x = 185.0f;
-    titleImageFrame.origin.y = 150.0f;
-    titleImageFrame.size.width = 0.0f;
-    titleImageFrame.size.height = 0.0f;
-    self.titleImageView.frame = titleImageFrame;
+    [self.titleImageView setImage:self.titleImage];
     
-    self.contentImageView = [[UIImageView alloc] initWithImage:self.contentImage];
-    CGRect contentImageFrame = self.contentImageView.frame;
-    contentImageFrame.origin.x = (self.index != kPageBannerSlide2) ? 0.0f : -500.0f;
-    contentImageFrame.origin.y = (self.index != kPageBannerSlide3) ? CGRectGetMaxY(self.titleImageView.frame) + 90.0f : 2000.0f;
-    contentImageFrame.size.width = [FLMiscUtils screenViewFrame].size.width - 20.0f;
-    contentImageFrame.size.height = [FLMiscUtils screenViewFrame].size.height - CGRectGetMinY(self.contentImageView.frame) - 300.0f;
-    self.contentImageView.frame = contentImageFrame;
-    self.contentImageView.alpha = 0.0;
+    [self.contentImageView setImage:self.contentImage];
     
-    [self.view addSubview:self.titleImageView];
-    [self.view addSubview:self.contentImageView];
+    self.contentImageView.alpha = 0.0f;
     
     [self titleAnimation];
 }
@@ -90,7 +89,7 @@ static const NSInteger kPageBannerSlide3 = 2;
 - (void)titleAnimation
 {
     POPSpringAnimation *titleImgAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    titleImgAnim.toValue = [NSValue valueWithCGRect:CGRectMake(0.0f, 0.0f, [FLMiscUtils screenViewFrame].size.width - 20.0f, 200.0f)];
+    titleImgAnim.toValue = [NSValue valueWithCGRect:CGRectMake(0.0f, 0.0f, [FLMiscUtils screenViewFrame].size.width - 20.0f, CGRectGetHeight(self.titleImageView.frame) + 70.0f)];
     [self.titleImageView pop_addAnimation:titleImgAnim forKey:kTitleAnimationKey];
     
     [self performSelector:@selector(contentImageAnimation) withObject:nil afterDelay:0.5];
@@ -105,29 +104,40 @@ static const NSInteger kPageBannerSlide3 = 2;
         anim.toValue = @(1.0);
         
         [self.contentImageView pop_addAnimation:anim forKey:kContentAnimationKey];
+        
+        [self.titleImageView bringSubviewToFront:self.view];
     } else if (self.index == kPageBannerSlide2) {
+        CGRect contentImageFrame = self.contentImageView.frame;
+        contentImageFrame.origin.x = -600;
+        self.contentImageView.frame = contentImageFrame;
+        self.contentImageView.alpha = 1.0f;
+        NSLog(@"%@", self.contentImageView);
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.contentImageView.frame;
-            frame.origin.x = 10;
+            frame.origin.x = ([FLMiscUtils screenViewFrame].size.width / 2) - (CGRectGetWidth(self.contentImageView.frame) / 2);
             self.contentImageView.frame = frame;
-            self.contentImageView.alpha = 1.0;
             
+            [self.titleImageView bringSubviewToFront:self.view];
+            [self.contentImageView sendSubviewToBack:self.view];
         }];
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.contentImageView.frame;
             frame.origin.x = self.contentImageView.frame.origin.x + 10.0f;
             frame.origin.y = CGRectGetMaxY(self.titleImageView.frame);            
-            self.contentImageView.frame = frame;
+            self.contentImageView.bounds = frame;
             self.contentImageView.alpha = 1.0;
+            
+            [self.titleImageView bringSubviewToFront:self.view];
+            [self.contentImageView sendSubviewToBack:self.view];
         }];
     }
 }
 
 - (void)removeElementsFromSuperView
 {
-    [self.titleImageView removeFromSuperview];
-    [self.contentImageView removeFromSuperview];
+    self.titleImageView.image = nil;
+    self.contentImageView.image = nil;
 }
 
 @end

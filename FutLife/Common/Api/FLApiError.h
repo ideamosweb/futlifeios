@@ -15,6 +15,7 @@ static const NSInteger kServiceErrorUnknown = 9997;
 @interface FLApiError : NSObject
 
 @property (nonatomic, assign) NSInteger httpStatusCode;
+@property (copy, nonatomic) NSString *message;
 
 - (BOOL)isConnectivityError;
 - (BOOL)isCancelledError;

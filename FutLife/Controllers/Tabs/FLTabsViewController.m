@@ -25,7 +25,14 @@ static const CGFloat kTabsButtonsViewMinY = 0.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabsViewControllers = [NSMutableArray new];   
+    self.tabsViewControllers = [NSMutableArray new];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self.view layoutIfNeeded];
 }
 
 - (void)configElementsOfView
@@ -98,12 +105,19 @@ static const CGFloat kTabsButtonsViewMinY = 0.0f;
         
         scrollViewContentSizeWidth = scrollViewContentSizeWidth * (i + 1);        
         
-        // Add view controllers to scrollView modifying the origin X frame
+        // Add view controllers to scrollView modifying the origin X frame and also modify its size (bug (?))
         if (!previousVC) {
+            CGRect viewControllerFrame = viewController.view.frame;
+            viewControllerFrame.size.width = [FLMiscUtils screenViewFrame].size.width;
+            viewControllerFrame.size.height = [FLMiscUtils screenViewFrame].size.height - kTabsButtonsViewHeight - NAVIGATION_BAR_DEFAULT_HEIGHT;
+            viewController.view.frame = viewControllerFrame;
+            
             previousVC = viewController;
         } else {
             CGRect viewControllerFrame = viewController.view.frame;
             viewControllerFrame.origin.x = CGRectGetWidth(previousVC.view.frame);
+            viewControllerFrame.size.width = [FLMiscUtils screenViewFrame].size.width;
+            viewControllerFrame.size.height = [FLMiscUtils screenViewFrame].size.height - kTabsButtonsViewHeight - NAVIGATION_BAR_DEFAULT_HEIGHT;
             viewController.view.frame = viewControllerFrame;
         }
         
@@ -117,7 +131,7 @@ static const CGFloat kTabsButtonsViewMinY = 0.0f;
     // Set content size scrollView
     self.scrollView.contentSize = CGSizeMake(scrollViewContentSizeWidth, scrollViewnContentSizeHeight);
     self.scrollView.bounces = NO;
-    self.scrollView.scrollEnabled = NO;
+    self.scrollView.scrollEnabled = NO;   
 }
 
 - (void)onButtonTabTouch:(id)sender
@@ -136,6 +150,11 @@ static const CGFloat kTabsButtonsViewMinY = 0.0f;
         selectedButtonViewFrame.origin.x = CGRectGetMinX(buttonTab.frame);
         self.selectorTabButtonView.frame = selectedButtonViewFrame;
     }];
+}
+
+- (FLTabsViewController *)getTabsViewController
+{
+    return self;
 }
 
 - (void)localize

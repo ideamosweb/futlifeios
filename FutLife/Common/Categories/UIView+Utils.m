@@ -146,9 +146,9 @@
 
 - (void)fl_animationLogo
 {
-    CGRect frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    CGRect frame = self.frame;
     
-    CGRect frameUP = CGRectMake(self.frame.origin.x - 10.0, self.frame.origin.y - 10.0, self.frame.size.width + 20.0, self.frame.size.height + 10.0);
+    CGRect frameUP = CGRectMake(frame.origin.x - 20.0, frame.origin.y - 10.0, frame.size.width + 20.0, frame.size.height + 10.0);
     
     UIViewAnimationOptions options = UIViewAnimationOptionBeginFromCurrentState |
     UIViewAnimationTransitionFlipFromRight;
@@ -165,10 +165,10 @@
                 self.transform = CGAffineTransformMakeScale(1, 1);
             } completion:^(BOOL finished) {
                 [UIView animateWithDuration:0.4 delay:0.8 options:UIViewAnimationOptionLayoutSubviews animations:^{
-                    self.frame = frameUP;
+                    self.bounds = frameUP;
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:0.3 animations:^{
-                        self.frame = frame;
+                        self.bounds = frame;
                     } completion:nil];
                 }];
             }];

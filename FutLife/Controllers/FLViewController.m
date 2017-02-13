@@ -8,6 +8,7 @@
 
 #import "FLViewController.h"
 #import "FLAppDelegate.h"
+#import "FLStartUpViewController.h"
 
 @interface FLViewController ()
 
@@ -39,8 +40,10 @@
         [self.navigationController.navigationBar
          setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         
-        if (mainNavController.viewControllers.count > 1) {            
+        if (mainNavController.viewControllers.count > 1) {
             [self addBackButton];
+        } else {
+            [self removeBackButton];
         }
     } else {
         mainNavController.navigationBarHidden = YES;
@@ -60,6 +63,11 @@
     [backButton addTarget:self action:@selector(onBackButtonTouch)
          forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (void)removeBackButton
+{
+    self.navigationItem.hidesBackButton = YES;    
 }
 
 - (void)onBackButtonTouch

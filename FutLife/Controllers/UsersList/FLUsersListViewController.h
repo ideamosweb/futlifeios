@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (id)initWithUsers:(NSArray *)users;
+- (id)initWithUsers:(NSArray *)users parentViewController:(FLViewController *)parentViewController;
 
 @end

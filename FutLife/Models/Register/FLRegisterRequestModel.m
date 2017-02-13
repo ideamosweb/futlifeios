@@ -42,14 +42,14 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"userId": @"user_id",             
-             @"preferences": @"preferences"
+             @"games": @"games"
              };
 }
 
 #pragma mark - JSON Transformers
 
-+ (NSValueTransformer *)preferencesJSONTransformer {
-    return [MTLJSONAdapter arrayTransformerWithModelClass:FLGameModel.class];
++ (NSValueTransformer *)gamesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:FLGameRequestModel.class];
 }
 
 @end

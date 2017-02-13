@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BLKFlexibleHeightBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -112,6 +117,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0880E63659C3029F674AFF16447B8E01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>09C03198DDAD32ACB22EFE8208F516B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0AF640870302BCA3AE3B48B7378B67C7</key>
 		<dict>
 			<key>primary</key>
@@ -137,11 +152,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>694082AABB12A19596C11BF16F3FEA02</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>78D29FDDA61F65D7244C402E10584DB5</key>
 		<dict>
 			<key>primary</key>
@@ -162,6 +172,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9A815E46D16EE1F11BBDD93ED5257AD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
 		<dict>
 			<key>primary</key>
@@ -172,17 +187,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C08DDFAAB8030A0AA8F142F0C1DE272D</key>
+		<key>B42F7BDF156D25257C56EEB1E601BFB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D5482E0F46F643347DB786023A64CF8A</key>
+		<key>B6C0DF05CE25E398D2092A5A9ADA5302</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D692712DE52E9E9715E161F3DBFFF483</key>
+		<key>D85C1BED54B2EB310FF3301CBBE76800</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5D556344969D63C5326533D8B7DF4DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -193,16 +213,6 @@
 			<true/>
 		</dict>
 		<key>FB06743FD599C11559E52D2D552AEE80</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FCDEEABE4F3230B9967149AC8254E062</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FE06D6FA5AD651488EB504FA296BE36A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

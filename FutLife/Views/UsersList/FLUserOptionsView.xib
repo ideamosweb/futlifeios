@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BEBAS___.TTF">
+            <string>Bebas</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FLUserOptionsView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NsY-x7-MME">
+                    <rect key="frame" x="0.0" y="60" width="375" height="2"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="jSU-bK-8qz"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwm-8n-XDP">
+                    <rect key="frame" x="13" y="6" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="dc6-M8-HYi"/>
+                        <constraint firstAttribute="height" constant="48" id="ebL-gH-DqM"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resantis25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcE-mc-OfT">
+                    <rect key="frame" x="69" y="7" width="161" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="IR8-RG-bfZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="16"/>
+                    <color key="textColor" red="0.35488635769999999" green="0.45379852749999999" blue="0.51258110710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rene Santis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPz-Mi-sWl">
+                    <rect key="frame" x="69" y="30" width="161" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="afb-2l-npS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="12"/>
+                    <color key="textColor" red="0.35488635769999999" green="0.45379852749999999" blue="0.51258110710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZJ-tF-JGy">
+                    <rect key="frame" x="29" y="70" width="316" height="74"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wJ-rD-ira">
+                            <rect key="frame" x="3" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="6Xa-0p-7ku"/>
+                                <constraint firstAttribute="width" constant="50" id="VcZ-dK-0MA"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="user_view_profile_icon"/>
+                            <connections>
+                                <action selector="onViewProfileButtonTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="yBj-hy-3HH"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2p-uR-XnM">
+                            <rect key="frame" x="86" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="D7F-PO-y0T"/>
+                                <constraint firstAttribute="width" constant="50" id="IHp-Ig-K48"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="user_challenge_icon"/>
+                            <connections>
+                                <action selector="onChallengeButtonTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="aMc-4M-F1d"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3q-UI-AAW">
+                            <rect key="frame" x="258" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="FFb-Ov-rgi"/>
+                                <constraint firstAttribute="height" constant="50" id="FPQ-Ui-JYc"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="user_view_games_icon"/>
+                            <connections>
+                                <action selector="onViewGamesButtonTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="0xg-tl-cFB"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VER PERFIL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18x-9m-95h">
+                            <rect key="frame" x="0.0" y="53" width="55" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="0RB-mq-6th"/>
+                                <constraint firstAttribute="width" constant="55" id="wLH-k3-gYU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoB-W5-0Ob">
+                            <rect key="frame" x="83" y="53" width="55" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="G1I-e9-YDD"/>
+                                <constraint firstAttribute="height" constant="21" id="n4j-2X-YHE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="consolas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU1-VY-ASU">
+                            <rect key="frame" x="254" y="53" width="61" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="16W-sh-g1L"/>
+                                <constraint firstAttribute="width" constant="61" id="ZGf-Se-D7u"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="juegos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erE-i3-lFi">
+                            <rect key="frame" x="174" y="53" width="55" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="1Dg-b2-xgL"/>
+                                <constraint firstAttribute="width" constant="55" id="Q3s-Dn-lp0"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKN-mu-RqQ">
+                            <rect key="frame" x="178" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="4LO-Dq-Pz7"/>
+                                <constraint firstAttribute="height" constant="50" id="tLn-w3-gOh"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="user_view_consoles_icon"/>
+                            <connections>
+                                <action selector="onViewConsolesButtonTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="sGu-DE-29F"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="i2p-uR-XnM" firstAttribute="top" secondItem="RZJ-tF-JGy" secondAttribute="top" id="BC0-C3-pXU"/>
+                        <constraint firstAttribute="bottom" secondItem="erE-i3-lFi" secondAttribute="bottom" id="DNu-0p-5aD"/>
+                        <constraint firstItem="18x-9m-95h" firstAttribute="leading" secondItem="RZJ-tF-JGy" secondAttribute="leading" id="ETk-8P-Dff"/>
+                        <constraint firstAttribute="trailing" secondItem="oU1-VY-ASU" secondAttribute="trailing" constant="1" id="GR8-dD-iQe"/>
+                        <constraint firstAttribute="bottom" secondItem="18x-9m-95h" secondAttribute="bottom" id="JhM-se-gEW"/>
+                        <constraint firstAttribute="trailing" secondItem="w3q-UI-AAW" secondAttribute="trailing" constant="8" id="Kui-0U-51h"/>
+                        <constraint firstAttribute="bottom" secondItem="oU1-VY-ASU" secondAttribute="bottom" id="RUC-Zx-gOa"/>
+                        <constraint firstItem="rKN-mu-RqQ" firstAttribute="top" secondItem="RZJ-tF-JGy" secondAttribute="top" id="SsY-lh-0Ne"/>
+                        <constraint firstItem="w3q-UI-AAW" firstAttribute="top" secondItem="RZJ-tF-JGy" secondAttribute="top" id="YL0-Bw-zSZ"/>
+                        <constraint firstItem="erE-i3-lFi" firstAttribute="leading" secondItem="YoB-W5-0Ob" secondAttribute="trailing" constant="36" id="c5o-zW-0DW"/>
+                        <constraint firstAttribute="bottom" secondItem="YoB-W5-0Ob" secondAttribute="bottom" id="huK-1l-l10"/>
+                        <constraint firstItem="0wJ-rD-ira" firstAttribute="top" secondItem="RZJ-tF-JGy" secondAttribute="top" id="rl9-Jk-W1O"/>
+                        <constraint firstItem="rKN-mu-RqQ" firstAttribute="leading" secondItem="i2p-uR-XnM" secondAttribute="trailing" priority="250" constant="42" id="ry2-Cs-dh3"/>
+                        <constraint firstItem="w3q-UI-AAW" firstAttribute="leading" secondItem="rKN-mu-RqQ" secondAttribute="trailing" priority="750" constant="30" id="vJW-OW-BUa"/>
+                        <constraint firstItem="YoB-W5-0Ob" firstAttribute="leading" secondItem="18x-9m-95h" secondAttribute="trailing" constant="28" id="wSY-AA-B7Q"/>
+                        <constraint firstItem="0wJ-rD-ira" firstAttribute="centerX" secondItem="18x-9m-95h" secondAttribute="centerX" id="xZt-BY-4q0"/>
+                        <constraint firstItem="i2p-uR-XnM" firstAttribute="leading" secondItem="0wJ-rD-ira" secondAttribute="trailing" priority="250" constant="33" id="yIp-PT-10Z"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NsY-x7-MME" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3n0-t7-Q0s"/>
+                <constraint firstAttribute="trailing" secondItem="hcE-mc-OfT" secondAttribute="trailing" constant="145" id="H8G-Lw-G6u"/>
+                <constraint firstAttribute="trailing" secondItem="RZJ-tF-JGy" secondAttribute="trailing" constant="30" id="HCm-C1-EIH"/>
+                <constraint firstItem="hcE-mc-OfT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="HQl-Nu-R6n"/>
+                <constraint firstItem="fwm-8n-XDP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="KbU-Mw-jjo"/>
+                <constraint firstItem="PPz-Mi-sWl" firstAttribute="top" secondItem="hcE-mc-OfT" secondAttribute="bottom" constant="4" id="Kwn-T4-vKy"/>
+                <constraint firstItem="fwm-8n-XDP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="Ls1-ru-LcT"/>
+                <constraint firstItem="hcE-mc-OfT" firstAttribute="leading" secondItem="fwm-8n-XDP" secondAttribute="trailing" constant="8" id="PqM-W5-ap3"/>
+                <constraint firstItem="NsY-x7-MME" firstAttribute="top" secondItem="fwm-8n-XDP" secondAttribute="bottom" constant="6" id="R8y-8E-HBw"/>
+                <constraint firstItem="PPz-Mi-sWl" firstAttribute="leading" secondItem="fwm-8n-XDP" secondAttribute="trailing" constant="8" id="YVh-iq-X8j"/>
+                <constraint firstAttribute="trailing" secondItem="PPz-Mi-sWl" secondAttribute="trailing" constant="145" id="YZ7-9y-Z0J"/>
+                <constraint firstItem="RZJ-tF-JGy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="c7B-6m-RnX"/>
+                <constraint firstItem="RZJ-tF-JGy" firstAttribute="top" secondItem="NsY-x7-MME" secondAttribute="bottom" constant="8" id="goM-m9-ZAM"/>
+                <constraint firstAttribute="trailing" secondItem="NsY-x7-MME" secondAttribute="trailing" id="igy-r7-gnT"/>
+                <constraint firstAttribute="bottom" secondItem="RZJ-tF-JGy" secondAttribute="bottom" constant="12" id="mTF-q6-2Ya"/>
+                <constraint firstItem="NsY-x7-MME" firstAttribute="top" secondItem="fwm-8n-XDP" secondAttribute="bottom" constant="6" id="npP-R9-EwC"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="userOptionsAvatarImageView" destination="fwm-8n-XDP" id="4mk-01-cON"/>
+                <outlet property="userOptionsNameLabel" destination="PPz-Mi-sWl" id="2hg-kO-us3"/>
+                <outlet property="userOptionsUserNameLabel" destination="hcE-mc-OfT" id="lzL-bs-Lrc"/>
+            </connections>
+            <point key="canvasLocation" x="-184.5" y="-257"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="user_challenge_icon" width="50" height="50"/>
+        <image name="user_view_consoles_icon" width="50" height="50"/>
+        <image name="user_view_games_icon" width="50" height="50"/>
+        <image name="user_view_profile_icon" width="50" height="50"/>
+    </resources>
+</document>

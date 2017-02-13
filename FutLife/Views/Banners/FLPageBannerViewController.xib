@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLPageBannerViewController">
             <connections>
                 <outlet property="bgImageView" destination="ieU-Uq-yDF" id="VYL-fC-drH"/>
+                <outlet property="contentImageView" destination="NtW-V5-U3M" id="Hmh-kV-ISN"/>
+                <outlet property="titleImageView" destination="94X-tM-JoM" id="WbN-tC-13r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,12 +22,31 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ieU-Uq-yDF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ieU-Uq-yDF">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="94X-tM-JoM">
+                    <rect key="frame" x="28" y="50" width="318" height="256"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NtW-V5-U3M">
+                    <rect key="frame" x="28" y="306" width="318" height="311"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="94X-tM-JoM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="071-FF-rFk"/>
+                <constraint firstAttribute="bottom" secondItem="ieU-Uq-yDF" secondAttribute="bottom" id="3b4-5x-62Y"/>
+                <constraint firstItem="94X-tM-JoM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="4FT-ZS-CnF"/>
+                <constraint firstItem="NtW-V5-U3M" firstAttribute="top" secondItem="94X-tM-JoM" secondAttribute="bottom" id="5MC-cU-X6w"/>
+                <constraint firstAttribute="trailing" secondItem="94X-tM-JoM" secondAttribute="trailing" constant="29" id="EOx-wB-yvo"/>
+                <constraint firstItem="ieU-Uq-yDF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lyd-P0-BDa"/>
+                <constraint firstItem="ieU-Uq-yDF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ogm-NB-CPB"/>
+                <constraint firstAttribute="trailing" secondItem="NtW-V5-U3M" secondAttribute="trailing" constant="29" id="UaD-bx-vef"/>
+                <constraint firstAttribute="bottom" secondItem="94X-tM-JoM" secondAttribute="bottom" constant="361" id="m3S-L0-U87"/>
+                <constraint firstItem="NtW-V5-U3M" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="vkp-ST-nc6"/>
+                <constraint firstAttribute="trailing" secondItem="ieU-Uq-yDF" secondAttribute="trailing" id="xFW-sH-2bF"/>
+                <constraint firstAttribute="bottom" secondItem="NtW-V5-U3M" secondAttribute="bottom" constant="50" id="yVa-aO-eAF"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="-50.5" y="5.5"/>
         </view>

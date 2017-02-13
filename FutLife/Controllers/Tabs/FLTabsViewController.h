@@ -15,5 +15,6 @@
 
 // Reload tabs after set view's controllers
 - (void)reloadTabs;
+- (FLTabsViewController *)getTabsViewController;
 
 @end

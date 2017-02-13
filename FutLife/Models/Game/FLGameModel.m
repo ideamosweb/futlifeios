@@ -7,6 +7,7 @@
 //
 
 #import "FLGameModel.h"
+#import "FLConsoleModel.h"
 
 @implementation FLGameModel
 
@@ -33,7 +34,8 @@
              @"active" : @"active",
              @"platformId" : @"platform_id",
              @"createdAt" : @"created_at",
-             @"updatedAt" : @"updated_at"
+             @"updatedAt" : @"updated_at",
+             @"consoles" : @"consoles"
              };
 }
 
@@ -50,7 +52,11 @@
 + (NSValueTransformer *)platformIdJSONTransformer
 {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+        NSLog(@"platformIdJSONTransformer******");
+        NSLog(@"******value: %@", value);
         NSString *valueId = [NSString stringWithFormat:@"%@", (NSNumber *)value];
+        NSLog(@"******valueId: %@", valueId);
+        NSLog(@"*****self.numberFormatter: %@", self.numberFormatter);
         return [self.numberFormatter numberFromString:valueId];
     }];
 }
@@ -79,6 +85,29 @@
     } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
         return [self.dateFormatter stringFromDate:date];
     }];
+}
+
++ (NSValueTransformer *)consolesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:FLConsoleModel.class];
+}
+
+@end
+
+@implementation FLGameRequestModel
+
+#pragma mark - Mantle JSONKeyPathsByPropertyKey
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"gameId" : @"game_id",
+             @"active" : @"active",
+             @"consoles" : @"consoles"
+             };
+}
+
+#pragma mark - JSON Transformers
++ (NSValueTransformer *)consolesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:FLConsoleRequestModel.class];
 }
 
 @end

@@ -21,6 +21,13 @@
 
 @end
 
+@interface FLConsoleRequestModel : FLModel
+
+@property (strong, nonatomic) NSNumber *consoleId;
+@property (assign, nonatomic, getter=isActive) BOOL active;
+
+@end
+
 @interface FLConsoleResponseModel : FLModel
 
 @property (copy, nonatomic) NSArray *data;

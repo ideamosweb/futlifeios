@@ -8,6 +8,8 @@
 
 #import "FLUsersListViewController.h"
 #import "FLUserListCell.h"
+//#import "FLTabsViewController.h"
+#import "FLTimeLineHomeViewController.h"
 
 typedef NS_ENUM(NSInteger, UYLWorldFactsSearchScope)
 {
@@ -25,15 +27,18 @@ typedef NS_ENUM(NSInteger, UYLWorldFactsSearchScope)
 @property (strong, nonatomic) NSArray *filteredList;
 @property (strong, nonatomic) UISearchController *searchController;
 
+@property (strong, nonatomic) FLViewController *parentVC;
+
 @end
 
 @implementation FLUsersListViewController
 
-- (id)initWithUsers:(NSArray *)users
+- (id)initWithUsers:(NSArray *)users parentViewController:(FLViewController *)parentViewController
 {
     self = [super initWithNibName:@"FLUsersListViewController" bundle:[NSBundle mainBundle]];
     if (self) {
         self.users = users;
+        self.parentVC = parentViewController;
     }
     
     return self;
@@ -72,6 +77,8 @@ typedef NS_ENUM(NSInteger, UYLWorldFactsSearchScope)
     self.showNavigationBar = true;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.4f/255.0f green:21.0f/255.0f blue:35.0f/255.0f alpha:1.0f]];
     [self.navigationController.navigationBar setTranslucent:NO];
+    
+    [self.tableView layoutSubviews];
 }
 
 - (NSNumberFormatter *)decimalFormatter
@@ -154,6 +161,8 @@ typedef NS_ENUM(NSInteger, UYLWorldFactsSearchScope)
 {
     FLUserListCell *cell =  [tableView dequeueReusableCellWithIdentifier:[FLUserListCell cellIdentifier]];
     if (cell) {
+        //cell.delegate = [[FLTabsViewController alloc] initWithIsFromProtocol:YES];
+        cell.delegate = (FLTimeLineHomeViewController *)self.parentVC;
         FLUserModel *user = nil;
         if (self.searchController.active) {
             user = [self.filteredList objectAtIndex:indexPath.row];
@@ -216,6 +225,15 @@ typedef NS_ENUM(NSInteger, UYLWorldFactsSearchScope)
 //    }
 //    return 0;
 //}
+
+//#pragma mark - FLUserListCell protocol methods
+//
+//- (void)onUserOptionsTouch:(id)sender
+//{
+//    NSLog(@"superClass: %@", self.superclass);
+//    NSLog(@"superView: %@", self.view.superview);
+//}
+
 
 - (void)localize
 {

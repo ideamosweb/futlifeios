@@ -75,6 +75,19 @@
 
 @end
 
+@implementation FLConsoleRequestModel
+
+#pragma mark - Mantle JSONKeyPathsByPropertyKey
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"consoleId" : @"console_id",
+             @"active" : @"active"
+             };
+}
+
+@end
+
 @implementation FLConsoleResponseModel
 
 #pragma mark - Mantle JSONKeyPathsByPropertyKey

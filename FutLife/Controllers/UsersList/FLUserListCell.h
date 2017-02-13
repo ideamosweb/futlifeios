@@ -7,11 +7,14 @@
 //
 
 #import "FLCustomCell.h"
+#import "FLUserListProtocol.h"
 
 @interface FLUserListCell : FLCustomCell
 
 - (void)setUserName:(NSString *)userName;
 - (void)setName:(NSString *)name;
 - (void)setUserAvatarWithUrl:(NSURL *)avatarUrl;
+
+@property (nonatomic) id<FLUserListProtocol> delegate;
 
 @end

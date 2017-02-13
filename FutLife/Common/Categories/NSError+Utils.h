@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "FLApiError.h"
+#import "FLApiModel.h"
 
 @interface NSError (Utils)
 
-- (FLApiError *)fl_apiErrorWithHttpStatusCode:(NSInteger)statusCode;
+- (FLApiError *)fl_apiErrorWithHttpStatusCode:(NSInteger)statusCode response:(FLApiModel *)response;
 
 @end

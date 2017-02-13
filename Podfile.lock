@@ -16,6 +16,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BLKFlexibleHeightBar (1.0.2)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -107,6 +108,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
   - AFNetworking (~> 3.0)
+  - BLKFlexibleHeightBar
   - CocoaLumberjack (~> 1.6.2)
   - DateTools
   - FBSDKCoreKit
@@ -138,6 +140,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: e77f68d014becb33c4306a23f56a64906ff72670
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CocoaLumberjack: 5e26ebef5a48962d1713ae6cb01da30384f3f14e
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
@@ -163,6 +166,6 @@ SPEC CHECKSUMS:
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UrbanAirship-iOS-SDK: a4ff01ef90d5b32508818da5b8385828513702f9
 
-PODFILE CHECKSUM: a03600f7b1ea1e3adf7f027c74168f46f6f04e9d
+PODFILE CHECKSUM: 108636c960d955aad9735f16a2bb63d8e3fd14cd
 
 COCOAPODS: 1.2.0.beta.1

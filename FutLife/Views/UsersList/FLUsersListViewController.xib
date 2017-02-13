@@ -20,9 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-w3-nah">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-w3-nah">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="afb-8a-LRM"/>
@@ -30,6 +29,12 @@
                     </connections>
                 </tableView>
             </subviews>
+            <constraints>
+                <constraint firstItem="EUe-w3-nah" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7t0-Ub-o3H"/>
+                <constraint firstAttribute="trailing" secondItem="EUe-w3-nah" secondAttribute="trailing" id="Lev-wd-r4l"/>
+                <constraint firstItem="EUe-w3-nah" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YVt-16-lny"/>
+                <constraint firstAttribute="bottom" secondItem="EUe-w3-nah" secondAttribute="bottom" id="bZ6-Ym-lnL"/>
+            </constraints>
             <point key="canvasLocation" x="1.5" y="71.5"/>
         </view>
     </objects>

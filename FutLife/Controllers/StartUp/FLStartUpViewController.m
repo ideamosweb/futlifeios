@@ -153,7 +153,6 @@
     FLChooseGameViewController *chooseGameVC = [[FLChooseGameViewController alloc] initWithConsoles:consoles completedBlock:^(NSArray *consoleType, NSArray *games) {
         [FLLocalDataManager sharedInstance].chosenGame = true;
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        //[strongSelf goToTimeLineHome];
         [strongSelf goToUserProfileWithConsoles:consoleType games:games];
     }];
     
@@ -173,6 +172,12 @@
 
 - (void)goToLogin
 {
+    if ([FLTemporalSessionManager sharedInstance].isLogOut) {
+        // Set nil to left menu after logout for avoid any view on left
+        [FLAppDelegate mainNavigationController].mm_drawerController.leftDrawerViewController = nil;
+        [FLTemporalSessionManager sharedInstance].logOut = false;
+    }
+    
     __weak __typeof(self)weakSelf = self;
     FLLoginViewController *loginVC = [[FLLoginViewController alloc] initWithRegisterBlock:^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
@@ -184,13 +189,7 @@
         [strongSelf goToTimeLineHome];
     }];
     
-    if ([FLTemporalSessionManager sharedInstance].isLogOut) {
-        [FLTemporalSessionManager sharedInstance].logOut = false;
-        UINavigationController *navigationController = [FLAppDelegate mainNavigationController];
-        [navigationController fl_pushViewControllerFromRoot:loginVC animated:YES];
-    } else {
-        [[FLAppDelegate mainNavigationController] pushViewController:loginVC animated:YES];
-    }
+    [[FLAppDelegate mainNavigationController] pushViewController:loginVC animated:YES];
 }
 
 - (void)goToTimeLineHome

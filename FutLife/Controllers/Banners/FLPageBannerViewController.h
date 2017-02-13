@@ -13,7 +13,10 @@
 @property (assign, nonatomic) NSInteger index;
 
 - (id)initWithBackgroundImage:(UIImage *)bgImage titleImage:(UIImage *)titleImage contentImage:(UIImage *)contentImage index:(NSInteger)index;
+- (void)perFormConfigContentImages;
 - (void)configContentImages;
 - (void)removeElementsFromSuperView;
+
+@property (assign, nonatomic, getter=isFirstOrLastPage) BOOL firstOrLastPage;
 
 @end

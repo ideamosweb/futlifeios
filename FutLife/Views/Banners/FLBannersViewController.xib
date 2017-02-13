@@ -21,11 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Huc-LE-E7F">
-                    <rect key="frame" x="168" y="622" width="39" height="37"/>
-                </pageControl>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-N9-HHj">
-                    <rect key="frame" x="16" y="625" width="46" height="30"/>
+                    <rect key="frame" x="16" y="623" width="34" height="32"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,17 +31,16 @@
                         <action selector="onSkipButtonTouch:" destination="-1" eventType="touchUpInside" id="cmt-dm-jxn"/>
                     </connections>
                 </button>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Huc-LE-E7F">
+                    <rect key="frame" x="168" y="622" width="39" height="37"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Huc-LE-E7F" secondAttribute="bottom" constant="8" id="2vT-pQ-4Xo"/>
                 <constraint firstAttribute="bottom" secondItem="Lhy-N9-HHj" secondAttribute="bottom" constant="12" id="AT4-O8-5qO"/>
-                <constraint firstItem="Huc-LE-E7F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="168" id="Ovp-A4-Z1D"/>
-                <constraint firstItem="Huc-LE-E7F" firstAttribute="leading" secondItem="Lhy-N9-HHj" secondAttribute="trailing" constant="106" id="PhU-73-Axm"/>
-                <constraint firstAttribute="trailing" secondItem="Huc-LE-E7F" secondAttribute="trailing" constant="168" id="Xph-RV-6Yt"/>
-                <constraint firstItem="Huc-LE-E7F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="622" id="ded-5f-onY"/>
                 <constraint firstItem="Lhy-N9-HHj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="hQc-9d-zR0"/>
-                <constraint firstItem="Lhy-N9-HHj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="625" id="pta-vB-wcl"/>
+                <constraint firstItem="Huc-LE-E7F" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wc3-fk-jjr"/>
             </constraints>
             <point key="canvasLocation" x="-748" y="-109"/>
         </view>

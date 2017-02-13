@@ -8,6 +8,7 @@
 
 #import "FLSessionManager.h"
 #import "FLApiError.h"
+#import "FLApiModel.h"
 
 #import "FLRegisterRequestModel.h"
 #import "FLRegisterResponseModel.h"
@@ -30,7 +31,7 @@
 - (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Avatar request
-- (NSURLSessionDataTask *)avatarRequestWithData:(NSData *)data success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+- (NSURLSessionUploadTask *)avatarRequestWithImageUrl:(NSURL *)imageUrl imageData:(NSData *)imageData success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Get Consoles
 - (NSURLSessionDataTask *)consolesRequestWithSuccess:(void (^)(FLConsoleResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;

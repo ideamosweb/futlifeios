@@ -11,9 +11,10 @@
 
 @implementation NSError (Utils)
 
-- (FLApiError *)fl_apiErrorWithHttpStatusCode:(NSInteger)statusCode;
+- (FLApiError *)fl_apiErrorWithHttpStatusCode:(NSInteger)statusCode response:(FLApiModel *)response;
 {
     FLApiError *serviceError = [[FLApiError alloc] init];
+    
     if (self.code == kCFURLErrorNotConnectedToInternet)
     {
         serviceError.httpStatusCode = kServiceErrorNotConnectedToInternet;
@@ -31,6 +32,11 @@
         }
         serviceError.httpStatusCode = statusCode ? statusCode : kServiceErrorUnknown;
     }
+    
+    if (response.message) {
+        serviceError.message = response.message;        
+    }
+    
     return serviceError;
 }
 

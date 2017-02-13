@@ -29,6 +29,6 @@
 @interface FLRegisterPreferencesRequestModel : FLModel
 
 @property (strong, nonatomic) NSNumber *userId;
-@property (strong, nonatomic) NSArray *preferences;
+@property (strong, nonatomic) NSArray *games;
 
 @end

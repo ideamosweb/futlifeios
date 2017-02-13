@@ -9,6 +9,7 @@
 #import "FLMenuManager.h"
 #import "FLProfileViewController.h"
 #import "FLLoginViewController.h"
+#import "FLUserProfileViewController.h"
 
 @implementation FLMenuManager
 
@@ -51,16 +52,25 @@
     
 }
 
-- (void)onProfileTapped:(id)sender
+- (void)onProfileTapped:(id)sender withAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name
 {
     DDLogInfo(@"%@", NSStringFromSelector(_cmd));
     DDLogInfo(@"%@", self.currentViewController.title);
     
-    if (![self.currentViewController isKindOfClass:[FLProfileViewController class]]) {
+//    if (![self.currentViewController isKindOfClass:[FLProfileViewController class]]) {
+//        UINavigationController *nav = [FLAppDelegate mainNavigationController];
+//        NSArray *consoles = [FLLocalDataManager sharedInstance].consoles;
+//        NSArray *games = [FLLocalDataManager sharedInstance].games;
+//        self.currentViewController = [[FLProfileViewController alloc] initWithConsoles:consoles games:games confirmButton:false completedBlock:nil];
+//        
+//        [nav fl_pushViewControllerFromRoot:self.currentViewController animated:YES];
+//    }
+    
+    if (![self.currentViewController isKindOfClass:[FLUserProfileViewController class]]) {
         UINavigationController *nav = [FLAppDelegate mainNavigationController];
-        NSArray *consoles = [FLLocalDataManager sharedInstance].consoles;
-        NSArray *games = [FLLocalDataManager sharedInstance].games;
-        self.currentViewController = [[FLProfileViewController alloc] initWithConsoles:consoles games:games confirmButton:false completedBlock:nil];
+        //NSArray *consoles = [FLLocalDataManager sharedInstance].consoles;
+        //NSArray *games = [FLLocalDataManager sharedInstance].games;
+        self.currentViewController = [[FLUserProfileViewController alloc] initWithAvatar:avatar name:name userName:userName];
         
         [nav fl_pushViewControllerFromRoot:self.currentViewController animated:YES];
     }
