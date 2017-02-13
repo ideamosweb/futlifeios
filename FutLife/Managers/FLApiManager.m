@@ -78,7 +78,7 @@ static NSString *const kApiGetAllPath = @"m/v1/players/%@%@";
 
 // - POST -
 // Register preferences request
-- (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure
+- (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterPreferencesResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure
 {
     __weak __typeof(self)weakSelf = self;
     
@@ -89,7 +89,7 @@ static NSString *const kApiGetAllPath = @"m/v1/players/%@%@";
     return [self POST:[NSString stringWithFormat:kApiRegisterPreferencesPath, queryParam] parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         NSError *error;
-        FLRegisterResponseModel *response = [MTLJSONAdapter modelOfClass:[FLRegisterResponseModel class] fromJSONDictionary:responseDictionary error:&error];
+        FLRegisterPreferencesResponseModel *response = [MTLJSONAdapter modelOfClass:[FLRegisterPreferencesResponseModel class] fromJSONDictionary:responseDictionary error:&error];
         success(response);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

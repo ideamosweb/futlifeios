@@ -197,11 +197,13 @@ static const CGFloat kProfileCellConsolesHeight = 22.0f;
     requestModel.games = gamesRequest;
     
     [FLAppDelegate showLoadingHUD];
-    [[FLApiManager sharedInstance] registerPreferencesRequestWithModel:requestModel success:^(FLRegisterResponseModel *responseModel) {
+    [[FLApiManager sharedInstance] registerPreferencesRequestWithModel:requestModel success:^(FLRegisterPreferencesResponseModel *responseModel) {
         [FLAppDelegate hideLoadingHUD];
         dispatch_async(dispatch_get_main_queue(), ^{
-            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Enhorabuena!" message:@"Has completado el proceso de registro, ahora ya puedes desafiar a tu oponente y ganar dinero!" buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Felicidades!" message:responseModel.message buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
                 __strong __typeof(weakSelf)strongSelf = weakSelf;
+                
+                [FLLocalDataManager sharedInstance].sessionToken = responseModel.token;
                 
                 [FLLocalDataManager sharedInstance].completedRegister = true;
                 strongSelf.profileCompletedBlock();

@@ -27,3 +27,17 @@
 }
 
 @end
+
+@implementation FLRegisterPreferencesResponseModel
+
+#pragma mark - Mantle JSONKeyPathsByPropertyKey
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"token" : @"token",
+             @"success" : @"success",
+             @"message" : @"message"
+             };
+}
+
+@end

@@ -28,7 +28,7 @@
 - (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Register preferences request
-- (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
+- (NSURLSessionDataTask *)registerPreferencesRequestWithModel:(FLRegisterPreferencesRequestModel *)requestModel success:(void (^)(FLRegisterPreferencesResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Avatar request
 - (NSURLSessionUploadTask *)avatarRequestWithImageUrl:(NSURL *)imageUrl imageData:(NSData *)imageData success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;

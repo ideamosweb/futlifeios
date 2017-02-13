@@ -16,3 +16,11 @@
 @property (strong, nonatomic) FLUserModel *data;
 
 @end
+
+@interface FLRegisterPreferencesResponseModel : FLModel
+
+@property (copy, nonatomic) NSString *token;
+@property (assign, nonatomic, getter=isSuccess) BOOL success;
+@property (copy, nonatomic) NSString *message;
+
+@end
