@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLUserModel.h"
 
 @protocol FLUserListProtocol <NSObject>
 
-- (void)userOptionsWithAvatar:(UIImageView *)avatar name:(NSString *)name userName:(NSString *)userName;
+- (void)userOptionsWithUser:(FLUserModel *)userModel avatar:(UIImageView *)avatar name:(NSString *)name userName:(NSString *)userName;
 
 @end

@@ -73,6 +73,23 @@
     }];
 }
 
+- (FLConsoleModel *)getConsoleById:(NSNumber *)consoleId
+{
+    FLConsoleModel *consoleModel = nil;
+    if ([FLTemporalSessionManager sharedInstance].parameters.consoles && [FLTemporalSessionManager sharedInstance].parameters.consoles.count > 0) {
+        NSArray *allConsoles = [FLTemporalSessionManager sharedInstance].parameters.consoles;
+        for (FLConsoleModel *console in allConsoles) {
+            if (console.consoleId == consoleId) {
+                consoleModel = console;
+                break;
+            }
+            
+        }
+    }
+    
+    return consoleModel;
+}
+
 @end
 
 @implementation FLConsoleRequestModel

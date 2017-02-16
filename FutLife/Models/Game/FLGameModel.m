@@ -91,6 +91,23 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:FLConsoleModel.class];
 }
 
+- (FLGameModel *)getGameById:(NSNumber *)gameId
+{
+    FLGameModel *gameModel = nil;
+    if ([FLTemporalSessionManager sharedInstance].parameters.games && [FLTemporalSessionManager sharedInstance].parameters.games.count > 0) {
+        NSArray *allGames = [FLTemporalSessionManager sharedInstance].parameters.games;
+        for (FLGameModel *game in allGames) {
+            if (game.gameId == gameId) {
+                gameModel = game;
+                break;
+            }
+            
+        }
+    }
+    
+    return gameModel;
+}
+
 @end
 
 @implementation FLGameRequestModel

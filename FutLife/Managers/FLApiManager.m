@@ -10,6 +10,7 @@
 
 static NSString *const kApiTokenQuery = @"?token=%@";
 
+static NSString *const kApiParametersPath = @"m/v1/parameters";
 static NSString *const kApiRegisterPath = @"m/v1/register";
 static NSString *const kApiRegisterPreferencesPath = @"m/v1/preferences%@";
 static NSString *const kApiRegisterAvatarPath = @"m/v1/user/avatar%@";
@@ -54,6 +55,23 @@ static NSString *const kApiGetAllPath = @"m/v1/players/%@%@";
     FLApiModel *response = [MTLJSONAdapter modelOfClass:[FLApiModel class] fromJSONDictionary:(NSDictionary *)errorDict error:&errorMtl];
     
     return [error fl_apiErrorWithHttpStatusCode:error.code response:response];
+}
+
+// - GET -
+// Parameters request
+- (NSURLSessionDataTask *)getParametersRequestWithSuccess:(void (^)(FLConfigurationMatrixModel *responseModel))success failure:(void (^)(FLApiError *error))failure
+{
+    __weak __typeof(self)weakSelf = self;
+    return [self GET:kApiParametersPath parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+        NSError *error;
+        FLConfigurationMatrixModel *response = [MTLJSONAdapter modelOfClass:[FLConfigurationMatrixModel class] fromJSONDictionary:responseDictionary error:&error];
+        success(response);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        FLApiError *apiError = [strongSelf processResponseWithError:error];
+        failure(apiError);
+    }];
 }
 
 // - POST -

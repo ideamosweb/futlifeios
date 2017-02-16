@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLUserModel.h"
 
 @protocol FLUserOptionsProtocol <NSObject>
 
-- (void)goToViewProfileWithAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name;
+- (void)goToViewProfileWithUser:(FLUserModel *)userModel avatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name;
 - (void)goToChallenge;
 - (void)goToViewConsoles;
 - (void)goToViewGames;
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userOptionsNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userOptionsUserNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userOptionsAvatarImageView;
+
+@property (strong, nonatomic) FLUserModel *user;
 
 @property (assign, nonatomic) id<FLUserOptionsProtocol> delegate;
 

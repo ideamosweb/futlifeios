@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSDate *updatedAt;
 
+- (FLConsoleModel *)getConsoleById:(NSNumber *)consoleId;
+
 @end
 
 @interface FLConsoleRequestModel : FLModel

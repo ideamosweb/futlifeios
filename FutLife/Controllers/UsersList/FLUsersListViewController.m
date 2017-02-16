@@ -170,6 +170,7 @@ typedef NS_ENUM(NSInteger, UYLWorldFactsSearchScope)
             user = [self.users objectAtIndex:indexPath.row];
         }
         
+        cell.user = user;
         [cell setUserName:user.userName];
         [cell setName:user.name];
         [cell setUserAvatarWithUrl:[NSURL URLWithString:user.avatar]];

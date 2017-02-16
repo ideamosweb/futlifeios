@@ -10,6 +10,6 @@
 
 @interface FLUserProfileViewController : FLViewController
 
-- (id)initWithAvatar:(UIImage *)avatar name:(NSString *)name userName:(NSString *)userName;
+- (id)initWithUser:(FLUserModel *)userModel Avatar:(UIImage *)avatar name:(NSString *)name userName:(NSString *)userName;
 
 @end

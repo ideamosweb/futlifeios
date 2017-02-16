@@ -21,7 +21,9 @@
 @property (assign, nonatomic) BOOL completedRegister;
 @property (assign, nonatomic) BOOL logged;
 @property (strong, nonatomic) NSArray *consoles;
+@property (strong, nonatomic) NSArray *allConsoles;
 @property (strong, nonatomic) NSArray *games;
+@property (strong, nonatomic) NSArray *allGames;
 @property (copy, nonatomic) NSString *sessionToken;
 
 @end

@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, FLConsoleTypes)
 
 @property (strong, nonatomic) NSArray *consoles;
 
+- (FLGameModel *)getGameById:(NSNumber *)gameId;
+
 @end
 
 @interface FLGameRequestModel : FLModel

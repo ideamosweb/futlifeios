@@ -8,6 +8,7 @@
 
 #import "FLCustomCell.h"
 #import "FLUserListProtocol.h"
+#import "FLUserModel.h"
 
 @interface FLUserListCell : FLCustomCell
 
@@ -16,5 +17,6 @@
 - (void)setUserAvatarWithUrl:(NSURL *)avatarUrl;
 
 @property (nonatomic) id<FLUserListProtocol> delegate;
+@property (strong, nonatomic) FLUserModel *user;
 
 @end

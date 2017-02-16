@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLConfigurationMatrixModel.h"
 
 @interface FLTemporalSessionManager : NSObject
 
 + (instancetype)sharedInstance;
 
+@property (strong, nonatomic) FLConfigurationMatrixModel *parameters;
 @property (nonatomic, assign, getter=isLogOut) BOOL logOut;
 @property (copy, nonatomic) NSString *sessionToken;
 

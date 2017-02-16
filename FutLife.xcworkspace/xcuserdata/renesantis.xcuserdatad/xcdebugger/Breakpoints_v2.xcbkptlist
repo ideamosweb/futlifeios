@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "507241600.387035"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-registerRequestWithModel:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "507241600.387035"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-registerRequestWithModel:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "507241600.387035"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-registerRequestWithModel:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "507243952.279299"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "-processResponseWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "508693955.251879"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-getAllWithSuccess:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -649,22 +649,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FutLife/Controllers/StartUp/FLStartUpViewController.m"
-            timestampString = "507582944.864243"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/TimeLineHome/FLTimeLineHomeViewController.m"
             timestampString = "508101237.694442"
             startingColumnNumber = "9223372036854775807"
@@ -735,7 +719,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
             endingLineNumber = "132"
-            landmarkName = "-userOptionsWithAvatar:name:userName:"
+            landmarkName = "-userOptionsWithUser:avatar:name:userName:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -746,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/UsersList/FLUserListCell.m"
-            timestampString = "508103189.625259"
+            timestampString = "508712589.970401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-onUserOptionsTouch:"
             landmarkType = "7">
          </BreakpointContent>
@@ -783,7 +767,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "-onProfileTapped:withAvatar:userName:name:"
+            landmarkName = "-onProfileTapped:withUser:withAvatar:userName:name:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -926,11 +910,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/ChooseGame/FLChooseGameViewController.m"
-            timestampString = "508111802.867742"
+            timestampString = "508712589.970401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-getGames"
             landmarkType = "7">
          </BreakpointContent>
@@ -1054,11 +1038,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/ChooseGame/FLChooseGameViewController.m"
-            timestampString = "508608117.182304"
+            timestampString = "508712589.970401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-didSelectCarouselItem:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1086,11 +1070,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "508693955.251879"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-getAllWithSuccess:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1102,28 +1086,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "508693955.251879"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-getAllWithSuccess:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FutLife/Controllers/Profile/FLProfileViewController.m"
-            timestampString = "508693955.251879"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-onConfirmButtonTouch:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1134,11 +1102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/ChooseConsole/FLChooseConsoleViewController.m"
-            timestampString = "508435762.615328"
+            timestampString = "508712589.970401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-didSelectCarouselItem:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1150,11 +1118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLApiManager.m"
-            timestampString = "508693955.251879"
+            timestampString = "508952714.631651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-registerPreferencesRequestWithModel:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1162,7 +1130,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Managers/FLSessionManager.m"
@@ -1172,6 +1140,70 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "-init"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FutLife/Controllers/Profile/FLUserProfileViewController.m"
+            timestampString = "508887662.971702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FutLife/Models/Console/FLConsoleModel.m"
+            timestampString = "508713388.760614"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-getConsoleById:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FutLife/Views/Profile/FLUserProfileCell.m"
+            timestampString = "508713746.928121"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-setTitleLabelStr:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FutLife/Controllers/Profile/FLUserProfileViewController.m"
+            timestampString = "508887662.971702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "-createTabsWithBar:scrollView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -21,8 +21,12 @@
 @interface FLRegisterPreferencesModel : FLModel
 
 @property (strong, nonatomic) NSNumber *gameId;
+@property (strong, nonatomic) NSNumber *preferenceId;
 @property (strong, nonatomic) NSNumber *consoleId;
 @property (assign, nonatomic) BOOL active;
+@property (strong, nonatomic) NSDate *createdAt;
+@property (strong, nonatomic) NSDate *updatedAt;
+@property (strong, nonatomic) NSNumber *userId;
 
 @end
 

@@ -60,12 +60,10 @@
     
     // Delay execution of my block for 0.25 seconds.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        if ([self.delegate respondsToSelector:@selector(userOptionsWithAvatar:name:userName:)]) {
-            [self.delegate userOptionsWithAvatar:self.userImageView name:self.nameLabel.text userName:self.userNameLabel.text];
+        if ([self.delegate respondsToSelector:@selector(userOptionsWithUser:avatar:name:userName:)]) {
+            [self.delegate userOptionsWithUser:self.user avatar:self.userImageView name:self.nameLabel.text userName:self.userNameLabel.text];
         }
-    });
-    
-    
+    });    
 }
 
 @end

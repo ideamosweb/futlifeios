@@ -7,6 +7,7 @@
 //
 
 #import "FLUserModel.h"
+#import "FLRegisterRequestModel.h"
 
 @implementation FLUserModel
 
@@ -33,7 +34,8 @@
              @"userName" : @"username",
              @"active" : @"active",
              @"createdAt" : @"created_at",
-             @"updatedAt" : @"updated_at"
+             @"updatedAt" : @"updated_at",
+             @"preferences" : @"preferences"
              };
 }
 
@@ -63,6 +65,10 @@
     } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
         return [self.dateFormatter stringFromDate:date];
     }];
+}
+
++ (NSValueTransformer *)preferencesJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:FLRegisterPreferencesModel.class];
 }
 
 @end

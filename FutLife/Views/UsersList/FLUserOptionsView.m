@@ -12,8 +12,8 @@
 
 - (IBAction)onViewProfileButtonTouch:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(goToViewProfileWithAvatar:userName:name:)]) {
-        [self.delegate goToViewProfileWithAvatar:self.userOptionsAvatarImageView.image userName:self.userOptionsUserNameLabel.text name:self.userOptionsNameLabel.text];
+    if ([self.delegate respondsToSelector:@selector(goToViewProfileWithUser:avatar:userName:name:)]) {
+        [self.delegate goToViewProfileWithUser:self.user avatar:self.userOptionsAvatarImageView.image userName:self.userOptionsUserNameLabel.text name:self.userOptionsNameLabel.text];
     }
 }
 

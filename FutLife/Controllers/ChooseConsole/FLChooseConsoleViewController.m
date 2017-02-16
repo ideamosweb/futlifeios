@@ -117,6 +117,8 @@
             strongSelf.carouselItemsViews[self.consoleCarousel.tag] = [self configCarouselsItemsViews:responseModel.data];
             strongSelf.consoles = responseModel.data;
             
+            [FLLocalDataManager sharedInstance].allConsoles = strongSelf.consoles;
+            
             // We need to reload data for take all the items
             [strongSelf carouselsReloadData];
         }

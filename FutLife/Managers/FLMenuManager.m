@@ -52,7 +52,7 @@
     
 }
 
-- (void)onProfileTapped:(id)sender withAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name
+- (void)onProfileTapped:(id)sender withUser:(FLUserModel *)user withAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name
 {
     DDLogInfo(@"%@", NSStringFromSelector(_cmd));
     DDLogInfo(@"%@", self.currentViewController.title);
@@ -70,7 +70,7 @@
         UINavigationController *nav = [FLAppDelegate mainNavigationController];
         //NSArray *consoles = [FLLocalDataManager sharedInstance].consoles;
         //NSArray *games = [FLLocalDataManager sharedInstance].games;
-        self.currentViewController = [[FLUserProfileViewController alloc] initWithAvatar:avatar name:name userName:userName];
+        self.currentViewController = [[FLUserProfileViewController alloc] initWithUser:user Avatar:avatar name:name userName:userName];
         
         [nav fl_pushViewControllerFromRoot:self.currentViewController animated:YES];
     }

@@ -65,12 +65,6 @@
     if (![FLTemporalSessionManager sharedInstance].isLogOut) {
         [self setVersionLabel];
         [self animationLogo];
-        
-        if ([FLLocalDataManager sharedInstance].completedRegister || [FLLocalDataManager sharedInstance].logged) {
-            [self performSelector:@selector(goToTimeLineHome) withObject:nil afterDelay:4.0];
-        } else {
-            [self performSelector:@selector(showBanners) withObject:nil afterDelay:4.0];
-        }
     } else {
         [self goToLogin];
     }
@@ -78,7 +72,30 @@
 
 - (void)animationLogo
 {
+    [self getParameters];
     [self.logoImageView fl_animationLogo];
+}
+
+- (void)getParameters
+{
+    __weak __typeof(self)weakSelf = self;
+    [[FLApiManager sharedInstance] getParametersRequestWithSuccess:^(FLConfigurationMatrixModel *responseModel) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [FLTemporalSessionManager sharedInstance].parameters = responseModel;
+        
+        if ([FLLocalDataManager sharedInstance].completedRegister || [FLLocalDataManager sharedInstance].logged) {
+            [strongSelf performSelector:@selector(goToTimeLineHome) withObject:nil afterDelay:4.0];
+        } else {
+            [strongSelf performSelector:@selector(showBanners) withObject:nil afterDelay:4.0];
+        }
+    } failure:^(FLApiError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FLAlertView *alert = [[FLAlertView alloc] initWithTitle:@"Estimado jugador" message:[error errorMessage] buttonTitles:@[@"Aceptar"] buttonTypes:@[] clickedButtonAtIndex:^(NSUInteger clickedButtonIndex) {
+                
+            }];
+            [alert show];
+        });
+    }];
 }
 
 - (void)setVersionLabel

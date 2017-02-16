@@ -20,6 +20,7 @@
 @property (assign, nonatomic, getter=isActive) BOOL active;
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSDate *updatedAt;
+@property (strong, nonatomic) NSArray *preferences;
 
 @end
 

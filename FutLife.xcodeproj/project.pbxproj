@@ -43,6 +43,9 @@
 		1772AE461DB7DB9200236CB9 /* FLInputsFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE451DB7DB9200236CB9 /* FLInputsFormManager.m */; };
 		1772AE501DB882DC00236CB9 /* FLToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE4F1DB882DC00236CB9 /* FLToolbar.m */; };
 		1772AE541DB88B4000236CB9 /* FLInputFieldValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */; };
+		1780C2331E5219ED00663E45 /* FLUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1780C2321E5219ED00663E45 /* FLUserProfileCell.m */; };
+		1780C2351E521A0400663E45 /* FLUserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1780C2341E521A0400663E45 /* FLUserProfileCell.xib */; };
+		1780C23A1E5600D000663E45 /* FLConfigurationMatrixModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1780C2391E5600D000663E45 /* FLConfigurationMatrixModel.m */; };
 		1790943F1E2442770040B1B6 /* FLNavMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1790943D1E2442770040B1B6 /* FLNavMenuViewController.m */; };
 		179094401E2442770040B1B6 /* FLNavMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1790943E1E2442770040B1B6 /* FLNavMenuViewController.xib */; };
 		179094441E2452F40040B1B6 /* FLMenuItemsDefinitions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 179094431E2452F40040B1B6 /* FLMenuItemsDefinitions.plist */; };
@@ -191,6 +194,11 @@
 		1772AE511DB8865400236CB9 /* FLValidatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLValidatable.h; path = Common/Forms/FLValidatable.h; sourceTree = "<group>"; };
 		1772AE521DB88B4000236CB9 /* FLInputFieldValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLInputFieldValidation.h; path = Common/Forms/FLInputFieldValidation.h; sourceTree = "<group>"; };
 		1772AE531DB88B4000236CB9 /* FLInputFieldValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLInputFieldValidation.m; path = Common/Forms/FLInputFieldValidation.m; sourceTree = "<group>"; };
+		1780C2311E5219ED00663E45 /* FLUserProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLUserProfileCell.h; path = Views/Profile/FLUserProfileCell.h; sourceTree = "<group>"; };
+		1780C2321E5219ED00663E45 /* FLUserProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLUserProfileCell.m; path = Views/Profile/FLUserProfileCell.m; sourceTree = "<group>"; };
+		1780C2341E521A0400663E45 /* FLUserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLUserProfileCell.xib; path = Views/Profile/FLUserProfileCell.xib; sourceTree = "<group>"; };
+		1780C2381E5600D000663E45 /* FLConfigurationMatrixModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLConfigurationMatrixModel.h; path = Models/Configuration/FLConfigurationMatrixModel.h; sourceTree = "<group>"; };
+		1780C2391E5600D000663E45 /* FLConfigurationMatrixModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLConfigurationMatrixModel.m; path = Models/Configuration/FLConfigurationMatrixModel.m; sourceTree = "<group>"; };
 		1790943C1E2442770040B1B6 /* FLNavMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLNavMenuViewController.h; path = Controllers/NavigationMenu/FLNavMenuViewController.h; sourceTree = "<group>"; };
 		1790943D1E2442770040B1B6 /* FLNavMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FLNavMenuViewController.m; path = Controllers/NavigationMenu/FLNavMenuViewController.m; sourceTree = "<group>"; };
 		1790943E1E2442770040B1B6 /* FLNavMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FLNavMenuViewController.xib; path = Views/NavigationMenu/FLNavMenuViewController.xib; sourceTree = "<group>"; };
@@ -454,6 +462,7 @@
 		1772ADF71DB4551400236CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1780C2371E55FFF500663E45 /* Configuration */,
 				179500FD1E3BB9F100BA0A59 /* Api */,
 				179500DB1E2EB96600BA0A59 /* Login */,
 				17B371231DF137AE0035442D /* User */,
@@ -585,6 +594,15 @@
 				179EA43B1DBC3E23004EB2CC /* FLTextField.m */,
 			);
 			name = Forms;
+			sourceTree = "<group>";
+		};
+		1780C2371E55FFF500663E45 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				1780C2381E5600D000663E45 /* FLConfigurationMatrixModel.h */,
+				1780C2391E5600D000663E45 /* FLConfigurationMatrixModel.m */,
+			);
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 		1790943B1E24421A0040B1B6 /* NavigationMenu */ = {
@@ -749,6 +767,9 @@
 			children = (
 				17B3711A1DF126210035442D /* FLProfileViewController.xib */,
 				17B371201DF12EEE0035442D /* FLProfileCell.xib */,
+				1780C2311E5219ED00663E45 /* FLUserProfileCell.h */,
+				1780C2321E5219ED00663E45 /* FLUserProfileCell.m */,
+				1780C2341E521A0400663E45 /* FLUserProfileCell.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1096,6 +1117,7 @@
 				1772AE351DB56FCE00236CB9 /* FLStartUpViewController.xib in Resources */,
 				179500D71E2E7F4800BA0A59 /* BebasNeue-Book.ttf in Resources */,
 				179094401E2442770040B1B6 /* FLNavMenuViewController.xib in Resources */,
+				1780C2351E521A0400663E45 /* FLUserProfileCell.xib in Resources */,
 				17C3C6C61DC1BC8B00415CBE /* FLLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1207,6 +1229,8 @@
 				17BE292F1DC6B16D007F572E /* UIViewController+Utils.m in Sources */,
 				1772AE341DB56FCE00236CB9 /* FLStartUpViewController.m in Sources */,
 				1772AE2B1DB5368F00236CB9 /* UIImage+Utils.m in Sources */,
+				1780C23A1E5600D000663E45 /* FLConfigurationMatrixModel.m in Sources */,
+				1780C2331E5219ED00663E45 /* FLUserProfileCell.m in Sources */,
 				179500DE1E2F06F800BA0A59 /* FLLoginRequestModel.m in Sources */,
 				1790943F1E2442770040B1B6 /* FLNavMenuViewController.m in Sources */,
 				17B3711B1DF126210035442D /* FLProfileViewController.m in Sources */,

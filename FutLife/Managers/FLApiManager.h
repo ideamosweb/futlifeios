@@ -10,6 +10,7 @@
 #import "FLApiError.h"
 #import "FLApiModel.h"
 
+#import "FLConfigurationMatrixModel.h"
 #import "FLRegisterRequestModel.h"
 #import "FLRegisterResponseModel.h"
 
@@ -23,6 +24,9 @@
 @interface FLApiManager : FLSessionManager
 
 + (instancetype)sharedInstance;
+
+// Parameters request
+- (NSURLSessionDataTask *)getParametersRequestWithSuccess:(void (^)(FLConfigurationMatrixModel *responseModel))success failure:(void (^)(FLApiError *error))failure;
 
 // Register request
 - (NSURLSessionDataTask *)registerRequestWithModel:(FLRegisterRequestModel *)requestModel success:(void (^)(FLRegisterResponseModel *responseModel))success failure:(void (^)(FLApiError *error))failure;

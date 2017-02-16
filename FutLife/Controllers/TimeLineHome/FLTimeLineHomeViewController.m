@@ -126,7 +126,7 @@
 
 #pragma mark - FLUserListCell protocol methods
 
-- (void)userOptionsWithAvatar:(UIImageView *)avatar name:(NSString *)name userName:(NSString *)userName
+- (void)userOptionsWithUser:(FLUserModel *)userModel avatar:(UIImageView *)avatar name:(NSString *)name userName:(NSString *)userName
 {
     self.timeLineCompletedBlock = nil;
     CGRect darkBgViewFrame = CGRectMake(0, 0, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height);
@@ -153,6 +153,8 @@
     self.userOptionsView.userOptionsUserNameLabel.text = userName;
     [self.userOptionsView.userOptionsAvatarImageView fl_MakeCircularView];
     self.userOptionsView.userOptionsAvatarImageView.image = avatar.image;
+    // Set all the user information
+    self.userOptionsView.user = userModel;
     
     [self.userOptionsView layoutSubviews];
     [currentWindow addSubview:self.userOptionsView];
@@ -166,13 +168,14 @@
 
 #pragma mark - FLUserOptionsView protocol methods
 
-- (void)goToViewProfileWithAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name
+- (void)goToViewProfileWithUser:(FLUserModel *)userModel avatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name
 {
     __weak __typeof(self)weakSelf = self;    
     self.timeLineCompletedBlock = ^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.menuManager.currentViewController = nil;
-        [strongSelf.menuManager onProfileTapped:nil withAvatar:avatar userName:userName name:name];
+        //[strongSelf.menuManager onProfileTapped:nil withAvatar:avatar userName:userName name:name];
+        [strongSelf.menuManager onProfileTapped:nil withUser:userModel withAvatar:avatar userName:userName name:name];
     };
     
     [self hideUserOptionsView:nil];

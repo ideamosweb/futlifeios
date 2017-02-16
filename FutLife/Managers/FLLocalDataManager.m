@@ -16,7 +16,9 @@ static NSString *const kChosenGame = @"ChosenGame";
 static NSString *const kCompletedRegister = @"CompletedRegister";
 static NSString *const kLogged = @"Logged";
 static NSString *const kConsoles = @"Consoles";
+static NSString *const kAllConsoles = @"AllConsoles";
 static NSString *const kGames = @"Games";
+static NSString *const kAllGames = @"AllGames";
 static NSString *const kSessionToken = @"SessionToken";
 
 @implementation FLLocalDataManager
@@ -127,6 +129,18 @@ static NSString *const kSessionToken = @"SessionToken";
     [NSUserDefaults fl_setObject:encodedObject forKey:kConsoles];
 }
 
+- (NSArray *)allConsoles
+{
+    NSData *encodedObject = [[NSUserDefaults standardUserDefaults] objectForKey:kAllConsoles];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+}
+
+- (void)setAllConsoles:(NSArray *)allConsoles
+{
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:allConsoles];
+    [NSUserDefaults fl_setObject:encodedObject forKey:kAllConsoles];
+}
+
 - (NSArray *)games
 {
     NSData *encodedObject = [[NSUserDefaults standardUserDefaults] objectForKey:kGames];
@@ -137,6 +151,18 @@ static NSString *const kSessionToken = @"SessionToken";
 {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:games];
     [NSUserDefaults fl_setObject:encodedObject forKey:kGames];
+}
+
+- (NSArray *)allGames
+{
+    NSData *encodedObject = [[NSUserDefaults standardUserDefaults] objectForKey:kAllGames];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+}
+
+- (void)setAllGames:(NSArray *)allGames
+{
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:allGames];
+    [NSUserDefaults fl_setObject:encodedObject forKey:kAllGames];
 }
 
 - (NSString *)sessionToken

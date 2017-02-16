@@ -112,13 +112,15 @@
     __weak FLChooseGameViewController *weakSelf = self;
     [FLAppDelegate showLoadingHUD];
     [[FLApiManager sharedInstance] gamesRequestWithSuccess:^(FLGameResponseModel *responseModel) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         [FLAppDelegate hideLoadingHUD];
         if (responseModel) {
-            [weakSelf createCarouselsWithViewItems:responseModel.data];
-            weakSelf.games = responseModel.data;
+            [strongSelf createCarouselsWithViewItems:responseModel.data];
+            strongSelf.games = responseModel.data;
+            [FLLocalDataManager sharedInstance].allGames = strongSelf.games;
             
             // We need to reload data for take all the items
-            [weakSelf carouselsReloadData];
+            [strongSelf carouselsReloadData];
         }
     } failure:^(FLApiError *error) {
         [FLAppDelegate hideLoadingHUD];
