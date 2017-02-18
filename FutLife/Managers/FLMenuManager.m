@@ -9,7 +9,6 @@
 #import "FLMenuManager.h"
 #import "FLProfileViewController.h"
 #import "FLLoginViewController.h"
-#import "FLUserProfileViewController.h"
 
 @implementation FLMenuManager
 
@@ -52,7 +51,7 @@
     
 }
 
-- (void)onProfileTapped:(id)sender withUser:(FLUserModel *)user withAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name
+- (void)onProfileTapped:(id)sender withUser:(FLUserModel *)user profileType:(FLUserProfileType)profileType
 {
     DDLogInfo(@"%@", NSStringFromSelector(_cmd));
     DDLogInfo(@"%@", self.currentViewController.title);
@@ -70,7 +69,7 @@
         UINavigationController *nav = [FLAppDelegate mainNavigationController];
         //NSArray *consoles = [FLLocalDataManager sharedInstance].consoles;
         //NSArray *games = [FLLocalDataManager sharedInstance].games;
-        self.currentViewController = [[FLUserProfileViewController alloc] initWithUser:user Avatar:avatar name:name userName:userName];
+        self.currentViewController = [[FLUserProfileViewController alloc] initWithUser:user profileType:profileType];
         
         [nav fl_pushViewControllerFromRoot:self.currentViewController animated:YES];
     }

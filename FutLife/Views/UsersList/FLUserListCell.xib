@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resantis25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXV-c0-flI">
-                        <rect key="frame" x="64" y="9" width="161" height="22"/>
+                        <rect key="frame" x="64" y="9" width="161" height="21.5"/>
                         <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -47,10 +47,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qh-ph-566">
-                        <rect key="frame" x="317" y="20" width="20" height="20"/>
+                        <rect key="frame" x="307" y="15" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="nJp-ef-ttc"/>
-                            <constraint firstAttribute="height" constant="20" id="rcC-ih-5Mq"/>
+                            <constraint firstAttribute="width" constant="30" id="nJp-ef-ttc"/>
+                            <constraint firstAttribute="height" constant="30" id="rcC-ih-5Mq"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <state key="normal" image="user_option_icon"/>
@@ -71,7 +71,7 @@
                 <constraints>
                     <constraint firstItem="Qmj-mL-O4G" firstAttribute="leading" secondItem="z7a-Op-m0W" secondAttribute="trailing" constant="8" id="3vH-AX-8Xq"/>
                     <constraint firstAttribute="trailingMargin" secondItem="3Qh-ph-566" secondAttribute="trailing" constant="30" id="5Th-eI-MV8"/>
-                    <constraint firstItem="3Qh-ph-566" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="12" id="Gkz-CV-yJd"/>
+                    <constraint firstItem="3Qh-ph-566" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="7" id="Gkz-CV-yJd"/>
                     <constraint firstItem="VXV-c0-flI" firstAttribute="leading" secondItem="z7a-Op-m0W" secondAttribute="trailing" constant="8" id="Plu-MW-XuP"/>
                     <constraint firstItem="VXV-c0-flI" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="1" id="SMf-Su-WZh"/>
                     <constraint firstAttribute="bottom" secondItem="z7a-Op-m0W" secondAttribute="bottom" constant="5.5" id="UkF-d8-54T"/>

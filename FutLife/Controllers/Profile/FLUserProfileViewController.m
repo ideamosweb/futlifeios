@@ -27,22 +27,25 @@
 @property (strong, nonatomic) UIView *selectedButtonView;
 @property (strong, nonatomic) UIButton *consolesButton;
 @property (strong, nonatomic) UIButton *gamesButton;
+@property (strong, nonatomic) UIButton *userInfoButton;
 
-@property (strong, nonatomic) UITableView *consolesTableView;
+@property (strong, nonatomic) UITableView *userInfoTableView;
 @property (strong, nonatomic) UITableView *gamesTableView;
+@property (strong, nonatomic) UITableView *consolesTableView;
+
+@property (strong, nonatomic) NSMutableArray *userInformation;
+@property (nonatomic) FLUserProfileType profileType;
 
 @end
 
 @implementation FLUserProfileViewController
 
-- (id)initWithUser:(FLUserModel *)userModel Avatar:(UIImage *)avatar name:(NSString *)name userName:(NSString *)userName
+- (id)initWithUser:(FLUserModel *)userModel profileType:(FLUserProfileType)profileType
 {
     self = [super init];
-    if (self) {
-        self.avatar = avatar;
-        self.name = name;
-        self.userName = userName;
+    if (self) {        
         self.user = userModel;
+        self.profileType = profileType;
     }
     
     return self;
@@ -129,7 +132,7 @@
     /*********** AVATAR IMAGE *************/
     UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMidX([FLMiscUtils screenViewFrame]), 0.0f, 150.0f, 150.0f)];
     avatar.contentMode = UIViewContentModeScaleAspectFill;
-    [avatar setImage:self.avatar];
+    [avatar setImageWithURL:[NSURL URLWithString:self.user.avatar] placeholderImage:[UIImage imageNamed:@""]];
     [avatar fl_MakeCircularView];
     [myBar addSubview:avatar];
     
@@ -152,7 +155,7 @@
     
     /************** USERNAME LABEL ****************/
     UILabel *userNameLabel = [[UILabel alloc] init];
-    userNameLabel.text = self.userName;
+    userNameLabel.text = self.user.userName;
     userNameLabel.font = [UIFont fl_bebasFontOfSize:27];
     userNameLabel.textColor = [UIColor whiteColor];
     [userNameLabel sizeToFit];
@@ -177,7 +180,7 @@
     
     /**************** NAME LABEL ******************/
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.text = self.name;
+    nameLabel.text = self.user.name;
     nameLabel.font = [UIFont fl_bebasFontOfSize:24];
     nameLabel.textColor = [UIColor lightGrayColor];
     [nameLabel sizeToFit];
@@ -238,68 +241,84 @@
 
 - (void)createTabsWithBar:(BLKFlexibleHeightBar *)myBar scrollView:(UIScrollView *)scrollView
 {
-    self.consolesButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [FLMiscUtils screenViewFrame].size.width / 2, 50.0f)];
-    [self.consolesButton setImage:[UIImage imageNamed:@"user_view_consoles_icon"] forState:UIControlStateNormal];
-    [self.consolesButton addTarget:self action:@selector(onConsolesButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    self.userInfoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [FLMiscUtils screenViewFrame].size.width / 3, 50.0f)];
+    [self.userInfoButton setImage:[UIImage imageNamed:@"user_view_profile_icon"] forState:UIControlStateNormal];
+    [self.userInfoButton addTarget:self action:@selector(onUserInfoButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, CGRectGetHeight(self.consolesButton.frame) + 5.0f, [FLMiscUtils screenViewFrame].size.width / 2, 22.0f)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, CGRectGetHeight(self.userInfoButton.frame) + 5.0f, [FLMiscUtils screenViewFrame].size.width / 3, 22.0f)];
     label1.font = [UIFont fl_bebasFontOfSize:15.0];
-    label1.text = @"Consolas";
+    label1.text = @"Información";
     label1.textAlignment = NSTextAlignmentCenter;
     label1.textColor = [UIColor darkGrayColor];
     
-    UIView *separatorVerticalView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.consolesButton.frame), 10.0f, 2.0f, 50.0f)];
+    UIView *separatorVerticalView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.userInfoButton.frame), 10.0f, 2.0f, 50.0f)];
     separatorVerticalView.backgroundColor = [UIColor lightGrayColor];
     
-    self.gamesButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.consolesButton.frame), 0.0f, [FLMiscUtils screenViewFrame].size.width / 2, 50.0f)];
+    self.gamesButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.userInfoButton.frame), 0.0f, [FLMiscUtils screenViewFrame].size.width / 3, 50.0f)];
     [self.gamesButton setImage:[UIImage imageNamed:@"user_view_games_icon"] forState:UIControlStateNormal];
     [self.gamesButton addTarget:self action:@selector(onGamesButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(label1.frame), CGRectGetHeight(self.gamesButton.frame) + 5.0f, [FLMiscUtils screenViewFrame].size.width / 2, 22.0f)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(label1.frame), CGRectGetHeight(self.gamesButton.frame) + 5.0f, [FLMiscUtils screenViewFrame].size.width / 3, 22.0f)];
     label2.font = [UIFont fl_bebasFontOfSize:15.0];
     label2.text = @"Juegos";
     label2.textAlignment = NSTextAlignmentCenter;
     label2.textColor = [UIColor darkGrayColor];
     
+    UIView *separatorVerticalView2 = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gamesButton.frame), 10.0f, 2.0f, 50.0f)];
+    separatorVerticalView2.backgroundColor = [UIColor lightGrayColor];
+    
+    self.consolesButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.gamesButton.frame), 0.0f, [FLMiscUtils screenViewFrame].size.width / 3, 50.0f)];
+    [self.consolesButton setImage:[UIImage imageNamed:@"user_view_consoles_icon"] forState:UIControlStateNormal];
+    [self.consolesButton addTarget:self action:@selector(onConsolesButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label2.frame), CGRectGetHeight(self.gamesButton.frame) + 5.0f, [FLMiscUtils screenViewFrame].size.width / 3, 22.0f)];
+    label3.font = [UIFont fl_bebasFontOfSize:15.0];
+    label3.text = @"Consolas";
+    label3.textAlignment = NSTextAlignmentCenter;
+    label3.textColor = [UIColor darkGrayColor];
+    
     CGRect tabsViewFrame = CGRectMake(0.0f, CGRectGetHeight(myBar.frame) - 55.0f, [FLMiscUtils screenViewFrame].size.width, 80.0f);
     UIView *tabsView = [[UIView alloc] initWithFrame:tabsViewFrame];
     
-    self.selectedButtonView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(label1.frame), CGRectGetWidth(self.consolesButton.frame), 4.0f)];
+    self.selectedButtonView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(label1.frame), CGRectGetWidth(self.userInfoButton.frame), 4.0f)];
     self.selectedButtonView.backgroundColor = [UIColor colorWithRed:85.0f/255.0f green:164.0f/255.0f blue:36.0f/155.0f alpha:1.0f];
     
     UIView *separatorHorizontalView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMinY(self.selectedButtonView.frame), CGRectGetWidth(tabsView.frame), 1.0f)];
     separatorHorizontalView.backgroundColor = [UIColor lightGrayColor];
     
-    [tabsView addSubview:self.consolesButton];
+    [tabsView addSubview:self.userInfoButton];
     [tabsView addSubview:self.gamesButton];
+    [tabsView addSubview:self.consolesButton];
     [tabsView addSubview:label1];
     [tabsView addSubview:label2];
+    [tabsView addSubview:label3];
     [tabsView addSubview:separatorVerticalView];
+    [tabsView addSubview:separatorVerticalView2];
     [tabsView addSubview:self.selectedButtonView];
     
     [scrollView addSubview:tabsView];
     
-    self.tabsContainerScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabsView.frame), [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame))];
+    self.tabsContainerScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabsView.frame) + 10.0f, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame))];
     self.tabsContainerScroll.bounces = NO;
     
-    CGRect consolesTableViewFrame = CGRectMake(0, 0, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame) - 20.0f);
+    CGRect userInfoTableViewFrame = CGRectMake(0, 0, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame) - 20.0f);
     
-    self.consolesTableView = [[UITableView alloc] initWithFrame:consolesTableViewFrame];
-    self.consolesTableView.backgroundColor = [UIColor clearColor];
-    UIView *bgTableView = [[UIView alloc] initWithFrame:consolesTableViewFrame];
+    self.userInfoTableView = [[UITableView alloc] initWithFrame:userInfoTableViewFrame];
+    self.userInfoTableView.backgroundColor = [UIColor clearColor];
+    UIView *bgTableView = [[UIView alloc] initWithFrame:userInfoTableViewFrame];
     UIImageView *bgTableViewImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, CGRectGetWidth(bgTableView.frame), CGRectGetHeight(bgTableView.frame))];
     bgTableViewImage.image = [UIImage imageNamed:@"background-green"];
     [bgTableView addSubview:bgTableViewImage];
     
     //consolesTableView.backgroundView = bgTableView;
-    self.consolesTableView.delegate = self;
-    self.consolesTableView.dataSource = self;
-    self.consolesTableView.scrollEnabled = NO;
-    self.consolesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.consolesTableView.clipsToBounds = NO;
-    [self.consolesTableView registerNib:[FLUserProfileCell nib] forCellReuseIdentifier:[FLUserProfileCell cellIdentifier]];
+    self.userInfoTableView.delegate = self;
+    self.userInfoTableView.dataSource = self;
+    self.userInfoTableView.scrollEnabled = NO;
+    self.userInfoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.userInfoTableView.clipsToBounds = NO;
+    [self.userInfoTableView registerNib:[FLUserProfileCell nib] forCellReuseIdentifier:[FLUserProfileCell cellIdentifier]];
     
-    CGRect gamesTableViewFrame = CGRectMake(CGRectGetWidth(self.consolesTableView.frame), 0, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame) - 20.0f);
+    CGRect gamesTableViewFrame = CGRectMake(CGRectGetWidth(self.userInfoTableView.frame), 0, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame) - 20.0f);
     
     self.gamesTableView = [[UITableView alloc] initWithFrame:gamesTableViewFrame];
     self.gamesTableView.backgroundColor = [UIColor clearColor];
@@ -310,9 +329,21 @@
     self.gamesTableView.clipsToBounds = NO;
     [self.gamesTableView registerNib:[FLUserProfileCell nib] forCellReuseIdentifier:[FLUserProfileCell cellIdentifier]];
     
-    [self.tabsContainerScroll addSubview:self.consolesTableView];
+    CGRect consolesTableViewFrame = CGRectMake(CGRectGetMaxX(self.gamesTableView.frame), 0, [FLMiscUtils screenViewFrame].size.width, [FLMiscUtils screenViewFrame].size.height - CGRectGetHeight(myBar.frame) - 20.0f);
+    
+    self.consolesTableView = [[UITableView alloc] initWithFrame:consolesTableViewFrame];
+    self.consolesTableView.backgroundColor = [UIColor clearColor];
+    self.consolesTableView.delegate = self;
+    self.consolesTableView.dataSource = self;
+    self.consolesTableView.scrollEnabled = NO;
+    self.consolesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.consolesTableView.clipsToBounds = NO;
+    [self.consolesTableView registerNib:[FLUserProfileCell nib] forCellReuseIdentifier:[FLUserProfileCell cellIdentifier]];
+    
+    [self.tabsContainerScroll addSubview:self.userInfoTableView];
     [self.tabsContainerScroll addSubview:self.gamesTableView];
-    self.tabsContainerScroll.contentSize = CGSizeMake(CGRectGetWidth(self.consolesTableView.frame) * 2, CGRectGetHeight(self.consolesTableView.frame));
+    [self.tabsContainerScroll addSubview:self.consolesTableView];
+    self.tabsContainerScroll.contentSize = CGSizeMake(CGRectGetWidth(self.userInfoTableView.frame) * 3, CGRectGetHeight(self.userInfoTableView.frame));
     
     [scrollView addSubview:self.tabsContainerScroll];
     
@@ -337,7 +368,62 @@
             [self.games addObject:game];
         }
     }
+    
+    self.userInformation = [NSMutableArray new];
+    [self.userInformation addObject:@{
+                                 @"title" : self.user.userName,
+                                 @"icon" : @"profile.username",
+                                 @"placeHolder" : @"Username"
+                                 }];
+    
+    [self.userInformation addObject:@{
+                                 @"title" : self.user.name,
+                                 @"icon" : @"profile.username",
+                                 @"placeHolder" : @"Nombre"
+                                 }];
+    
+    [self.userInformation addObject:@{
+                                 @"title" : @"",
+                                 @"icon" : @"profile.location",
+                                 @"placeHolder" : @"Ubicacion"
+                                 }];
+    
+    [self.userInformation addObject:@{
+                                 @"title" : self.user.email,
+                                 @"icon" : @"profile.email",
+                                 @"placeHolder" : @"email"
+                                 }];
+    
+    [self.userInformation addObject:@{
+                                 @"title" : @"",
+                                 @"icon" : @"profile.telephone",
+                                 @"placeHolder" : @"Telefono"
+                                 }];
+    
+    [self.userInformation addObject:@{
+                                 @"title" : @"",
+                                 @"icon" : @"profile.birthday",
+                                 @"placeHolder" : @"Fecha de nacimiento"
+                                 }];
+    
+    if (self.profileType == kFLUserProfileGamesType) {
+        [self onGamesButtonTouch:nil];
+    } else if (self.profileType == kFLUserProfileConsolesType) {
+        [self onConsolesButtonTouch:nil];
+    }
 
+}
+
+- (void)onUserInfoButtonTouch:(id)sender
+{
+    CGPoint point = CGPointMake(CGRectGetMinX(self.userInfoTableView.frame), 0.0f);
+    [self.tabsContainerScroll setContentOffset:point animated:YES];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect selectedButtonViewFrame = self.selectedButtonView.frame;
+        selectedButtonViewFrame.origin.x = CGRectGetMinX(self.userInfoTableView.frame);
+        self.selectedButtonView.frame = selectedButtonViewFrame;
+    }];
 }
 
 - (void)onConsolesButtonTouch:(id)sender
@@ -373,11 +459,13 @@
 //    
 //    return self.consoles.count
     
-    if (tableView == self.consolesTableView) {
-        return self.consoles.count;
+    if (tableView == self.userInfoTableView) {
+        return 6;
+    } else if (tableView == self.gamesTableView) {
+        return self.games.count;
     }
     
-    return self.games.count;
+    return self.consoles.count;
 }
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -387,7 +475,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return 64.0f;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -403,16 +491,40 @@
 {
     FLUserProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:[FLUserProfileCell cellIdentifier]];
     if (cell) {
-        FLRegisterPreferencesModel *preferences = [self.user.preferences objectAtIndex:indexPath.row];
-        FLConsoleModel *console = [[FLConsoleModel new] getConsoleById:preferences.consoleId];
-        FLGameModel *game = [[FLGameModel new] getGameById:preferences.gameId];
+        NSString *icon = nil;
+        NSString *userTitle = nil;
+        NSString *placeHolder = nil;
         
-        NSString *avatar = (tableView == self.consolesTableView) ? console.avatar : game.avatar;
-        NSString *name = (tableView == self.consolesTableView) ? console.name : game.name;
+        if (tableView == self.userInfoTableView) {
+            icon = [[self.userInformation objectAtIndex:indexPath.row] objectForKey:@"icon"];
+            userTitle = [[self.userInformation objectAtIndex:indexPath.row] objectForKey:@"title"];
+            placeHolder = [[self.userInformation objectAtIndex:indexPath.row] objectForKey:@"placeHolder"];
+            
+            [cell setThumbnailWithImageName:icon];
+            [cell setTitleLabelStr:userTitle placeHolder:placeHolder];
+            [cell setDescLabelStr:userTitle];
+        } else if (tableView == self.gamesTableView) {
+            FLRegisterPreferencesModel *preferences = [self.user.preferences objectAtIndex:indexPath.row];
+            FLGameModel *game = [[FLGameModel new] getGameById:preferences.gameId];
+            
+            NSString *avatar = game.avatar;
+            NSString *name = game.name;
+            
+            [cell setGameThumbnailWithUrl:[NSURL URLWithString:avatar]];
+            [cell setTitleLabelStr:name placeHolder:@""];
+            [cell setDescLabelStr:name];
+        } else {
+            FLRegisterPreferencesModel *preferences = [self.user.preferences objectAtIndex:indexPath.row];
+            FLConsoleModel *console = [[FLConsoleModel new] getConsoleById:preferences.consoleId];
+            
+            NSString *avatar = console.avatar;
+            NSString *name = console.name;
+            
+            [cell setConsoleWithUrl:[NSURL URLWithString:avatar]];
+            [cell setTitleLabelStr:name placeHolder:@""];
+            [cell setDescLabelStr:name];
+        }
         
-        [cell setThumbnailWithUrl:[NSURL URLWithString:avatar]];
-        [cell setTitleLabelStr:name];
-        [cell setDescLabelStr:name];
 //        cell.backgroundColor = [UIColor clearColor];
 //        cell.textLabel.textColor = [UIColor blackColor];
 //        cell.textLabel.font = [UIFont fl_bebasFontOfSize:18.0f];
@@ -420,6 +532,8 @@
 //        
 //        cell.userInteractionEnabled = NO;
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

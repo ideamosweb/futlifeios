@@ -12,9 +12,9 @@
 @protocol FLUserOptionsProtocol <NSObject>
 
 - (void)goToViewProfileWithUser:(FLUserModel *)userModel avatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name;
-- (void)goToChallenge;
-- (void)goToViewConsoles;
-- (void)goToViewGames;
+- (void)goToChallengeWithUser:(FLUserModel *)userModel;
+- (void)goToViewConsolesWithUser:(FLUserModel *)userModel;
+- (void)goToViewGamesWithUser:(FLUserModel *)userModel;
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLUserProfileViewController.h"
 
 @interface FLMenuManager : NSObject
 
@@ -16,7 +17,7 @@
 @property (nonatomic, strong) UIViewController *currentViewController;
 
 - (void)onHomeTapped:(id)sender;
-- (void)onProfileTapped:(id)sender withUser:(FLUserModel *)user withAvatar:(UIImage *)avatar userName:(NSString *)userName name:(NSString *)name;
+- (void)onProfileTapped:(id)sender withUser:(FLUserModel *)user profileType:(FLUserProfileType)profileType;
 - (void)onSettingsTapped:(id)sender;
 - (void)onAboutUsTapped:(id)sender;
 - (void)onHelpTapped:(id)sender;

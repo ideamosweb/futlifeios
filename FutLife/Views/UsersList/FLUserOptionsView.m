@@ -19,22 +19,22 @@
 
 - (IBAction)onChallengeButtonTouch:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(goToChallenge)]) {
-        [self.delegate goToChallenge];
+    if ([self.delegate respondsToSelector:@selector(goToChallengeWithUser:)]) {
+        [self.delegate goToChallengeWithUser:self.user];
     }
 }
 
 - (IBAction)onViewConsolesButtonTouch:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(goToViewConsoles)]) {
-        [self.delegate goToViewConsoles];
+    if ([self.delegate respondsToSelector:@selector(goToViewConsolesWithUser:)]) {
+        [self.delegate goToViewConsolesWithUser:self.user];
     }
 }
 
 - (IBAction)onViewGamesButtonTouch:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(goToViewGames)]) {
-        [self.delegate goToViewGames];
+    if ([self.delegate respondsToSelector:@selector(goToViewGamesWithUser:)]) {
+        [self.delegate goToViewGamesWithUser:self.user];
     }
 }
 

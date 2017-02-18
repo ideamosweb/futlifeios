@@ -8,8 +8,14 @@
 
 #import "FLViewController.h"
 
+typedef NS_ENUM (NSInteger, FLUserProfileType) {
+    kFLUserProfileInfoType = 0,
+    kFLUserProfileGamesType = 1,
+    kFLUserProfileConsolesType = 2,
+};
+
 @interface FLUserProfileViewController : FLViewController
 
-- (id)initWithUser:(FLUserModel *)userModel Avatar:(UIImage *)avatar name:(NSString *)name userName:(NSString *)userName;
+- (id)initWithUser:(FLUserModel *)userModel profileType:(FLUserProfileType)profileType;
 
 @end

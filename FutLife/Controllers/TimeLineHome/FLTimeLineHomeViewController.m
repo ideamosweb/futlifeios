@@ -174,26 +174,46 @@
     self.timeLineCompletedBlock = ^{
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.menuManager.currentViewController = nil;
-        //[strongSelf.menuManager onProfileTapped:nil withAvatar:avatar userName:userName name:name];
-        [strongSelf.menuManager onProfileTapped:nil withUser:userModel withAvatar:avatar userName:userName name:name];
+        [strongSelf.menuManager onProfileTapped:nil withUser:userModel profileType:kFLUserProfileInfoType];
     };
     
     [self hideUserOptionsView:nil];
 }
 
-- (void)goToChallenge
+- (void)goToChallengeWithUser:(FLUserModel *)userModel
 {
+    __weak __typeof(self)weakSelf = self;
+    self.timeLineCompletedBlock = ^{
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.menuManager.currentViewController = nil;
+        [strongSelf.menuManager onProfileTapped:nil withUser:userModel profileType:kFLUserProfileInfoType];
+    };
     
+    [self hideUserOptionsView:nil];
 }
 
-- (void)goToViewConsoles
+- (void)goToViewConsolesWithUser:(FLUserModel *)userModel
 {
+    __weak __typeof(self)weakSelf = self;
+    self.timeLineCompletedBlock = ^{
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.menuManager.currentViewController = nil;
+        [strongSelf.menuManager onProfileTapped:nil withUser:userModel profileType:kFLUserProfileConsolesType];
+    };
     
+    [self hideUserOptionsView:nil];
 }
 
-- (void)goToViewGames
+- (void)goToViewGamesWithUser:(FLUserModel *)userModel
 {
+    __weak __typeof(self)weakSelf = self;
+    self.timeLineCompletedBlock = ^{
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.menuManager.currentViewController = nil;
+        [strongSelf.menuManager onProfileTapped:nil withUser:userModel profileType:kFLUserProfileGamesType];
+    };
     
+    [self hideUserOptionsView:nil];
 }
 
 - (void)localize

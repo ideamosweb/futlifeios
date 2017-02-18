@@ -10,8 +10,10 @@
 
 @interface FLUserProfileCell : FLCustomCell
 
-- (void)setThumbnailWithUrl:(NSURL *)url;
-- (void)setTitleLabelStr:(NSString *)labelString;
+- (void)setThumbnailWithImageName:(NSString *)imageName;
+- (void)setGameThumbnailWithUrl:(NSURL *)url;
+- (void)setConsoleWithUrl:(NSURL *)url;
+- (void)setTitleLabelStr:(NSString *)labelString placeHolder:(NSString *)placeholder;
 - (void)setDescLabelStr:(NSString *)descString;
 
 @end
