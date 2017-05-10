@@ -10,9 +10,9 @@ import Foundation
 import ObjectMapper
 
 class ConfigurationParameters: Mappable {
-    var platforms: [Array<Any>]?
-    var consoles: [Array<Any>]?
-    var games: [Array<Any>]?
+    var platforms: [Platform]?
+    var consoles: [Console]?
+    var games: [Game]?
     
     required init?(map: Map){
         

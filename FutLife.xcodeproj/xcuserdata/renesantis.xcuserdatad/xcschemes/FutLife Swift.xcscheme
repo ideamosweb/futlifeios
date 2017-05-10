@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17F7B6531E73474D00578042"
-               BuildableName = "FutLife Swift.app"
-               BlueprintName = "FutLife Swift"
-               ReferencedContainer = "container:FutLife Swift.xcodeproj">
+               BuildableName = "FutLife.app"
+               BlueprintName = "FutLife"
+               ReferencedContainer = "container:FutLife.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17F7B6671E73474D00578042"
-               BuildableName = "FutLife SwiftTests.xctest"
-               BlueprintName = "FutLife SwiftTests"
-               ReferencedContainer = "container:FutLife Swift.xcodeproj">
+               BuildableName = "FutLifeTests.xctest"
+               BlueprintName = "FutLifeTests"
+               ReferencedContainer = "container:FutLife.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17F7B6721E73474D00578042"
-               BuildableName = "FutLife SwiftUITests.xctest"
-               BlueprintName = "FutLife SwiftUITests"
-               ReferencedContainer = "container:FutLife Swift.xcodeproj">
+               BuildableName = "FutLifeUITests.xctest"
+               BlueprintName = "FutLifeUITests"
+               ReferencedContainer = "container:FutLife.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17F7B6531E73474D00578042"
-            BuildableName = "FutLife Swift.app"
-            BlueprintName = "FutLife Swift"
-            ReferencedContainer = "container:FutLife Swift.xcodeproj">
+            BuildableName = "FutLife.app"
+            BlueprintName = "FutLife"
+            ReferencedContainer = "container:FutLife.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17F7B6531E73474D00578042"
-            BuildableName = "FutLife Swift.app"
-            BlueprintName = "FutLife Swift"
-            ReferencedContainer = "container:FutLife Swift.xcodeproj">
+            BuildableName = "FutLife.app"
+            BlueprintName = "FutLife"
+            ReferencedContainer = "container:FutLife.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17F7B6531E73474D00578042"
-            BuildableName = "FutLife Swift.app"
-            BlueprintName = "FutLife Swift"
-            ReferencedContainer = "container:FutLife Swift.xcodeproj">
+            BuildableName = "FutLife.app"
+            BlueprintName = "FutLife"
+            ReferencedContainer = "container:FutLife.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

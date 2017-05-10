@@ -10,6 +10,12 @@
 		170104511EC0232C002E6767 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104501EC0232C002E6767 /* ApiRouter.swift */; };
 		170104531EC02398002E6767 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104521EC02398002E6767 /* Config.swift */; };
 		170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104541EC2A8CC002E6767 /* ConfigurationParameters.swift */; };
+		170104581EC2BAC3002E6767 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104571EC2BAC3002E6767 /* Platform.swift */; };
+		1701045A1EC2BC80002E6767 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104591EC2BC80002E6767 /* Console.swift */; };
+		1701045C1EC2BC91002E6767 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1701045B1EC2BC91002E6767 /* Game.swift */; };
+		1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1701045D1EC2C01C002E6767 /* ApiManager.swift */; };
+		170104601EC2C332002E6767 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1701045F1EC2C332002E6767 /* Info.plist */; };
+		170104621EC2C4B5002E6767 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170104611EC2C4B5002E6767 /* Images.xcassets */; };
 		17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */; };
 		17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6571E73474D00578042 /* AppDelegate.swift */; };
 		17F7B65A1E73474D00578042 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6591E73474D00578042 /* ViewController.swift */; };
@@ -42,18 +48,23 @@
 		170104501EC0232C002E6767 /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRouter.swift; path = Common/Api/ApiRouter.swift; sourceTree = "<group>"; };
 		170104521EC02398002E6767 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Common/Config.swift; sourceTree = "<group>"; };
 		170104541EC2A8CC002E6767 /* ConfigurationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationParameters.swift; path = Models/ConfigurationParameters.swift; sourceTree = "<group>"; };
+		170104571EC2BAC3002E6767 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Models/Platform.swift; sourceTree = "<group>"; };
+		170104591EC2BC80002E6767 /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Console.swift; path = Models/Console.swift; sourceTree = "<group>"; };
+		1701045B1EC2BC91002E6767 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Models/Game.swift; sourceTree = "<group>"; };
+		1701045D1EC2C01C002E6767 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = Common/Api/ApiManager.swift; sourceTree = "<group>"; };
+		1701045F1EC2C332002E6767 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		170104611EC2C4B5002E6767 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
-		17F7B6541E73474D00578042 /* FutLife Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FutLife Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17F7B6541E73474D00578042 /* FutLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B6571E73474D00578042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F7B6591E73474D00578042 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		17F7B65C1E73474D00578042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		17F7B65E1E73474D00578042 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17F7B65E1E73474D00578042 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		17F7B6611E73474D00578042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		17F7B6631E73474D00578042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17F7B6681E73474D00578042 /* FutLife SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FutLife SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17F7B6681E73474D00578042 /* FutLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B66C1E73474D00578042 /* FutLife_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutLife_SwiftTests.swift; sourceTree = "<group>"; };
 		17F7B66E1E73474D00578042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17F7B6731E73474D00578042 /* FutLife SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FutLife SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17F7B6731E73474D00578042 /* FutLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B6771E73474D00578042 /* FutLife_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutLife_SwiftUITests.swift; sourceTree = "<group>"; };
 		17F7B6791E73474D00578042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79140749D98EEF1DD7D66E57 /* Pods-FutLife Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife Swift/Pods-FutLife Swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				170104541EC2A8CC002E6767 /* ConfigurationParameters.swift */,
+				170104571EC2BAC3002E6767 /* Platform.swift */,
+				170104591EC2BC80002E6767 /* Console.swift */,
+				1701045B1EC2BC91002E6767 /* Game.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -115,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				170104501EC0232C002E6767 /* ApiRouter.swift */,
+				1701045D1EC2C01C002E6767 /* ApiManager.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -126,6 +141,18 @@
 				170104521EC02398002E6767 /* Config.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		170104561EC2BA57002E6767 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1701045F1EC2C332002E6767 /* Info.plist */,
+				17F7B65B1E73474D00578042 /* Main.storyboard */,
+				17F7B65E1E73474D00578042 /* Assets.xcassets */,
+				17F7B6601E73474D00578042 /* LaunchScreen.storyboard */,
+				170104611EC2C4B5002E6767 /* Images.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
@@ -148,9 +175,9 @@
 		17F7B64B1E73474D00578042 = {
 			isa = PBXGroup;
 			children = (
-				17F7B6561E73474D00578042 /* FutLife Swift */,
-				17F7B66B1E73474D00578042 /* FutLife SwiftTests */,
-				17F7B6761E73474D00578042 /* FutLife SwiftUITests */,
+				17F7B6561E73474D00578042 /* FutLife */,
+				17F7B66B1E73474D00578042 /* FutLifeTests */,
+				17F7B6761E73474D00578042 /* FutLifeUITests */,
 				17F7B6551E73474D00578042 /* Products */,
 				0ECDB07D4D43A7A64C11BB32 /* Pods */,
 				7275184320D6405A87373ADF /* Frameworks */,
@@ -160,44 +187,44 @@
 		17F7B6551E73474D00578042 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17F7B6541E73474D00578042 /* FutLife Swift.app */,
-				17F7B6681E73474D00578042 /* FutLife SwiftTests.xctest */,
-				17F7B6731E73474D00578042 /* FutLife SwiftUITests.xctest */,
+				17F7B6541E73474D00578042 /* FutLife.app */,
+				17F7B6681E73474D00578042 /* FutLifeTests.xctest */,
+				17F7B6731E73474D00578042 /* FutLifeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		17F7B6561E73474D00578042 /* FutLife Swift */ = {
+		17F7B6561E73474D00578042 /* FutLife */ = {
 			isa = PBXGroup;
 			children = (
-				1701044F1EC022D9002E6767 /* Common */,
-				1701044B1EC0203E002E6767 /* Views */,
 				1701044A1EC02032002E6767 /* Models */,
+				1701044B1EC0203E002E6767 /* Views */,
 				17E60A7A1E7359F5007D7CCD /* Controllers */,
+				1701044F1EC022D9002E6767 /* Common */,
+				170104561EC2BA57002E6767 /* Resources */,
 				17F7B6571E73474D00578042 /* AppDelegate.swift */,
-				17F7B65B1E73474D00578042 /* Main.storyboard */,
-				17F7B65E1E73474D00578042 /* Assets.xcassets */,
-				17F7B6601E73474D00578042 /* LaunchScreen.storyboard */,
-				17F7B6631E73474D00578042 /* Info.plist */,
 			);
+			name = FutLife;
 			path = "FutLife Swift";
 			sourceTree = "<group>";
 		};
-		17F7B66B1E73474D00578042 /* FutLife SwiftTests */ = {
+		17F7B66B1E73474D00578042 /* FutLifeTests */ = {
 			isa = PBXGroup;
 			children = (
 				17F7B66C1E73474D00578042 /* FutLife_SwiftTests.swift */,
 				17F7B66E1E73474D00578042 /* Info.plist */,
 			);
+			name = FutLifeTests;
 			path = "FutLife SwiftTests";
 			sourceTree = "<group>";
 		};
-		17F7B6761E73474D00578042 /* FutLife SwiftUITests */ = {
+		17F7B6761E73474D00578042 /* FutLifeUITests */ = {
 			isa = PBXGroup;
 			children = (
 				17F7B6771E73474D00578042 /* FutLife_SwiftUITests.swift */,
 				17F7B6791E73474D00578042 /* Info.plist */,
 			);
+			name = FutLifeUITests;
 			path = "FutLife SwiftUITests";
 			sourceTree = "<group>";
 		};
@@ -212,9 +239,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17F7B6531E73474D00578042 /* FutLife Swift */ = {
+		17F7B6531E73474D00578042 /* FutLife */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17F7B67C1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife Swift" */;
+			buildConfigurationList = 17F7B67C1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife" */;
 			buildPhases = (
 				415CE6E6BBAE11C50CE5979E /* [CP] Check Pods Manifest.lock */,
 				17F7B6501E73474D00578042 /* Sources */,
@@ -227,14 +254,14 @@
 			);
 			dependencies = (
 			);
-			name = "FutLife Swift";
+			name = FutLife;
 			productName = "FutLife Swift";
-			productReference = 17F7B6541E73474D00578042 /* FutLife Swift.app */;
+			productReference = 17F7B6541E73474D00578042 /* FutLife.app */;
 			productType = "com.apple.product-type.application";
 		};
-		17F7B6671E73474D00578042 /* FutLife SwiftTests */ = {
+		17F7B6671E73474D00578042 /* FutLifeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17F7B67F1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife SwiftTests" */;
+			buildConfigurationList = 17F7B67F1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLifeTests" */;
 			buildPhases = (
 				17F7B6641E73474D00578042 /* Sources */,
 				17F7B6651E73474D00578042 /* Frameworks */,
@@ -245,14 +272,14 @@
 			dependencies = (
 				17F7B66A1E73474D00578042 /* PBXTargetDependency */,
 			);
-			name = "FutLife SwiftTests";
+			name = FutLifeTests;
 			productName = "FutLife SwiftTests";
-			productReference = 17F7B6681E73474D00578042 /* FutLife SwiftTests.xctest */;
+			productReference = 17F7B6681E73474D00578042 /* FutLifeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		17F7B6721E73474D00578042 /* FutLife SwiftUITests */ = {
+		17F7B6721E73474D00578042 /* FutLifeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17F7B6821E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife SwiftUITests" */;
+			buildConfigurationList = 17F7B6821E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLifeUITests" */;
 			buildPhases = (
 				17F7B66F1E73474D00578042 /* Sources */,
 				17F7B6701E73474D00578042 /* Frameworks */,
@@ -263,9 +290,9 @@
 			dependencies = (
 				17F7B6751E73474D00578042 /* PBXTargetDependency */,
 			);
-			name = "FutLife SwiftUITests";
+			name = FutLifeUITests;
 			productName = "FutLife SwiftUITests";
-			productReference = 17F7B6731E73474D00578042 /* FutLife SwiftUITests.xctest */;
+			productReference = 17F7B6731E73474D00578042 /* FutLifeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -300,7 +327,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 17F7B64F1E73474D00578042 /* Build configuration list for PBXProject "FutLife Swift" */;
+			buildConfigurationList = 17F7B64F1E73474D00578042 /* Build configuration list for PBXProject "FutLife" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -313,9 +340,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17F7B6531E73474D00578042 /* FutLife Swift */,
-				17F7B6671E73474D00578042 /* FutLife SwiftTests */,
-				17F7B6721E73474D00578042 /* FutLife SwiftUITests */,
+				17F7B6531E73474D00578042 /* FutLife */,
+				17F7B6671E73474D00578042 /* FutLifeTests */,
+				17F7B6721E73474D00578042 /* FutLifeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170104601EC2C332002E6767 /* Info.plist in Resources */,
+				170104621EC2C4B5002E6767 /* Images.xcassets in Resources */,
 				17F7B6621E73474D00578042 /* LaunchScreen.storyboard in Resources */,
 				17F7B65F1E73474D00578042 /* Assets.xcassets in Resources */,
 				17F7B65D1E73474D00578042 /* Main.storyboard in Resources */,
@@ -400,8 +429,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170104581EC2BAC3002E6767 /* Platform.swift in Sources */,
+				1701045C1EC2BC91002E6767 /* Game.swift in Sources */,
+				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
 				17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */,
 				17F7B65A1E73474D00578042 /* ViewController.swift in Sources */,
+				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
@@ -430,12 +463,12 @@
 /* Begin PBXTargetDependency section */
 		17F7B66A1E73474D00578042 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17F7B6531E73474D00578042 /* FutLife Swift */;
+			target = 17F7B6531E73474D00578042 /* FutLife */;
 			targetProxy = 17F7B6691E73474D00578042 /* PBXContainerItemProxy */;
 		};
 		17F7B6751E73474D00578042 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17F7B6531E73474D00578042 /* FutLife Swift */;
+			target = 17F7B6531E73474D00578042 /* FutLife */;
 			targetProxy = 17F7B6741E73474D00578042 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -556,8 +589,9 @@
 			baseConfigurationReference = 79140749D98EEF1DD7D66E57 /* Pods-FutLife Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 27P587N5XD;
-				INFOPLIST_FILE = "FutLife Swift/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FutLife Swift/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideamosWeb.FutLife-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -570,8 +604,9 @@
 			baseConfigurationReference = C3599B45EDA3F6926C767486 /* Pods-FutLife Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 27P587N5XD;
-				INFOPLIST_FILE = "FutLife Swift/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FutLife Swift/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideamosWeb.FutLife-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -590,7 +625,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideamosWeb.FutLife-Swift.FutLife-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FutLife Swift.app/FutLife Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FutLife.app/FutLife";
 			};
 			name = Debug;
 		};
@@ -605,7 +640,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideamosWeb.FutLife-Swift.FutLife-SwiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FutLife Swift.app/FutLife Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FutLife.app/FutLife";
 			};
 			name = Release;
 		};
@@ -640,7 +675,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		17F7B64F1E73474D00578042 /* Build configuration list for PBXProject "FutLife Swift" */ = {
+		17F7B64F1E73474D00578042 /* Build configuration list for PBXProject "FutLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17F7B67A1E73474D00578042 /* Debug */,
@@ -649,7 +684,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17F7B67C1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife Swift" */ = {
+		17F7B67C1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17F7B67D1E73474D00578042 /* Debug */,
@@ -658,7 +693,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17F7B67F1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife SwiftTests" */ = {
+		17F7B67F1E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLifeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17F7B6801E73474D00578042 /* Debug */,
@@ -667,7 +702,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17F7B6821E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLife SwiftUITests" */ = {
+		17F7B6821E73474D00578042 /* Build configuration list for PBXNativeTarget "FutLifeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17F7B6831E73474D00578042 /* Debug */,

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FutLife Swift.xcodeproj">
+      location = "group:/Users/renesantis/Apps/Mobile/iOS/FutLife Swift/FutLife.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
