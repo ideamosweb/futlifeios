@@ -24,10 +24,6 @@ public enum ApiRouter: URLRequestConvertible {
         return token
     }
     
-    case content
-    case tags(String)
-    case colors(String)
-    
     case parameters
     case register
     case registerPreferences
@@ -40,21 +36,15 @@ public enum ApiRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-            case .content, .register, .registerPreferences, .registerAvatar, .login, .challenges:
+            case .register, .registerPreferences, .registerAvatar, .login, .challenges:
                 return .post
-            case .tags, .colors, .parameters, .consoles, .games, .allUsers:
+            case .parameters, .consoles, .games, .allUsers:
                 return .get
         }
     }
     
     var path: String {
         switch self {
-            case .content:
-                return "/content"
-            case .tags:
-                return "/tagging"
-            case .colors:
-                return "/colors"
             case .parameters:
                 return "/parameters"
             case .register:
@@ -79,9 +69,13 @@ public enum ApiRouter: URLRequestConvertible {
     public func asURLRequest() throws -> URLRequest {
         let parameters: [String: Any] = {
             switch self {
-                case .tags(let contentID):
-                    return ["content": contentID]
-                case .colors(let contentID):
+                case .register(let contentID):
+                    return ["content": contentID, "extract_object_colors": 0]
+                case .consoles(let contentID):
+                    return ["content": contentID, "extract_object_colors": 0]
+                case .games(let contentID):
+                    return ["content": contentID, "extract_object_colors": 0]
+                case .allUsers(let contentID):
                     return ["content": contentID, "extract_object_colors": 0]
                 default:
                     return [:]
