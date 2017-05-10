@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (4.0.1)
+  - AlamofireObjectMapper (4.0.0):
+    - Alamofire (~> 4.0)
+    - ObjectMapper (~> 2.0)
+  - DateTools (1.7.0)
+  - Masonry (1.0.2)
+  - ObjectMapper (2.0.0)
+  - pop (1.0.9)
+  - UrbanAirship-iOS-SDK (8.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper (~> 4.0)
+  - DateTools
+  - Masonry
+  - pop (~> 1.0)
+  - UrbanAirship-iOS-SDK
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  UrbanAirship-iOS-SDK: a4ff01ef90d5b32508818da5b8385828513702f9
+
+PODFILE CHECKSUM: f115e145c8c718e778a4437759e47b91df57f533
+
+COCOAPODS: 1.2.1
