@@ -34,5 +34,7 @@ target 'FutLife Swift' do
   pod 'UrbanAirship-iOS-SDK'
   pod 'DateTools'
   pod 'Masonry'
-  pod 'pop', '~> 1.0'  
+  pod 'pop', '~> 1.0'
+  pod 'PageMenu'
+  pod 'SlideMenuControllerSwift'
 end
