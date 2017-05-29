@@ -16,6 +16,8 @@
 		1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1701045D1EC2C01C002E6767 /* ApiManager.swift */; };
 		170104601EC2C332002E6767 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1701045F1EC2C332002E6767 /* Info.plist */; };
 		170104621EC2C4B5002E6767 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170104611EC2C4B5002E6767 /* Images.xcassets */; };
+		173419291EC5676D003B2909 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173419281EC5676D003B2909 /* User.swift */; };
+		1734192B1EC568FD003B2909 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734192A1EC568FD003B2909 /* Model.swift */; };
 		17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */; };
 		17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6571E73474D00578042 /* AppDelegate.swift */; };
 		17F7B65A1E73474D00578042 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6591E73474D00578042 /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 		1701045D1EC2C01C002E6767 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = Common/Api/ApiManager.swift; sourceTree = "<group>"; };
 		1701045F1EC2C332002E6767 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		170104611EC2C4B5002E6767 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
+		173419281EC5676D003B2909 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		1734192A1EC568FD003B2909 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Models/Model.swift; sourceTree = "<group>"; };
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
 		17F7B6541E73474D00578042 /* FutLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B6571E73474D00578042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				170104571EC2BAC3002E6767 /* Platform.swift */,
 				170104591EC2BC80002E6767 /* Console.swift */,
 				1701045B1EC2BC91002E6767 /* Game.swift */,
+				173419281EC5676D003B2909 /* User.swift */,
+				1734192A1EC568FD003B2909 /* Model.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				170104581EC2BAC3002E6767 /* Platform.swift in Sources */,
 				1701045C1EC2BC91002E6767 /* Game.swift in Sources */,
 				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
+				1734192B1EC568FD003B2909 /* Model.swift in Sources */,
 				17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */,
 				17F7B65A1E73474D00578042 /* ViewController.swift in Sources */,
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
@@ -439,6 +446,7 @@
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
+				173419291EC5676D003B2909 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
