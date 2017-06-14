@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public enum ApiRouter: URLRequestConvertible {
+enum ApiRouter: URLRequestConvertible {
     // get base URL set in .plist
     var baseURLPath: String {
         let dictionary = Bundle.main.infoDictionary!

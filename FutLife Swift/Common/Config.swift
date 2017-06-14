@@ -8,6 +8,7 @@
 
 import Foundation
 
-public struct Config {
+enum Config {
+    
     
 }
