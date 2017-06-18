@@ -4,7 +4,7 @@ platform :ios, '9.0'
 
 use_frameworks!
 
-target 'FutLife Swift' do
+target 'FutLife' do
   # Pods for FutLife Swift
 
   inhibit_all_warnings! # This will disable all the warnings for all pods.
@@ -35,6 +35,6 @@ target 'FutLife Swift' do
   pod 'DateTools'
   pod 'Masonry'
   pod 'pop', '~> 1.0'
-  pod 'PageMenu'
+  #pod 'PageMenu'
   pod 'SlideMenuControllerSwift'
 end

@@ -29,7 +29,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FutLife Swift.xcscheme</key>
+		<key>Pods-FutLife.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SlideMenuControllerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,17 +57,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>17BEF993594D7B0942CC9553907660B2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1F2E98AD88A4FD41FC5D8783E4C146F7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F0FA0AA8F62449842F2C16F58AFD03F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8563FAF0811600FAC2B1DEF8D3C04AE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +82,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDBBA2C6197FEDB2AEB9E8AABCAFD7B3</key>
+		<key>ABA62CB9144A98183C0E3CC296145E72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BEA70517A1161DC91E206898AD226F03</key>
 		<dict>
 			<key>primary</key>
 			<true/>

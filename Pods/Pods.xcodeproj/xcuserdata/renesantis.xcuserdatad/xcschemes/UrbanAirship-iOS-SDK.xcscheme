@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F2E98AD88A4FD41FC5D8783E4C146F7"
+               BlueprintIdentifier = "8563FAF0811600FAC2B1DEF8D3C04AE1"
                BuildableName = "AirshipKit.framework"
                BlueprintName = "UrbanAirship-iOS-SDK"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F2E98AD88A4FD41FC5D8783E4C146F7"
+            BlueprintIdentifier = "8563FAF0811600FAC2B1DEF8D3C04AE1"
             BuildableName = "AirshipKit.framework"
             BlueprintName = "UrbanAirship-iOS-SDK"
             ReferencedContainer = "container:Pods.xcodeproj">

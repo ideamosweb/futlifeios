@@ -7,6 +7,7 @@ PODS:
   - Masonry (1.0.2)
   - ObjectMapper (2.0.0)
   - pop (1.0.9)
+  - SlideMenuControllerSwift (3.0.0)
   - UrbanAirship-iOS-SDK (8.0.1)
 
 DEPENDENCIES:
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - DateTools
   - Masonry
   - pop (~> 1.0)
+  - SlideMenuControllerSwift
   - UrbanAirship-iOS-SDK
 
 SPEC CHECKSUMS:
@@ -24,8 +26,9 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SlideMenuControllerSwift: 9c0a84f9a3fba51681debd7be77617094562ebcc
   UrbanAirship-iOS-SDK: a4ff01ef90d5b32508818da5b8385828513702f9
 
-PODFILE CHECKSUM: f115e145c8c718e778a4437759e47b91df57f533
+PODFILE CHECKSUM: 8b7fee101d3d95688b541dfb579d42a1870507d0
 
 COCOAPODS: 1.2.1
