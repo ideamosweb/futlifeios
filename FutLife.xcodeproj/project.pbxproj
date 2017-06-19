@@ -23,6 +23,8 @@
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
+		17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BFB0501EF6ED36002A994E /* LoginViewController.xib */; };
+		17BFB0541EF762A3002A994E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0531EF762A3002A994E /* Constants.swift */; };
 		17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */; };
 		17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170104611EC2C4B5002E6767 /* Images.xcassets */; };
 		17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B65E1E73474D00578042 /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
+		17BFB0501EF6ED36002A994E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Controllers/Login/LoginViewController.xib; sourceTree = "<group>"; };
+		17BFB0531EF762A3002A994E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Common/Constants.swift; sourceTree = "<group>"; };
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
 		17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartUpViewController.xib; path = Controllers/StartUp/StartUpViewController.xib; sourceTree = "<group>"; };
 		17E678AF1EF6E6320001B9FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +151,6 @@
 		1701044B1EC0203E002E6767 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				17363C881EDCC88D006888EE /* StartUp */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				1701044C1EC02054002E6767 /* Api */,
 				170104521EC02398002E6767 /* Config.swift */,
 				17363C941EF3B3A4006888EE /* Utils.swift */,
+				17BFB0531EF762A3002A994E /* Constants.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -183,13 +187,6 @@
 				170104611EC2C4B5002E6767 /* Images.xcassets */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		17363C881EDCC88D006888EE /* StartUp */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = StartUp;
 			sourceTree = "<group>";
 		};
 		17363C8B1EF1FB1D006888EE /* Form */ = {
@@ -215,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				179961591EF6DAB600853DB7 /* LoginViewController.swift */,
+				17BFB0501EF6ED36002A994E /* LoginViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -417,6 +415,7 @@
 			files = (
 				17E678AE1EF6E5C20001B9FB /* StartUpViewController.xib in Resources */,
 				17E678AC1EF6E4860001B9FB /* LaunchScreen.storyboard in Resources */,
+				17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */,
 				17E678AB1EF6E47E0001B9FB /* Main.storyboard in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
@@ -507,6 +506,7 @@
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
+				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
 				179961571EF6292A00853DB7 /* String+Utils.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,

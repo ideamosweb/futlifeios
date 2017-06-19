@@ -23,9 +23,12 @@ class StartUpViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showNavigationBar(show: false)
 
         setVersionLabel()
         //getParameters()
+        goToLogin()
     }
     
     func animationLogo() {
@@ -46,7 +49,8 @@ class StartUpViewController: ViewController {
     }
     
     func goToLogin() {
-        
+        let loginVC = LoginViewController(registerClosure: (), loginClosure: (), chooseConsoleClosure: ())
+        AppDelegate.mainNavigationController.pushViewController(loginVC, animated: true)
     }
 }
 

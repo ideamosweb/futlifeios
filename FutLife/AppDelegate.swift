@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // AppDelegate Singleton
     static let sharedInstance = AppDelegate()
     
-    var mainNavigationController : UINavigationController?
+    static var mainNavigationController = UINavigationController()
 
     var window: UIWindow?
 
@@ -47,18 +48,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func getMainNavigationController() -> UINavigationController {
-        return mainNavigationController!
-    }
-    
     func openStartUp() {
         let startUpVC = StartUpViewController()
+        AppDelegate.mainNavigationController.viewControllers = [startUpVC]        
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = startUpVC
+        window?.rootViewController = AppDelegate.mainNavigationController
         window?.makeKeyAndVisible()
     }
     
-
-
+    func goToDashBoard() {
+        let slideMenuController = SlideMenuController(mainViewController: UIViewController(), leftMenuViewController: UIViewController())
+        AppDelegate.mainNavigationController.viewControllers = [slideMenuController]
+    }
 }
 

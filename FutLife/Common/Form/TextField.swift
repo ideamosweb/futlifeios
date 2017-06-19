@@ -20,16 +20,6 @@ class TextField: UITextField {
     var isOnlyNumbers = false
     
     var beforeTextValidation: String?
-    override var text: String? {
-        get {
-            return self.text
-        }
-        
-        set {
-            beforeTextValidation = text
-            super.text = text
-        }
-    }
     
     var typeable = true
     var isPassword: Bool {
@@ -42,15 +32,20 @@ class TextField: UITextField {
         }
     }
     
+    override var text: String? {
+        didSet {
+            beforeTextValidation = text
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        setUpTextField()
+    }
+    
+    private func setUpTextField() {
         contentVerticalAlignment = .center
-        leftViewMode = .never
-        borderStyle = .none
-        
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
-        leftView = paddingView
         
         let textFieldDidChange = Notification.Name("textFieldDidChange")
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(notification:)), name: textFieldDidChange, object: nil)
@@ -65,7 +60,7 @@ class TextField: UITextField {
         layoutIfNeeded()
         
         let textFieldMaskLayer = CAShapeLayer()
-        let textFieldMaskPathWithRadius = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerRadii)
+        let textFieldMaskPathWithRadius = UIBezierPath(roundedRect: bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerRadii)
         
         textFieldMaskLayer.frame = self.bounds
         textFieldMaskLayer.path = textFieldMaskPathWithRadius.cgPath
@@ -102,7 +97,7 @@ class TextField: UITextField {
             return false
         }
         
-        if !(beforeText.isEmpty) {
+        if (beforeText.isEmpty == false) {
             text = beforeTextValidation
             beforeTextValidation = nil
         }
@@ -147,5 +142,21 @@ class TextField: UITextField {
                 throw FieldValidationEnum.validationOnlyNumbers
             }
         }
+    }
+    
+    override func draw(_ rect: CGRect) {
+        layer.cornerRadius = 0.0
+        layer.borderWidth = 0.0
+        
+        // Custom border
+        let bottomBorder = CALayer()
+        bottomBorder.frame = CGRect(x: 0.0, y: frame.size.height - 1, width: frame.size.width, height: 1.0)
+        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
+        layer.addSublayer(bottomBorder)
+        
+        // Padding left
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
+        leftView = paddingView
+        leftViewMode = .always
     }
 }
