@@ -51,7 +51,39 @@ class LoginViewController: FormViewController {
         
         passwordTextField.isRequired = true
         passwordTextField.isPassword = true
+        passwordTextField.minTypeableLength = 6
         let rectBottomCorner: UIRectCorner = [.bottomLeft, .bottomRight]
         passwordTextField.roundedCorners(roundingCorners: rectBottomCorner, cornerRadii: CGSize(width: 10.0, height: 10.0))
+    }
+    
+    //MARK: Actions methods
+    @IBAction func onLoginButtonTouch(_ sender: Any) {
+        inputsFormManager.currentInputField?.resignFirstResponder()
+        
+        // Validate input fields form
+        weak var weakSelf = self
+        inputsFormManager.validateForm(success: {
+            if let strongSelf = weakSelf {
+                strongSelf.loginUser()
+            }
+        }) { (errorMessage) in
+            presentAlert(title: "Estimado Jugador", message: errorMessage, style: .formError)
+        }
+    }
+    
+    @IBAction func onRegisterButtonTouch(_ sender: Any) {
+        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+    }
+    
+    @IBAction func onFacebookLoginButtonTouch(_ sender: Any) {
+        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+    }
+    
+    @IBAction func onforgetPasswordButtonTouch(_ sender: Any) {
+        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+    }
+    
+    func loginUser() {
+        
     }
 }

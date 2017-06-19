@@ -49,8 +49,9 @@ class ViewController: UIViewController {
         navigationItem.hidesBackButton = true
     }
     
+    //MARK: Public methods
     func onBackButtonTouch() {
         navigationController?.popViewController(animated: true)
-    }
+    }    
 }
 

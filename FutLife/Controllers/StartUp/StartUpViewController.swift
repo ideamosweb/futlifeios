@@ -50,7 +50,7 @@ class StartUpViewController: ViewController {
     
     func goToLogin() {
         let loginVC = LoginViewController(registerClosure: (), loginClosure: (), chooseConsoleClosure: ())
-        AppDelegate.mainNavigationController.pushViewController(loginVC, animated: true)
+        AppDelegate.mainNavigationController.pushViewController(loginVC, animated: false)
     }
 }
 

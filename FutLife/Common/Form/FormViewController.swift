@@ -21,7 +21,7 @@ class FormViewController: ViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Hide Keyboard
+        // Hide Keyboard when lost field focus
         // https://stackoverflow.com/a/27079103
         // Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

@@ -101,6 +101,9 @@
                                             </fragment>
                                         </attributedString>
                                     </state>
+                                    <connections>
+                                        <action selector="onforgetPasswordButtonTouch:" destination="-1" eventType="touchUpInside" id="dNO-lE-tmG"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slR-S2-420">
                                     <rect key="frame" x="88" y="319" width="200" height="84"/>
@@ -109,11 +112,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="fbicon"/>
+                                            <connections>
+                                                <action selector="onFacebookLoginButtonTouch:" destination="-1" eventType="touchUpInside" id="AWN-Ot-uFk"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beB-yy-d19">
                                             <rect key="frame" x="116" y="0.0" width="84" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="nexticon"/>
+                                            <connections>
+                                                <action selector="onLoginButtonTouch:" destination="-1" eventType="touchUpInside" id="Nhi-Tk-3O8"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -160,6 +169,9 @@
                                     </fragment>
                                 </attributedString>
                             </state>
+                            <connections>
+                                <action selector="onRegisterButtonTouch:" destination="-1" eventType="touchUpInside" id="hap-DI-lkj"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

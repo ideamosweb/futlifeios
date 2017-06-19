@@ -84,31 +84,9 @@ class InputFormManager: NSObject {
     }
     
     /* TODO: move to other place (?) */
-    func validateInputField(inputField: TextField) -> String {
-        /*TODO: Set text to another place, (Error class?) */
-        do {
-            try inputField.validate()
-        } catch FieldValidationEnum.validationRequired {
-            return "Field Required"
-        } catch FieldValidationEnum.validationMinLength {
-            return "Min value length"
-        } catch FieldValidationEnum.validationMaxLength {
-            return "Max value length"
-        } catch FieldValidationEnum.validationFixLength {
-            return "Fixed length"
-        } catch FieldValidationEnum.validationOnlyNumbers {
-            return "Field must be only numbers"
-        } catch FieldValidationEnum.validationEmail {
-            return "Field is not email"
-        } catch FieldValidationEnum.validationEmailNoEmpty {
-            return "Field is not empty"
-        } catch FieldValidationEnum.validationSameTextAsOther {
-            return "Fields does not match"
-        } catch {
-            return "Some error occur"
-        }
-        
-        return "Success"
+    func validateInputField(inputField: TextField) -> TextFieldValidationError {
+        // return error message
+        return FieldValidations.validateInputTextField(inputField: inputField)
     }
     
     // Observe value for input TextField
@@ -168,17 +146,21 @@ class InputFormManager: NSObject {
     func validateForm(success: () -> Void, failure: (String) -> Void) {
         currentInputField?.resignFirstResponder()
         var isFailed = false
-        var validationMsg = ""
+        var validationError: TextFieldValidationError?
         for inputField in inputFields! {
-            validationMsg = validateInputField(inputField: inputField)
-            if validationMsg != "success" {
+            validationError = validateInputField(inputField: inputField)
+            if (validationError?.validationErrorEnum != FieldValidationsError.validationNoError) {
                 isFailed = true
+                failure((validationError?.errorMessage)!)
+                return
             }
         }
         
-        if isFailed {
-            failure(validationMsg)
-        } else {
+        if isFailed == false {
+            validationError = nil
+            validationError?.criteria = nil
+            validationError?.errorMessage = nil
+            validationError?.validationErrorEnum = nil
             success()
         }
     }

@@ -108,40 +108,44 @@ class TextField: UITextField {
     // Validate function throws an exception in case a validation was set and it was true
     func validate() throws {
         if isRequired {
-            if FieldValidations.validationRequired(inputText: self.text) {
-                throw FieldValidationEnum.validationRequired
+            if FieldValidations.validationRequired(inputField: self) {
+                throw FieldValidationsError.validationRequired
             }
         }
         
         if maxTypeableLenght != nil && maxTypeableLenght! > 0 {
-            if FieldValidations.validationMaxLength(maxLength: maxTypeableLenght!, inputText: self.text!) {
-                throw FieldValidationEnum.validationMaxLength
+            if FieldValidations.validationMaxLength(maxLength: maxTypeableLenght!, inputField: self) {
+                throw FieldValidationsError.validationMaxLength
             }
         }
         
         if minTypeableLength != nil && minTypeableLength! > 0 {
-            if FieldValidations.validationMinLength(minLength: minTypeableLength!, inputText: self.text!) {
-                throw FieldValidationEnum.validationMinLength
+            if FieldValidations.validationMinLength(minLength: minTypeableLength!, inputField: self) {
+                throw FieldValidationsError.validationMinLength
             }
         }
         
         if fixedLength != nil && fixedLength! > 0 {
-            if FieldValidations.validationFixedLength(fixedLength: fixedLength!, inputText: self.text!) {
-                throw FieldValidationEnum.validationFixLength
+            if FieldValidations.validationFixedLength(fixedLength: fixedLength!, inputField: self) {
+                throw FieldValidationsError.validationFixLength
             }
         }
         
         if isEmail {
-            if FieldValidations.validationEmail(inputText: self.text!) {
-                throw FieldValidationEnum.validationEmail
+            if FieldValidations.validationEmail(inputField: self) {
+                throw FieldValidationsError.validationEmail
             }
         }
         
         if isOnlyNumbers {
-            if FieldValidations.validationOnlyNumbers(inputText: self.text!) {
-                throw FieldValidationEnum.validationOnlyNumbers
+            if FieldValidations.validationOnlyNumbers(inputField: self) {
+                throw FieldValidationsError.validationOnlyNumbers
             }
         }
+        
+        if FieldValidations.validationNoError() {
+            throw FieldValidationsError.validationNoError
+        }       
     }
     
     override func draw(_ rect: CGRect) {
