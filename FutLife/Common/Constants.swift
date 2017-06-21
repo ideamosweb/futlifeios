@@ -11,4 +11,12 @@ import UIKit
 
 struct Constants {
     static let kFormTopScrollPadding: CGFloat = 10.0
+    
+    // get base URL set in .plist
+    static var baseURLPath: String {
+        let dictionary = Bundle.main.infoDictionary!
+        let path = dictionary["api.baseUrl"] as! String
+        return path
+    }
+    static let queryURLPath = "/m/v1"
 }

@@ -30,10 +30,16 @@ class LoginViewController: FormViewController {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()       
+        super.viewDidLoad()
         
         // Let's pass the fields to inputsFormManager
         inputsFormManager.inputFields = [usernameTextField, passwordTextField]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showNavigationBar(show: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,7 +78,8 @@ class LoginViewController: FormViewController {
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
-        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+        let registerController = RegisterViewController(registerCompleted: nil)
+        navigationController?.pushViewController(registerController, animated: true)
     }
     
     @IBAction func onFacebookLoginButtonTouch(_ sender: Any) {
@@ -84,6 +91,7 @@ class LoginViewController: FormViewController {
     }
     
     func loginUser() {
+        presentAlert(title: "Estimado jugador", message: "Funcionalidad en desarrollo", style: alertStyle.formError)
         
     }
 }

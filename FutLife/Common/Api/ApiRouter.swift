@@ -9,20 +9,7 @@
 import Foundation
 import Alamofire
 
-enum ApiRouter: URLRequestConvertible {
-    // get base URL set in .plist
-    var baseURLPath: String {
-        let dictionary = Bundle.main.infoDictionary!
-        let path = dictionary["api.baseUrl"] as! String
-        return path
-    }
-    
-    // authentication token from .plist
-//    var authenticationToken: String {
-//        let dictionary = Bundle.main.infoDictionary!
-//        let token = dictionary["api.authentication.token"] as! String
-//        return token
-//    }
+enum ApiRouter: URLRequestConvertible {   
     
     case parameters
     case register
@@ -46,23 +33,23 @@ enum ApiRouter: URLRequestConvertible {
     var path: String {
         switch self {
             case .parameters:
-                return "/parameters"
+                return "\(Constants.queryURLPath)/parameters"
             case .register:
-                return "/register"
+                return "\(Constants.queryURLPath)/register"
             case .registerPreferences:
-                return "preferences"
+                return "\(Constants.queryURLPath)preferences"
             case .registerAvatar:
-                return ""
+                return "\(Constants.queryURLPath)"
             case .games:
-                return ""
+                return "\(Constants.queryURLPath)"
             case .consoles:
-                return ""
+                return "\(Constants.queryURLPath)"
             case .login:
-                return ""
+                return "\(Constants.queryURLPath)"
             case .challenges:
-                return ""
+                return "\(Constants.queryURLPath)"
             case .allUsers:
-                return ""
+                return "\(Constants.queryURLPath)"
         }
     }
     
@@ -82,7 +69,7 @@ enum ApiRouter: URLRequestConvertible {
             }
         }()
         
-        let url = try baseURLPath.asURL()
+        let url = try Constants.baseURLPath.asURL()
         
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue

@@ -22,7 +22,7 @@ class Game: Model {
     
     override func mapping(map: Map) {
         id <- map["id"]
-        year <- map["platform_id"]
+        year <- map["year"]
         name <- map["name"]
         avatar <- map["avatar"]
         thumbnail <- map["thumbnail"]

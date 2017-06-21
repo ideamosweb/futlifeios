@@ -27,6 +27,8 @@
 		17BFB0541EF762A3002A994E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0531EF762A3002A994E /* Constants.swift */; };
 		17BFB0561EF8377F002A994E /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */; };
 		17BFB0581EF838C0002A994E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0571EF838C0002A994E /* Error.swift */; };
+		17BFB05B1EF86104002A994E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB05A1EF86104002A994E /* RegisterViewController.swift */; };
+		17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BFB05C1EF86177002A994E /* RegisterViewController.xib */; };
 		17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */; };
 		17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170104611EC2C4B5002E6767 /* Images.xcassets */; };
 		17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B65E1E73474D00578042 /* Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		17BFB0531EF762A3002A994E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Common/Constants.swift; sourceTree = "<group>"; };
 		17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Utils.swift"; path = "Common/Extensions/UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		17BFB0571EF838C0002A994E /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Common/Error.swift; sourceTree = "<group>"; };
+		17BFB05A1EF86104002A994E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/Register/RegisterViewController.swift; sourceTree = "<group>"; };
+		17BFB05C1EF86177002A994E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
 		17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartUpViewController.xib; path = Controllers/StartUp/StartUpViewController.xib; sourceTree = "<group>"; };
 		17E678AF1EF6E6320001B9FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
@@ -223,9 +227,19 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		17BFB0591EF8609F002A994E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				17BFB05A1EF86104002A994E /* RegisterViewController.swift */,
+				17BFB05C1EF86177002A994E /* RegisterViewController.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17BFB0591EF8609F002A994E /* Register */,
 				179961581EF6DA8D00853DB7 /* Login */,
 				17E60A7D1E735F9E007D7CCD /* StartUp */,
 				17E678AF1EF6E6320001B9FB /* ViewController.swift */,
@@ -375,8 +389,9 @@
 				TargetAttributes = {
 					17F7B6531E73474D00578042 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L3XQ85T9WB;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					17F7B6671E73474D00578042 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -421,6 +436,7 @@
 			files = (
 				17E678AE1EF6E5C20001B9FB /* StartUpViewController.xib in Resources */,
 				17E678AC1EF6E4860001B9FB /* LaunchScreen.storyboard in Resources */,
+				17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */,
 				17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */,
 				17E678AB1EF6E47E0001B9FB /* Main.storyboard in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
@@ -511,6 +527,7 @@
 				17363C951EF3B3A4006888EE /* Utils.swift in Sources */,
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
+				17BFB05B1EF86104002A994E /* RegisterViewController.swift in Sources */,
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
@@ -670,10 +687,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L3XQ85T9WB;
 				INFOPLIST_FILE = "$(SRCROOT)/FutLife/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideamosWeb.FutLife-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -686,10 +704,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L3XQ85T9WB;
 				INFOPLIST_FILE = "$(SRCROOT)/FutLife/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideamosWeb.FutLife-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.staging.futlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

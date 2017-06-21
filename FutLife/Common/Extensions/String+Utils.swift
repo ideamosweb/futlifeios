@@ -22,14 +22,14 @@ extension String {
             let results = regex.matches(in: self, range: NSRange(location: 0, length: nsString.length))
             let match =  results.map { nsString.substring(with: $0.range)}
             if match.count > 0 {
-                return true
+                return false
             }
         } catch let error {
             print("invalid regex: \(error.localizedDescription)")
-            return false
+            return true
         }
         
-        return false
+        return true
     }
     
     func isNumber() -> Bool {

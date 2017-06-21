@@ -11,18 +11,15 @@ import UIKit
 class InputFormManager: NSObject {
     static let kFormManagerEnabledTexFieldKeyPath  = "enabled"    
     
+    var didOnce = false
     // Save all the input fields.
     var inputFields: [TextField]?
     // The current input field.
-    var currentInputField: UIView? {
-        didSet (current) {
-            self.currentInputField = current
-        }
-    }
+    var currentInputField: UIView?
     
     // Gets the next input field, taking into account disabled input fields.
     var nextInputField: TextField? {
-        let currentIndex = inputFields?.index(where: {$0 === currentInputField})
+        let currentIndex = inputFields?.index(where: {$0 == currentInputField})
         
         var nextInputIndex = (currentIndex! + 1) % (inputFields?.count)!
         while nextInputIndex != currentIndex {
@@ -39,7 +36,7 @@ class InputFormManager: NSObject {
     
     // Gets the previous input field, taking into account disabled input fields.
     var previousInputField: UIControl? {
-        let currentIndex = inputFields?.index(where: {$0 === currentInputField})
+        let currentIndex = inputFields?.index(where: {$0 == currentInputField})
         
         var previousInputIndex = (currentIndex! - 1) % (inputFields?.count)!
         while previousInputIndex != currentIndex {
@@ -93,25 +90,32 @@ class InputFormManager: NSObject {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Move to the next input field (if any), if the current input field
         // is getting disabled.
-        if object as AnyObject? === currentInputField {
-            if currentInputField is UITextField {
-                let field = currentInputField as! UITextField
-                if field.isEnabled == false {
-                    currentInputField = nextInputField
-                    
-                    let view: UIView = object as! UIView
-                    if view.isFirstResponder {
-                        currentInputField?.becomeFirstResponder()
+        if !didOnce {
+            if object as AnyObject? === currentInputField {
+                if currentInputField is UITextField {
+                    let field = currentInputField as! UITextField
+                    if field.isEnabled == false {
+                        currentInputField = nextInputField
+                        
+                        let view: UIView = object as! UIView
+                        if view.isFirstResponder {
+                            currentInputField?.becomeFirstResponder()
+                        }
                     }
+                    
+                    didOnce = true
                 }
             }
         }
+        
     }
     
     deinit {
-        for inputField in inputFields! {
-            inputField.removeObserver(self, forKeyPath: InputFormManager.kFormManagerEnabledTexFieldKeyPath)
-        }
+        if didOnce {
+            for inputField in inputFields! {
+                inputField.removeObserver(self, forKeyPath: InputFormManager.kFormManagerEnabledTexFieldKeyPath)
+            }
+        }        
     }
     
     //MARK: Public Methods

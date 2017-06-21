@@ -14,10 +14,16 @@ class ApiManager {
     /*
      GET: Parameters
     */
-    static func getParameters(completion: @escaping (ConfigurationParameters?, Error?) -> Void) {
+    static func getParameters(completion: @escaping (Error?) -> Void) {
         Alamofire.request(ApiRouter.parameters).responseObject { (response: DataResponse<ConfigurationParameters>) in            
             let parameters = response.result.value
-            completion(parameters!, response.result.error)
+            
+            // Set response to Model constants
+            ConfigurationParametersModel.platforms = parameters?.platforms
+            ConfigurationParametersModel.consoles = parameters?.consoles
+            ConfigurationParametersModel.games = parameters?.games
+            
+            completion(response.result.error)
         }
     }
 }

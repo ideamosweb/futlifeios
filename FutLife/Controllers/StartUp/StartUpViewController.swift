@@ -27,8 +27,7 @@ class StartUpViewController: ViewController {
         showNavigationBar(show: false)
 
         setVersionLabel()
-        //getParameters()
-        goToLogin()
+        getParameters()
     }
     
     func animationLogo() {
@@ -41,10 +40,15 @@ class StartUpViewController: ViewController {
     }
     
     func getParameters() {
-        ApiManager.getParameters { (parameter, error) in
-            if error != nil {
-                
-            }
+        weak var weakSelf = self
+        ApiManager.getParameters { (error) in
+            if let strongSelf = weakSelf {
+                if error != nil {
+                    strongSelf.presentAlert(title: "Estimado jugador", message: (error?.localizedDescription)!, style: alertStyle.formError)
+                } else {                    
+                    strongSelf.goToLogin()
+                }
+            }            
         }
     }
     

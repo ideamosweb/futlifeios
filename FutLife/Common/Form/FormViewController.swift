@@ -130,7 +130,7 @@ class FormViewController: ViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    //MARK: UITextFieldDelegate
+    //MARK: UITextFieldDelegate methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextResponder = inputsFormManager.nextInputField
         if nextResponder != nil {

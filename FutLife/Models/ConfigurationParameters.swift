@@ -24,3 +24,10 @@ class ConfigurationParameters: Mappable {
         games <- map["games"]
     }
 }
+
+// This struct allow to access to properties model anywhere (Singleton)
+struct ConfigurationParametersModel {
+    static var platforms: [Platform]?
+    static var consoles: [Console]?
+    static var games: [Game]?
+}
