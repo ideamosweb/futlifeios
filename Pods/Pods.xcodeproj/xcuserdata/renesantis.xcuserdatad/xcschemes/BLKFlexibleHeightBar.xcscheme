@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B42F7BDF156D25257C56EEB1E601BFB4"
-               BuildableName = "libpop.a"
-               BlueprintName = "pop"
+               BlueprintIdentifier = "0880E63659C3029F674AFF16447B8E01"
+               BuildableName = "libBLKFlexibleHeightBar.a"
+               BlueprintName = "BLKFlexibleHeightBar"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B42F7BDF156D25257C56EEB1E601BFB4"
-            BuildableName = "libpop.a"
-            BlueprintName = "pop"
+            BlueprintIdentifier = "0880E63659C3029F674AFF16447B8E01"
+            BuildableName = "libBLKFlexibleHeightBar.a"
+            BlueprintName = "BLKFlexibleHeightBar"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B42F7BDF156D25257C56EEB1E601BFB4"
-            BuildableName = "libpop.a"
-            BlueprintName = "pop"
+            BlueprintIdentifier = "0880E63659C3029F674AFF16447B8E01"
+            BuildableName = "libBLKFlexibleHeightBar.a"
+            BlueprintName = "BLKFlexibleHeightBar"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

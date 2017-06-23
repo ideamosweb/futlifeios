@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B42F7BDF156D25257C56EEB1E601BFB4"
-               BuildableName = "libpop.a"
-               BlueprintName = "pop"
+               BlueprintIdentifier = "97BFA4132FCA9A78290976D5F651761E"
+               BuildableName = "libAFNetworkActivityLogger.a"
+               BlueprintName = "AFNetworkActivityLogger"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B42F7BDF156D25257C56EEB1E601BFB4"
-            BuildableName = "libpop.a"
-            BlueprintName = "pop"
+            BlueprintIdentifier = "97BFA4132FCA9A78290976D5F651761E"
+            BuildableName = "libAFNetworkActivityLogger.a"
+            BlueprintName = "AFNetworkActivityLogger"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B42F7BDF156D25257C56EEB1E601BFB4"
-            BuildableName = "libpop.a"
-            BlueprintName = "pop"
+            BlueprintIdentifier = "97BFA4132FCA9A78290976D5F651761E"
+            BuildableName = "libAFNetworkActivityLogger.a"
+            BlueprintName = "AFNetworkActivityLogger"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
