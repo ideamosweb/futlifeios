@@ -12,13 +12,13 @@ import Alamofire
 enum ApiRouter: URLRequestConvertible {   
     
     case parameters
-    case register
-    case registerPreferences
-    case registerAvatar(String)
+    case register(registerParameters: Parameters)
+    case registerPreferences(registerPreferencesParameters: Parameters)
+    case registerAvatar(registerAvatar: Parameters)
     case games
     case consoles
-    case login
-    case challenges
+    case login(loginParameters: Parameters)
+    case challenges(challengesParameters: Parameters)
     case allUsers
     
     var method: HTTPMethod {
@@ -37,7 +37,7 @@ enum ApiRouter: URLRequestConvertible {
             case .register:
                 return "\(Constants.queryURLPath)/register"
             case .registerPreferences:
-                return "\(Constants.queryURLPath)preferences"
+                return "\(Constants.queryURLPath)/preferences"
             case .registerAvatar:
                 return "\(Constants.queryURLPath)"
             case .games:
@@ -45,7 +45,7 @@ enum ApiRouter: URLRequestConvertible {
             case .consoles:
                 return "\(Constants.queryURLPath)"
             case .login:
-                return "\(Constants.queryURLPath)"
+                return "\(Constants.queryURLPath)/login"
             case .challenges:
                 return "\(Constants.queryURLPath)"
             case .allUsers:
@@ -54,21 +54,6 @@ enum ApiRouter: URLRequestConvertible {
     }
     
     public func asURLRequest() throws -> URLRequest {
-        let parameters: [String: Any] = {
-            switch self {
-                case .register(let contentID):
-                    return ["content": contentID, "extract_object_colors": 0]
-                case .consoles(let contentID):
-                    return ["content": contentID, "extract_object_colors": 0]
-                case .games(let contentID):
-                    return ["content": contentID, "extract_object_colors": 0]
-                case .allUsers(let contentID):
-                    return ["content": contentID, "extract_object_colors": 0]
-                default:
-                    return [:]
-            }
-        }()
-        
         let url = try Constants.baseURLPath.asURL()
         
         var request = URLRequest(url: url.appendingPathComponent(path))
@@ -76,6 +61,21 @@ enum ApiRouter: URLRequestConvertible {
         //request.setValue(authenticationToken, forHTTPHeaderField: "Authorization")
         request.timeoutInterval = TimeInterval(10 * 1000)
         
-        return try URLEncoding.default.encode(request, with: parameters)
+        switch self {
+        case .login(let loginParameters):
+            request = try URLEncoding.default.encode(request, with: loginParameters)
+        case .register(let registerParameters):
+            request = try URLEncoding.default.encode(request, with: registerParameters)
+        case .registerPreferences(let registerPreferencesParameters):
+            request = try URLEncoding.default.encode(request, with: registerPreferencesParameters)
+        case .registerAvatar(let registerAvatarParameters):
+            request = try URLEncoding.default.encode(request, with: registerAvatarParameters)
+        case .challenges(let challengesParameters):
+            request = try URLEncoding.default.encode(request, with: challengesParameters)
+        default:
+            request = try URLEncoding.default.encode(request, with: [:])
+        }
+        
+        return request
     }
 }

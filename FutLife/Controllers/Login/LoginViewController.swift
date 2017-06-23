@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: FormViewController {
     @IBOutlet weak var usernameTextField: TextField!
@@ -91,7 +92,16 @@ class LoginViewController: FormViewController {
     }
     
     func loginUser() {
-        presentAlert(title: "Estimado jugador", message: "Funcionalidad en desarrollo", style: alertStyle.formError)
+        //presentAlert(title: "Estimado jugador", message: "Funcionalidad en desarrollo", style: alertStyle.formError)
+        weak var weakSelf = self
         
+        let params: Parameters = ["username": usernameTextField.text ?? "", "password": passwordTextField.text ?? ""]
+        LoginManager.login(params: params, success: {
+            print("Login success")
+        }) { (error) in
+            if let strongSelf = weakSelf {
+                strongSelf.presentAlert(title: "Estimado jugador", message: (error?.localizedDescription)!, style: alertStyle.formError)
+            }
+        }
     }
 }
