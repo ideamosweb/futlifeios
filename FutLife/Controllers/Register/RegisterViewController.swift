@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegisterViewController: FormViewController {
     @IBOutlet weak var nameTextField: TextField!
@@ -14,16 +15,17 @@ class RegisterViewController: FormViewController {
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     
-    var registerCompleted: (())?
+    var registerCompleted: () -> Void?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(registerCompleted: ()?) {
+    init(registerCompleted: @escaping () -> Void?) {
+        self.registerCompleted = registerCompleted
         super.init(nibName: "RegisterViewController", bundle: Bundle.main)
         
-        self.registerCompleted = registerCompleted
+        
     }
     
     override func viewDidLoad() {
@@ -68,7 +70,7 @@ class RegisterViewController: FormViewController {
     }
     
     @IBAction func onFacebookButtonTouch(_ sender: Any) {
-        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+        presentAlert(title: "Error", message: "Funcionalidad en desarrollo", style: .formError)
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
@@ -81,11 +83,30 @@ class RegisterViewController: FormViewController {
                 strongSelf.registerUser()
             }
         }) { (errorMessage) in
-            presentAlert(title: "Estimado Jugador", message: errorMessage, style: .formError)
+            presentAlert(title: "Error", message: errorMessage, style: .formError)
         }
     }
     
     private func registerUser() {
-        presentAlert(title: "Estimado jugador", message: "Funcionalidad en desarrollo", style: alertStyle.formError)
+        weak var weakSelf = self
+        
+        // TODO: Move to other side
+        let params: Parameters = ["name": nameTextField.text ?? "",
+                                  "username": userTextField.text ?? "",
+                                  "email": emailTextField.text ?? "",
+                                  "password": passwordTextField.text ?? "",
+                                  "password_confirmation": passwordTextField.text ?? "",
+                                  "platform": Constants.platform]
+        
+        ApiManager.registerRequest(registerParameters: params) { (errorModel) in
+            if let strongSelf = weakSelf {
+                if (errorModel?.success)! {
+                    strongSelf.registerCompleted()
+                } else {
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
+                    
+                }
+            }            
+        }
     }
 }

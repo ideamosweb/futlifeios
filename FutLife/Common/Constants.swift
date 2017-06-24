@@ -19,4 +19,5 @@ struct Constants {
         return path
     }
     static let queryURLPath = "/m/v1"
+    static let platform = "iOS"
 }

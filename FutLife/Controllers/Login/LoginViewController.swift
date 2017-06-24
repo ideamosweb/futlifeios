@@ -74,12 +74,14 @@ class LoginViewController: FormViewController {
                 strongSelf.loginUser()
             }
         }) { (errorMessage) in
-            presentAlert(title: "Estimado Jugador", message: errorMessage, style: .formError)
+            presentAlert(title: "Error", message: errorMessage, style: .formError)
         }
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
-        let registerController = RegisterViewController(registerCompleted: nil)
+        let registerController = RegisterViewController(registerCompleted: {() in
+            print("Go to choose console")
+        })
         navigationController?.pushViewController(registerController, animated: true)
     }
     
@@ -92,15 +94,17 @@ class LoginViewController: FormViewController {
     }
     
     func loginUser() {
-        //presentAlert(title: "Estimado jugador", message: "Funcionalidad en desarrollo", style: alertStyle.formError)
         weak var weakSelf = self
         
-        let params: Parameters = ["username": usernameTextField.text ?? "", "password": passwordTextField.text ?? ""]
+        // TODO: Move to other side
+        let params: Parameters = ["username": usernameTextField.text ?? "",
+                                  "password": passwordTextField.text ?? ""]
+        
         LoginManager.login(params: params, success: {
             print("Login success")
         }) { (error) in
             if let strongSelf = weakSelf {
-                strongSelf.presentAlert(title: "Estimado jugador", message: (error?.localizedDescription)!, style: alertStyle.formError)
+                strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
             }
         }
     }

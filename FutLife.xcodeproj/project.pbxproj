@@ -22,6 +22,7 @@
 		17363C911EF20211006888EE /* InputFormManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17363C901EF20211006888EE /* InputFormManager.swift */; };
 		17363C931EF3A4D2006888EE /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17363C921EF3A4D2006888EE /* TextField.swift */; };
 		17363C951EF3B3A4006888EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17363C941EF3B3A4006888EE /* Utils.swift */; };
+		173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -79,6 +80,7 @@
 		17363C901EF20211006888EE /* InputFormManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputFormManager.swift; path = Common/Form/InputFormManager.swift; sourceTree = "<group>"; };
 		17363C921EF3A4D2006888EE /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Common/Form/TextField.swift; sourceTree = "<group>"; };
 		17363C941EF3B3A4006888EE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Common/Utils.swift; sourceTree = "<group>"; };
+		173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterModel.swift; path = Models/RegisterModel.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				173419281EC5676D003B2909 /* User.swift */,
 				1734192A1EC568FD003B2909 /* Model.swift */,
 				17297FD01EFA25F300E2FCE4 /* LoginModel.swift */,
+				173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
 				17BFB05B1EF86104002A994E /* RegisterViewController.swift in Sources */,
+				173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */,
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
 				17297FCF1EFA20B100E2FCE4 /* LoginManager.swift in Sources */,

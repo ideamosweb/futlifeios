@@ -43,10 +43,11 @@ class StartUpViewController: ViewController {
         weak var weakSelf = self
         ApiManager.getParameters { (error) in
             if let strongSelf = weakSelf {
-                if error != nil {
-                    strongSelf.presentAlert(title: "Estimado jugador", message: (error?.localizedDescription)!, style: alertStyle.formError)
-                } else {                    
+                if (error?.success)! {
                     strongSelf.goToLogin()
+                } else {
+                    strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
+                    
                 }
             }            
         }

@@ -11,9 +11,9 @@ import Alamofire
 
 struct LoginManager {
     
-    static func login(params: Parameters, success: @escaping () -> Void, failure: @escaping (Error?) -> Void) {
+    static func login(params: Parameters, success: @escaping () -> Void, failure: @escaping (ErrorModel?) -> Void) {
         ApiManager.loginRequest(loginParameters: params) { (error) in
-            if error != nil {
+            if error?.success == false {
                 failure(error)
             } else {
                 success()

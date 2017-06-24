@@ -13,6 +13,7 @@ class User: Model {
     var id: Int?
     var name: String?
     var userName: String?
+    var email: String?
     var avatar: String?
     var thumbnail: String?
     var social: Bool?

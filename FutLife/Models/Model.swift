@@ -21,3 +21,8 @@ class Model: Mappable {
         token <- map["token"]        
     }
 }
+
+struct ErrorModel {
+    var message:String?
+    var success: Bool?
+}
