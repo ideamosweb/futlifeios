@@ -23,6 +23,7 @@
 		17363C931EF3A4D2006888EE /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17363C921EF3A4D2006888EE /* TextField.swift */; };
 		17363C951EF3B3A4006888EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17363C941EF3B3A4006888EE /* Utils.swift */; };
 		173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */; };
+		173999FF1EFF1FB800B72EFB /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173999FE1EFF1FB800B72EFB /* CarouselViewController.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -81,6 +82,7 @@
 		17363C921EF3A4D2006888EE /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Common/Form/TextField.swift; sourceTree = "<group>"; };
 		17363C941EF3B3A4006888EE /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Common/Utils.swift; sourceTree = "<group>"; };
 		173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterModel.swift; path = Models/RegisterModel.swift; sourceTree = "<group>"; };
+		173999FE1EFF1FB800B72EFB /* CarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarouselViewController.swift; path = Common/Carousel/CarouselViewController.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		1701044F1EC022D9002E6767 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				173999FD1EFF1F6900B72EFB /* Carousel */,
 				179961551EF6286200853DB7 /* Extensions */,
 				17363C8B1EF1FB1D006888EE /* Form */,
 				1701044C1EC02054002E6767 /* Api */,
@@ -223,6 +226,14 @@
 				179961531EF61BCC00853DB7 /* FieldValidations.swift */,
 			);
 			name = Form;
+			sourceTree = "<group>";
+		};
+		173999FD1EFF1F6900B72EFB /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				173999FE1EFF1FB800B72EFB /* CarouselViewController.swift */,
+			);
+			name = Carousel;
 			sourceTree = "<group>";
 		};
 		179961551EF6286200853DB7 /* Extensions */ = {
@@ -553,6 +564,7 @@
 				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
 				179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */,
 				1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */,
+				173999FF1EFF1FB800B72EFB /* CarouselViewController.swift in Sources */,
 				17363C931EF3A4D2006888EE /* TextField.swift in Sources */,
 				1734192B1EC568FD003B2909 /* Model.swift in Sources */,
 				17363C911EF20211006888EE /* InputFormManager.swift in Sources */,

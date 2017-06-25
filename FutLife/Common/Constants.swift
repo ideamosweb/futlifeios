@@ -11,6 +11,7 @@ import UIKit
 
 struct Constants {
     static let kFormTopScrollPadding: CGFloat = 10.0
+    static let kCarouselTransformCellValue = CGAffineTransform(scaleX: 0.8, y: 0.8)
     
     // get base URL set in .plist
     static var baseURLPath: String {
