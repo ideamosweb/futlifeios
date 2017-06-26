@@ -47,6 +47,8 @@ class LoginViewController: FormViewController {
         super.viewDidLayoutSubviews()
         
         configTextFields()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        view.backgroundColor = UIColor.red
     }
     
     private func configTextFields() {
@@ -79,10 +81,13 @@ class LoginViewController: FormViewController {
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
-        let registerController = RegisterViewController(registerCompleted: {() in
-            print("Go to choose console")
-        })
-        navigationController?.pushViewController(registerController, animated: true)
+//        let registerController = RegisterViewController(registerCompleted: {() in
+//            print("Go to choose console")
+//        })
+        
+        let consoleVC = ChooseConsoleViewController(navBar: true)
+        
+        navigationController?.pushViewController(consoleVC, animated: true)
     }
     
     @IBAction func onFacebookLoginButtonTouch(_ sender: Any) {
