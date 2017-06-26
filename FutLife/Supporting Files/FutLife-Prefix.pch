@@ -1,0 +1,69 @@
+//
+//  FutLife-Prefix.pch
+//  FutLife
+//
+//  Created by Rene Santis on 10/16/16.
+//  Copyright © 2016 IdeamosWeb S.A.S. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef FutLife_Prefix_pch
+#define FutLife_Prefix_pch
+
+#ifndef __IPHONE_7_0
+#warning "This project uses features only available in iOS SDK 7.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+// SDK
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
+// warning fix http://stackoverflow.com/questions/13477109/im-getting-compiler-warnings-with-afnetworking-but-shouldnt-be-how-do-i-fix
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+// Pods
+#import <AFHTTPSessionManager.h>
+#import <AFURLSessionManager.h>
+#import <Mantle.h>
+#import <Mantle/MTLModel.h>
+#import <DDLog.h>
+#import <JRSwizzle.h>
+#import <MMDrawerController.h>
+#import <UIViewController+MMDrawerController.h>
+#import <MMDrawerVisualState.h>
+#import <MBProgressHUD.h>
+#import <DDASLLogger.h>
+#import <DDTTYLogger.h>
+#import <UICKeyChainStore.h>
+#import <UrbanAirship-iOS-SDK/AirshipLib.h>
+
+//define this constant if you want to use Masonry without the 'mas_' prefix
+#define MAS_SHORTHAND
+#import "Masonry.h"
+
+// Managers
+#import "FLSessionManager.h"
+
+// Categories
+#import "FLCategories.h"
+
+// Constants
+#import "FLConstants.h"
+
+// Macros
+#import "FLMacros.h"
+
+// Utils
+#import "FLMiscUtils.h"
+
+// Debug
+#import "FLDebug.h"
+
+#endif
+
+#endif /* FutLife_Prefix_pch */

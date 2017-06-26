@@ -2,18 +2,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '9.0'
 
-target 'FutLife Swift' do
-  # Pods for FutLife Swift
+target 'FutLife Staging' do
+  # Pods for FutLife Staging
 
   inhibit_all_warnings! # This will disable all the warnings for all pods.
 
-  pod 'Alamofire'
-  #pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
-  #pod 'SDWebImage', '~>3.8'
+  pod 'AFNetworking', '~> 3.0'
+  pod 'SDWebImage', '~>3.8'
   pod 'Mantle'
   #pod 'JSONModel'
   #pod 'RestKit'
-  pod 'BLKFlexibleHeightBar'
   pod 'MMDrawerController', '~> 0.5.1'
   pod 'JRSwizzle', '~> 1.0'
   pod 'CocoaLumberjack', '~> 1.6.2'
@@ -25,11 +23,8 @@ target 'FutLife Swift' do
   pod 'UICKeyChainStore'
   pod 'Google/Analytics'
   pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
   pod 'Reachability'
   pod 'UrbanAirship-iOS-SDK'
   pod 'DateTools'
   pod 'Masonry'
-  pod 'pop', '~> 1.0'  
 end
