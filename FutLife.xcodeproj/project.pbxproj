@@ -31,6 +31,7 @@
 		17399A121F03616100B72EFB /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A111F03616100B72EFB /* Array+Utils.swift */; };
 		17399A141F0367AD00B72EFB /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A131F0367AD00B72EFB /* UIFont+Utils.swift */; };
 		17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A231F04A4B200B72EFB /* LocalDataManager.swift */; };
+		17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -110,6 +111,7 @@
 		17399A211F03697300B72EFB /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		17399A221F03697300B72EFB /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
 		17399A231F04A4B200B72EFB /* LocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalDataManager.swift; path = Managers/LocalDataManager.swift; sourceTree = "<group>"; };
+		17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserDefaults+Extension.swift"; path = "Common/Extensions/UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */,
 				17399A111F03616100B72EFB /* Array+Utils.swift */,
 				17399A131F0367AD00B72EFB /* UIFont+Utils.swift */,
+				17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */,
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
+				17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */,
 				17297FCF1EFA20B100E2FCE4 /* LoginManager.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,

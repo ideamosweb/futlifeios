@@ -10,60 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/StartUp/StartUpViewController.swift"
-            timestampString = "519887538.2334"
+            timestampString = "520401846.508713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "goToLogin()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FutLife/Common/Form/FormViewController.swift"
-            timestampString = "519579775.398052"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "textFieldShouldBeginEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FutLife/Common/Form/FormViewController.swift"
-            timestampString = "519579775.398052"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "textFieldDidBeginEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FutLife/Common/Form/FormViewController.swift"
-            timestampString = "519579775.398052"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "textFieldDidEndEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,70 +153,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FutLife/Common/Form/FormViewController.swift"
-            timestampString = "519602736.369337"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "textFieldShouldReturn(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FutLife/Common/Form/InputFormManager.swift"
-            timestampString = "519603110.375519"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "nextInputField"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FutLife.InputFormManager.nextInputField.getter : Swift.Optional&lt;FutLife.TextField&gt;"
-                  moduleName = "FutLife"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Common/Form/InputFormManager.swift"
-                  timestampString = "520321766.039404"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "33">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FutLife.InputFormManager.(nextInputField.getter : Swift.Optional&lt;FutLife.TextField&gt;).(closure #1)"
-                  moduleName = "FutLife"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Common/Form/InputFormManager.swift"
-                  timestampString = "520321766.041893"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FutLife/Common/Form/InputFormManager.swift"
             timestampString = "519603110.375519"
             startingColumnNumber = "9223372036854775807"
@@ -394,7 +282,7 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Controllers/Login/LoginViewController.swift"
-                  timestampString = "520321766.052882"
+                  timestampString = "520401848.501886"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
@@ -409,7 +297,7 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Controllers/Login/LoginViewController.swift"
-                  timestampString = "520321766.055916"
+                  timestampString = "520401848.505763"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
@@ -506,7 +394,7 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Common/Api/ApiManager.swift"
-                  timestampString = "520321766.068564"
+                  timestampString = "520401848.52057"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
@@ -521,7 +409,7 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Common/Api/ApiManager.swift"
-                  timestampString = "520321766.071294"
+                  timestampString = "520401848.52383"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
@@ -570,7 +458,7 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Common/Api/ApiManager.swift"
-                  timestampString = "520321766.077724"
+                  timestampString = "520401848.535782"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -585,7 +473,7 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/renesantis/Apps/Mobile/iOS/FutLife%20Swift/FutLife/Common/Api/ApiManager.swift"
-                  timestampString = "520321766.080621"
+                  timestampString = "520401848.539111"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"

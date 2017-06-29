@@ -34,12 +34,12 @@ class StartUpViewController: ViewController {
         
     }
     
-    func setVersionLabel() {
+    private func setVersionLabel() {
         let currentAppVersion = Bundle.appVersion()
         versionLabel.text = currentAppVersion
     }
     
-    func getParameters() {
+    private func getParameters() {
         weak var weakSelf = self
         ApiManager.getParameters { (error) in
             if let strongSelf = weakSelf {
@@ -53,7 +53,19 @@ class StartUpViewController: ViewController {
         }
     }
     
-    func goToLogin() {
+    private func checkLoginOrRegister() {
+        if LocalDataManager.registeredUser {
+            goToLogin()
+        } else {
+            if !LocalDataManager.registeredUser {
+                goToRegister()
+            } else if !LocalDataManager.chosenConsole {
+                
+            }
+        }
+    }
+    
+    private func goToLogin() {
         let loginVC = LoginViewController(registerClosure: { () -> Void? in
             self.goToRegister()
         }, loginClosure: { () -> Void? in
@@ -65,12 +77,26 @@ class StartUpViewController: ViewController {
         AppDelegate.mainNavigationController.pushViewController(loginVC, animated: false)
     }
     
-    func goToRegister() {
+    private func goToRegister() {
+        weak var weakSelf = self
         let registerVC = RegisterViewController { () -> Void? in
-            print("")
+            if let strongSelf = weakSelf {
+                LocalDataManager.registeredUser = true
+                strongSelf.goToChooseConsole(navBar: true)
+            }
+            
+            return ()
         }
         
         AppDelegate.mainNavigationController.pushViewController(registerVC, animated: false)
+    }
+    
+    private func goToChooseConsole(navBar: Bool) {
+        let chooseConsoleVC = ChooseConsoleViewController(navBar: navBar, chooseConsoleCompleted: { () -> Void? in
+            print("Go to chose game")
+        })
+        
+        AppDelegate.mainNavigationController.pushViewController(chooseConsoleVC, animated: false)
     }
 }
 

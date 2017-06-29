@@ -19,7 +19,7 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
     var selectedConsoles = [Console]()
     var selectedConsolesTable: UITableView?
     var isNavBar: Bool?
-    var chooseConsoleCompleted: (())?
+    var chooseConsoleCompleted: () -> Void?
     
     let VIEW_ITEM_WIDTH: CGFloat = 240
     let VIEW_ITEM_HEIGHT: CGFloat = 220
@@ -28,7 +28,7 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(navBar: Bool, chooseConsoleCompleted: ()) {
+    init(navBar: Bool, chooseConsoleCompleted: @escaping () -> Void?) {
         self.chooseConsoleCompleted = chooseConsoleCompleted
         super.init(nibName: "ChooseConsoleViewController", bundle: Bundle.main)
         isNavBar = navBar

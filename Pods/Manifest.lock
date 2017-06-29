@@ -8,6 +8,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
   - DateTools (2.0.0)
+  - KeychainAccess (3.0.2)
   - Masonry (1.0.2)
   - ObjectMapper (2.2.7)
   - pop (1.0.10)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - AlamofireObjectMapper (~> 4.0)
   - DateTools
+  - KeychainAccess
   - Masonry
   - pop (~> 1.0)
   - SlideMenuControllerSwift
@@ -31,12 +33,13 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
   UrbanAirship-iOS-SDK: 51a0deb935d0be5905473654316ad1b6f09f3353
 
-PODFILE CHECKSUM: 1d39595609b29823d4398ec43fda2f2ad768a38c
+PODFILE CHECKSUM: 05f0f5ef3fe1ce1898b89ded01d4ffd44c1af788
 
 COCOAPODS: 1.2.1

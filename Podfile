@@ -33,6 +33,7 @@ target 'FutLife' do
   #pod 'FBSDKLoginKit'
   #pod 'FBSDKShareKit'
   #pod 'Reachability'
+  pod 'KeychainAccess'
   pod 'UrbanAirship-iOS-SDK'
   pod 'DateTools'
   pod 'Masonry'
