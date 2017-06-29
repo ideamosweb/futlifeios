@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AlamofireNetworkActivityIndicator.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>AlamofireObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UrbanAirship-iOS-SDK-AirshipResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>UrbanAirship-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,17 +72,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>046C490F945BF90C4202B5A7CDD62392</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>115FA0D867E07C04838493890DBD8D29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F0FA0AA8F62449842F2C16F58AFD03F</key>
+		<key>4C13A1D3C86A852032730B437D2544A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8563FAF0811600FAC2B1DEF8D3C04AE1</key>
+		<key>7A3F4725B516E7F8099317308E70AB11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B9781223F58325E2B337DCAF486655A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,17 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ABA62CB9144A98183C0E3CC296145E72</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BEA70517A1161DC91E206898AD226F03</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D52144DE9D7255DE912490FF5A806573</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DBCB7E051B8F2436EB7C0CE0047A8405</key>
 		<dict>
 			<key>primary</key>
 			<true/>

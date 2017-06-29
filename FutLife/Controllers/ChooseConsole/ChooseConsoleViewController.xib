@@ -15,6 +15,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseConsoleViewController" customModule="FutLife" customModuleProvider="target">
             <connections>
+                <outlet property="chooseConsoleLAbel" destination="97V-Rf-iGJ" id="DeL-DB-ZQ9"/>
+                <outlet property="chooseMoreThanOneLable" destination="d9j-vF-xBc" id="Y3a-XT-zdK"/>
                 <outlet property="consoleCarousel" destination="XUl-BG-7NR" id="HPf-Wf-uff"/>
                 <outlet property="nextButton" destination="oGO-GH-cE8" id="1EM-3o-gwL"/>
                 <outlet property="topOnstraint" destination="27e-Ip-juv" id="rn6-Mn-MIt"/>
@@ -84,7 +86,7 @@
                 <constraint firstItem="Won-Rh-Vxb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sxZ-O6-ody"/>
                 <constraint firstItem="Won-Rh-Vxb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w9U-fu-Dh2"/>
             </constraints>
-            <point key="canvasLocation" x="-1134" y="99"/>
+            <point key="canvasLocation" x="-1335" y="89"/>
         </view>
     </objects>
     <resources>

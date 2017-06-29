@@ -39,5 +39,14 @@
 	</array>
 	<key>api.baseUrl</key>
 	<string>http://35.160.110.11</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BebasNeue-Thin.ttf</string>
+		<string>BebasNeue-Regular.ttf</string>
+		<string>BebasNeue-Light.ttf</string>
+		<string>BebasNeue-Book.ttf</string>
+		<string>BebasNeue-Bold.ttf</string>
+		<string>Bebas Regular</string>
+	</array>
 </dict>
 </plist>

@@ -28,6 +28,9 @@
 		17399A091F00295200B72EFB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17399A071F00295200B72EFB /* Info.plist */; };
 		17399A0C1F003CA200B72EFB /* ChooseConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A0B1F003CA200B72EFB /* ChooseConsoleViewController.swift */; };
 		17399A0E1F003D0900B72EFB /* ChooseConsoleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17399A0D1F003D0900B72EFB /* ChooseConsoleViewController.xib */; };
+		17399A121F03616100B72EFB /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A111F03616100B72EFB /* Array+Utils.swift */; };
+		17399A141F0367AD00B72EFB /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A131F0367AD00B72EFB /* UIFont+Utils.swift */; };
+		17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A231F04A4B200B72EFB /* LocalDataManager.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -93,6 +96,20 @@
 		17399A071F00295200B72EFB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ThirdParty/iCarousel/Info.plist; sourceTree = "<group>"; };
 		17399A0B1F003CA200B72EFB /* ChooseConsoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseConsoleViewController.swift; path = Controllers/ChooseConsole/ChooseConsoleViewController.swift; sourceTree = "<group>"; };
 		17399A0D1F003D0900B72EFB /* ChooseConsoleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChooseConsoleViewController.xib; path = Controllers/ChooseConsole/ChooseConsoleViewController.xib; sourceTree = "<group>"; };
+		17399A111F03616100B72EFB /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Utils.swift"; path = "Common/Extensions/Array+Utils.swift"; sourceTree = "<group>"; };
+		17399A131F0367AD00B72EFB /* UIFont+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Utils.swift"; path = "Common/Extensions/UIFont+Utils.swift"; sourceTree = "<group>"; };
+		17399A181F03696300B72EFB /* BEBAS___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BEBAS___.TTF"; path = "Resources/Fonts/bebas/BEBAS___.TTF"; sourceTree = "<group>"; };
+		17399A191F03697300B72EFB /* BebasNeue Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Bold.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Bold.otf"; sourceTree = "<group>"; };
+		17399A1A1F03697300B72EFB /* BebasNeue Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Book.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Book.otf"; sourceTree = "<group>"; };
+		17399A1B1F03697300B72EFB /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Light.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Light.otf"; sourceTree = "<group>"; };
+		17399A1C1F03697300B72EFB /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Regular.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Regular.otf"; sourceTree = "<group>"; };
+		17399A1D1F03697300B72EFB /* BebasNeue Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Thin.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Thin.otf"; sourceTree = "<group>"; };
+		17399A1E1F03697300B72EFB /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
+		17399A1F1F03697300B72EFB /* BebasNeue-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Book.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Book.ttf"; sourceTree = "<group>"; };
+		17399A201F03697300B72EFB /* BebasNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Light.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Light.ttf"; sourceTree = "<group>"; };
+		17399A211F03697300B72EFB /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		17399A221F03697300B72EFB /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
+		17399A231F04A4B200B72EFB /* LocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalDataManager.swift; path = Managers/LocalDataManager.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +227,7 @@
 		170104561EC2BA57002E6767 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				17399A151F0368E700B72EFB /* Fonts */,
 				1701045F1EC2C332002E6767 /* Info.plist */,
 				17F7B65B1E73474D00578042 /* Main.storyboard */,
 				17F7B65E1E73474D00578042 /* Assets.xcassets */,
@@ -223,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				17297FCE1EFA20B100E2FCE4 /* LoginManager.swift */,
+				17399A231F04A4B200B72EFB /* LocalDataManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -273,11 +292,47 @@
 			name = ChooseConsole;
 			sourceTree = "<group>";
 		};
+		17399A151F0368E700B72EFB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				17399A171F03690700B72EFB /* bebas */,
+				17399A161F0368FB00B72EFB /* BebasNeue */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		17399A161F0368FB00B72EFB /* BebasNeue */ = {
+			isa = PBXGroup;
+			children = (
+				17399A191F03697300B72EFB /* BebasNeue Bold.otf */,
+				17399A1A1F03697300B72EFB /* BebasNeue Book.otf */,
+				17399A1B1F03697300B72EFB /* BebasNeue Light.otf */,
+				17399A1C1F03697300B72EFB /* BebasNeue Regular.otf */,
+				17399A1D1F03697300B72EFB /* BebasNeue Thin.otf */,
+				17399A1E1F03697300B72EFB /* BebasNeue-Bold.ttf */,
+				17399A1F1F03697300B72EFB /* BebasNeue-Book.ttf */,
+				17399A201F03697300B72EFB /* BebasNeue-Light.ttf */,
+				17399A211F03697300B72EFB /* BebasNeue-Regular.ttf */,
+				17399A221F03697300B72EFB /* BebasNeue-Thin.ttf */,
+			);
+			name = BebasNeue;
+			sourceTree = "<group>";
+		};
+		17399A171F03690700B72EFB /* bebas */ = {
+			isa = PBXGroup;
+			children = (
+				17399A181F03696300B72EFB /* BEBAS___.TTF */,
+			);
+			name = bebas;
+			sourceTree = "<group>";
+		};
 		179961551EF6286200853DB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				179961561EF6292A00853DB7 /* String+Utils.swift */,
 				17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */,
+				17399A111F03616100B72EFB /* Array+Utils.swift */,
+				17399A131F0367AD00B72EFB /* UIFont+Utils.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -616,8 +671,11 @@
 				17363C951EF3B3A4006888EE /* Utils.swift in Sources */,
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
+				17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */,
+				17399A141F0367AD00B72EFB /* UIFont+Utils.swift in Sources */,
 				17399A0C1F003CA200B72EFB /* ChooseConsoleViewController.swift in Sources */,
 				17BFB05B1EF86104002A994E /* RegisterViewController.swift in Sources */,
+				17399A121F03616100B72EFB /* Array+Utils.swift in Sources */,
 				173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */,
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,

@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 use_frameworks!
 
@@ -11,6 +11,8 @@ target 'FutLife' do
 
   pod 'Alamofire'
   pod 'AlamofireObjectMapper', '~> 4.0'
+  pod 'AlamofireImage', '~> 3.1'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   #pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
   #pod 'SDWebImage', '~>3.8'
   #pod 'Mantle'

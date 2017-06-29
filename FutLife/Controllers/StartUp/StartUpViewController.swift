@@ -54,8 +54,23 @@ class StartUpViewController: ViewController {
     }
     
     func goToLogin() {
-        let loginVC = LoginViewController(registerClosure: (), loginClosure: (), chooseConsoleClosure: ())
+        let loginVC = LoginViewController(registerClosure: { () -> Void? in
+            self.goToRegister()
+        }, loginClosure: { () -> Void? in
+            print("")
+        }, chooseConsoleClosure: { () -> Void? in
+            print("")
+        })
+        
         AppDelegate.mainNavigationController.pushViewController(loginVC, animated: false)
+    }
+    
+    func goToRegister() {
+        let registerVC = RegisterViewController { () -> Void? in
+            print("")
+        }
+        
+        AppDelegate.mainNavigationController.pushViewController(registerVC, animated: false)
     }
 }
 

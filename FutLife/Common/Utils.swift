@@ -26,4 +26,10 @@ class Utils: NSObject {
         }
         return nil
     }
+    
+    class func screenViewFrame() -> CGRect {
+        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - UIApplication.shared.statusBarFrame.size.height)
+        
+        return viewFrame
+    }
 }

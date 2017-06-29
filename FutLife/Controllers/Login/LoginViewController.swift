@@ -14,20 +14,20 @@ class LoginViewController: FormViewController {
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var registerButton: UIButton!
     
-    var registerClosure: (())?
-    var loginClosure: (())?
-    var chooseConsoleClosure: (())?
+    var registerClosure: () -> Void?
+    var loginClosure: () -> Void?
+    var chooseConsoleClosure: () -> Void?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(registerClosure: (), loginClosure: (), chooseConsoleClosure: ()) {
-        super.init(nibName: "LoginViewController", bundle: Bundle.main)
-        
+    init(registerClosure: @escaping () -> Void?, loginClosure: @escaping () -> Void?, chooseConsoleClosure: @escaping () -> Void?) {
         self.registerClosure = registerClosure
         self.loginClosure = loginClosure
         self.chooseConsoleClosure = chooseConsoleClosure
+        
+        super.init(nibName: "LoginViewController", bundle: Bundle.main)
     }
 
     override func viewDidLoad() {
@@ -81,13 +81,13 @@ class LoginViewController: FormViewController {
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
-//        let registerController = RegisterViewController(registerCompleted: {() in
-//            print("Go to choose console")
-//        })
+        let registerController = RegisterViewController(registerCompleted: {() in
+            self.registerClosure()
+        })
         
-        let consoleVC = ChooseConsoleViewController(navBar: true)
+        //let consoleVC = ChooseConsoleViewController(navBar: true, chooseConsoleCompleted: ())
         
-        navigationController?.pushViewController(consoleVC, animated: true)
+        navigationController?.pushViewController(registerController, animated: true)
     }
     
     @IBAction func onFacebookLoginButtonTouch(_ sender: Any) {
