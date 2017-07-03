@@ -32,6 +32,15 @@
 		17399A141F0367AD00B72EFB /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A131F0367AD00B72EFB /* UIFont+Utils.swift */; };
 		17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A231F04A4B200B72EFB /* LocalDataManager.swift */; };
 		17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */; };
+		17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A281F04C11F00B72EFB /* ChooseGameViewController.swift */; };
+		17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17399A2A1F04C14800B72EFB /* ChooseGameViewController.xib */; };
+		17399A2C1F09A92E00B72EFB /* BEBAS___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 17399A181F03696300B72EFB /* BEBAS___.TTF */; };
+		17399A3C1F09D17C00B72EFB /* BebasNeue Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A371F09CF6000B72EFB /* BebasNeue Book.ttf */; };
+		17399A3D1F09D17F00B72EFB /* BebasNeue Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A381F09CF6000B72EFB /* BebasNeue Light.otf */; };
+		17399A3E1F09D18300B72EFB /* BebasNeue Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A391F09CF6000B72EFB /* BebasNeue Regular.ttf */; };
+		17399A3F1F09D18700B72EFB /* BebasNeue Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A3A1F09CF6000B72EFB /* BebasNeue Thin.ttf */; };
+		17399A401F09D18C00B72EFB /* BebasNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A3B1F09CF6000B72EFB /* BebasNeue-Bold.ttf */; };
+		17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A411F0A015F00B72EFB /* SessionDataManager.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -100,18 +109,16 @@
 		17399A111F03616100B72EFB /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Utils.swift"; path = "Common/Extensions/Array+Utils.swift"; sourceTree = "<group>"; };
 		17399A131F0367AD00B72EFB /* UIFont+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Utils.swift"; path = "Common/Extensions/UIFont+Utils.swift"; sourceTree = "<group>"; };
 		17399A181F03696300B72EFB /* BEBAS___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BEBAS___.TTF"; path = "Resources/Fonts/bebas/BEBAS___.TTF"; sourceTree = "<group>"; };
-		17399A191F03697300B72EFB /* BebasNeue Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Bold.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Bold.otf"; sourceTree = "<group>"; };
-		17399A1A1F03697300B72EFB /* BebasNeue Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Book.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Book.otf"; sourceTree = "<group>"; };
-		17399A1B1F03697300B72EFB /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Light.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Light.otf"; sourceTree = "<group>"; };
-		17399A1C1F03697300B72EFB /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Regular.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Regular.otf"; sourceTree = "<group>"; };
-		17399A1D1F03697300B72EFB /* BebasNeue Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Thin.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Thin.otf"; sourceTree = "<group>"; };
-		17399A1E1F03697300B72EFB /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
-		17399A1F1F03697300B72EFB /* BebasNeue-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Book.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Book.ttf"; sourceTree = "<group>"; };
-		17399A201F03697300B72EFB /* BebasNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Light.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Light.ttf"; sourceTree = "<group>"; };
-		17399A211F03697300B72EFB /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Regular.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
-		17399A221F03697300B72EFB /* BebasNeue-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Thin.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Thin.ttf"; sourceTree = "<group>"; };
 		17399A231F04A4B200B72EFB /* LocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalDataManager.swift; path = Managers/LocalDataManager.swift; sourceTree = "<group>"; };
 		17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserDefaults+Extension.swift"; path = "Common/Extensions/UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		17399A281F04C11F00B72EFB /* ChooseGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseGameViewController.swift; path = Controllers/ChooseGame/ChooseGameViewController.swift; sourceTree = "<group>"; };
+		17399A2A1F04C14800B72EFB /* ChooseGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChooseGameViewController.xib; path = Controllers/ChooseGame/ChooseGameViewController.xib; sourceTree = "<group>"; };
+		17399A371F09CF6000B72EFB /* BebasNeue Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Book.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue Book.ttf"; sourceTree = "<group>"; };
+		17399A381F09CF6000B72EFB /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Light.otf"; path = "Resources/Fonts/bebas_neue/BebasNeue Light.otf"; sourceTree = "<group>"; };
+		17399A391F09CF6000B72EFB /* BebasNeue Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Regular.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue Regular.ttf"; sourceTree = "<group>"; };
+		17399A3A1F09CF6000B72EFB /* BebasNeue Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Thin.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue Thin.ttf"; sourceTree = "<group>"; };
+		17399A3B1F09CF6000B72EFB /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
+		17399A411F0A015F00B72EFB /* SessionDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDataManager.swift; path = Managers/SessionDataManager.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +251,7 @@
 			children = (
 				17297FCE1EFA20B100E2FCE4 /* LoginManager.swift */,
 				17399A231F04A4B200B72EFB /* LocalDataManager.swift */,
+				17399A411F0A015F00B72EFB /* SessionDataManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -306,16 +314,11 @@
 		17399A161F0368FB00B72EFB /* BebasNeue */ = {
 			isa = PBXGroup;
 			children = (
-				17399A191F03697300B72EFB /* BebasNeue Bold.otf */,
-				17399A1A1F03697300B72EFB /* BebasNeue Book.otf */,
-				17399A1B1F03697300B72EFB /* BebasNeue Light.otf */,
-				17399A1C1F03697300B72EFB /* BebasNeue Regular.otf */,
-				17399A1D1F03697300B72EFB /* BebasNeue Thin.otf */,
-				17399A1E1F03697300B72EFB /* BebasNeue-Bold.ttf */,
-				17399A1F1F03697300B72EFB /* BebasNeue-Book.ttf */,
-				17399A201F03697300B72EFB /* BebasNeue-Light.ttf */,
-				17399A211F03697300B72EFB /* BebasNeue-Regular.ttf */,
-				17399A221F03697300B72EFB /* BebasNeue-Thin.ttf */,
+				17399A371F09CF6000B72EFB /* BebasNeue Book.ttf */,
+				17399A381F09CF6000B72EFB /* BebasNeue Light.otf */,
+				17399A391F09CF6000B72EFB /* BebasNeue Regular.ttf */,
+				17399A3A1F09CF6000B72EFB /* BebasNeue Thin.ttf */,
+				17399A3B1F09CF6000B72EFB /* BebasNeue-Bold.ttf */,
 			);
 			name = BebasNeue;
 			sourceTree = "<group>";
@@ -326,6 +329,15 @@
 				17399A181F03696300B72EFB /* BEBAS___.TTF */,
 			);
 			name = bebas;
+			sourceTree = "<group>";
+		};
+		17399A271F04C03800B72EFB /* ChooseGame */ = {
+			isa = PBXGroup;
+			children = (
+				17399A281F04C11F00B72EFB /* ChooseGameViewController.swift */,
+				17399A2A1F04C14800B72EFB /* ChooseGameViewController.xib */,
+			);
+			name = ChooseGame;
 			sourceTree = "<group>";
 		};
 		179961551EF6286200853DB7 /* Extensions */ = {
@@ -361,6 +373,7 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17399A271F04C03800B72EFB /* ChooseGame */,
 				17399A0A1F003C4A00B72EFB /* ChooseConsole */,
 				17BFB0591EF8609F002A994E /* Register */,
 				179961581EF6DA8D00853DB7 /* Login */,
@@ -563,13 +576,20 @@
 			files = (
 				17399A091F00295200B72EFB /* Info.plist in Resources */,
 				17E678AE1EF6E5C20001B9FB /* StartUpViewController.xib in Resources */,
+				17399A3F1F09D18700B72EFB /* BebasNeue Thin.ttf in Resources */,
 				17E678AC1EF6E4860001B9FB /* LaunchScreen.storyboard in Resources */,
+				17399A3E1F09D18300B72EFB /* BebasNeue Regular.ttf in Resources */,
 				17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */,
+				17399A401F09D18C00B72EFB /* BebasNeue-Bold.ttf in Resources */,
 				17399A0E1F003D0900B72EFB /* ChooseConsoleViewController.xib in Resources */,
 				17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */,
 				17E678AB1EF6E47E0001B9FB /* Main.storyboard in Resources */,
+				17399A3D1F09D17F00B72EFB /* BebasNeue Light.otf in Resources */,
+				17399A3C1F09D17C00B72EFB /* BebasNeue Book.ttf in Resources */,
+				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
+				17399A2C1F09A92E00B72EFB /* BEBAS___.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,7 +708,9 @@
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
 				179961571EF6292A00853DB7 /* String+Utils.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
+				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
+				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,
 				17363C8F1EF1FBA6006888EE /* FormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

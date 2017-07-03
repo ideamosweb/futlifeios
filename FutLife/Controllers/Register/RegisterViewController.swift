@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import PKHUD
 
 class RegisterViewController: FormViewController {
     @IBOutlet weak var nameTextField: TextField!
@@ -98,7 +99,10 @@ class RegisterViewController: FormViewController {
                                   "password_confirmation": passwordTextField.text ?? "",
                                   "platform": Constants.platform]
         
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
         ApiManager.registerRequest(registerParameters: params) { (errorModel) in
+            PKHUD.sharedHUD.hide(afterDelay: 0)
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
                     strongSelf.registerCompleted()

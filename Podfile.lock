@@ -11,6 +11,7 @@ PODS:
   - KeychainAccess (3.0.2)
   - Masonry (1.0.2)
   - ObjectMapper (2.2.7)
+  - PKHUD (4.2.3)
   - pop (1.0.10)
   - SlideMenuControllerSwift (3.0.1)
   - UrbanAirship-iOS-SDK (8.3.3)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - DateTools
   - KeychainAccess
   - Masonry
+  - PKHUD (~> 4.0)
   - pop (~> 1.0)
   - SlideMenuControllerSwift
   - UrbanAirship-iOS-SDK
@@ -36,10 +38,11 @@ SPEC CHECKSUMS:
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  PKHUD: c7692163a09875cbf15827dc581df3c5cf7f1015
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
   UrbanAirship-iOS-SDK: 51a0deb935d0be5905473654316ad1b6f09f3353
 
-PODFILE CHECKSUM: 05f0f5ef3fe1ce1898b89ded01d4ffd44c1af788
+PODFILE CHECKSUM: 298769125de7a3655c5dcc9381cea710a17cfd45
 
 COCOAPODS: 1.2.1

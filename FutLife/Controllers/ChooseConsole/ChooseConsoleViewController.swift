@@ -19,7 +19,7 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
     var selectedConsoles = [Console]()
     var selectedConsolesTable: UITableView?
     var isNavBar: Bool?
-    var chooseConsoleCompleted: () -> Void?
+    var chooseConsoleCompleted: ([ConsoleModel]) -> Void?
     
     let VIEW_ITEM_WIDTH: CGFloat = 240
     let VIEW_ITEM_HEIGHT: CGFloat = 220
@@ -28,7 +28,7 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(navBar: Bool, chooseConsoleCompleted: @escaping () -> Void?) {
+    init(navBar: Bool, chooseConsoleCompleted: @escaping ([ConsoleModel]) -> Void?) {
         self.chooseConsoleCompleted = chooseConsoleCompleted
         super.init(nibName: "ChooseConsoleViewController", bundle: Bundle.main)
         isNavBar = navBar
@@ -37,11 +37,16 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chooseConsoleLAbel.font = UIFont().bebasFont(size: 38)
+        chooseConsoleLAbel.font = UIFont().bebasBoldFont(size: 38)
         chooseMoreThanOneLable.font = UIFont().bebasFont(size: 18)
-
-        showNavigationBar(show: isNavBar!)
+        
         nextButton.isEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showNavigationBar(show: isNavBar!)
         
         consoleCarousel.bounceDistance = 0.3
         consoleCarousel.scrollSpeed = 0.3
@@ -53,6 +58,8 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
         
         let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselItemNotification)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectCarouselItem(_:)), name: selectedCarouselItem, object: nil)
+        
+        selectedConsolesTable?.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,10 +91,23 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
         }
     }
     
+    @IBAction func onNextButtonTouch(_ sender: Any) {
+        var consoles = [ConsoleModel]()
+        for item in indexSelectedItems {
+            let console = self.consoles?[item - 1]
+            let consoleModel = ConsoleModel(id: console?.id, platformId: console?.platformId, name: console?.name, avatar: console?.avatar, thumbnail: console?.thumbnail, active: console?.active, createdAt: console?.createdAt, updatedAt: console?.updatedAt)
+            
+            consoles.append(consoleModel)
+        }
+        
+        LocalDataManager.consolesSelected = consoles
+        chooseConsoleCompleted(consoles)
+    }
+    
     private func addSelectedConsoles() {
         let selectedConsolesLabel = UILabel(frame: CGRect(x: 10.0, y: consoleCarousel.frame.maxY + 40.0, width: Utils.screenViewFrame().size.width, height: 20.0))
         selectedConsolesLabel.text = "CONSOLAS SELECCIONADAS:"
-        selectedConsolesLabel.font = UIFont().bebasFont(size: 20.0)
+        selectedConsolesLabel.font = UIFont().bebasBoldFont(size: 20.0)
         selectedConsolesLabel.textColor = UIColor.white
         selectedConsolesLabel.textAlignment = .left
         

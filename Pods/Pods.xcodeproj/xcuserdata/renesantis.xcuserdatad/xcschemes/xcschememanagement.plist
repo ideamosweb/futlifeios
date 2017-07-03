@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PKHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FutLife.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,27 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38393611D434DE4F7F2ED1F2150F98E9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5ED879EE6467F0F9ECBEDCE958BD9081</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>65F2C28ACA80A52D9D68767C98BA17F3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7448F82A4DF25B05FBD55559EC3A8A8E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8161D24B127B7330870927B3A3B813EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,22 +132,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA9FFD00B0CFC30F289CB18E5930C32E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D52144DE9D7255DE912490FF5A806573</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D7A75F149082140741FC1E0B5B2863C8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E617C97C7A6B85279E17C681C08B221D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
