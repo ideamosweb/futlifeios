@@ -76,11 +76,9 @@ class StartUpViewController: ViewController {
             } else if LocalDataManager.chosenGame {
                 goToChooseGame(navBar: false)
             } else if !LocalDataManager.completedRegister {
-                //goToUserProfile()
-                goToChooseConsole(navBar: false)
+                goToUserProfile()
             } else {
-                //goToTimeLineDashboard()
-                goToChooseConsole(navBar: false)
+                goToTimeLineDashboard()
             }
         }
     }
