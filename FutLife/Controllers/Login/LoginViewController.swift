@@ -82,7 +82,7 @@ class LoginViewController: FormViewController {
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
         let registerController = RegisterViewController(registerCompleted: {() in
-            self.registerClosure()
+            self.chooseConsoleClosure()
         })
         
         //let consoleVC = ChooseConsoleViewController(navBar: true, chooseConsoleCompleted: ())

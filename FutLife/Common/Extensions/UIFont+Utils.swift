@@ -7,17 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIFont {
     func bebasFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "Bebas Neue", size: size)!
+        return UIFont(name: "BebasNeueRegular", size: size)!
     }
     
     func bebasBoldFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "Bebas Neue Bold", size: size)!
+        return (UIFont(name: "BebasNeueBold", size: size))!
     }
     
     func bebasLightFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "Bebas Neue Light", size: size)!
+        return UIFont(name: "BebasNeueLight", size: size)!
     }
 }

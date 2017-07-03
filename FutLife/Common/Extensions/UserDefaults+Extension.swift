@@ -9,12 +9,12 @@
 import Foundation
 
 extension UserDefaults {
-    func stringForKey(key: String) -> String {
-        return UserDefaults.standard.string(forKey: key)!
+    func stringForKey(key: String) -> String? {
+        return UserDefaults.standard.string(forKey: key)
     }
     
-    func objectForKey(key: String) -> Any {
-        return UserDefaults.standard.object(forKey: key)!
+    func objectForKey(key: String) -> Any? {
+        return UserDefaults.standard.object(forKey: key)
     }
     
     func setObject(value: Any, forKey: String) {
@@ -22,7 +22,7 @@ extension UserDefaults {
         UserDefaults.standard.synchronize()
     }
     
-    func dataObjectForKey(key: String) -> Any {
+    func dataObjectForKey(key: String) -> Any? {
         let dataObject: Data = UserDefaults.standard.object(forKey: key) as! Data
         return NSKeyedUnarchiver.unarchiveObject(with: dataObject) as Any
     }

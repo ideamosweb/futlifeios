@@ -25,7 +25,7 @@ class ConfigurationParameters: Mappable {
     }
 }
 
-// This struct allow to access to properties model anywhere (Singleton)
+// This struct allow to access to properties model anywhere (like Singleton)
 struct ConfigurationParametersModel {
     static var platforms: [Platform]?
     static var consoles: [Console]?

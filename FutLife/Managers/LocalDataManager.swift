@@ -9,6 +9,7 @@
 import Foundation
 
 struct LocalDataManager {
+    static let kParameters = "Parameters"
     static let kRegisteredUser = "RegisteredUser"
     static let kUser = "User"
     static let kUserAvatar = "Avatar";
@@ -26,10 +27,10 @@ struct LocalDataManager {
     
     static var registeredUser: Bool {
         get {
-            return UserDefaults().objectForKey(key: kRegisteredUser) as! Bool
+            return UserDefaults().bool(forKey: kRegisteredUser)
         }
-        set {
-            UserDefaults().setObject(value: NSNumber.init(booleanLiteral: registeredUser), forKey: kRegisteredUser)
+        set (newValue) {
+            UserDefaults().set(newValue, forKey: kRegisteredUser)
         }
     }
     
@@ -37,8 +38,8 @@ struct LocalDataManager {
         get {
             return UserDefaults().dataObjectForKey(key: kUser) as! User
         }
-        set {
-            UserDefaults().setDataObject(value: user, forKey: kUser)
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kUser)
         }
     }
     
@@ -46,44 +47,71 @@ struct LocalDataManager {
         get {
             return UserDefaults().dataObjectForKey(key: kUserAvatar) as! UIImage
         }
-        set {
-            UserDefaults().setDataObject(value: avatar, forKey: kUserAvatar)
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kUserAvatar)
         }
     }
     
     static var chosenConsole: Bool {
         get {
-            return UserDefaults().objectForKey(key: kChosenConsole) as! Bool
+            return UserDefaults().bool(forKey: kChosenConsole)
         }
-        set {
-            UserDefaults().setObject(value: chosenConsole, forKey: kChosenConsole)
+        set (newValue) {
+            UserDefaults().set(newValue, forKey: kChosenConsole)
         }
     }
     
     static var chosenGame: Bool {
         get {
-            return UserDefaults().objectForKey(key: kChosenGame) as! Bool
+            return UserDefaults().bool(forKey: kChosenGame)
         }
-        set {
-            UserDefaults().setObject(value: chosenGame, forKey: kChosenGame)
+        set (newValue) {
+            UserDefaults().set(newValue, forKey: kChosenGame)
         }
     }
     
     static var completedRegister: Bool {
         get {
-            return UserDefaults().objectForKey(key: kCompletedRegister) as! Bool
+            return UserDefaults().bool(forKey: kCompletedRegister)
         }
-        set {
-            UserDefaults().setObject(value: completedRegister, forKey: kCompletedRegister)
+        set (newValue) {
+            UserDefaults().set(newValue, forKey: kCompletedRegister)
         }
     }
     
     static var logged: Bool {
         get {
-            return UserDefaults().objectForKey(key: kLogged) as! Bool
+            return UserDefaults().bool(forKey: kLogged)
         }
-        set {
-            UserDefaults().setObject(value: logged, forKey: kLogged)
+        set (newValue) {
+            UserDefaults().set(newValue, forKey: kLogged)
+        }
+    }
+    
+    static var parameters: ConfigurationParametersModel {
+        get {
+            return UserDefaults().dataObjectForKey(key: kParameters) as! ConfigurationParametersModel
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kParameters)
+        }
+    }
+    
+    static var consolesSelected: [ConsoleModel] {
+        get {
+            return UserDefaults().dataObjectForKey(key: kConsoles) as! [ConsoleModel]
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kConsoles)
+        }
+    }
+    
+    static var gamesSelected: [GameModel] {
+        get {
+            return UserDefaults().dataObjectForKey(key: kGames) as! [GameModel]
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kGames)
         }
     }
     

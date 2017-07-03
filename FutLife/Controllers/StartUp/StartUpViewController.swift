@@ -25,12 +25,14 @@ class StartUpViewController: ViewController {
         super.viewDidLoad()
         
         showNavigationBar(show: false)
-
-        setVersionLabel()
-        getParameters()
-    }
-    
-    func animationLogo() {
+        
+        // Control login behaviour
+        if !SessionDataManager.isLogOut {
+            setVersionLabel()
+            animationLogo()
+        } else {
+            goToLogin()
+        }
         
     }
     
@@ -39,12 +41,22 @@ class StartUpViewController: ViewController {
         versionLabel.text = currentAppVersion
     }
     
+    private func animationLogo() {
+        // TODO: Animation Logo
+        getParameters()
+    }
+    
     private func getParameters() {
         weak var weakSelf = self
         ApiManager.getParameters { (error) in
             if let strongSelf = weakSelf {
                 if (error?.success)! {
-                    strongSelf.goToLogin()
+                    // Go to time line if is logged or register completed
+                    if LocalDataManager.completedRegister || LocalDataManager.logged {
+                        strongSelf.goToTimeLineDashboard()
+                    } else {
+                        strongSelf.checkLoginOrRegister()
+                    }
                 } else {
                     strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
                     
@@ -54,24 +66,49 @@ class StartUpViewController: ViewController {
     }
     
     private func checkLoginOrRegister() {
-        if LocalDataManager.registeredUser {
+        if !LocalDataManager.registeredUser {
             goToLogin()
         } else {
             if !LocalDataManager.registeredUser {
-                goToRegister()
+                goToLogin()
             } else if !LocalDataManager.chosenConsole {
-                
+                goToChooseConsole(navBar: false)
+            } else if LocalDataManager.chosenGame {
+                goToChooseGame(navBar: false)
+            } else if !LocalDataManager.completedRegister {
+                //goToUserProfile()
+                goToChooseConsole(navBar: false)
+            } else {
+                //goToTimeLineDashboard()
+                goToChooseConsole(navBar: false)
             }
         }
     }
     
     private func goToLogin() {
+        weak var weakSelf = self
         let loginVC = LoginViewController(registerClosure: { () -> Void? in
-            self.goToRegister()
+            // Go to Register
+            if let strongSelf = weakSelf {
+                strongSelf.goToRegister()
+            }
+            
+            return ()
         }, loginClosure: { () -> Void? in
-            print("")
+            // Go to dashboard!!
+            if let strongSelf = weakSelf {
+                strongSelf.goToTimeLineDashboard()
+            }
+            
+            return ()
         }, chooseConsoleClosure: { () -> Void? in
-            print("")
+            // Go to chooseConsole
+            if let strongSelf = weakSelf {
+                LocalDataManager.registeredUser = true
+                strongSelf.goToChooseConsole(navBar: true)
+            }
+            
+            return ()
         })
         
         AppDelegate.mainNavigationController.pushViewController(loginVC, animated: false)
@@ -88,15 +125,37 @@ class StartUpViewController: ViewController {
             return ()
         }
         
-        AppDelegate.mainNavigationController.pushViewController(registerVC, animated: false)
+        AppDelegate.mainNavigationController.pushViewController(registerVC, animated: true)
     }
     
     private func goToChooseConsole(navBar: Bool) {
-        let chooseConsoleVC = ChooseConsoleViewController(navBar: navBar, chooseConsoleCompleted: { () -> Void? in
-            print("Go to chose game")
+        weak var weakSelf = self
+        let chooseConsoleVC = ChooseConsoleViewController(navBar: navBar, chooseConsoleCompleted: { (consoles) -> Void? in
+            if let strongSelf = weakSelf {
+                LocalDataManager.chosenConsole = true
+                strongSelf.goToChooseGame(navBar: true)
+            }
+            
+            return ()
         })
         
-        AppDelegate.mainNavigationController.pushViewController(chooseConsoleVC, animated: false)
+        AppDelegate.mainNavigationController.pushViewController(chooseConsoleVC, animated: true)
+    }
+    
+    private func goToChooseGame(navBar: Bool) {
+        let chooseGameVC = ChooseGameViewController(navBar: navBar) { (games) -> Void? in
+            print("Go to chose game")
+        }
+        
+        AppDelegate.mainNavigationController.pushViewController(chooseGameVC, animated: true)
+    }
+    
+    private func goToUserProfile() {
+        
+    }
+    
+    private func goToTimeLineDashboard() {
+        // TODO
     }
 }
 
