@@ -31,7 +31,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESCOGE TU JUEGO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97V-Rf-iGJ">
-                    <rect key="frame" x="28" y="107" width="319" height="42"/>
+                    <rect key="frame" x="28" y="106.5" width="319" height="42"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="319" id="RFb-en-U0Y"/>
                         <constraint firstAttribute="height" constant="42" id="Tgs-9h-maP"/>
@@ -41,7 +41,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PUEDES ESCOGER MAS DE UNO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-vF-xBc">
-                    <rect key="frame" x="85" y="151" width="206" height="21"/>
+                    <rect key="frame" x="84.5" y="150.5" width="206" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="206" id="Cf6-iB-5gb"/>
                         <constraint firstAttribute="height" constant="21" id="xT1-wm-nVX"/>
@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-BG-7NR" customClass="iCarousel">
-                    <rect key="frame" x="0.0" y="214" width="375" height="240"/>
+                    <rect key="frame" x="0.0" y="213.5" width="375" height="240"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="KyH-l4-hKM"/>
                     </constraints>

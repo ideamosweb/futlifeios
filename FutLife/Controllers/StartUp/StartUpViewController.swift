@@ -42,8 +42,8 @@ class StartUpViewController: ViewController {
     }
     
     private func animationLogo() {
-        // TODO: Animation Logo
         getParameters()
+        logoImageView.animateLogo()
     }
     
     private func getParameters() {
@@ -73,10 +73,11 @@ class StartUpViewController: ViewController {
                 goToLogin()
             } else if !LocalDataManager.chosenConsole {
                 goToChooseConsole(navBar: false)
-            } else if LocalDataManager.chosenGame {
+            } else if !LocalDataManager.chosenGame {
                 goToChooseGame(navBar: false)
             } else if !LocalDataManager.completedRegister {
-                goToUserProfile()
+                goToUserProfile(navBar: false, confirmButton: true)
+                //goToChooseConsole(navBar: false)
             } else {
                 goToTimeLineDashboard()
             }
@@ -141,15 +142,31 @@ class StartUpViewController: ViewController {
     }
     
     private func goToChooseGame(navBar: Bool) {
+        weak var weakSelf = self
         let chooseGameVC = ChooseGameViewController(navBar: navBar) { (games) -> Void? in
-            print("Go to chose game")
+            if let strongSelf = weakSelf {
+                LocalDataManager.chosenGame = true
+                strongSelf.goToUserProfile(navBar: true, confirmButton: true)
+            }
+            
+            return ()
         }
         
         AppDelegate.mainNavigationController.pushViewController(chooseGameVC, animated: true)
     }
     
-    private func goToUserProfile() {
+    private func goToUserProfile(navBar: Bool, confirmButton: Bool) {
+        weak var weakSelf = self
+        let profileVC = ProfileViewController(navBar: navBar, confirmButton: confirmButton) {
+            if let strongSelf = weakSelf {
+                LocalDataManager.completedRegister = true
+                strongSelf.goToTimeLineDashboard()
+            }
+            
+            return ()
+        }
         
+        AppDelegate.mainNavigationController.pushViewController(profileVC, animated: true)
     }
     
     private func goToTimeLineDashboard() {

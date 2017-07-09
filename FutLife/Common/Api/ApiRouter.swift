@@ -39,7 +39,7 @@ enum ApiRouter: URLRequestConvertible {
             case .registerPreferences:
                 return "\(Constants.queryURLPath)/preferences"
             case .registerAvatar:
-                return "\(Constants.queryURLPath)"
+                return "\(Constants.queryURLPath)/user/avatar"
             case .games:
                 return "\(Constants.queryURLPath)"
             case .consoles:
@@ -69,6 +69,7 @@ enum ApiRouter: URLRequestConvertible {
         case .registerPreferences(let registerPreferencesParameters):
             request = try URLEncoding.default.encode(request, with: registerPreferencesParameters)
         case .registerAvatar(let registerAvatarParameters):
+            //request.setValue(SessionDataManager.token, forHTTPHeaderField: "Authorization")
             request = try URLEncoding.default.encode(request, with: registerAvatarParameters)
         case .challenges(let challengesParameters):
             request = try URLEncoding.default.encode(request, with: challengesParameters)

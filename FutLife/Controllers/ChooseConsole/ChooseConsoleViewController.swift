@@ -95,7 +95,7 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
         var consoles = [ConsoleModel]()
         for item in indexSelectedItems {
             let console = self.consoles?[item - 1]
-            let consoleModel = ConsoleModel(id: console?.id, platformId: console?.platformId, name: console?.name, avatar: console?.avatar, thumbnail: console?.thumbnail, active: console?.active, createdAt: console?.createdAt, updatedAt: console?.updatedAt)
+            let consoleModel = ConsoleModel(id: console?.id, platformId: console?.platformId, year: console?.year, name: console?.name, avatar: console?.avatar, thumbnail: console?.thumbnail, active: console?.active, createdAt: console?.createdAt, updatedAt: console?.updatedAt)
             
             consoles.append(consoleModel)
         }

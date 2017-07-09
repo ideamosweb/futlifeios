@@ -12,6 +12,7 @@ import ObjectMapper
 class Console: Mappable {
     var id: Int?
     var platformId: Int?
+    var year: Int?
     var name: String?
     var avatar: String?
     var thumbnail: String?
@@ -26,6 +27,7 @@ class Console: Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         platformId <- map["platform_id"]
+        year <- map["year"]
         name <- map["name"]
         avatar <- map["avatar"]
         thumbnail <- map["thumbnail"]
@@ -38,6 +40,7 @@ class Console: Mappable {
 class ConsoleModel: NSObject, NSCoding {
     let id: Int
     let platformId: Int
+    let year: Int
     let name: String
     let avatar: String
     let thumbnail: String
@@ -45,9 +48,10 @@ class ConsoleModel: NSObject, NSCoding {
     let createdAt: Date
     let updatedAt: Date
     
-    init(id: Int?, platformId: Int?, name: String?, avatar: String?, thumbnail: String?, active: Bool?, createdAt: Date?, updatedAt: Date?) {
+    init(id: Int?, platformId: Int?, year: Int?, name: String?, avatar: String?, thumbnail: String?, active: Bool?, createdAt: Date?, updatedAt: Date?) {
         self.id = id ?? 0
         self.platformId = platformId ?? 0
+        self.year = year ?? 0
         self.name = name ?? ""
         self.avatar = avatar ?? ""
         self.thumbnail = thumbnail ?? ""
@@ -57,12 +61,13 @@ class ConsoleModel: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.id = aDecoder.decodeObject(forKey: "id") as! Int
-        self.platformId = aDecoder.decodeObject(forKey: "platformId") as! Int
+        self.id = aDecoder.decodeInteger(forKey: "id")
+        self.platformId = aDecoder.decodeInteger(forKey: "platformId")
+        self.year = aDecoder.decodeInteger(forKey: "year")
         self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
         self.avatar = aDecoder.decodeObject(forKey: "avatar") as? String ?? ""
         self.thumbnail = aDecoder.decodeObject(forKey: "thumbnail") as? String ?? ""
-        self.active = aDecoder.decodeObject(forKey: "active") as? Bool ?? false
+        self.active = aDecoder.decodeBool(forKey: "active")        
         self.createdAt = aDecoder.decodeObject(forKey: "createdAt") as? Date ?? Date()
         self.updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as? Date ?? Date()
     }
@@ -70,11 +75,12 @@ class ConsoleModel: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: "id")
         aCoder.encode(platformId, forKey: "platformId")
+        aCoder.encode(year, forKey: "year")
         aCoder.encode(name, forKey: "name")
         aCoder.encode(avatar, forKey: "avatar")
         aCoder.encode(thumbnail, forKey: "thumbnail")
-        aCoder.encode(active, forKey: "games")
-        aCoder.encode(createdAt, forKey: "active")
+        aCoder.encode(active, forKey: "active")
+        aCoder.encode(createdAt, forKey: "createdAt")
         aCoder.encode(updatedAt, forKey: "updatedAt")
     }
 }

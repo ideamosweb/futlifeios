@@ -23,13 +23,16 @@ extension UserDefaults {
     }
     
     func dataObjectForKey(key: String) -> Any? {
-        let dataObject: Data = UserDefaults.standard.object(forKey: key) as! Data
-        return NSKeyedUnarchiver.unarchiveObject(with: dataObject) as Any
+        if let dataObject: Data = UserDefaults.standard.object(forKey: key) as? Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: dataObject) as Any
+        }
+        return nil
     }
     
     func setDataObject(value: Any, forKey: String) {
         let encodedObject = NSKeyedArchiver.archivedData(withRootObject: value)
         
-        UserDefaults.standard.setObject(value: encodedObject, forKey: forKey)
+        UserDefaults.standard.set(encodedObject, forKey: forKey)
+        //UserDefaults.standard.setObject(value: encodedObject, forKey: forKey)
     }    
 }
