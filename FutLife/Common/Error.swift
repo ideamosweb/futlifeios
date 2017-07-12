@@ -38,7 +38,7 @@ struct ApiError {
             if let data = responseData {
                 let errorStr = String(data: data, encoding: String.Encoding.utf8)!
                 let dict = Utils.convertToDictionary(text: errorStr)!
-                errorModel.message = dict["message"] as? String
+                errorModel.message = dict["message"] as? String ?? dict["error"] as? String
             }
             
             errorModel.success = false

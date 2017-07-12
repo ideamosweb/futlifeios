@@ -38,3 +38,59 @@ class User: Model {
         challenges <- map["challenges"]
     }
 }
+
+class UserModel: NSObject, NSCoding {
+    let id: Int
+    let name: String
+    let userName: String
+    let email: String
+    let avatar: String
+    let thumbnail: String
+    let social: Bool
+    let active: Bool
+    let createdAt: Date
+    let updatedAt: Date
+    let cityName: String
+    
+    init(id: Int?, name: String?, userName: String?, email: String?, avatar: String?, thumbnail: String?, social: Bool?, active: Bool?, createdAt: Date?, updatedAt: Date?, cityName: String?) {
+        self.id = id ?? 0
+        self.name = name ?? ""
+        self.userName = userName ?? ""
+        self.email = email ?? ""
+        self.avatar = avatar ?? ""
+        self.thumbnail = thumbnail ?? ""
+        self.social = social ?? false
+        self.active = active ?? false
+        self.createdAt = createdAt ?? Date()
+        self.updatedAt = updatedAt ?? Date()
+        self.cityName = cityName ?? ""
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.id = aDecoder.decodeInteger(forKey: "id")
+        self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
+        self.userName = aDecoder.decodeObject(forKey: "userName") as? String ?? ""
+        self.email = aDecoder.decodeObject(forKey: "email") as? String ?? ""
+        self.avatar = aDecoder.decodeObject(forKey: "avatar") as? String ?? ""
+        self.thumbnail = aDecoder.decodeObject(forKey: "thumbnail") as? String ?? ""
+        self.social = aDecoder.decodeBool(forKey: "social")
+        self.active = aDecoder.decodeBool(forKey: "active")
+        self.createdAt = aDecoder.decodeObject(forKey: "createdAt") as? Date ?? Date()
+        self.updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as? Date ?? Date()
+        self.cityName = aDecoder.decodeObject(forKey: "cityName") as? String ?? ""
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(userName, forKey: "userName")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(avatar, forKey: "avatar")
+        aCoder.encode(thumbnail, forKey: "thumbnail")
+        aCoder.encode(social, forKey: "social")
+        aCoder.encode(active, forKey: "active")
+        aCoder.encode(createdAt, forKey: "createdAt")
+        aCoder.encode(updatedAt, forKey: "updatedAt")
+        aCoder.encode(cityName, forKey: "cityName")
+    }
+}

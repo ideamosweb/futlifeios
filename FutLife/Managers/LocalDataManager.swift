@@ -12,6 +12,7 @@ struct LocalDataManager {
     static let kParameters = "Parameters"
     static let kRegisteredUser = "RegisteredUser"
     static let kUser = "User"
+    static let kToken = "Token"
     static let kUserAvatar = "Avatar";
     static let kChosenConsole = "ChosenConsole";
     static let kChosenGame = "ChosenGame";
@@ -34,21 +35,21 @@ struct LocalDataManager {
         }
     }
     
-    static var user: User {
+    static var token: String? {
         get {
-            return UserDefaults().dataObjectForKey(key: kUser) as! User
+            return UserDefaults().dataObjectForKey(key: kToken) as? String
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue, forKey: kUser)
+            UserDefaults().setDataObject(value: newValue!, forKey: kToken)
         }
     }
     
-    static var avatar: UIImage {
+    static var avatar: UIImage? {
         get {
-            return UserDefaults().dataObjectForKey(key: kUserAvatar) as! UIImage
+            return UserDefaults().dataObjectForKey(key: kUserAvatar) as? UIImage
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue, forKey: kUserAvatar)
+            UserDefaults().setDataObject(value: newValue!, forKey: kUserAvatar)
         }
     }
     
@@ -88,6 +89,15 @@ struct LocalDataManager {
         }
     }
     
+    static var user: UserModel? {
+        get {
+            return UserDefaults().dataObjectForKey(key: kUser) as? UserModel
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue!, forKey: kUser)
+        }
+    }
+    
     static var parameters: ConfigurationParametersModel {
         get {
             return UserDefaults().dataObjectForKey(key: kParameters) as! ConfigurationParametersModel
@@ -97,21 +107,21 @@ struct LocalDataManager {
         }
     }
     
-    static var consolesSelected: [ConsoleModel] {
+    static var consolesSelected: [ConsoleModel]? {
         get {
-            return UserDefaults().dataObjectForKey(key: kConsoles) as! [ConsoleModel]
+            return UserDefaults().dataObjectForKey(key: kConsoles) as? [ConsoleModel]
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue, forKey: kConsoles)
+            UserDefaults().setDataObject(value: newValue!, forKey: kConsoles)
         }
     }
     
-    static var gamesSelected: [GameModel] {
+    static var gamesSelected: [GameModel]? {
         get {
-            return UserDefaults().dataObjectForKey(key: kGames) as! [GameModel]
+            return UserDefaults().dataObjectForKey(key: kGames) as? [GameModel]
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue, forKey: kGames)
+            UserDefaults().setDataObject(value: newValue!, forKey: kGames)
         }
     }
     

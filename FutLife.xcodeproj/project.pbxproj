@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17001A051F0AC15B00BF44BD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17001A041F0AC15B00BF44BD /* UIView+Extension.swift */; };
+		17001A081F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17001A071F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift */; };
+		17001A0A1F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17001A091F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift */; };
+		17001A0D1F0ADB3B00BF44BD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17001A0C1F0ADB3B00BF44BD /* CustomTableViewCell.swift */; };
+		17001A101F0ADC2C00BF44BD /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17001A0F1F0ADC2C00BF44BD /* ProfileCell.xib */; };
+		17001A121F0ADC5800BF44BD /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17001A111F0ADC5800BF44BD /* ProfileCell.swift */; };
+		17001A141F0B2B9800BF44BD /* RegisterAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17001A131F0B2B9800BF44BD /* RegisterAvatar.swift */; };
 		170104511EC0232C002E6767 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104501EC0232C002E6767 /* ApiRouter.swift */; };
 		170104531EC02398002E6767 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104521EC02398002E6767 /* Config.swift */; };
 		170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170104541EC2A8CC002E6767 /* ConfigurationParameters.swift */; };
@@ -41,6 +48,9 @@
 		17399A3F1F09D18700B72EFB /* BebasNeue Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A3A1F09CF6000B72EFB /* BebasNeue Thin.ttf */; };
 		17399A401F09D18C00B72EFB /* BebasNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17399A3B1F09CF6000B72EFB /* BebasNeue-Bold.ttf */; };
 		17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A411F0A015F00B72EFB /* SessionDataManager.swift */; };
+		17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A441F0AB00F00B72EFB /* ProfileViewController.swift */; };
+		17399A471F0AB05B00B72EFB /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17399A461F0AB05B00B72EFB /* ProfileViewController.xib */; };
+		173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173BDE7B1F12D9C60050D179 /* Preferences.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -81,6 +91,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17001A041F0AC15B00BF44BD /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "Common/Extensions/UIView+Extension.swift"; sourceTree = "<group>"; };
+		17001A071F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConsolesTableViewDataSource.swift; path = Controllers/Profile/Datasource/ProfileConsolesTableViewDataSource.swift; sourceTree = "<group>"; };
+		17001A091F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileGamesTableViewDataSource.swift; path = Controllers/Profile/Datasource/ProfileGamesTableViewDataSource.swift; sourceTree = "<group>"; };
+		17001A0C1F0ADB3B00BF44BD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = Common/Views/CustomTableViewCell.swift; sourceTree = "<group>"; };
+		17001A0F1F0ADC2C00BF44BD /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileCell.xib; path = Controllers/Profile/Cell/ProfileCell.xib; sourceTree = "<group>"; };
+		17001A111F0ADC5800BF44BD /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileCell.swift; path = Controllers/Profile/Cell/ProfileCell.swift; sourceTree = "<group>"; };
+		17001A131F0B2B9800BF44BD /* RegisterAvatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterAvatar.swift; path = Models/RegisterAvatar.swift; sourceTree = "<group>"; };
 		170104501EC0232C002E6767 /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRouter.swift; path = Common/Api/ApiRouter.swift; sourceTree = "<group>"; };
 		170104521EC02398002E6767 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Common/Config.swift; sourceTree = "<group>"; };
 		170104541EC2A8CC002E6767 /* ConfigurationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationParameters.swift; path = Models/ConfigurationParameters.swift; sourceTree = "<group>"; };
@@ -119,6 +136,9 @@
 		17399A3A1F09CF6000B72EFB /* BebasNeue Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Thin.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue Thin.ttf"; sourceTree = "<group>"; };
 		17399A3B1F09CF6000B72EFB /* BebasNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-Bold.ttf"; path = "Resources/Fonts/bebas_neue/BebasNeue-Bold.ttf"; sourceTree = "<group>"; };
 		17399A411F0A015F00B72EFB /* SessionDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDataManager.swift; path = Managers/SessionDataManager.swift; sourceTree = "<group>"; };
+		17399A441F0AB00F00B72EFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
+		17399A461F0AB05B00B72EFB /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Controllers/Profile/ProfileViewController.xib; sourceTree = "<group>"; };
+		173BDE7B1F12D9C60050D179 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Models/Preferences.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +207,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		17001A061F0AD34000BF44BD /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				17001A071F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift */,
+				17001A091F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift */,
+			);
+			name = Datasource;
+			sourceTree = "<group>";
+		};
+		17001A0B1F0ADB0E00BF44BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				17001A0C1F0ADB3B00BF44BD /* CustomTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		17001A0E1F0ADC1700BF44BD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				17001A0F1F0ADC2C00BF44BD /* ProfileCell.xib */,
+				17001A111F0ADC5800BF44BD /* ProfileCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		1701044A1EC02032002E6767 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +244,8 @@
 				1734192A1EC568FD003B2909 /* Model.swift */,
 				17297FD01EFA25F300E2FCE4 /* LoginModel.swift */,
 				173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */,
+				17001A131F0B2B9800BF44BD /* RegisterAvatar.swift */,
+				173BDE7B1F12D9C60050D179 /* Preferences.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -221,6 +269,7 @@
 		1701044F1EC022D9002E6767 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				17001A0B1F0ADB0E00BF44BD /* Views */,
 				173999FD1EFF1F6900B72EFB /* Carousel */,
 				179961551EF6286200853DB7 /* Extensions */,
 				17363C8B1EF1FB1D006888EE /* Form */,
@@ -340,6 +389,17 @@
 			name = ChooseGame;
 			sourceTree = "<group>";
 		};
+		17399A431F0AA9B200B72EFB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17001A0E1F0ADC1700BF44BD /* Cell */,
+				17001A061F0AD34000BF44BD /* Datasource */,
+				17399A441F0AB00F00B72EFB /* ProfileViewController.swift */,
+				17399A461F0AB05B00B72EFB /* ProfileViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		179961551EF6286200853DB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +408,7 @@
 				17399A111F03616100B72EFB /* Array+Utils.swift */,
 				17399A131F0367AD00B72EFB /* UIFont+Utils.swift */,
 				17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */,
+				17001A041F0AC15B00BF44BD /* UIView+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +434,7 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17399A431F0AA9B200B72EFB /* Profile */,
 				17399A271F04C03800B72EFB /* ChooseGame */,
 				17399A0A1F003C4A00B72EFB /* ChooseConsole */,
 				17BFB0591EF8609F002A994E /* Register */,
@@ -589,6 +651,8 @@
 				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
+				17001A101F0ADC2C00BF44BD /* ProfileCell.xib in Resources */,
+				17399A471F0AB05B00B72EFB /* ProfileViewController.xib in Resources */,
 				17399A2C1F09A92E00B72EFB /* BEBAS___.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,9 +744,12 @@
 				170104581EC2BAC3002E6767 /* Platform.swift in Sources */,
 				17E678B01EF6E6320001B9FB /* ViewController.swift in Sources */,
 				17BFB0561EF8377F002A994E /* UIViewController+Utils.swift in Sources */,
+				17001A121F0ADC5800BF44BD /* ProfileCell.swift in Sources */,
 				1701045C1EC2BC91002E6767 /* Game.swift in Sources */,
 				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
+				173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */,
 				17399A081F00295200B72EFB /* iCarousel.m in Sources */,
+				17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */,
 				179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */,
 				1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */,
 				173999FF1EFF1FB800B72EFB /* CarouselViewController.swift in Sources */,
@@ -702,15 +769,20 @@
 				173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */,
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
+				17001A0D1F0ADB3B00BF44BD /* CustomTableViewCell.swift in Sources */,
 				17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */,
 				17297FCF1EFA20B100E2FCE4 /* LoginManager.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
+				17001A141F0B2B9800BF44BD /* RegisterAvatar.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
+				17001A051F0AC15B00BF44BD /* UIView+Extension.swift in Sources */,
 				179961571EF6292A00853DB7 /* String+Utils.swift in Sources */,
+				17001A081F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
 				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
 				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,
+				17001A0A1F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift in Sources */,
 				17363C8F1EF1FBA6006888EE /* FormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

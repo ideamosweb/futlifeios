@@ -22,4 +22,5 @@ struct Constants {
     static let queryURLPath = "/m/v1"
     static let platform = "iOS"
     static let kDidSelectCarouselItemNotification = "DidSelectCarouselItemNotification"
+    static let kDefaultAnimationDuration = 0.3
 }

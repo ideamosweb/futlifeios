@@ -23,6 +23,7 @@ class Model: Mappable {
 }
 
 struct ErrorModel {
+    var error: String?
     var message:String?
     var success: Bool?
 }
