@@ -27,6 +27,7 @@ struct ApiError {
     enum ApiErrorCode: Int {
         case badRequest = 400
         case unAuthorized = 401
+        case serverError = 500
     }
     
     static func checkError(responseData: Data?, statusCode: Int) -> ErrorModel {
@@ -34,11 +35,16 @@ struct ApiError {
         var errorModel = ErrorModel()
         errorModel.success = true
         
-        if error == ApiError.ApiErrorCode.badRequest.rawValue || error == ApiError.ApiErrorCode.unAuthorized.rawValue {
+        if error == ApiError.ApiErrorCode.badRequest.rawValue || error == ApiError.ApiErrorCode.unAuthorized.rawValue || error == ApiError.ApiErrorCode.serverError.rawValue {
             if let data = responseData {
                 let errorStr = String(data: data, encoding: String.Encoding.utf8)!
-                let dict = Utils.convertToDictionary(text: errorStr)!
-                errorModel.message = dict["message"] as? String ?? dict["error"] as? String
+                let dict = Utils.convertToDictionary(text: errorStr)
+                if dict != nil {
+                    errorModel.message = dict?["message"] as? String ?? dict?["error"] as? String
+                } else {
+                    errorModel.message = "Error desconocido, por favor intente más tarde"
+                }
+                
             }
             
             errorModel.success = false
