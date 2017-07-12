@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class StartUpViewController: ViewController {
     @IBOutlet var versionLabel: UILabel!
@@ -42,13 +43,17 @@ class StartUpViewController: ViewController {
     }
     
     private func animationLogo() {
-        getParameters()
         logoImageView.animateLogo()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+            self.getParameters()
+        }
     }
     
     private func getParameters() {
         weak var weakSelf = self
+        AppDelegate.showPKHUD()
         ApiManager.getParameters { (error) in
+            AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (error?.success)! {
                     // Go to time line if is logged or register completed

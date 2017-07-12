@@ -176,10 +176,9 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
                                     "games": games]
         ]
         
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
+        AppDelegate.showPKHUD()
         ApiManager.createUser(createUserParameters: params) { (errorModel) in
-            PKHUD.sharedHUD.hide(afterDelay: 0)
+            AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
                     //strongSelf.registerCompleted()

@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import AlamofireNetworkActivityIndicator
+import PKHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        NetworkActivityIndicatorManager.shared.isEnabled = true
         openStartUp()
         return true
     }
@@ -61,6 +60,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func goToDashBoard() {
         let slideMenuController = SlideMenuController(mainViewController: UIViewController(), leftMenuViewController: UIViewController())
         AppDelegate.mainNavigationController.viewControllers = [slideMenuController]
+    }
+    
+    static func showPKHUD() {
+        PKHUD.sharedHUD.contentView = PKHUDProgressView(title: "", subtitle: "Cargando...")
+        PKHUD.sharedHUD.show()
+    }
+    
+    static func hidePKHUD() {
+        PKHUD.sharedHUD.hide(afterDelay: 0)
     }
 }
 

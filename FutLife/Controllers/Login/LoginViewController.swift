@@ -105,9 +105,12 @@ class LoginViewController: FormViewController {
         let params: Parameters = ["username": usernameTextField.text ?? "",
                                   "password": passwordTextField.text ?? ""]
         
+        AppDelegate.showPKHUD()
         LoginManager.login(params: params, success: {
+            AppDelegate.hidePKHUD()
             print("Login success")
         }) { (error) in
+            AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
             }

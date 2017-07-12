@@ -99,10 +99,9 @@ class RegisterViewController: FormViewController {
                                   "password_confirmation": passwordTextField.text ?? "",
                                   "platform": Constants.platform]
         
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
+        AppDelegate.showPKHUD()
         ApiManager.registerRequest(registerParameters: params) { (errorModel) in
-            PKHUD.sharedHUD.hide(afterDelay: 0)
+            AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
                     strongSelf.registerCompleted()
