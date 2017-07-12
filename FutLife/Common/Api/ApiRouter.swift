@@ -37,7 +37,7 @@ enum ApiRouter: URLRequestConvertible {
             case .register:
                 return "\(Constants.queryURLPath)/register"
             case .registerPreferences:
-                return "\(Constants.queryURLPath)/preferences"
+                return "\(Constants.queryURLPath)/preferences/create"
             case .registerAvatar:
                 return "\(Constants.queryURLPath)/user/avatar"
             case .games:
@@ -58,7 +58,6 @@ enum ApiRouter: URLRequestConvertible {
         
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
-        //request.setValue(authenticationToken, forHTTPHeaderField: "Authorization")
         request.timeoutInterval = TimeInterval(10 * 1000)
         
         switch self {
@@ -67,9 +66,10 @@ enum ApiRouter: URLRequestConvertible {
         case .register(let registerParameters):
             request = try URLEncoding.default.encode(request, with: registerParameters)
         case .registerPreferences(let registerPreferencesParameters):
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
             request = try URLEncoding.default.encode(request, with: registerPreferencesParameters)
         case .registerAvatar(let registerAvatarParameters):
-            //request.setValue(SessionDataManager.token, forHTTPHeaderField: "Authorization")
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
             request = try URLEncoding.default.encode(request, with: registerAvatarParameters)
         case .challenges(let challengesParameters):
             request = try URLEncoding.default.encode(request, with: challengesParameters)

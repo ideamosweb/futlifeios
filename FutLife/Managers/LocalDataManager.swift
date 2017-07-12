@@ -12,6 +12,7 @@ struct LocalDataManager {
     static let kParameters = "Parameters"
     static let kRegisteredUser = "RegisteredUser"
     static let kUser = "User"
+    static let kToken = "Token"
     static let kUserAvatar = "Avatar";
     static let kChosenConsole = "ChosenConsole";
     static let kChosenGame = "ChosenGame";
@@ -34,7 +35,14 @@ struct LocalDataManager {
         }
     }
     
-    
+    static var token: String? {
+        get {
+            return UserDefaults().dataObjectForKey(key: kToken) as? String
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue!, forKey: kToken)
+        }
+    }
     
     static var avatar: UIImage? {
         get {

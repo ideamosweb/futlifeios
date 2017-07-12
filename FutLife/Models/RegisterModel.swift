@@ -31,3 +31,15 @@ struct RegisterModel {
     static var success: Bool?
     static var data: User?
 }
+
+class RegisterCreateResponse: Model {
+    var message: String?
+    var preferences: [Preferences]?
+    var success: Bool?
+    
+    override func mapping(map: Map) {
+        message <- map["message"]
+        preferences <- map["preferences"]
+        success <- map["success"]
+    }
+}

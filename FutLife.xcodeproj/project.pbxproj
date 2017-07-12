@@ -50,6 +50,7 @@
 		17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A411F0A015F00B72EFB /* SessionDataManager.swift */; };
 		17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A441F0AB00F00B72EFB /* ProfileViewController.swift */; };
 		17399A471F0AB05B00B72EFB /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17399A461F0AB05B00B72EFB /* ProfileViewController.xib */; };
+		173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173BDE7B1F12D9C60050D179 /* Preferences.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -137,6 +138,7 @@
 		17399A411F0A015F00B72EFB /* SessionDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDataManager.swift; path = Managers/SessionDataManager.swift; sourceTree = "<group>"; };
 		17399A441F0AB00F00B72EFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		17399A461F0AB05B00B72EFB /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Controllers/Profile/ProfileViewController.xib; sourceTree = "<group>"; };
+		173BDE7B1F12D9C60050D179 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Models/Preferences.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				17297FD01EFA25F300E2FCE4 /* LoginModel.swift */,
 				173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */,
 				17001A131F0B2B9800BF44BD /* RegisterAvatar.swift */,
+				173BDE7B1F12D9C60050D179 /* Preferences.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				17001A121F0ADC5800BF44BD /* ProfileCell.swift in Sources */,
 				1701045C1EC2BC91002E6767 /* Game.swift in Sources */,
 				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
+				173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */,
 				17399A081F00295200B72EFB /* iCarousel.m in Sources */,
 				17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */,
 				179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */,

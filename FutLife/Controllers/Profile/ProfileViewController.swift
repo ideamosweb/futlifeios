@@ -23,6 +23,7 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
     
     var consolesTableView: UITableView?
     var gamesTableView: UITableView?
+    var user: UserModel?
     
     var games = [GameModel]()
     var consoles = [ConsoleModel]()
@@ -50,9 +51,12 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let user: UserModel = LocalDataManager.user {
-            nameLabel.text = user.name
-            userNameLabel.text = user.userName
+        games = LocalDataManager.gamesSelected!
+        consoles = LocalDataManager.consolesSelected!
+        user = LocalDataManager.user!
+        if user != nil {
+            nameLabel.text = user?.name
+            userNameLabel.text = user?.userName
         }
         
         navigationItem.title = isConfirmButton ? "Resumen" : "Perfil"
@@ -156,6 +160,35 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
     }
     
     @IBAction func onCompletedButtonTouch(_ sender: Any) {
+        weak var weakSelf = self
+        
+        // TODO: Move to other side
+//        var gamesStr = [String: String]()
+//        for game: GameModel in games {
+//            gamesStr["game_id"] = "\(game.id)"
+//            gamesStr["active"] = "true∫"
+//        }
+        let console = consoles[0]
+        let params: Parameters = ["user_id": user?.id ?? "",
+                                  "preferences": [
+                                    "console_id": console.id,
+                                    "active": true,
+                                    "games": games]
+        ]
+        
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        ApiManager.createUser(createUserParameters: params) { (errorModel) in
+            PKHUD.sharedHUD.hide(afterDelay: 0)
+            if let strongSelf = weakSelf {
+                if (errorModel?.success)! {
+                    //strongSelf.registerCompleted()
+                } else {
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
+                    
+                }
+            }
+        }
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -170,9 +203,9 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
         
         
         // TODO: Move to other side
-        if let user: UserModel = LocalDataManager.user {
+        if user != nil {
             if let data = UIImagePNGRepresentation(image) {
-                let params: Parameters = ["user_id": user.id,
+                let params: Parameters = ["user_id": user!.id,
                                           "avatar": data
                 ]
                 

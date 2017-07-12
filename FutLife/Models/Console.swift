@@ -10,6 +10,11 @@ import Foundation
 import ObjectMapper
 
 class Console: Mappable {
+    required /// This function can be used to validate JSON prior to mapping. Return nil to cancel mapping at this point
+    init?(map: Map) {
+        
+    }
+
     var id: Int?
     var platformId: Int?
     var year: Int?
@@ -20,7 +25,7 @@ class Console: Mappable {
     var createdAt: Date?
     var updatedAt: Date?
     
-    required init?(map: Map){
+    required init?(map: Map?){
         
     }
     
