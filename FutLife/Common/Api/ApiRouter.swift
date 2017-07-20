@@ -65,7 +65,7 @@ enum ApiRouter: URLRequestConvertible {
             request = try URLEncoding.default.encode(request, with: loginParameters)
         case .register(let registerParameters):
             request = try URLEncoding.default.encode(request, with: registerParameters)
-        case .registerPreferences(let registerPreferencesParameters):
+        case .registerPreferences(let registerPreferencesParameters):            
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
             request = try URLEncoding.default.encode(request, with: registerPreferencesParameters)
         case .registerAvatar(let registerAvatarParameters):

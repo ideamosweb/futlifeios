@@ -97,8 +97,6 @@ class ApiManager {
     
     // POST: Register
     public static func createUser(createUserParameters: Parameters, completion: @escaping (ErrorModel?) -> Void) {
-        
-        
         Alamofire.request(ApiRouter.registerPreferences(registerPreferencesParameters: createUserParameters)).responseObject { (response: DataResponse<RegisterCreateResponse>) in
             //let registerResponse = response.result.value
             

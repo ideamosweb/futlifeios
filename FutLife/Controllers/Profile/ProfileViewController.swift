@@ -26,6 +26,7 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
     var user: UserModel?
     
     var games = [GameModel]()
+    var gamesStr = [Any]()
     var consoles = [ConsoleModel]()
     
     var isConfirmButton: Bool
@@ -52,6 +53,21 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         
         games = LocalDataManager.gamesSelected!
+        
+        for game: GameModel in games {
+            let gamesObj = [
+                "game_id": "\(game.id)",
+                "year": "\(game.year)",
+                "name": "\(game.name)",
+                "avatar": "\(game.avatar)",
+                "thumbnail": "\(game.thumbnail)",
+                "active": "\(game.active)",
+                "created_at": "\(game.createdAt)",
+                "updated_at": "\(game.updatedAt)"
+            ]
+            
+            gamesStr.append(gamesObj)
+        }
         consoles = LocalDataManager.consolesSelected!
         user = LocalDataManager.user!
         if user != nil {
@@ -162,18 +178,34 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
     @IBAction func onCompletedButtonTouch(_ sender: Any) {
         weak var weakSelf = self
         
-        // TODO: Move to other side
-//        var gamesStr = [String: String]()
-//        for game: GameModel in games {
-//            gamesStr["game_id"] = "\(game.id)"
-//            gamesStr["active"] = "true∫"
-//        }
         let console = consoles[0]
-        let params: Parameters = ["user_id": user?.id ?? "",
-                                  "preferences": [
-                                    "console_id": console.id,
-                                    "active": true,
-                                    "games": games]
+        let preferences: [String : Any] = [
+            "console_id": "\(console.id)",
+            "active": true,
+            "games": gamesStr]
+        
+        var preferencesObj = [[String: Any]]()
+        preferencesObj = [preferences]
+        var jsonData: Data?
+        var strDict: String?
+        do {
+            jsonData = try JSONSerialization.data(withJSONObject: preferencesObj, options: .prettyPrinted)
+            
+            let decoded = try JSONSerialization.jsonObject(with: jsonData!, options: [])
+            // here "decoded" is of type `Any`, decoded from JSON data
+            
+            strDict = NSString(data: jsonData!, encoding: String.Encoding.utf8.rawValue)! as String
+            // you can now cast it with the right type
+            if let dictFromJSON = decoded as? [String:String] {
+                // use dictFromJSON
+                strDict = "\(dictFromJSON)"
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        let params: [String: Any] = ["user_id": "\(user?.id ?? 0)",
+                                     "preferences": strDict ?? ""
         ]
         
         AppDelegate.showPKHUD()
