@@ -67,6 +67,8 @@
 		17E678AC1EF6E4860001B9FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B6601E73474D00578042 /* LaunchScreen.storyboard */; };
 		17E678AE1EF6E5C20001B9FB /* StartUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */; };
 		17E678B01EF6E6320001B9FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E678AF1EF6E6320001B9FB /* ViewController.swift */; };
+		17F51E421F380D7700935687 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E411F380D7700935687 /* TabsViewController.swift */; };
+		17F51E441F381D3500935687 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E431F381D3500935687 /* UIColor+Extension.swift */; };
 		17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6571E73474D00578042 /* AppDelegate.swift */; };
 		17F7B66D1E73474D00578042 /* FutLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B66C1E73474D00578042 /* FutLifeTests.swift */; };
 		17F7B6781E73474D00578042 /* FutLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6771E73474D00578042 /* FutLifeUITests.swift */; };
@@ -151,6 +153,8 @@
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
 		17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartUpViewController.xib; path = Controllers/StartUp/StartUpViewController.xib; sourceTree = "<group>"; };
 		17E678AF1EF6E6320001B9FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		17F51E411F380D7700935687 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabsViewController.swift; path = Controllers/Tabs/TabsViewController.swift; sourceTree = "<group>"; };
+		17F51E431F381D3500935687 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "Common/Extensions/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		17F7B6541E73474D00578042 /* FutLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B6571E73474D00578042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F7B65C1E73474D00578042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				17399A131F0367AD00B72EFB /* UIFont+Utils.swift */,
 				17399A251F04A7F600B72EFB /* UserDefaults+Extension.swift */,
 				17001A041F0AC15B00BF44BD /* UIView+Extension.swift */,
+				17F51E431F381D3500935687 /* UIColor+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17F51E401F380D3800935687 /* Tabs */,
 				17399A431F0AA9B200B72EFB /* Profile */,
 				17399A271F04C03800B72EFB /* ChooseGame */,
 				17399A0A1F003C4A00B72EFB /* ChooseConsole */,
@@ -452,6 +458,14 @@
 				17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */,
 			);
 			name = StartUp;
+			sourceTree = "<group>";
+		};
+		17F51E401F380D3800935687 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				17F51E411F380D7700935687 /* TabsViewController.swift */,
+			);
+			name = Tabs;
 			sourceTree = "<group>";
 		};
 		17F7B64B1E73474D00578042 = {
@@ -757,6 +771,7 @@
 				1734192B1EC568FD003B2909 /* Model.swift in Sources */,
 				17363C911EF20211006888EE /* InputFormManager.swift in Sources */,
 				17297FD11EFA25F300E2FCE4 /* LoginModel.swift in Sources */,
+				17F51E421F380D7700935687 /* TabsViewController.swift in Sources */,
 				17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */,
 				17363C951EF3B3A4006888EE /* Utils.swift in Sources */,
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
@@ -779,6 +794,7 @@
 				179961571EF6292A00853DB7 /* String+Utils.swift in Sources */,
 				17001A081F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
+				17F51E441F381D3500935687 /* UIColor+Extension.swift in Sources */,
 				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
 				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,
