@@ -69,6 +69,9 @@
 		17E678B01EF6E6320001B9FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E678AF1EF6E6320001B9FB /* ViewController.swift */; };
 		17F51E421F380D7700935687 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E411F380D7700935687 /* TabsViewController.swift */; };
 		17F51E441F381D3500935687 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E431F381D3500935687 /* UIColor+Extension.swift */; };
+		17F51E471F38C7D600935687 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E461F38C7D600935687 /* HomeViewController.swift */; };
+		17F51E491F38CF1F00935687 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F51E481F38CF1F00935687 /* HomeViewController.xib */; };
+		17F51E4B1F391D9300935687 /* ChallengesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E4A1F391D9300935687 /* ChallengesModel.swift */; };
 		17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6571E73474D00578042 /* AppDelegate.swift */; };
 		17F7B66D1E73474D00578042 /* FutLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B66C1E73474D00578042 /* FutLifeTests.swift */; };
 		17F7B6781E73474D00578042 /* FutLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6771E73474D00578042 /* FutLifeUITests.swift */; };
@@ -155,6 +158,9 @@
 		17E678AF1EF6E6320001B9FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
 		17F51E411F380D7700935687 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabsViewController.swift; path = Controllers/Tabs/TabsViewController.swift; sourceTree = "<group>"; };
 		17F51E431F381D3500935687 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "Common/Extensions/UIColor+Extension.swift"; sourceTree = "<group>"; };
+		17F51E461F38C7D600935687 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/Home/HomeViewController.swift; sourceTree = "<group>"; };
+		17F51E481F38CF1F00935687 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Controllers/Home/HomeViewController.xib; sourceTree = "<group>"; };
+		17F51E4A1F391D9300935687 /* ChallengesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesModel.swift; path = Models/ChallengesModel.swift; sourceTree = "<group>"; };
 		17F7B6541E73474D00578042 /* FutLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FutLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B6571E73474D00578042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17F7B65C1E73474D00578042 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				173999FB1EFCB0AD00B72EFB /* RegisterModel.swift */,
 				17001A131F0B2B9800BF44BD /* RegisterAvatar.swift */,
 				173BDE7B1F12D9C60050D179 /* Preferences.swift */,
+				17F51E4A1F391D9300935687 /* ChallengesModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -439,6 +446,7 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17F51E451F38C7AC00935687 /* Home */,
 				17F51E401F380D3800935687 /* Tabs */,
 				17399A431F0AA9B200B72EFB /* Profile */,
 				17399A271F04C03800B72EFB /* ChooseGame */,
@@ -466,6 +474,15 @@
 				17F51E411F380D7700935687 /* TabsViewController.swift */,
 			);
 			name = Tabs;
+			sourceTree = "<group>";
+		};
+		17F51E451F38C7AC00935687 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				17F51E461F38C7D600935687 /* HomeViewController.swift */,
+				17F51E481F38CF1F00935687 /* HomeViewController.xib */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		17F7B64B1E73474D00578042 = {
@@ -662,6 +679,7 @@
 				17E678AB1EF6E47E0001B9FB /* Main.storyboard in Resources */,
 				17399A3D1F09D17F00B72EFB /* BebasNeue Light.otf in Resources */,
 				17399A3C1F09D17C00B72EFB /* BebasNeue Book.ttf in Resources */,
+				17F51E491F38CF1F00935687 /* HomeViewController.xib in Resources */,
 				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
@@ -763,6 +781,7 @@
 				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
 				173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */,
 				17399A081F00295200B72EFB /* iCarousel.m in Sources */,
+				17F51E4B1F391D9300935687 /* ChallengesModel.swift in Sources */,
 				17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */,
 				179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */,
 				1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */,
@@ -784,6 +803,7 @@
 				173999FC1EFCB0AD00B72EFB /* RegisterModel.swift in Sources */,
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
+				17F51E471F38C7D600935687 /* HomeViewController.swift in Sources */,
 				17001A0D1F0ADB3B00BF44BD /* CustomTableViewCell.swift in Sources */,
 				17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */,
 				17297FCF1EFA20B100E2FCE4 /* LoginManager.swift in Sources */,

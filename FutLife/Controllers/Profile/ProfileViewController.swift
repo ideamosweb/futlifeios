@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import PKHUD
 
-class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
+class ProfileViewController: ViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -223,7 +223,7 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
             AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
-                    //strongSelf.registerCompleted()
+                    strongSelf.profileCompleted()
                 } else {
                     strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
                     
@@ -259,8 +259,11 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             print("Info did not have the required UIImage for the Original Image")

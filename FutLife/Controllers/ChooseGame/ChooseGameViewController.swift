@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseGameViewController: CarouselViewController, UITableViewDelegate, UITableViewDataSource {
+class ChooseGameViewController: CarouselViewController {
     @IBOutlet weak var gameCarousel: iCarousel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var chooseGameLabel: UILabel!
@@ -146,18 +146,23 @@ class ChooseGameViewController: CarouselViewController, UITableViewDelegate, UIT
         
         return carouselItemsViews
     }
-    
-    // MARK:  UITableView delegate methods
+}
+
+// MARK: UITableViewDelegate
+extension ChooseGameViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 25
+    }
+}
+
+// MARK: UITableViewDatasource
+extension ChooseGameViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if selectedGames.count > 0 {
             return selectedGames.count
         }
         
         return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 25
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

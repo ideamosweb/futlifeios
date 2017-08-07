@@ -9,23 +9,47 @@
 import Foundation
 import UIKit
 
-class ProfileConsolesTableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+class ProfileConsolesTableViewDataSource: NSObject {
     var selectedCellIndexPath: IndexPath?
     let kProfileCellHeight: CGFloat = 44.0;
     let kProfileCellIdentifier = "ProfileCell"
-    override init() { }
     
-    // MARK:  UITableView delegate methods
+    override init() { }    
+}
+
+// MARK: UITableViewDelegate
+extension ProfileConsolesTableViewDataSource: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kProfileCellHeight
+    }
+    
+    //    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    //        if selectedCellIndexPath != nil {
+    //            if selectedCellIndexPath?.compare(indexPath) == ComparisonResult.orderedSame {
+    //                selectedCellIndexPath = nil
+    //                tableView.cellForRow(at: indexPath)?.isSelected = false
+    //                tableView.reloadRows(at: [indexPath], with: .none)
+    //                return nil
+    //            } else {
+    //                tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
+    //            }
+    //        } else {
+    //            selectedCellIndexPath = indexPath
+    //            tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
+    //        }
+    //        
+    //        return indexPath
+    //    }
+}
+
+// MARK: UITableViewDataSource
+extension ProfileConsolesTableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let consoles: [ConsoleModel] = LocalDataManager.consolesSelected {
             return consoles.count
         }
         
         return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {       
-        return kProfileCellHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,22 +63,4 @@ class ProfileConsolesTableViewDataSource: NSObject, UITableViewDelegate, UITable
         
         return profileCell
     }
-    
-//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if selectedCellIndexPath != nil {
-//            if selectedCellIndexPath?.compare(indexPath) == ComparisonResult.orderedSame {
-//                selectedCellIndexPath = nil
-//                tableView.cellForRow(at: indexPath)?.isSelected = false
-//                tableView.reloadRows(at: [indexPath], with: .none)
-//                return nil
-//            } else {
-//                tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
-//            }
-//        } else {
-//            selectedCellIndexPath = indexPath
-//            tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
-//        }
-//        
-//        return indexPath
-//    }
 }

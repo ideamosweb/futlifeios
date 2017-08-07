@@ -58,7 +58,7 @@ class StartUpViewController: ViewController {
                 if (error?.success)! {
                     // Go to time line if is logged or register completed
                     if LocalDataManager.completedRegister || LocalDataManager.logged {
-                        strongSelf.goToTimeLineDashboard()
+                        strongSelf.goToHome()
                     } else {
                         strongSelf.checkLoginOrRegister()
                     }
@@ -84,7 +84,7 @@ class StartUpViewController: ViewController {
                 goToUserProfile(navBar: false, confirmButton: true)
                 //goToChooseConsole(navBar: false)
             } else {
-                goToTimeLineDashboard()
+                goToHome()
             }
         }
     }
@@ -101,7 +101,7 @@ class StartUpViewController: ViewController {
         }, loginClosure: { () -> Void? in
             // Go to dashboard!!
             if let strongSelf = weakSelf {
-                strongSelf.goToTimeLineDashboard()
+                strongSelf.goToHome()
             }
             
             return ()
@@ -165,7 +165,7 @@ class StartUpViewController: ViewController {
         let profileVC = ProfileViewController(navBar: navBar, confirmButton: confirmButton) {
             if let strongSelf = weakSelf {
                 LocalDataManager.completedRegister = true
-                strongSelf.goToTimeLineDashboard()
+                strongSelf.goToHome()
             }
             
             return ()
@@ -174,8 +174,12 @@ class StartUpViewController: ViewController {
         AppDelegate.mainNavigationController.pushViewController(profileVC, animated: true)
     }
     
-    private func goToTimeLineDashboard() {
-        // TODO
+    private func goToHome() {
+        let homeVC = HomeViewController { () -> Void? in
+            return ()
+        }
+        
+        AppDelegate.sharedInstance.goToHome(homeViewController: homeVC)
     }
 }
 

@@ -18,14 +18,14 @@ enum ApiRouter: URLRequestConvertible {
     case games
     case consoles
     case login(loginParameters: Parameters)
-    case challenges(challengesParameters: Parameters)
+    case challenges(userId: String)
     case allUsers
     
     var method: HTTPMethod {
         switch self {
-            case .register, .registerPreferences, .registerAvatar, .login, .challenges:
+            case .register, .registerPreferences, .registerAvatar, .login:
                 return .post
-            case .parameters, .consoles, .games, .allUsers:
+            case .parameters, .consoles, .games, .allUsers, .challenges:
                 return .get
         }
     }
@@ -47,7 +47,7 @@ enum ApiRouter: URLRequestConvertible {
             case .login:
                 return "\(Constants.queryURLPath)/login"
             case .challenges:
-                return "\(Constants.queryURLPath)"
+                return "\(Constants.queryURLPath)/challenge"
             case .allUsers:
                 return "\(Constants.queryURLPath)"
         }
@@ -65,14 +65,15 @@ enum ApiRouter: URLRequestConvertible {
             request = try URLEncoding.default.encode(request, with: loginParameters)
         case .register(let registerParameters):
             request = try URLEncoding.default.encode(request, with: registerParameters)
-        case .registerPreferences(let registerPreferencesParameters):            
+        case .registerPreferences(let registerPreferencesParameters):
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
             request = try URLEncoding.default.encode(request, with: registerPreferencesParameters)
         case .registerAvatar(let registerAvatarParameters):
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
             request = try URLEncoding.default.encode(request, with: registerAvatarParameters)
-        case .challenges(let challengesParameters):
-            request = try URLEncoding.default.encode(request, with: challengesParameters)
+        case .challenges(let userId):
+            // Override URL for set userId get param
+            request.url = URL(string: Constants.baseURLPath + path + "/\(userId)/get")
         default:
             request = try URLEncoding.default.encode(request, with: [:])
         }

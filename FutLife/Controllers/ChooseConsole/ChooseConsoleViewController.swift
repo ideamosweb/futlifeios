@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, UITableViewDataSource {
+class ChooseConsoleViewController: CarouselViewController {
     @IBOutlet weak var consoleCarousel: iCarousel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var chooseConsoleLAbel: UILabel!
@@ -151,18 +151,23 @@ class ChooseConsoleViewController: CarouselViewController, UITableViewDelegate, 
         
         return carouselItemsViews
     }
-    
-    // MARK:  UITableView delegate methods
+}
+
+// MARK:  UITableViewDelegate methods
+extension ChooseConsoleViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 25
+    }
+}
+
+// MARK: UITableViewDataSource methods
+extension ChooseConsoleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if selectedConsoles.count > 0 {
             return selectedConsoles.count
         }
         
         return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 25
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

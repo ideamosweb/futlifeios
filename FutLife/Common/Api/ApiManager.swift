@@ -126,4 +126,21 @@ class ApiManager {
             completion(errorModel)
         }
     }
+    
+    // GET: Challenges
+    static func getChallenges(userId: Int, completion: @escaping (ErrorModel?) -> Void) {
+        Alamofire.request(ApiRouter.challenges(userId: "\(userId)")).responseObject { (response: DataResponse<ChallengesResponse>) in
+            let challenges = response.result.value
+            
+            // Verify if exist an error an return a message
+            let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+            if errorModel.success! {
+                // Set response to Model constants
+                ChallengesModel.data = challenges?.data
+                ChallengesModel.success = challenges?.success
+            }
+            
+            completion(errorModel)
+        }
+    }
 }
