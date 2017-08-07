@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import PKHUD
 
-class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -136,21 +136,31 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
     }
     
     @IBAction func onAvatarButtonTouch(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.allowsEditing = false
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                picker.sourceType = .camera
-            } else {
-                picker.sourceType = .photoLibrary
-                picker.modalPresentationStyle = .fullScreen
-            }
-            
-            present(picker, animated: true)
+        
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // Create and add the Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in }
+        actionSheetController.addAction(cancelAction)
+        
+        // Create take picture option action
+        let takePictureAction = UIAlertAction(title: "Tomar Photo", style: .default) { action -> Void in
+            self.takePicture()
+        }
+        actionSheetController.addAction(takePictureAction)
+        
+        // Create and add first option action
+        let choosePictureAction = UIAlertAction(title: "Escoger imagen", style: .default) { action -> Void in
+            self.takePickPhoto()
+        }
+        actionSheetController.addAction(choosePictureAction)
+        
+        if LocalDataManager.avatar != nil {
+            let takePictureAction = UIAlertAction(title: "Eliminar Photo", style: .destructive) { action -> Void in }
+            actionSheetController.addAction(takePictureAction)
         }
         
+        present(actionSheetController, animated: true, completion: nil)
     }
     
     @IBAction func onConsolesButtonTouch(_ sender: Any) {
@@ -222,6 +232,34 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    // MARK: ActionSheet actions
+    func takePicture() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = false
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+            } else {
+                picker.sourceType = .photoLibrary
+                picker.modalPresentationStyle = .fullScreen
+            }
+            
+            present(picker, animated: true)
+        }
+    }
+    
+    func takePickPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
@@ -235,16 +273,14 @@ class ProfileViewController: ViewController, UIImagePickerControllerDelegate, UI
         
         // TODO: Move to other side
         if user != nil {
-            if let data = UIImagePNGRepresentation(image) {
-                let params: Parameters = ["user_id": user!.id,
-                                          "avatar": data
-                ]
+            if let data = UIImageJPEGRepresentation(image, 1.0) {
+                let params: Parameters = ["user_id": "\(user!.id)"]
                 
                 dismiss(animated: true)
                 weak var weakSelf = self
                 PKHUD.sharedHUD.contentView = PKHUDProgressView()
                 PKHUD.sharedHUD.show()
-                ApiManager.uploadAvatarRequest(registerAvatarParameters: params, completion: { (errorModel) in
+                ApiManager.uploadAvatarRequest(registerAvatarParameters: params, imageData: data, completion: { (errorModel) in
                     PKHUD.sharedHUD.hide(afterDelay: 0)
                     if let strongSelf = weakSelf {
                         if (errorModel?.success)! {

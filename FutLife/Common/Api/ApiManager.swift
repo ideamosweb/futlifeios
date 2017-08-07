@@ -72,27 +72,37 @@ class ApiManager {
     }
     
     // POST: Upload avatar
-    public static func uploadAvatarRequest(registerAvatarParameters: Parameters, completion: @escaping (ErrorModel?) -> Void) {
-//        Alamofire.upload(multipartFormData: { (multipartFormData) in
-//            multipartFormData.append(imageData, withName: "avatar", fileName: "avatar.png", mimeType: "image/png")
-//        }, to: URLConvertible, encodingCompletion: ((SessionManager.MultipartFormDataEncodingResult) -> Void)?)
-        
-        Alamofire.request(ApiRouter.registerAvatar(registerAvatar: registerAvatarParameters)).responseObject { (response: DataResponse<RegisterAvatar>) in
-            let avatarResponse = response.result.value
+    public static func uploadAvatarRequest(registerAvatarParameters: Parameters, imageData: Data, completion: @escaping (ErrorModel?) -> Void) {
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            //multipartFormData.append(imageData, withName: "avatar", fileName: "avatar_image.jpeg", mimeType: "image/jpeg")
             
-            // Verify if exist an error an return a message
-            let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
-            if errorModel.success! {
-                // Set response to Model constants
-                RegisterAvatarModel.token = avatarResponse?.token
-                RegisterAvatarModel.success = avatarResponse?.success
-                RegisterAvatarModel.message = avatarResponse?.message
-                RegisterAvatarModel.avatar = avatarResponse?.avatar
-                RegisterAvatarModel.thumbnail = avatarResponse?.thumbnail
+            for (key, value) in registerAvatarParameters {
+                multipartFormData.append((value as! String).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!, withName: key)
             }
-            
-            completion(errorModel)
+            multipartFormData.append(imageData, withName: "avatar")
+        }, to:"\(Constants.queryURLPath)/user/avatar")
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                
+                upload.responseJSON { response in
+                    //print response.result
+                    // Verify if exist an error an return a message
+                    let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (200))
+                    completion(errorModel)
+                }
+                
+            case .failure( _): break
+                //print encodingError.description
+            }
         }
+        
+        
+        
     }
     
     // POST: Register
