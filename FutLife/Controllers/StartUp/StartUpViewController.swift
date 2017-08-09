@@ -25,7 +25,7 @@ class StartUpViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showNavigationBar(show: false)
+        navigationBar(show: false)
         
         // Control login behaviour
         if !SessionDataManager.isLogOut {

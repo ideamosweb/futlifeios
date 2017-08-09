@@ -39,7 +39,7 @@ class RegisterViewController: FormViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showNavigationBar(show: true)
+        navigationBar(show: true)
     }
     
     override func viewDidLayoutSubviews() {

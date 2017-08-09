@@ -7,8 +7,17 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
+
+class ChallengesResponse: Model {
+    var data: [Challenges]?
+    var success: Bool?
+    
+    override func mapping(map: Map) {
+        data <- map["data"]
+        success <- map["success"]
+    }
+}
 
 class Challenges: Model {
     var id: Int?
@@ -55,10 +64,7 @@ class Challenges: Model {
     
 }
 
-class ChallengesResponse: Model {
-    var data: [Challenges]?
-    var success: Bool?
-}
+
 
 struct ChallengesModel {
     static var data: [Challenges]?

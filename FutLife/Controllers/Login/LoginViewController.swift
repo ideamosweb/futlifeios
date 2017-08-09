@@ -40,7 +40,7 @@ class LoginViewController: FormViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showNavigationBar(show: false)
+        navigationBar(show: false)
     }
     
     override func viewDidLayoutSubviews() {

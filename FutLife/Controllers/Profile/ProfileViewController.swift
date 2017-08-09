@@ -90,7 +90,7 @@ class ProfileViewController: ViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        showNavigationBar(show: isNavBar)
+        navigationBar(show: isNavBar)
         
         if let avatar: UIImage = LocalDataManager.avatar {
             avatarImageView.image = avatar

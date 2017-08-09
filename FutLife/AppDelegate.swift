@@ -60,8 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func goToHome(homeViewController: HomeViewController) {
         let slideMenuController = SlideMenuController(mainViewController: homeViewController, leftMenuViewController: UIViewController())
         AppDelegate.mainNavigationController.viewControllers = [slideMenuController]
-        window?.rootViewController = AppDelegate.mainNavigationController
-        window?.makeKeyAndVisible()
+        //window?.rootViewController = AppDelegate.mainNavigationController
+        //window?.makeKeyAndVisible()
     }
     
     static func showPKHUD() {

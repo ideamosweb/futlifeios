@@ -51,9 +51,15 @@
 		17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A441F0AB00F00B72EFB /* ProfileViewController.swift */; };
 		17399A471F0AB05B00B72EFB /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17399A461F0AB05B00B72EFB /* ProfileViewController.xib */; };
 		173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173BDE7B1F12D9C60050D179 /* Preferences.swift */; };
+		1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C4131F3ABA280065D797 /* PlayersListViewController.swift */; };
+		1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */; };
+		1783C41B1F3ABE100065D797 /* PlayersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41A1F3ABE100065D797 /* PlayersListCell.swift */; };
+		1783C41D1F3ABE760065D797 /* PlayersListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783C41C1F3ABE760065D797 /* PlayersListCell.xib */; };
+		1783C41F1F3AC49F0065D797 /* PlayersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41E1F3AC49F0065D797 /* PlayersModel.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
+		17AE0FED1F3AD0E800BAAF4F /* PlayersListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE0FEC1F3AD0E800BAAF4F /* PlayersListDataSource.swift */; };
 		17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BFB0501EF6ED36002A994E /* LoginViewController.xib */; };
 		17BFB0541EF762A3002A994E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0531EF762A3002A994E /* Constants.swift */; };
 		17BFB0561EF8377F002A994E /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */; };
@@ -144,9 +150,15 @@
 		17399A441F0AB00F00B72EFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		17399A461F0AB05B00B72EFB /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Controllers/Profile/ProfileViewController.xib; sourceTree = "<group>"; };
 		173BDE7B1F12D9C60050D179 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Models/Preferences.swift; sourceTree = "<group>"; };
+		1783C4131F3ABA280065D797 /* PlayersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListViewController.swift; path = Controllers/PlayerList/PlayersListViewController.swift; sourceTree = "<group>"; };
+		1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayersListViewController.xib; path = Controllers/PlayerList/PlayersListViewController.xib; sourceTree = "<group>"; };
+		1783C41A1F3ABE100065D797 /* PlayersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListCell.swift; path = Controllers/PlayerList/Cell/PlayersListCell.swift; sourceTree = "<group>"; };
+		1783C41C1F3ABE760065D797 /* PlayersListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayersListCell.xib; path = Controllers/PlayerList/Cell/PlayersListCell.xib; sourceTree = "<group>"; };
+		1783C41E1F3AC49F0065D797 /* PlayersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersModel.swift; path = Models/PlayersModel.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
+		17AE0FEC1F3AD0E800BAAF4F /* PlayersListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListDataSource.swift; path = Controllers/PlayerList/DataSource/PlayersListDataSource.swift; sourceTree = "<group>"; };
 		17BFB0501EF6ED36002A994E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Controllers/Login/LoginViewController.xib; sourceTree = "<group>"; };
 		17BFB0531EF762A3002A994E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Common/Constants.swift; sourceTree = "<group>"; };
 		17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Utils.swift"; path = "Common/Extensions/UIViewController+Utils.swift"; sourceTree = "<group>"; };
@@ -257,6 +269,7 @@
 				17001A131F0B2B9800BF44BD /* RegisterAvatar.swift */,
 				173BDE7B1F12D9C60050D179 /* Preferences.swift */,
 				17F51E4A1F391D9300935687 /* ChallengesModel.swift */,
+				1783C41E1F3AC49F0065D797 /* PlayersModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -411,6 +424,26 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		1783C4121F3AB9C30065D797 /* PlayerList */ = {
+			isa = PBXGroup;
+			children = (
+				17AE0FEB1F3AD0AC00BAAF4F /* DataSource */,
+				1783C4191F3ABDCC0065D797 /* Cell */,
+				1783C4131F3ABA280065D797 /* PlayersListViewController.swift */,
+				1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */,
+			);
+			name = PlayerList;
+			sourceTree = "<group>";
+		};
+		1783C4191F3ABDCC0065D797 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1783C41C1F3ABE760065D797 /* PlayersListCell.xib */,
+				1783C41A1F3ABE100065D797 /* PlayersListCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		179961551EF6286200853DB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +467,14 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		17AE0FEB1F3AD0AC00BAAF4F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				17AE0FEC1F3AD0E800BAAF4F /* PlayersListDataSource.swift */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
 		17BFB0591EF8609F002A994E /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +487,7 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1783C4121F3AB9C30065D797 /* PlayerList */,
 				17F51E451F38C7AC00935687 /* Home */,
 				17F51E401F380D3800935687 /* Tabs */,
 				17399A431F0AA9B200B72EFB /* Profile */,
@@ -674,12 +716,14 @@
 				17399A3E1F09D18300B72EFB /* BebasNeue Regular.ttf in Resources */,
 				17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */,
 				17399A401F09D18C00B72EFB /* BebasNeue-Bold.ttf in Resources */,
+				1783C41D1F3ABE760065D797 /* PlayersListCell.xib in Resources */,
 				17399A0E1F003D0900B72EFB /* ChooseConsoleViewController.xib in Resources */,
 				17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */,
 				17E678AB1EF6E47E0001B9FB /* Main.storyboard in Resources */,
 				17399A3D1F09D17F00B72EFB /* BebasNeue Light.otf in Resources */,
 				17399A3C1F09D17C00B72EFB /* BebasNeue Book.ttf in Resources */,
 				17F51E491F38CF1F00935687 /* HomeViewController.xib in Resources */,
+				1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */,
 				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
@@ -788,6 +832,7 @@
 				173999FF1EFF1FB800B72EFB /* CarouselViewController.swift in Sources */,
 				17363C931EF3A4D2006888EE /* TextField.swift in Sources */,
 				1734192B1EC568FD003B2909 /* Model.swift in Sources */,
+				1783C41B1F3ABE100065D797 /* PlayersListCell.swift in Sources */,
 				17363C911EF20211006888EE /* InputFormManager.swift in Sources */,
 				17297FD11EFA25F300E2FCE4 /* LoginModel.swift in Sources */,
 				17F51E421F380D7700935687 /* TabsViewController.swift in Sources */,
@@ -796,6 +841,7 @@
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
 				17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */,
+				1783C41F1F3AC49F0065D797 /* PlayersModel.swift in Sources */,
 				17399A141F0367AD00B72EFB /* UIFont+Utils.swift in Sources */,
 				17399A0C1F003CA200B72EFB /* ChooseConsoleViewController.swift in Sources */,
 				17BFB05B1EF86104002A994E /* RegisterViewController.swift in Sources */,
@@ -810,6 +856,7 @@
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
 				17001A141F0B2B9800BF44BD /* RegisterAvatar.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
+				1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */,
 				17001A051F0AC15B00BF44BD /* UIView+Extension.swift in Sources */,
 				179961571EF6292A00853DB7 /* String+Utils.swift in Sources */,
 				17001A081F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift in Sources */,
@@ -818,6 +865,7 @@
 				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
 				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,
+				17AE0FED1F3AD0E800BAAF4F /* PlayersListDataSource.swift in Sources */,
 				17001A0A1F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift in Sources */,
 				17363C8F1EF1FBA6006888EE /* FormViewController.swift in Sources */,
 			);

@@ -21,7 +21,7 @@ class User: Model {
     var createdAt: Date?
     var updatedAt: Date?
     var cityName: String?
-    var challenges: [AnyObject]?    
+    var challenges: [Challenges]?
     
     
     override func mapping(map: Map) {

@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func showNavigationBar(show: Bool) {
+    func navigationBar(show: Bool) {
         let mainNavigationController = AppDelegate.mainNavigationController
         if show {
             mainNavigationController.isNavigationBarHidden = false

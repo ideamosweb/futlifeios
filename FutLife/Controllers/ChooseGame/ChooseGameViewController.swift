@@ -43,7 +43,7 @@ class ChooseGameViewController: CarouselViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showNavigationBar(show: isNavBar!)
+        navigationBar(show: isNavBar!)
         nextButton.isEnabled = false
         
         gameCarousel.bounceDistance = 0.3

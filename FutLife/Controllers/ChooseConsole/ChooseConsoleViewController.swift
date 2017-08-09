@@ -46,7 +46,7 @@ class ChooseConsoleViewController: CarouselViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showNavigationBar(show: isNavBar!)
+        navigationBar(show: isNavBar!)
         
         consoleCarousel.bounceDistance = 0.3
         consoleCarousel.scrollSpeed = 0.3

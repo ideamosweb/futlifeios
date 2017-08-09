@@ -65,7 +65,7 @@ class TabsViewController: ViewController {
         
         let fontSize = (self.fontSize != nil) ? self.fontSize : 20.0
         
-        for index in stride(from: 0, to: Int(tabsCount!), by: 2) {
+        for index in stride(from: 0, to: Int(tabsCount!), by: 1) {
             let buttonTab = UIButton()
             let tabTitle = ((tabsTitles.count) > 0) ? tabsTitles[index] : "Tab \(index + 1)"
             
@@ -73,13 +73,13 @@ class TabsViewController: ViewController {
                 buttonTab.frame = CGRect(x: 0.0, y: 0.0, width: buttonWidth, height: 44.0)
                 
                 buttonTab.titleLabel?.font = UIFont().bebasFont(size: fontSize!)
-                buttonTab.setTitleColor(UIColor(red: 216.0, green: 219, blue: 223, alpha: 1.0), for: .normal)
+                buttonTab.setTitleColor(UIColor(red: 216.0, green: 219.0, blue: 223.0, alpha: 1.0), for: .normal)
                 buttonTab.setTitle(tabTitle, for: .normal)
                 buttonTab.contentHorizontalAlignment = .center
                 buttonTab.tag = index + 1
                 
                 let separator = UIView(frame: CGRect(x: buttonTab.frame.width - 1, y: (buttonTab.frame.height / 2) / 2, width: 1.0, height: 20.0))
-                separator.backgroundColor = UIColor(red: 60.0, green: 143, blue: 130, alpha: 1.0)
+                separator.backgroundColor = UIColor(red: 60.0, green: 143.0, blue: 130.0, alpha: 1.0)
                 
                 buttonTab.addSubview(separator)
                 
@@ -88,14 +88,14 @@ class TabsViewController: ViewController {
                 buttonTab.frame = CGRect(x: (previousButton?.frame.maxX)!, y: 0.0, width: buttonWidth, height: 44.0)
                 
                 buttonTab.titleLabel?.font = UIFont().bebasFont(size: fontSize!)
-                buttonTab.setTitleColor(UIColor(red: 216.0, green: 219, blue: 223, alpha: 1.0), for: .normal)
+                buttonTab.setTitleColor(UIColor(red: 216.0, green: 219.0, blue: 223.0, alpha: 1.0), for: .normal)
                 buttonTab.setTitle(tabTitle, for: .normal)
                 buttonTab.contentHorizontalAlignment = .center
                 buttonTab.tag = index + 1
                 
                 if (index + 1) < Int(tabsCount!) {
                     let separator = UIView(frame: CGRect(x: buttonTab.frame.width - 1, y: (buttonTab.frame.height / 2) / 2, width: 1.0, height: 20.0))
-                    separator.backgroundColor = UIColor(red: 60.0, green: 143, blue: 130, alpha: 1.0)
+                    separator.backgroundColor = UIColor(red: 60.0, green: 143.0, blue: 130.0, alpha: 1.0)
                     
                     buttonTab.addSubview(separator)
                 }

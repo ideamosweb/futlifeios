@@ -143,4 +143,21 @@ class ApiManager {
             completion(errorModel)
         }
     }
+    
+    // GET: Players
+    static func getPlayers(userId: Int, completion: @escaping (ErrorModel?, _ players: [User]) -> Void) {
+        Alamofire.request(ApiRouter.players(userId: "\(userId)")).responseObject { (response: DataResponse<PlayersResponse>) in
+            let players = response.result.value
+            
+            // Verify if exist an error an return a message
+            let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+            if errorModel.success! {
+                // Set response to Model constants
+                PlayersModel.data = players?.data
+                PlayersModel.success = players?.success
+            }
+            
+            completion(errorModel, (players?.data)!)
+        }
+    }
 }

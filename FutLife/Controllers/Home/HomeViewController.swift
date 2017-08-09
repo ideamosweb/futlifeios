@@ -33,17 +33,24 @@ class HomeViewController: TabsViewController {
         let iconTitleView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: navBarIconHeight, height: navBarIconHeight))
         iconTitleView.image = icon
         iconTitleView.contentMode = .scaleAspectFit
-        navigationItem.titleView = iconTitleView
+        parent?.navigationItem.titleView = iconTitleView
         
-        addLeftBarButtonWithImage(UIImage(named: "slidingMenuButton")!)
+        let menuButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 17.0))
+        menuButton.setImage(UIImage(named: "slidingMenuButton"), for: .normal)
+        menuButton.addTarget(self, action: #selector(onMenuButtonTouch), for: .touchUpInside)
+        menuButton.accessibilityIdentifier = "Side_Menu_Button"
+        
+        parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)        
+        
+        getAllChallengeRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showNavigationBar(show: true)
+        navigationBar(show: true)
         navigationController?.navigationBar.barTintColor = UIColor().darkBlue()
-        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     func onMenuButtonTouch() {
@@ -56,13 +63,33 @@ class HomeViewController: TabsViewController {
             weak var weakSelf = self
             AppDelegate.showPKHUD()
             ApiManager.getChallenges(userId: (user?.id)!) { (errorModel) in
-                AppDelegate.hidePKHUD()
                 if let strongSelf = weakSelf {
                     if (errorModel?.success)! {
-                        //strongSelf.profileCompleted()
+                        AppDelegate.showPKHUD()
+                        strongSelf.getPlayersRequest(user: user!)
                     } else {
                         strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
                     }
+                }
+            }
+        }
+    }
+    
+    private func getPlayersRequest(user: UserModel) {
+        weak var weakSelf = self
+        AppDelegate.showPKHUD()        
+        ApiManager.getPlayers(userId: user.id) { (errorModel, players) in
+            AppDelegate.hidePKHUD()
+            if let strongSelf = weakSelf {
+                if (errorModel?.success)! {
+                    let playersListVC = PlayersListViewController(players: players)
+                    
+                    strongSelf.tabsTitles = ["Jugadores", "Pendientes"]
+                    strongSelf.tabsViewControllers = [playersListVC, ViewController()]
+                    
+                    strongSelf.reloadTabs()
+                } else {
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
                 }
             }
         }

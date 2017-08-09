@@ -19,13 +19,14 @@ enum ApiRouter: URLRequestConvertible {
     case consoles
     case login(loginParameters: Parameters)
     case challenges(userId: String)
+    case players(userId: String)
     case allUsers
     
     var method: HTTPMethod {
         switch self {
             case .register, .registerPreferences, .registerAvatar, .login:
                 return .post
-            case .parameters, .consoles, .games, .allUsers, .challenges:
+            case .parameters, .consoles, .games, .allUsers, .challenges, .players:
                 return .get
         }
     }
@@ -48,6 +49,8 @@ enum ApiRouter: URLRequestConvertible {
                 return "\(Constants.queryURLPath)/login"
             case .challenges:
                 return "\(Constants.queryURLPath)/challenge"
+            case .players:
+                return "\(Constants.queryURLPath)/players"
             case .allUsers:
                 return "\(Constants.queryURLPath)"
         }
@@ -74,6 +77,11 @@ enum ApiRouter: URLRequestConvertible {
         case .challenges(let userId):
             // Override URL for set userId get param
             request.url = URL(string: Constants.baseURLPath + path + "/\(userId)/get")
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
+        case .players(let userId):
+            // Override URL for set userId get param
+            request.url = URL(string: Constants.baseURLPath + path + "/\(userId)")
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
         default:
             request = try URLEncoding.default.encode(request, with: [:])
         }
