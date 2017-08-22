@@ -16,78 +16,77 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="0Fc-hP-EkZ" customClass="PlayersListCell" customModule="FutLife" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayersListCell" rowHeight="80" id="0Fc-hP-EkZ" customClass="PlayersListCell" customModule="FutLife" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Fc-hP-EkZ" id="kLJ-lW-AOU">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z7a-Op-m0W">
-                        <rect key="frame" x="8" y="6" width="48" height="48"/>
+                        <rect key="frame" x="20" y="8.5" width="60" height="60.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="Hz5-kZ-iQ5"/>
-                            <constraint firstAttribute="width" constant="48" id="acg-zO-t4q"/>
+                            <constraint firstAttribute="width" constant="60" id="HbR-JW-Xq3"/>
+                            <constraint firstAttribute="height" constant="60" id="Pmf-VF-KED"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resantis25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXV-c0-flI">
-                        <rect key="frame" x="64" y="9" width="161" height="21.5"/>
-                        <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resantis25" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXV-c0-flI">
+                        <rect key="frame" x="88" y="20" width="228" height="20"/>
+                        <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rene Santis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmj-mL-O4G">
-                        <rect key="frame" x="64" y="29" width="241" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Wj2-bJ-RSd"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rene Santis" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmj-mL-O4G">
+                        <rect key="frame" x="88" y="43" width="228" height="16"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" red="0.84757164439999999" green="0.86068060810000002" blue="0.87338484819999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPk-QZ-aue">
+                        <rect key="frame" x="10" y="79" width="365" height="1"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qh-ph-566">
-                        <rect key="frame" x="317" y="14" width="30" height="30"/>
+                        <rect key="frame" x="324" y="25" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="nJp-ef-ttc"/>
-                            <constraint firstAttribute="height" constant="30" id="rcC-ih-5Mq"/>
+                            <constraint firstAttribute="height" constant="30" id="Dak-Ue-Es8"/>
+                            <constraint firstAttribute="width" constant="30" id="rFv-ks-SMh"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                        <state key="normal" image="user_option_icon"/>
+                        <state key="normal" backgroundImage="user_option_icon"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uj-q9-2Hj">
-                        <rect key="frame" x="64" y="-34" width="58" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Qmj-mL-O4G" firstAttribute="leading" secondItem="z7a-Op-m0W" secondAttribute="trailing" constant="8" id="3vH-AX-8Xq"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="3Qh-ph-566" secondAttribute="trailing" constant="20" id="5Th-eI-MV8"/>
-                    <constraint firstItem="3Qh-ph-566" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="6" id="Gkz-CV-yJd"/>
-                    <constraint firstItem="VXV-c0-flI" firstAttribute="leading" secondItem="z7a-Op-m0W" secondAttribute="trailing" constant="8" id="Plu-MW-XuP"/>
-                    <constraint firstItem="VXV-c0-flI" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="1" id="SMf-Su-WZh"/>
-                    <constraint firstAttribute="bottom" secondItem="z7a-Op-m0W" secondAttribute="bottom" constant="5.5" id="UkF-d8-54T"/>
-                    <constraint firstAttribute="bottom" secondItem="Qmj-mL-O4G" secondAttribute="bottom" constant="9" id="ree-sm-OXv"/>
-                    <constraint firstItem="z7a-Op-m0W" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="top" constant="6" id="rfY-er-ocr"/>
-                    <constraint firstItem="z7a-Op-m0W" firstAttribute="leading" secondItem="kLJ-lW-AOU" secondAttribute="leading" constant="8" id="s3O-Yh-klR"/>
+                    <constraint firstItem="z7a-Op-m0W" firstAttribute="leading" secondItem="kLJ-lW-AOU" secondAttribute="leading" constant="20" id="0Rg-3r-H8f"/>
+                    <constraint firstItem="Qmj-mL-O4G" firstAttribute="leading" secondItem="z7a-Op-m0W" secondAttribute="trailing" constant="8" id="1Mi-Tu-76t"/>
+                    <constraint firstItem="3Qh-ph-566" firstAttribute="leading" secondItem="VXV-c0-flI" secondAttribute="trailing" constant="8" id="A25-fO-KbH"/>
+                    <constraint firstAttribute="bottom" secondItem="sPk-QZ-aue" secondAttribute="bottom" constant="-0.5" id="CnG-xu-vEE"/>
+                    <constraint firstItem="VXV-c0-flI" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="12" id="DNk-4r-7iy"/>
+                    <constraint firstAttribute="trailing" secondItem="3Qh-ph-566" secondAttribute="trailing" constant="21" id="MMM-a7-QdF"/>
+                    <constraint firstItem="z7a-Op-m0W" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="topMargin" constant="0.5" id="VeX-gz-y8N"/>
+                    <constraint firstItem="sPk-QZ-aue" firstAttribute="leading" secondItem="kLJ-lW-AOU" secondAttribute="leading" constant="10" id="Vwb-oM-8FN"/>
+                    <constraint firstItem="3Qh-ph-566" firstAttribute="top" secondItem="kLJ-lW-AOU" secondAttribute="top" constant="25" id="XJD-Vh-ofv"/>
+                    <constraint firstItem="sPk-QZ-aue" firstAttribute="top" secondItem="3Qh-ph-566" secondAttribute="bottom" constant="24" id="Ye0-nW-KWP"/>
+                    <constraint firstAttribute="trailing" secondItem="sPk-QZ-aue" secondAttribute="trailing" id="fHi-67-sxJ"/>
+                    <constraint firstItem="VXV-c0-flI" firstAttribute="leading" secondItem="z7a-Op-m0W" secondAttribute="trailing" constant="8" id="mVH-ji-mI5"/>
+                    <constraint firstItem="3Qh-ph-566" firstAttribute="leading" secondItem="Qmj-mL-O4G" secondAttribute="trailing" constant="8" id="pRK-X2-upQ"/>
+                    <constraint firstItem="Qmj-mL-O4G" firstAttribute="top" secondItem="VXV-c0-flI" secondAttribute="bottom" constant="2.5" id="wbI-6m-Xye"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="z7a-Op-m0W" secondAttribute="bottom" constant="2.5" id="z1y-br-yRw"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="VXV-c0-flI" secondAttribute="trailing" constant="150" id="gf8-xk-fMr"/>
-                <constraint firstAttribute="trailing" secondItem="Qmj-mL-O4G" secondAttribute="trailing" constant="70" id="m0B-i9-6kR"/>
-            </constraints>
             <connections>
                 <outlet property="avatarImageView" destination="z7a-Op-m0W" id="ANw-Lq-Rnl"/>
                 <outlet property="nameLabel" destination="Qmj-mL-O4G" id="KlR-Rj-WlG"/>
                 <outlet property="userNameLabel" destination="VXV-c0-flI" id="Fy8-Is-UdM"/>
                 <outlet property="userOptionsButton" destination="3Qh-ph-566" id="OHw-px-dkC"/>
             </connections>
-            <point key="canvasLocation" x="-321.5" y="42"/>
+            <point key="canvasLocation" x="-504.5" y="8"/>
         </tableViewCell>
     </objects>
     <resources>
