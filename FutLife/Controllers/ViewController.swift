@@ -15,14 +15,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func navigationBar(show: Bool) {
+    func navigationBar(show: Bool, backgroundColor: UIColor = UIColor.clear) {
         let mainNavigationController = AppDelegate.mainNavigationController
         if show {
             mainNavigationController.isNavigationBarHidden = false
             mainNavigationController.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             mainNavigationController.navigationBar.shadowImage = UIImage()
             mainNavigationController.navigationBar.isTranslucent = true
-            mainNavigationController.view.backgroundColor = UIColor.clear
+            mainNavigationController.view.backgroundColor = backgroundColor
             mainNavigationController.navigationBar.backgroundColor = UIColor.clear
             navigationController?.navigationBar.tintColor = UIColor.white
             navigationController?.navigationBar.barTintColor = UIColor.white

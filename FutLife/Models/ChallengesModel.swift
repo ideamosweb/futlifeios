@@ -21,8 +21,8 @@ class ChallengesResponse: Model {
 
 class Challenges: Model {
     var id: Int?
-    var playerOne: Int?
-    var playerTwo: Int?
+    var playerOne: String?
+    var playerTwo: String?
     var scorePlayerOne: Int?
     var scorePlayerTwo: Int?
     var consoleId: Int?

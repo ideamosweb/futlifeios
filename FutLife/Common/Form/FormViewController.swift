@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FormViewController: ViewController, UITextFieldDelegate {
+class FormViewController: ViewController {
     
     // This property manages all the inputs and
     // validate the error messages
@@ -129,8 +129,10 @@ class FormViewController: ViewController, UITextFieldDelegate {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-    //MARK: UITextFieldDelegate methods
+}
+
+//MARK: UITextFieldDelegate methods
+extension FormViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextResponder = inputsFormManager.nextInputField
         if nextResponder != nil {
@@ -154,5 +156,18 @@ class FormViewController: ViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         inputsFormManager.currentInputField = nil
-    }    
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard (inputsFormManager.inputFields?.contains(textField as! TextField))! else {
+            return false
+        }
+        
+        let txtFld: TextField = (textField as? TextField)!
+        if let length = txtFld.maxTypeableLenght, (txtFld.text?.characters.count)! >= length, string != "" {
+            return false
+        }
+        
+        return true
+    }
 }

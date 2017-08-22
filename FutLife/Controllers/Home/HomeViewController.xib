@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FutLife" customModuleProvider="target">
             <connections>
+                <outlet property="balancelabel" destination="gtP-2B-fvO" id="Leh-lM-ztn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,12 +24,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_dark" translatesAutoresizingMaskIntoConstraints="NO" id="Q4S-UN-bpx">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Q4S-UN-bpx">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" red="0.006326642818748951" green="0.054028995335102081" blue="0.099740587174892426" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtP-2B-fvO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                    <color key="backgroundColor" red="0.0063266428190000001" green="0.054028995339999997" blue="0.099740587170000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="xy5-p8-HPN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.96621185539999999" green="0.75398355719999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <point key="canvasLocation" x="33.5" y="118.5"/>
+            <constraints>
+                <constraint firstItem="gtP-2B-fvO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fvZ-to-rHb"/>
+                <constraint firstAttribute="trailing" secondItem="gtP-2B-fvO" secondAttribute="trailing" id="t5b-6C-iCy"/>
+                <constraint firstItem="gtP-2B-fvO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ySS-N3-Vcu"/>
+            </constraints>
+            <point key="canvasLocation" x="-56" y="119"/>
         </view>
         <view clipsSubviews="YES" contentMode="scaleToFill" id="k2U-1Z-GYV">
             <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
@@ -150,7 +167,7 @@
         </view>
     </objects>
     <resources>
-        <image name="background_dark" width="1080" height="1921"/>
+        <image name="background" width="1079" height="1920"/>
         <image name="user_challenge_icon" width="50" height="50"/>
     </resources>
 </document>

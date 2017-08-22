@@ -59,7 +59,6 @@
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
-		17AE0FED1F3AD0E800BAAF4F /* PlayersListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE0FEC1F3AD0E800BAAF4F /* PlayersListDataSource.swift */; };
 		17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BFB0501EF6ED36002A994E /* LoginViewController.xib */; };
 		17BFB0541EF762A3002A994E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0531EF762A3002A994E /* Constants.swift */; };
 		17BFB0561EF8377F002A994E /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */; };
@@ -73,6 +72,10 @@
 		17E678AC1EF6E4860001B9FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B6601E73474D00578042 /* LaunchScreen.storyboard */; };
 		17E678AE1EF6E5C20001B9FB /* StartUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */; };
 		17E678B01EF6E6320001B9FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E678AF1EF6E6320001B9FB /* ViewController.swift */; };
+		17F327F21F3C13BF007223BE /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F327F11F3C13BF007223BE /* ChallengesViewController.swift */; };
+		17F327F51F3C15A3007223BE /* ChallengesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F327F41F3C15A3007223BE /* ChallengesCell.swift */; };
+		17F327F71F3C17E7007223BE /* ChallengesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F327F61F3C17E7007223BE /* ChallengesViewController.xib */; };
+		17F327F91F3C1870007223BE /* ChallengesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F327F81F3C1870007223BE /* ChallengesCell.xib */; };
 		17F51E421F380D7700935687 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E411F380D7700935687 /* TabsViewController.swift */; };
 		17F51E441F381D3500935687 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E431F381D3500935687 /* UIColor+Extension.swift */; };
 		17F51E471F38C7D600935687 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F51E461F38C7D600935687 /* HomeViewController.swift */; };
@@ -158,7 +161,6 @@
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
-		17AE0FEC1F3AD0E800BAAF4F /* PlayersListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListDataSource.swift; path = Controllers/PlayerList/DataSource/PlayersListDataSource.swift; sourceTree = "<group>"; };
 		17BFB0501EF6ED36002A994E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Controllers/Login/LoginViewController.xib; sourceTree = "<group>"; };
 		17BFB0531EF762A3002A994E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Common/Constants.swift; sourceTree = "<group>"; };
 		17BFB0551EF8377F002A994E /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Utils.swift"; path = "Common/Extensions/UIViewController+Utils.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,10 @@
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
 		17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartUpViewController.xib; path = Controllers/StartUp/StartUpViewController.xib; sourceTree = "<group>"; };
 		17E678AF1EF6E6320001B9FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		17F327F11F3C13BF007223BE /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesViewController.swift; path = Controllers/Challenges/ChallengesViewController.swift; sourceTree = "<group>"; };
+		17F327F41F3C15A3007223BE /* ChallengesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengesCell.swift; path = Controllers/Challenges/Cell/ChallengesCell.swift; sourceTree = "<group>"; };
+		17F327F61F3C17E7007223BE /* ChallengesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengesViewController.xib; path = Controllers/Challenges/ChallengesViewController.xib; sourceTree = "<group>"; };
+		17F327F81F3C1870007223BE /* ChallengesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChallengesCell.xib; path = Controllers/Challenges/Cell/ChallengesCell.xib; sourceTree = "<group>"; };
 		17F51E411F380D7700935687 /* TabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabsViewController.swift; path = Controllers/Tabs/TabsViewController.swift; sourceTree = "<group>"; };
 		17F51E431F381D3500935687 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "Common/Extensions/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		17F51E461F38C7D600935687 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/Home/HomeViewController.swift; sourceTree = "<group>"; };
@@ -427,7 +433,6 @@
 		1783C4121F3AB9C30065D797 /* PlayerList */ = {
 			isa = PBXGroup;
 			children = (
-				17AE0FEB1F3AD0AC00BAAF4F /* DataSource */,
 				1783C4191F3ABDCC0065D797 /* Cell */,
 				1783C4131F3ABA280065D797 /* PlayersListViewController.swift */,
 				1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */,
@@ -467,14 +472,6 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
-		17AE0FEB1F3AD0AC00BAAF4F /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				17AE0FEC1F3AD0E800BAAF4F /* PlayersListDataSource.swift */,
-			);
-			name = DataSource;
-			sourceTree = "<group>";
-		};
 		17BFB0591EF8609F002A994E /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +484,7 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17F327F01F3C1341007223BE /* Challenges */,
 				1783C4121F3AB9C30065D797 /* PlayerList */,
 				17F51E451F38C7AC00935687 /* Home */,
 				17F51E401F380D3800935687 /* Tabs */,
@@ -508,6 +506,25 @@
 				17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */,
 			);
 			name = StartUp;
+			sourceTree = "<group>";
+		};
+		17F327F01F3C1341007223BE /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				17F327F31F3C1565007223BE /* Cell */,
+				17F327F11F3C13BF007223BE /* ChallengesViewController.swift */,
+				17F327F61F3C17E7007223BE /* ChallengesViewController.xib */,
+			);
+			name = Challenges;
+			sourceTree = "<group>";
+		};
+		17F327F31F3C1565007223BE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				17F327F41F3C15A3007223BE /* ChallengesCell.swift */,
+				17F327F81F3C1870007223BE /* ChallengesCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		17F51E401F380D3800935687 /* Tabs */ = {
@@ -717,6 +734,7 @@
 				17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */,
 				17399A401F09D18C00B72EFB /* BebasNeue-Bold.ttf in Resources */,
 				1783C41D1F3ABE760065D797 /* PlayersListCell.xib in Resources */,
+				17F327F71F3C17E7007223BE /* ChallengesViewController.xib in Resources */,
 				17399A0E1F003D0900B72EFB /* ChooseConsoleViewController.xib in Resources */,
 				17BFB0511EF6ED36002A994E /* LoginViewController.xib in Resources */,
 				17E678AB1EF6E47E0001B9FB /* Main.storyboard in Resources */,
@@ -724,6 +742,7 @@
 				17399A3C1F09D17C00B72EFB /* BebasNeue Book.ttf in Resources */,
 				17F51E491F38CF1F00935687 /* HomeViewController.xib in Resources */,
 				1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */,
+				17F327F91F3C1870007223BE /* ChallengesCell.xib in Resources */,
 				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
@@ -862,11 +881,12 @@
 				17001A081F0AD37C00BF44BD /* ProfileConsolesTableViewDataSource.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
 				17F51E441F381D3500935687 /* UIColor+Extension.swift in Sources */,
+				17F327F51F3C15A3007223BE /* ChallengesCell.swift in Sources */,
 				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
 				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,
-				17AE0FED1F3AD0E800BAAF4F /* PlayersListDataSource.swift in Sources */,
 				17001A0A1F0AD4D400BF44BD /* ProfileGamesTableViewDataSource.swift in Sources */,
+				17F327F21F3C13BF007223BE /* ChallengesViewController.swift in Sources */,
 				17363C8F1EF1FBA6006888EE /* FormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

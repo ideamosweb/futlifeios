@@ -11,16 +11,19 @@ import UIKit
 class TabsViewController: ViewController {
     
     let kTabsButtonsViewHeight: CGFloat = 44.0
-    let kTabsButtonsViewMinY: CGFloat = 0.0
     
+    var tabsButtonsViewMinY: CGFloat = 0.0
+    var scrollPage: Int = 0
+    var previousOffset: CGFloat = 0
     var tabsViewControllers: [ViewController]?
     var tabsViews: [UIView] = []
     var tabsTitles: [String] = []
     var fontSize: CGFloat?
+    var showTabDefault: Int?
+    var selectorTabButtonView: UIView?
     
     private var scrollView: UIScrollView?
-    private var buttonsView: UIView?
-    private var selectorTabButtonView: UIView?
+    var buttonsView: UIView?
     
     var tabsCount: Float?
 
@@ -36,7 +39,7 @@ class TabsViewController: ViewController {
     }
     
     func configElementsOfView() {
-        let scrollViewHeight = Utils.screenViewFrame().size.height - kTabsButtonsViewMinY - kTabsButtonsViewHeight
+        let scrollViewHeight = Utils.screenViewFrame().size.height - tabsButtonsViewMinY - kTabsButtonsViewHeight
         
         buttonsView?.backgroundColor = UIColor().darkBlue()
         selectorTabButtonView = UIView(frame: CGRect(x: 0.0, y: (buttonsView?.frame.height)! - 2.0, width: (buttonsView?.frame.width)! / CGFloat(tabsCount!), height: 2.0))
@@ -44,6 +47,8 @@ class TabsViewController: ViewController {
         buttonsView?.addSubview(selectorTabButtonView!)
         
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: (buttonsView?.frame.maxY)!, width: Utils.screenViewFrame().size.width, height: scrollViewHeight))
+        scrollView?.delegate = self
+        
         
         view.addSubview(scrollView!)
         view.addSubview(buttonsView!)
@@ -53,15 +58,27 @@ class TabsViewController: ViewController {
         tabsCount = ((tabsViewControllers?.count)! > 0) ? Float((tabsViewControllers?.count)!) : Float(tabsViews.count)
         let buttonWidth = Utils.screenViewFrame().size.width / CGFloat(tabsCount!)
         
-        buttonsView = UIView(frame: CGRect(x: 0.0, y: kTabsButtonsViewMinY, width: Utils.screenViewFrame().size.width, height: kTabsButtonsViewHeight))
+        // Check subviews for add tabs after
+        var subViewFrame: CGRect?
+        for subView: UIView in view.subviews {
+            if subView.frame != view.frame {
+                subViewFrame = subView.frame
+            }
+        }
+        
+        if let sbViewFr = subViewFrame {
+            tabsButtonsViewMinY = sbViewFr.maxY
+        }
+        
+        buttonsView = UIView(frame: CGRect(x: 0.0, y: tabsButtonsViewMinY, width: Utils.screenViewFrame().size.width, height: kTabsButtonsViewHeight))
         
         configElementsOfView()
         
         var previousButton: UIButton?
         var previousVC: ViewController?
         
-        var contentSizeWidth = Utils.screenViewFrame().size.width
-        let contentSizeHeight = Utils.screenViewFrame().size.height - kTabsButtonsViewMinY - kTabsButtonsViewHeight
+        var contentSizeWidth: CGFloat = 0
+        let contentSizeHeight = Utils.screenViewFrame().size.height - tabsButtonsViewMinY - kTabsButtonsViewHeight
         
         let fontSize = (self.fontSize != nil) ? self.fontSize : 20.0
         
@@ -72,8 +89,8 @@ class TabsViewController: ViewController {
             if previousButton == nil {
                 buttonTab.frame = CGRect(x: 0.0, y: 0.0, width: buttonWidth, height: 44.0)
                 
-                buttonTab.titleLabel?.font = UIFont().bebasFont(size: fontSize!)
-                buttonTab.setTitleColor(UIColor(red: 216.0, green: 219.0, blue: 223.0, alpha: 1.0), for: .normal)
+                buttonTab.titleLabel?.font = UIFont().bebasBoldFont(size: fontSize!)
+                buttonTab.setTitleColor(UIColor.lightGray, for: .normal)
                 buttonTab.setTitle(tabTitle, for: .normal)
                 buttonTab.contentHorizontalAlignment = .center
                 buttonTab.tag = index + 1
@@ -87,8 +104,8 @@ class TabsViewController: ViewController {
             } else {
                 buttonTab.frame = CGRect(x: (previousButton?.frame.maxX)!, y: 0.0, width: buttonWidth, height: 44.0)
                 
-                buttonTab.titleLabel?.font = UIFont().bebasFont(size: fontSize!)
-                buttonTab.setTitleColor(UIColor(red: 216.0, green: 219.0, blue: 223.0, alpha: 1.0), for: .normal)
+                buttonTab.titleLabel?.font = UIFont().bebasBoldFont(size: fontSize!)
+                buttonTab.setTitleColor(UIColor.lightGray, for: .normal)
                 buttonTab.setTitle(tabTitle, for: .normal)
                 buttonTab.contentHorizontalAlignment = .center
                 buttonTab.tag = index + 1
@@ -107,7 +124,7 @@ class TabsViewController: ViewController {
             
             buttonsView?.addSubview(buttonTab)
             
-            contentSizeWidth = contentSizeWidth * (CGFloat(index) + 1)
+            contentSizeWidth = Utils.screenViewFrame().size.width * (CGFloat(index) + 1)
             
             if (tabsViewControllers?.count)! > 0 {
                 let viewController = tabsViewControllers?[index]
@@ -117,15 +134,15 @@ class TabsViewController: ViewController {
                     tabsFrame?.size.width = Utils.screenViewFrame().size.width
                     tabsFrame?.size.height = Utils.screenViewFrame().size.height - CGFloat(kTabsButtonsViewHeight) - CGFloat(Constants.kNavigationBarDefaultHeight)
                     viewController?.view.frame = tabsFrame!
-                    
-                    previousVC = viewController
                 } else {
                     var vcFrame = viewController?.view.frame
-                    vcFrame?.origin.x = (previousVC?.view.frame.width)!
+                    vcFrame?.origin.x = (previousVC?.view.frame.maxX)!
                     vcFrame?.size.width = Utils.screenViewFrame().size.width
                     vcFrame?.size.height = Utils.screenViewFrame().size.height - CGFloat(kTabsButtonsViewHeight) - CGFloat(Constants.kNavigationBarDefaultHeight)
                     viewController?.view.frame = vcFrame!
                 }
+                
+                previousVC = viewController
                 
                 addChildViewController(viewController!)
                 scrollView?.addSubview((viewController?.view)!)
@@ -137,13 +154,32 @@ class TabsViewController: ViewController {
         }
         
         scrollView?.contentSize = CGSize(width: contentSizeWidth, height: contentSizeHeight)
-        scrollView?.bounces = false
+        scrollView?.bounces = true
         scrollView?.isPagingEnabled = true
         scrollView?.isScrollEnabled = true
+        
+        if let tabDefault = showTabDefault {
+            scrollPage = tabDefault - 1
+            let vc = tabsViewControllers?[tabDefault - 1]
+            let viewFrame: CGRect = (vc?.view.frame)!
+            
+            let point = CGPoint(x: (viewFrame.minX), y: 0.0)
+            scrollView?.setContentOffset(point, animated: false)
+            
+            let buttonTab: UIButton = self.buttonsView?.subviews[tabDefault] as! UIButton
+            buttonTab.setTitleColor(UIColor.white, for: .normal)
+            var selectedButtonViewFrame = self.selectorTabButtonView?.frame
+            selectedButtonViewFrame?.origin.x = (buttonTab.frame.minX)
+            self.selectorTabButtonView?.frame = selectedButtonViewFrame!
+            previousOffset = (scrollView?.frame.minX)!
+        }
+        
+        
     }
     
     func onButtonTabTouch(sender: AnyObject) {
         let button = sender as! UIButton
+        scrollPage = button.tag - 1
         var viewFrame: CGRect?
         
         if (tabsViewControllers?.count)! > 0 {
@@ -157,13 +193,52 @@ class TabsViewController: ViewController {
         let point = CGPoint(x: (viewFrame?.minX)!, y: 0.0)
         scrollView?.setContentOffset(point, animated: true)
         
+        for view in (buttonsView?.subviews)! {
+            if view is UIButton {
+                let button = view as! UIButton
+                button.setTitleColor(UIColor.lightGray, for: .normal)
+            }
+        }
+        
         UIView.animate(withDuration: 0.3) { 
-            let buttonTab = self.buttonsView?.subviews[button.tag]
+            let buttonTab = self.buttonsView?.subviews[button.tag] as! UIButton
+            buttonTab.setTitleColor(UIColor.white, for: .normal)
             var selectedButtonViewFrame = self.selectorTabButtonView?.frame
-            selectedButtonViewFrame?.origin.x = (buttonTab?.frame.minX)!
+            selectedButtonViewFrame?.origin.x = buttonTab.frame.minX
+            self.selectorTabButtonView?.frame = selectedButtonViewFrame!
+        }
+    }
+}
+
+extension TabsViewController : UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //previousOffset = scrollView.contentOffset.x
+        self.scrollPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
+        for view in (buttonsView?.subviews)! {
+            if view is UIButton {
+                let button = view as! UIButton
+                button.setTitleColor(UIColor.lightGray, for: .normal)
+            }
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            let buttonTab = self.buttonsView?.subviews[self.scrollPage + 1] as! UIButton
+            buttonTab.setTitleColor(UIColor.white, for: .normal)
+            var selectedButtonViewFrame = self.selectorTabButtonView?.frame
+            selectedButtonViewFrame?.origin.x = buttonTab.frame.minX
             self.selectorTabButtonView?.frame = selectedButtonViewFrame!
         }
     }
     
-
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        self.scrollPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
+//        let offsetMoved = scrollView.contentOffset.x - previousOffset
+//        UIView.animate(withDuration: 0.3) {
+//            let buttonTab = self.buttonsView?.subviews[self.scrollPage + 1]
+//            var selectedButtonViewFrame = self.selectorTabButtonView?.frame
+//            selectedButtonViewFrame?.origin.x = (offsetMoved * (buttonTab?.frame.minX)!) / Utils.screenViewFrame().size.width
+//            self.selectorTabButtonView?.frame = selectedButtonViewFrame!
+//        }
+//    }
 }
+

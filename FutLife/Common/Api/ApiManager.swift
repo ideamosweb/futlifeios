@@ -128,7 +128,7 @@ class ApiManager {
     }
     
     // GET: Challenges
-    static func getChallenges(userId: Int, completion: @escaping (ErrorModel?) -> Void) {
+    static func getChallenges(userId: Int, completion: @escaping (ErrorModel?, _ challenges: [Challenges]) -> Void) {
         Alamofire.request(ApiRouter.challenges(userId: "\(userId)")).responseObject { (response: DataResponse<ChallengesResponse>) in
             let challenges = response.result.value
             
@@ -140,7 +140,7 @@ class ApiManager {
                 ChallengesModel.success = challenges?.success
             }
             
-            completion(errorModel)
+            completion(errorModel, (challenges?.data)!)
         }
     }
     

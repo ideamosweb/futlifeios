@@ -19,18 +19,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-w3-nah">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-w3-nah">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="2on-00-uaM"/>
+                        <outlet property="delegate" destination="-1" id="3bY-zW-UqT"/>
+                    </connections>
                 </tableView>
             </subviews>
             <constraints>
-                <constraint firstItem="EUe-w3-nah" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7t0-Ub-o3H"/>
-                <constraint firstAttribute="trailing" secondItem="EUe-w3-nah" secondAttribute="trailing" id="Lev-wd-r4l"/>
-                <constraint firstItem="EUe-w3-nah" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YVt-16-lny"/>
-                <constraint firstAttribute="bottom" secondItem="EUe-w3-nah" secondAttribute="bottom" id="bZ6-Ym-lnL"/>
+                <constraint firstItem="EUe-w3-nah" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HRq-FK-bhJ"/>
+                <constraint firstItem="EUe-w3-nah" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cFf-8J-a3k"/>
+                <constraint firstAttribute="bottom" secondItem="EUe-w3-nah" secondAttribute="bottom" id="fjH-W3-656"/>
+                <constraint firstAttribute="trailing" secondItem="EUe-w3-nah" secondAttribute="trailing" id="xPq-1d-hHt"/>
             </constraints>
-            <point key="canvasLocation" x="-481" y="30"/>
+            <point key="canvasLocation" x="-481.5" y="29.5"/>
         </view>
     </objects>
 </document>

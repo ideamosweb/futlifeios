@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.statusBarStyle = .lightContent
         openStartUp()
         return true
     }
@@ -59,18 +60,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func goToHome(homeViewController: HomeViewController) {
         let slideMenuController = SlideMenuController(mainViewController: homeViewController, leftMenuViewController: UIViewController())
-        AppDelegate.mainNavigationController.viewControllers = [slideMenuController]
-        //window?.rootViewController = AppDelegate.mainNavigationController
-        //window?.makeKeyAndVisible()
+        AppDelegate.mainNavigationController.viewControllers = [slideMenuController]        
     }
     
     static func showPKHUD() {
-        PKHUD.sharedHUD.contentView = PKHUDProgressView(title: "", subtitle: "Cargando...")
-        PKHUD.sharedHUD.show()
+        DispatchQueue.main.async {
+            PKHUD.sharedHUD.contentView = PKHUDProgressView(title: "", subtitle: "Cargando...")
+            PKHUD.sharedHUD.show()
+        }
     }
     
     static func hidePKHUD() {
-        PKHUD.sharedHUD.hide(afterDelay: 0)
+        DispatchQueue.main.async {
+            PKHUD.sharedHUD.hide(afterDelay: 0)
+        }
     }
 }
 

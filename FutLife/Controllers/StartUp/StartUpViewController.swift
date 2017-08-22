@@ -58,7 +58,9 @@ class StartUpViewController: ViewController {
                 if (error?.success)! {
                     // Go to time line if is logged or register completed
                     if LocalDataManager.completedRegister || LocalDataManager.logged {
-                        strongSelf.goToHome()
+                        DispatchQueue.main.async {
+                            strongSelf.goToHome()
+                        }                        
                     } else {
                         strongSelf.checkLoginOrRegister()
                     }
@@ -165,7 +167,7 @@ class StartUpViewController: ViewController {
         let profileVC = ProfileViewController(navBar: navBar, confirmButton: confirmButton) {
             if let strongSelf = weakSelf {
                 LocalDataManager.completedRegister = true
-                strongSelf.goToHome()
+                strongSelf.showSuccessMessage()
             }
             
             return ()
@@ -180,6 +182,20 @@ class StartUpViewController: ViewController {
         }
         
         AppDelegate.sharedInstance.goToHome(homeViewController: homeVC)
+    }
+    
+    private func showSuccessMessage() {
+        let alertController = UIAlertController(title: "Felicitaciones!", message: "El registro ha sido exitoso, bienvenido a Futlife.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        weak var weakSelf = self
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
+            if let strongSelf = weakSelf {
+                strongSelf.goToHome()
+            }
+        }
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
 

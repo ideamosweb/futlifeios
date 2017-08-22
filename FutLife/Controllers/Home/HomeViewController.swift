@@ -9,9 +9,13 @@
 import UIKit
 
 class HomeViewController: TabsViewController {
+    @IBOutlet weak var balancelabel: UILabel!
     var users: [UserModel] = []
     var darkBackgroundButton: UIButton = UIButton()
     var homeCompletion: () -> Void?
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,7 +44,12 @@ class HomeViewController: TabsViewController {
         menuButton.addTarget(self, action: #selector(onMenuButtonTouch), for: .touchUpInside)
         menuButton.accessibilityIdentifier = "Side_Menu_Button"
         
-        parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)        
+        parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        
+        navigationBar(show: true, backgroundColor: UIColor().darkBlue())
+        
+        balancelabel.font = UIFont().bebasFont(size: 14)
+        balancelabel.text = "SALDO ACTUAL: $0"
         
         getAllChallengeRequest()
     }
@@ -48,25 +57,20 @@ class HomeViewController: TabsViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationBar(show: true)
-        navigationController?.navigationBar.barTintColor = UIColor().darkBlue()
-        navigationController?.navigationBar.isTranslucent = true
-    }
-    
-    func onMenuButtonTouch() {
-        self.slideMenuController()?.openLeft()
+        
     }
     
     private func getAllChallengeRequest() {
         let user: UserModel? = LocalDataManager.user!
         if user != nil {
             weak var weakSelf = self
-            AppDelegate.showPKHUD()
-            ApiManager.getChallenges(userId: (user?.id)!) { (errorModel) in
+            DispatchQueue.main.async {
+                AppDelegate.showPKHUD()
+            }            
+            ApiManager.getChallenges(userId: (user?.id)!) { (errorModel, challenges) in
                 if let strongSelf = weakSelf {
                     if (errorModel?.success)! {
-                        AppDelegate.showPKHUD()
-                        strongSelf.getPlayersRequest(user: user!)
+                        strongSelf.getPlayersRequest(user: user!, challenges: challenges)
                     } else {
                         strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
                     }
@@ -75,23 +79,28 @@ class HomeViewController: TabsViewController {
         }
     }
     
-    private func getPlayersRequest(user: UserModel) {
+    private func getPlayersRequest(user: UserModel, challenges: [Challenges]) {
         weak var weakSelf = self
-        AppDelegate.showPKHUD()        
         ApiManager.getPlayers(userId: user.id) { (errorModel, players) in
             AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
                     let playersListVC = PlayersListViewController(players: players)
+                    let challengesVC = ChallengesViewController(players: players, challenges: challenges)
                     
-                    strongSelf.tabsTitles = ["Jugadores", "Pendientes"]
-                    strongSelf.tabsViewControllers = [playersListVC, ViewController()]
+                    strongSelf.tabsTitles = ["MIS RETOS", "JUGADORES", "¡ÚNETE!"]
+                    strongSelf.tabsViewControllers = [ViewController(), playersListVC, challengesVC]
                     
+                    strongSelf.showTabDefault = 2
                     strongSelf.reloadTabs()
                 } else {
                     strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
                 }
             }
         }
+    }
+    
+    func onMenuButtonTouch() {
+        self.slideMenuController()?.openLeft()
     }
 }

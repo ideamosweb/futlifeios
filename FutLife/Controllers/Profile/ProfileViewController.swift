@@ -37,6 +37,8 @@ class ProfileViewController: ViewController {
     let kProfileCellHeight: CGFloat = 44.0
     let kProfileConsoleCellHeight: CGFloat = 22.0
     let kProfileCellIdentifier = "ProfileCell"
+    var selectedCellIndexPath: IndexPath?
+    let kProfileCellConsolesHeight: CGFloat = 22.0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -105,11 +107,10 @@ class ProfileViewController: ViewController {
     
     private func configTablesAndScrollView() {
         let consolesTableViewFrame = CGRect(x: 0, y: 0, width: Utils.screenViewFrame().size.width, height: kTableViewHeight)
-        let consolesDataSource = ProfileConsolesTableViewDataSource()
         consolesTableView = UITableView(frame: consolesTableViewFrame)
         consolesTableView?.backgroundColor = UIColor.clear
-        consolesTableView?.delegate = consolesDataSource
-        consolesTableView?.dataSource = consolesDataSource
+        consolesTableView?.delegate = self
+        consolesTableView?.dataSource = self
         consolesTableView?.isScrollEnabled = true
         consolesTableView?.separatorStyle = .none
         consolesTableView?.clipsToBounds = false
@@ -117,11 +118,10 @@ class ProfileViewController: ViewController {
         consolesTableView?.register(ProfileCell.nib(kProfileCellIdentifier), forCellReuseIdentifier: kProfileCellIdentifier)
         
         let gamesTableViewFrame = CGRect(x: (consolesTableView?.frame.maxX)!, y: 0, width: Utils.screenViewFrame().size.width, height: kTableViewHeight)
-        let gamesDataSource = ProfileGamesTableViewDataSource()
         gamesTableView = UITableView(frame: gamesTableViewFrame)
         gamesTableView?.backgroundColor = UIColor.clear
-        gamesTableView?.delegate = gamesDataSource
-        gamesTableView?.dataSource = gamesDataSource
+        gamesTableView?.delegate = self
+        gamesTableView?.dataSource = self
         gamesTableView?.isScrollEnabled = true
         gamesTableView?.separatorStyle = .none
         gamesTableView?.clipsToBounds = false
@@ -322,5 +322,79 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
          })*/
         
         //dismiss(animated: true)
+    }
+}
+
+//MARK: UITableViewDelegate
+extension ProfileViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedCellIndexPath != nil && selectedCellIndexPath?.compare(indexPath) == ComparisonResult.orderedSame {
+            if tableView == gamesTableView {
+                return kProfileCellHeight + kProfileCellConsolesHeight
+            }
+            
+            return kProfileCellHeight
+        }
+        
+        return kProfileCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if selectedCellIndexPath != nil {
+            if selectedCellIndexPath?.compare(indexPath) == ComparisonResult.orderedSame {
+                selectedCellIndexPath = nil
+                tableView.cellForRow(at: indexPath)?.isSelected = false
+                tableView.reloadRows(at: [indexPath], with: .none)
+                return nil
+            } else {
+                tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
+            }
+        } else {
+            selectedCellIndexPath = indexPath
+            tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
+        }
+    
+        return indexPath
+    }
+    
+}
+
+//MARK: UITableViewDelegate
+extension ProfileViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == consolesTableView {
+            if let consoles: [ConsoleModel] = LocalDataManager.consolesSelected {
+                return consoles.count
+            }
+        } else {
+            if let games: [GameModel] = LocalDataManager.gamesSelected {
+                return games.count
+            }
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let profileCell: ProfileCell = tableView.dequeueReusableCell(withIdentifier: kProfileCellIdentifier) as! ProfileCell
+        profileCell.selectionStyle = .none
+        if tableView == consolesTableView {
+            if let consoles: [ConsoleModel] = LocalDataManager.consolesSelected {
+                let console = consoles[indexPath.row]
+                
+                profileCell.setGameImage(name: console.avatar, gameName: console.name, gameYear: console.year as NSNumber, gameNumber: "\(indexPath.row + 1)")
+                profileCell.isUserInteractionEnabled = false
+            }
+        } else {
+            if let games: [GameModel] = LocalDataManager.gamesSelected {
+                let game = games[indexPath.row]
+                
+                profileCell.setGameImage(name: game.avatar, gameName: game.name, gameYear: game.year as NSNumber, gameNumber: "\(indexPath.row + 1)")
+                profileCell.isUserInteractionEnabled = true
+            }
+        }        
+        
+        return profileCell
     }
 }

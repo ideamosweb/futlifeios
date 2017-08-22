@@ -57,7 +57,7 @@ class RegisterViewController: FormViewController {
         
         userTextField.isRequired = true
         userTextField.minTypeableLength = 5
-        userTextField.maxTypeableLenght = 20
+        userTextField.maxTypeableLenght = 9
         
         emailTextField.isRequired = true
         emailTextField.isEmail = true
