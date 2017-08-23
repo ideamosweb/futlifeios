@@ -13,6 +13,9 @@ class HomeViewController: TabsViewController {
     var users: [UserModel] = []
     var darkBackgroundButton: UIButton = UIButton()
     var homeCompletion: () -> Void?
+    var darkBgButton: UIButton?
+    var playerOptionsView: PlayerOptionsView?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -102,5 +105,54 @@ class HomeViewController: TabsViewController {
     
     func onMenuButtonTouch() {
         self.slideMenuController()?.openLeft()
+    }
+    
+    func hidePlayerOptions() {
+        UIView.animate(withDuration: 0.2, animations: {
+            
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            var playerOptionsViewFrame = self.playerOptionsView?.frame
+            playerOptionsViewFrame?.origin.y = Utils.screenViewFrame().height + 20.0
+            self.playerOptionsView?.frame = playerOptionsViewFrame!
+        }) { (finished) in
+            self.darkBgButton?.fadeOut(duration: 0.5, closure: { () -> Void? in
+                return
+            })
+        }
+        
+    }
+}
+
+extension HomeViewController: PlayerListProtocol {
+    func playerOptions(player: User) {
+        //homeCompletion = () -> Void?
+        let darkBgViewFrame = CGRect(x: 0, y: 0, width: Utils.screenViewFrame().width, height: Utils.screenViewFrame().height)
+        darkBgButton = UIButton(frame: darkBgViewFrame)
+        darkBgButton?.backgroundColor = UIColor.black
+        darkBgButton?.alpha = 0.5
+        darkBgButton?.isUserInteractionEnabled = true
+        darkBgButton?.addTarget(self, action: #selector(hidePlayerOptions), for: .touchUpInside)
+        
+        let currentWindow = UIApplication.shared.keyWindow
+        currentWindow?.addSubview(darkBgButton!)
+        
+        playerOptionsView = Bundle.main.loadNibNamed("PlayerOptionsView", owner: self, options: nil)?.first as? PlayerOptionsView
+        var playerOptionsViewFrame = playerOptionsView?.frame
+        playerOptionsViewFrame?.origin.y = Utils.screenViewFrame().height
+        playerOptionsViewFrame?.size.width = Utils.screenViewFrame().width
+        playerOptionsView?.frame = playerOptionsViewFrame!
+        
+        playerOptionsView?.setUpView(player: player)
+        playerOptionsView?.layoutSubviews()
+        
+        currentWindow?.addSubview(playerOptionsView!)
+        
+        UIView.animate(withDuration: 0.3) {
+            var playerOptionsViewFrame = self.playerOptionsView?.frame
+            playerOptionsViewFrame?.origin.y = Utils.screenViewFrame().height - (self.playerOptionsView?.frame.height)! + 20.0
+            self.playerOptionsView?.frame = playerOptionsViewFrame!
+        }
     }
 }

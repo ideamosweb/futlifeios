@@ -60,6 +60,7 @@ extension PlayersListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PlayersListCell = tableView.dequeueReusableCell(withIdentifier: kPlayersCellIdentifier) as! PlayersListCell
         let user = players[indexPath.row]
+        cell.delegate = parent as! HomeViewController
         cell.setUpCell(user: user)
         cell.selectionStyle = .none
         

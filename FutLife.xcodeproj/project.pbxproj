@@ -65,6 +65,9 @@
 		17BFB0581EF838C0002A994E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB0571EF838C0002A994E /* Error.swift */; };
 		17BFB05B1EF86104002A994E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFB05A1EF86104002A994E /* RegisterViewController.swift */; };
 		17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BFB05C1EF86177002A994E /* RegisterViewController.xib */; };
+		17CA012E1F4CE39100F3DA35 /* PlayerListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CA012D1F4CE39100F3DA35 /* PlayerListProtocol.swift */; };
+		17CA01301F4CF1C800F3DA35 /* PlayerOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CA012F1F4CF1C800F3DA35 /* PlayerOptionsView.swift */; };
+		17CA01321F4CF1E900F3DA35 /* PlayerOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17CA01311F4CF1E900F3DA35 /* PlayerOptionsView.xib */; };
 		17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */; };
 		17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170104611EC2C4B5002E6767 /* Images.xcassets */; };
 		17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B65E1E73474D00578042 /* Assets.xcassets */; };
@@ -167,6 +170,9 @@
 		17BFB0571EF838C0002A994E /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Common/Error.swift; sourceTree = "<group>"; };
 		17BFB05A1EF86104002A994E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/Register/RegisterViewController.swift; sourceTree = "<group>"; };
 		17BFB05C1EF86177002A994E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController.xib; path = Controllers/Register/RegisterViewController.xib; sourceTree = "<group>"; };
+		17CA012D1F4CE39100F3DA35 /* PlayerListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerListProtocol.swift; path = Controllers/PlayerList/PlayerListProtocol.swift; sourceTree = "<group>"; };
+		17CA012F1F4CF1C800F3DA35 /* PlayerOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerOptionsView.swift; path = Controllers/PlayerList/PlayerOptionsView.swift; sourceTree = "<group>"; };
+		17CA01311F4CF1E900F3DA35 /* PlayerOptionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerOptionsView.xib; path = Controllers/PlayerList/PlayerOptionsView.xib; sourceTree = "<group>"; };
 		17E60A7E1E735FD2007D7CCD /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartUpViewController.swift; path = Controllers/StartUp/StartUpViewController.swift; sourceTree = "<group>"; };
 		17E678AD1EF6E5C20001B9FB /* StartUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartUpViewController.xib; path = Controllers/StartUp/StartUpViewController.xib; sourceTree = "<group>"; };
 		17E678AF1EF6E6320001B9FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
@@ -436,6 +442,9 @@
 				1783C4191F3ABDCC0065D797 /* Cell */,
 				1783C4131F3ABA280065D797 /* PlayersListViewController.swift */,
 				1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */,
+				17CA012D1F4CE39100F3DA35 /* PlayerListProtocol.swift */,
+				17CA012F1F4CF1C800F3DA35 /* PlayerOptionsView.swift */,
+				17CA01311F4CF1E900F3DA35 /* PlayerOptionsView.xib */,
 			);
 			name = PlayerList;
 			sourceTree = "<group>";
@@ -744,6 +753,7 @@
 				1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */,
 				17F327F91F3C1870007223BE /* ChallengesCell.xib in Resources */,
 				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
+				17CA01321F4CF1E900F3DA35 /* PlayerOptionsView.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
 				17001A101F0ADC2C00BF44BD /* ProfileCell.xib in Resources */,
@@ -852,6 +862,7 @@
 				17363C931EF3A4D2006888EE /* TextField.swift in Sources */,
 				1734192B1EC568FD003B2909 /* Model.swift in Sources */,
 				1783C41B1F3ABE100065D797 /* PlayersListCell.swift in Sources */,
+				17CA012E1F4CE39100F3DA35 /* PlayerListProtocol.swift in Sources */,
 				17363C911EF20211006888EE /* InputFormManager.swift in Sources */,
 				17297FD11EFA25F300E2FCE4 /* LoginModel.swift in Sources */,
 				17F51E421F380D7700935687 /* TabsViewController.swift in Sources */,
@@ -873,6 +884,7 @@
 				17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */,
 				17297FCF1EFA20B100E2FCE4 /* LoginManager.swift in Sources */,
 				17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */,
+				17CA01301F4CF1C800F3DA35 /* PlayerOptionsView.swift in Sources */,
 				17001A141F0B2B9800BF44BD /* RegisterAvatar.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
 				1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */,

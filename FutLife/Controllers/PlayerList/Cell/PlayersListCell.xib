@@ -59,6 +59,9 @@
                                 <integer key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="playerOptionsTouchUp:" destination="0Fc-hP-EkZ" eventType="touchUpInside" id="fBn-r3-3gE"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

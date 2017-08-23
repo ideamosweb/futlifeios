@@ -14,11 +14,15 @@ class PlayersListCell: CustomTableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var userOptionsButton: UIButton!
     
+    var delegate: PlayerListProtocol?
+    var player: User?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func setUpCell(user: User) {
+        player = user
         userNameLabel.text = user.userName
         nameLabel.text = user.name
         
@@ -32,5 +36,17 @@ class PlayersListCell: CustomTableViewCell {
             avatarImageView.image = placeholderImage
         }
         
+    }
+    
+    @IBAction func playerOptionsTouchUp(_ sender: Any) {
+        userOptionsButton.rotateAnimation(degrees: 120, duration: 0.25)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            DispatchQueue.main.async {
+                if let delegate = self.delegate {
+                    delegate.playerOptions(player: self.player!)
+                }
+            }
+        }
     }
 }

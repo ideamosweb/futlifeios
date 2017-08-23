@@ -20,7 +20,7 @@ extension UIView {
         }
     }
     
-    func fadeOut(duration: TimeInterval, closure: @escaping() -> Void?) {
+    func fadeOut(duration: TimeInterval, closure: @escaping () -> Swift.Void?) {
         alpha = 0
         UIView.animate(withDuration: duration, animations: {
             self.alpha = 0
@@ -28,6 +28,7 @@ extension UIView {
             if closure() != nil {
                 closure()
             }
+            
         }
     }
     
@@ -67,4 +68,22 @@ extension UIView {
             })
         }
     }
+    
+    func rotateAnimation(degrees: Int, duration: Float) {
+        let rotate = CABasicAnimation(keyPath: "transform.rotation")
+        rotate.fromValue = 0
+        rotate.toValue = degrees.degreesToRadians
+        rotate.duration = CFTimeInterval(duration)
+        rotate.repeatCount = 1
+        
+        layer.add(rotate, forKey: "userOptions.button.animation")
+    }    
+}
+
+extension Int {
+    var degreesToRadians: Double { return Double(self) * .pi / 180 }
+}
+extension FloatingPoint {
+    var degreesToRadians: Self { return self * .pi / 180 }
+    var radiansToDegrees: Self { return self * 180 / .pi }
 }
