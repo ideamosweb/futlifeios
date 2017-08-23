@@ -53,7 +53,7 @@ class StartUpViewController: ViewController {
         weak var weakSelf = self
         AppDelegate.showPKHUD()
         ApiManager.getParameters { (error) in
-            AppDelegate.hidePKHUD()
+            
             if let strongSelf = weakSelf {
                 if (error?.success)! {
                     // Go to time line if is logged or register completed
@@ -62,12 +62,16 @@ class StartUpViewController: ViewController {
                             strongSelf.goToHome()
                         }                        
                     } else {
+                        // Hide spinner PKHUD when not go to home (this is for avoid bug)
+                        AppDelegate.hidePKHUD()
                         strongSelf.checkLoginOrRegister()
                     }
                 } else {
+                    // Hide spinner PKHUD when not go to home (this is for avoid bug)
+                    AppDelegate.hidePKHUD()
                     strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
-                    
                 }
+                
             }            
         }
     }

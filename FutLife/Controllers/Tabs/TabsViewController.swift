@@ -200,7 +200,7 @@ class TabsViewController: ViewController {
             }
         }
         
-        UIView.animate(withDuration: 0.3) { 
+        UIView.animate(withDuration: 0.2) {
             let buttonTab = self.buttonsView?.subviews[button.tag] as! UIButton
             buttonTab.setTitleColor(UIColor.white, for: .normal)
             var selectedButtonViewFrame = self.selectorTabButtonView?.frame
@@ -212,8 +212,6 @@ class TabsViewController: ViewController {
 
 extension TabsViewController : UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        //previousOffset = scrollView.contentOffset.x
-        self.scrollPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
         for view in (buttonsView?.subviews)! {
             if view is UIButton {
                 let button = view as! UIButton
@@ -221,24 +219,21 @@ extension TabsViewController : UIScrollViewDelegate {
             }
         }
         
-        UIView.animate(withDuration: 0.3) {
-            let buttonTab = self.buttonsView?.subviews[self.scrollPage + 1] as! UIButton
-            buttonTab.setTitleColor(UIColor.white, for: .normal)
+        previousOffset = scrollView.contentOffset.x
+        scrollPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
+        
+        let buttonTab = self.buttonsView?.subviews[scrollPage + 1] as! UIButton
+        buttonTab.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page: Int = (scrollView.contentOffset.x < previousOffset && scrollPage > 0) ? scrollPage - 1 : scrollPage + 1
+        UIView.animate(withDuration: 0.2) {
+            let buttonTab = self.buttonsView?.subviews[page]
             var selectedButtonViewFrame = self.selectorTabButtonView?.frame
-            selectedButtonViewFrame?.origin.x = buttonTab.frame.minX
+            selectedButtonViewFrame?.origin.x = (scrollView.contentOffset.x * (buttonTab?.frame.width)!) / Utils.screenViewFrame().size.width
             self.selectorTabButtonView?.frame = selectedButtonViewFrame!
         }
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        self.scrollPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
-//        let offsetMoved = scrollView.contentOffset.x - previousOffset
-//        UIView.animate(withDuration: 0.3) {
-//            let buttonTab = self.buttonsView?.subviews[self.scrollPage + 1]
-//            var selectedButtonViewFrame = self.selectorTabButtonView?.frame
-//            selectedButtonViewFrame?.origin.x = (offsetMoved * (buttonTab?.frame.minX)!) / Utils.screenViewFrame().size.width
-//            self.selectorTabButtonView?.frame = selectedButtonViewFrame!
-//        }
-//    }
 }
 

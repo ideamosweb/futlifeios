@@ -66,10 +66,7 @@ class HomeViewController: TabsViewController {
     private func getAllChallengeRequest() {
         let user: UserModel? = LocalDataManager.user!
         if user != nil {
-            weak var weakSelf = self
-            DispatchQueue.main.async {
-                AppDelegate.showPKHUD()
-            }            
+            weak var weakSelf = self            
             ApiManager.getChallenges(userId: (user?.id)!) { (errorModel, challenges) in
                 if let strongSelf = weakSelf {
                     if (errorModel?.success)! {
