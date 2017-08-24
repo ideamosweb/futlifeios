@@ -32,7 +32,7 @@ class ProfileCell: CustomTableViewCell {
 //    }
     
     func showDetails() {
-        consolesView.fadeIn(duration: Constants.kDefaultAnimationDuration, closure: {()})
+        consolesView.fadeIn(duration: Constants.kDefaultAnimationDuration, alpha: 1.0, closure: {()})
     }
     
     func setGameImage(name: String, gameName: String, gameYear: NSNumber?, gameNumber: String) {

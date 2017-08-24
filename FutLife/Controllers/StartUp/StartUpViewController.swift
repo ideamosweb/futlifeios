@@ -194,6 +194,7 @@ class StartUpViewController: ViewController {
         weak var weakSelf = self
         let okAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
             if let strongSelf = weakSelf {
+                AppDelegate.showPKHUD()
                 strongSelf.goToHome()
             }
         }

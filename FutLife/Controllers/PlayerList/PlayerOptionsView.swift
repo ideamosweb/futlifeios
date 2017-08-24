@@ -12,6 +12,7 @@ class PlayerOptionsView: UIView {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    var delegate: PlayerListProtocol?
     
     @IBAction func onProfileButtonTouch(_ sender: Any) {
         
@@ -27,6 +28,14 @@ class PlayerOptionsView: UIView {
     
     @IBAction func onStatiticsButtonTouch(_ sender: Any) {
         
+    }    
+    
+    @IBAction func onCloseButtonTouch(_ sender: Any) {
+        DispatchQueue.main.async {
+            if let delegate = self.delegate {
+                delegate.closePlayerOptionsView()
+            }
+        }
     }
     
     func setUpView(player: User) {

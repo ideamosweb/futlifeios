@@ -28,6 +28,7 @@ class User: Model {
         id <- map["id"]
         name <- map["name"]
         userName <- map["username"]
+        email <- map["email"]
         avatar <- map["avatar"]
         thumbnail <- map["thumbnail"]
         social <- map["social"]

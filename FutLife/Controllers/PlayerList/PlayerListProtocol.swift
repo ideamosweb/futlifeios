@@ -8,4 +8,5 @@
 
 protocol PlayerListProtocol {
     func playerOptions(player: User)
+    func closePlayerOptionsView()
 }

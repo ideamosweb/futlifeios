@@ -12,7 +12,6 @@ target 'FutLife' do
   pod 'Alamofire'
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'AlamofireImage', '~> 3.1'
-  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   pod 'PKHUD', '~> 4.0'
   #pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
   #pod 'SDWebImage', '~>3.8'
@@ -37,8 +36,6 @@ target 'FutLife' do
   pod 'KeychainAccess'
   pod 'UrbanAirship-iOS-SDK'
   pod 'DateTools'
-  pod 'Masonry'
-  pod 'pop', '~> 1.0'
   #pod 'PageMenu'
   pod 'SlideMenuControllerSwift'
 end

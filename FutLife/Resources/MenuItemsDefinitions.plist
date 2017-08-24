@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Menu</key>
+	<array>
+		<dict>
+			<key>selector</key>
+			<string>onProfileTouch(_:player:)</string>
+			<key>slidingMenuImage</key>
+			<string>profile.leftMenuIcon</string>
+			<key>title</key>
+			<string>Mi Perfil</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onTopUpTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>topUp.leftMenuIcon</string>
+			<key>title</key>
+			<string>Recargas y Saldo</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onCashOutTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>cashOut.leftMenuIcon</string>
+			<key>title</key>
+			<string>Retiros</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onChallengesOverTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>challengesOver.leftMenuIcon</string>
+			<key>title</key>
+			<string>Retos Vencidos</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onChallengesReportedTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>challengesReported.leftMenuIcon</string>
+			<key>title</key>
+			<string>Retos Reportados</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onSettingsTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>settings.leftMenuIcon</string>
+			<key>title</key>
+			<string>Ajustes</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onIntroductionTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>intro.leftMenuIcon</string>
+			<key>title</key>
+			<string>Introducción</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onWhoTouch(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>aboutUs.leftMenuIcon</string>
+			<key>title</key>
+			<string>Quienes Somos</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onSuggestionTapped(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>mail.leftMenuIcon</string>
+			<key>title</key>
+			<string>Comentarios y Sugerencias</string>
+		</dict>
+		<dict>
+			<key>selector</key>
+			<string>onLogOutTapped(_:)</string>
+			<key>slidingMenuImage</key>
+			<string>logout.leftMenuIcon</string>
+			<key>title</key>
+			<string>Cerrar Sesión</string>
+		</dict>
+	</array>
+</dict>
+</plist>
