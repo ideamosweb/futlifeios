@@ -7,9 +7,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BEBAS___.TTF">
+            <string>Bebas</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengesViewController" customModule="FutLife" customModuleProvider="target">
             <connections>
+                <outlet property="noNotiLabel" destination="l3x-2u-T34" id="oJv-M4-35e"/>
                 <outlet property="tableView" destination="rko-RR-40y" id="Ulm-fe-l7s"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DnD-r5-AKz"/>
             </connections>
@@ -19,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rko-RR-40y">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rko-RR-40y">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
@@ -27,15 +33,27 @@
                         <outlet property="delegate" destination="-1" id="zc2-M8-jf2"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO TIENES NOTIFICACIONES PENDIENTES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-2u-T34">
+                    <rect key="frame" x="16" y="20" width="343" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="tHa-DF-V4k"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Bebas" family="Bebas" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="rko-RR-40y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="46Y-NS-Fie"/>
                 <constraint firstAttribute="bottom" secondItem="rko-RR-40y" secondAttribute="bottom" id="D4P-ek-93T"/>
                 <constraint firstAttribute="trailing" secondItem="rko-RR-40y" secondAttribute="trailing" id="DDG-5y-hDf"/>
+                <constraint firstItem="l3x-2u-T34" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Nxp-TC-Uz3"/>
+                <constraint firstAttribute="trailing" secondItem="l3x-2u-T34" secondAttribute="trailing" constant="16" id="U28-ZF-rwy"/>
+                <constraint firstItem="l3x-2u-T34" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Yuk-x5-wkj"/>
                 <constraint firstItem="rko-RR-40y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nDP-ji-l9L"/>
             </constraints>
-            <point key="canvasLocation" x="-140" y="-161"/>
+            <point key="canvasLocation" x="-140.5" y="-161.5"/>
         </view>
     </objects>
 </document>

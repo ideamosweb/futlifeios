@@ -44,7 +44,8 @@ struct ApiError {
                 } else {
                     errorModel.message = "Error desconocido, por favor intente más tarde"
                 }
-                
+            } else {
+                errorModel.message = "Error desconocido, por favor intente más tarde"
             }
             
             errorModel.success = false

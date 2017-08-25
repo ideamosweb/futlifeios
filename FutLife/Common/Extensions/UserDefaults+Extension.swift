@@ -29,10 +29,18 @@ extension UserDefaults {
         return nil
     }
     
-    func setDataObject(value: Any, forKey: String) {
-        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: value)
-        
-        UserDefaults.standard.set(encodedObject, forKey: forKey)
-        //UserDefaults.standard.setObject(value: encodedObject, forKey: forKey)
-    }    
+    func setDataObject(value: Any?, forKey: String) {
+        if let val = value {
+            let encodedObject = NSKeyedArchiver.archivedData(withRootObject: val)
+            
+            UserDefaults.standard.set(encodedObject, forKey: forKey)
+        } else {
+            remove(key: forKey)
+        }        
+    }
+    
+    func remove(key: String) {
+        let prefs = UserDefaults.standard        
+        prefs.removeObject(forKey:key)
+    }
 }

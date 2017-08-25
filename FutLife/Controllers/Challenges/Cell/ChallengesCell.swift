@@ -13,13 +13,12 @@ class ChallengesCell: CustomTableViewCell {
     
     @IBOutlet weak var defiantAvatar: UIImageView!
     @IBOutlet weak var defiantNameLabel: UILabel!
-    @IBOutlet weak var defiantScoreLabel: UILabel!
-    @IBOutlet weak var defiantStatusView: UILabel!
+    @IBOutlet weak var defiantConsoleLb: UILabel!
     
     @IBOutlet weak var rivalAvatar: UIImageView!
     @IBOutlet weak var rivalNameLabel: UILabel!
-    @IBOutlet weak var rivalScoreLabel: UILabel!
-    @IBOutlet weak var rivalStatusView: UILabel!
+    @IBOutlet weak var gameImageView: UIImageView!
+    @IBOutlet weak var rivalConsoleLb: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,24 +26,38 @@ class ChallengesCell: CustomTableViewCell {
     
     public func setUpView(challenge: Challenges, players: [User]) {
         if let players = matchPlayer(challenge: challenge, players: players) {
-            amountLabel.text = "\(challenge.amountBet ?? 0.0)"
-            defiantNameLabel.text = players.playerOne?.name
-            defiantScoreLabel.text = "\(challenge.scorePlayerOne ?? 0)"
+            amountLabel.textColor = UIColor().greenDefault()
+            let intValue: Float = Float(challenge.initialValue!)!
+            amountLabel.text = "$\(intValue)"
+            gameImageView.image = setGameImage(consoleId: challenge.consoleId!)
             
-            let placeholderImage = UIImage(named: "loading_placeholder")!
-            defiantAvatar.circularView()
-            if (players.playerOne?.avatar != nil) {
-                defiantAvatar.af_setImage(withURL: URL(string: (players.playerOne?.avatar!)!)!, placeholderImage: placeholderImage)
+            let placeholderImage = UIImage(named: "avatar_placeholder")!
+            if let p1 = players.playerOne {
+                defiantAvatar.circularView(borderColor: UIColor().greenDefault())
+                defiantNameLabel.text = !(p1.userName?.isEmpty)! ? players.playerOne?.userName : "¡UNETE!"
+                if (p1.avatar != nil) {
+                    defiantAvatar.af_setImage(withURL: URL(string: (p1.avatar)!)!, placeholderImage: placeholderImage)
+                } else {
+                    defiantAvatar.image = placeholderImage
+                }
             } else {
+                defiantAvatar.circularView(borderColor: UIColor().red())
+                defiantNameLabel.text = "¡UNETE!"
                 defiantAvatar.image = placeholderImage
             }
             
-            rivalNameLabel.text = players.playerTwo?.name
-            rivalScoreLabel.text = challenge.playerTwo
-            rivalAvatar.circularView()
-            if (players.playerTwo?.avatar != nil) {
-                rivalAvatar.af_setImage(withURL: URL(string: (players.playerTwo?.avatar!)!)!, placeholderImage: placeholderImage)
+            
+            if let p2 = players.playerTwo {
+                rivalAvatar.circularView(borderColor: UIColor().greenDefault())
+                rivalNameLabel.text = !(p2.userName?.isEmpty)! ? p2.userName : "¡UNETE!"
+                if (p2.avatar != nil) {
+                    rivalAvatar.af_setImage(withURL: URL(string: (p2.avatar)!)!, placeholderImage: placeholderImage)
+                } else {
+                    rivalAvatar.image = placeholderImage
+                }
             } else {
+                rivalAvatar.circularView(borderColor: UIColor().red(), stroke: 2)
+                rivalNameLabel.text = "¡UNETE!"
                 rivalAvatar.image = placeholderImage
             }
         }
@@ -64,5 +77,23 @@ class ChallengesCell: CustomTableViewCell {
         }
         
         return (playerOneMatch, playerTwoMatch)
+    }
+    
+    private func setGameImage(consoleId: String) -> UIImage {
+        var gameName: String
+        switch consoleId {
+        case "1":
+            gameName = "fifa16_mini"
+        case "2":
+            gameName = "fifa17_mini"
+        case "3":
+            gameName = "pes16_mini"
+        case "4":
+            gameName = "pes17_mini"
+        default:
+            gameName = "fifa16_mini"
+        }
+        
+        return UIImage(named: gameName)!
     }
 }

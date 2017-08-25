@@ -26,9 +26,9 @@ class PlayersListCell: CustomTableViewCell {
         userNameLabel.text = user.userName
         nameLabel.text = user.name
         
-        avatarImageView.circularView()
+        avatarImageView.circularView(borderColor: UIColor.white)
         
-        let placeholderImage = UIImage(named: "loading_placeholder")!
+        let placeholderImage = UIImage(named: "avatar_placeholder")!
         
         if (user.avatar != nil) {
             avatarImageView.af_setImage(withURL: URL(string: user.avatar!)!, placeholderImage: placeholderImage)

@@ -142,7 +142,7 @@ class ChooseConsoleViewController: CarouselViewController {
         for console in consoles {
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: VIEW_ITEM_WIDTH, height: VIEW_ITEM_HEIGHT))
             let imageUrl = URL(string: console.avatar!)!
-            let placeholderImage = UIImage(named: "loading_placeholder")!
+            let placeholderImage = UIImage(named: "loading_console")!
             
             imageView.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
             

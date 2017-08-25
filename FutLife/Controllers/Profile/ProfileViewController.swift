@@ -34,11 +34,11 @@ class ProfileViewController: ViewController {
     var profileCompleted: () -> Void
     
     let kTableViewHeight: CGFloat = 480.0
-    let kProfileCellHeight: CGFloat = 44.0
+    let kProfileCellHeight: CGFloat = 54.0
     let kProfileConsoleCellHeight: CGFloat = 22.0
     let kProfileCellIdentifier = "ProfileCell"
     var selectedCellIndexPath: IndexPath?
-    let kProfileCellConsolesHeight: CGFloat = 22.0
+    let kProfileCellConsolesHeight: CGFloat = 31.0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,11 +78,9 @@ class ProfileViewController: ViewController {
         }
         
         navigationItem.title = isConfirmButton ? "Resumen" : "Perfil"
-        completedRegisterButton.isHidden = !isConfirmButton
+        completedRegisterButton.isHidden = !isConfirmButton       
         
-        //guard !UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
-        
-        avatarImageView.circularView()
+        avatarImageView.circularView(borderColor: UIColor().greenDefault())
         
         configTablesAndScrollView()
     }
@@ -97,12 +95,15 @@ class ProfileViewController: ViewController {
         if let avatar: UIImage = LocalDataManager.avatar {
             avatarImageView.image = avatar
         }
+        
+        consolesButton.setTitleColor(UIColor.white, for: .normal)
+        gamesButton.setTitleColor(UIColor.lightGray, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        view.bringSubview(toFront: completedRegisterButton)
+        view.bringSubview(toFront: completedRegisterButton)        
     }
     
     private func configTablesAndScrollView() {
@@ -114,7 +115,8 @@ class ProfileViewController: ViewController {
         consolesTableView?.isScrollEnabled = true
         consolesTableView?.separatorStyle = .none
         consolesTableView?.clipsToBounds = false
-        consolesTableView?.isUserInteractionEnabled = false
+        consolesTableView?.isUserInteractionEnabled = true
+        consolesTableView?.rowHeight = kProfileCellHeight
         consolesTableView?.register(ProfileCell.nib(kProfileCellIdentifier), forCellReuseIdentifier: kProfileCellIdentifier)
         
         let gamesTableViewFrame = CGRect(x: (consolesTableView?.frame.maxX)!, y: 0, width: Utils.screenViewFrame().size.width, height: kTableViewHeight)
@@ -125,7 +127,8 @@ class ProfileViewController: ViewController {
         gamesTableView?.isScrollEnabled = true
         gamesTableView?.separatorStyle = .none
         gamesTableView?.clipsToBounds = false
-        gamesTableView?.isUserInteractionEnabled = false
+        gamesTableView?.isUserInteractionEnabled = true
+        gamesTableView?.rowHeight = kProfileCellHeight
         gamesTableView?.register(ProfileCell.nib(kProfileCellIdentifier), forCellReuseIdentifier: kProfileCellIdentifier)
         
         scrollView.contentSize = CGSize(width: (consolesTableView?.frame.width)! + (gamesTableView?.frame.width)!, height: scrollView.frame.height)
@@ -156,7 +159,10 @@ class ProfileViewController: ViewController {
         actionSheetController.addAction(choosePictureAction)
         
         if LocalDataManager.avatar != nil {
-            let takePictureAction = UIAlertAction(title: "Eliminar Photo", style: .destructive) { action -> Void in }
+            let takePictureAction = UIAlertAction(title: "Eliminar Photo", style: .destructive) { action -> Void in
+                self.deletePicture()
+            }
+            
             actionSheetController.addAction(takePictureAction)
         }
         
@@ -166,6 +172,8 @@ class ProfileViewController: ViewController {
     @IBAction func onConsolesButtonTouch(_ sender: Any) {
         let point: CGPoint = CGPoint(x: (consolesTableView?.frame.minX)!, y: 0.0)
         scrollView.setContentOffset(point, animated: true)
+        consolesButton.setTitleColor(UIColor.white, for: .normal)
+        gamesButton.setTitleColor(UIColor.lightGray, for: .normal)
         
         UIView.animate(withDuration: 0.3) { 
             var tabSelectedSeparatorViewFrame: CGRect = self.tabSelectedSeparatorView.frame
@@ -177,6 +185,8 @@ class ProfileViewController: ViewController {
     @IBAction func onGamesButtonTouch(_ sender: Any) {
         let point: CGPoint = CGPoint(x: (gamesTableView?.frame.minX)!, y: 0.0)
         scrollView.setContentOffset(point, animated: true)
+        consolesButton.setTitleColor(UIColor.lightGray, for: .normal)
+        gamesButton.setTitleColor(UIColor.white, for: .normal)
         
         UIView.animate(withDuration: 0.3) {
             var tabSelectedSeparatorViewFrame: CGRect = self.tabSelectedSeparatorView.frame
@@ -259,6 +269,11 @@ class ProfileViewController: ViewController {
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
+    
+    func deletePicture() {
+        avatarImageView.image = UIImage(named: "avatar_placeholder")
+        LocalDataManager.avatar = nil
+    }
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -269,59 +284,32 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             print("Info did not have the required UIImage for the Original Image")
             dismiss(animated: true)
             return
-        }
-        
-        avatarImageView.image = image
+        }        
         
         
         // TODO: Move to other side
         if user != nil {
-            if let data = UIImageJPEGRepresentation(image, 1.0) {
+            if let data = UIImageJPEGRepresentation(image, 0.33) {
                 let params: Parameters = ["user_id": "\(user!.id)"]
                 
                 dismiss(animated: true)
                 weak var weakSelf = self
-                PKHUD.sharedHUD.contentView = PKHUDProgressView()
-                PKHUD.sharedHUD.show()
+                AppDelegate.showPKHUD()
                 ApiManager.uploadAvatarRequest(registerAvatarParameters: params, imageData: data, completion: { (errorModel) in
-                    PKHUD.sharedHUD.hide(afterDelay: 0)
+                    AppDelegate.hidePKHUD()
                     if let strongSelf = weakSelf {
                         if (errorModel?.success)! {
-                            //strongSelf.registerCompleted()
+                            LocalDataManager.avatar = image
+                            strongSelf.avatarImageView.image = image
                         } else {
                             DispatchQueue.main.async {
                                 strongSelf.presentAlert(title: "Error", message: "Error desconocido, intente mas tarde", style: alertStyle.formError)
-                                
                             }
                         }
-                        
-                        LocalDataManager.avatar = image
                     }
-                    
                 })
-                
             }
-            
         }
-        
-        
-        /*upload(
-         image: image,
-         progressCompletion: { [unowned self] percent in
-         self.progressView.setProgress(percent, animated: true)
-         },
-         completion: { [unowned self] tags, colors in
-         self.takePictureButton.isHidden = false
-         self.progressView.isHidden = true
-         self.activityIndicatorView.stopAnimating()
-         
-         self.tags = tags
-         self.colors = colors
-         
-         self.performSegue(withIdentifier: "ShowResults", sender: self)
-         })*/
-        
-        //dismiss(animated: true)
     }
 }
 
@@ -330,7 +318,7 @@ extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedCellIndexPath != nil && selectedCellIndexPath?.compare(indexPath) == ComparisonResult.orderedSame {
-            if tableView == gamesTableView {
+            if tableView == consolesTableView {
                 return kProfileCellHeight + kProfileCellConsolesHeight
             }
             
@@ -348,11 +336,11 @@ extension ProfileViewController : UITableViewDelegate {
                 tableView.reloadRows(at: [indexPath], with: .none)
                 return nil
             } else {
-                tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
+                tableView.reloadRows(at: [selectedCellIndexPath!], with: .automatic)
             }
         } else {
             selectedCellIndexPath = indexPath
-            tableView.reloadRows(at: [selectedCellIndexPath!], with: .none)
+            tableView.reloadRows(at: [selectedCellIndexPath!], with: .automatic)
         }
     
         return indexPath
@@ -384,16 +372,25 @@ extension ProfileViewController : UITableViewDataSource {
                 let console = consoles[indexPath.row]
                 
                 profileCell.setGameImage(name: console.avatar, gameName: console.name, gameYear: console.year as NSNumber, gameNumber: "\(indexPath.row + 1)")
-                profileCell.isUserInteractionEnabled = false
+                if let games: [GameModel] = LocalDataManager.gamesSelected {
+                    profileCell.setGames(games: games, width: profileCell.frame.width)
+                }
+                
+                profileCell.isUserInteractionEnabled = true
+                profileCell.hideYearLabel()
             }
         } else {
             if let games: [GameModel] = LocalDataManager.gamesSelected {
                 let game = games[indexPath.row]
                 
                 profileCell.setGameImage(name: game.avatar, gameName: game.name, gameYear: game.year as NSNumber, gameNumber: "\(indexPath.row + 1)")
-                profileCell.isUserInteractionEnabled = true
-            }
-        }        
+                profileCell.isUserInteractionEnabled = false
+            }            
+            
+            profileCell.hideArrow()
+        }
+        
+        profileCell.layoutIfNeeded()
         
         return profileCell
     }

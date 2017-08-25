@@ -137,7 +137,7 @@ class ChooseGameViewController: CarouselViewController {
         for game in games {
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: VIEW_ITEM_WIDTH, height: VIEW_ITEM_HEIGHT))
             let imageUrl = URL(string: game.avatar!)!
-            let placeholderImage = UIImage(named: "loading_placeholder")!
+            let placeholderImage = UIImage(named: "loading_game")!
             
             imageView.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
             

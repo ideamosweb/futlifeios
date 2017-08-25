@@ -42,7 +42,7 @@ class PlayerOptionsView: UIView {
         nameLabel.text = player.name
         userNameLabel.text = player.userName
         
-        avatar.circularView()
+        avatar.circularView(borderColor: UIColor.lightGray)
         
         let placeholderImage = UIImage(named: "loading_placeholder")!
         

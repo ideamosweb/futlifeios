@@ -10,9 +10,10 @@ import UIKit
 
 class ChallengesViewController: ViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noNotiLabel: UILabel!
     var players: [User]
     var challenges: [Challenges]
-    let kChallengesCellHeight: CGFloat = 64.0
+    let kChallengesCellHeight: CGFloat = 84.0
     let kChallengesCellIdentifier = "ChallengesCell"
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +30,8 @@ class ChallengesViewController: ViewController {
         super.viewDidLoad()
 
         tableView.register(ChallengesCell.nib(kChallengesCellIdentifier), forCellReuseIdentifier: kChallengesCellIdentifier)
+        
+        noNotiLabel.isHidden = (challenges.count > 0)
     }
     
     override func viewDidLayoutSubviews() {

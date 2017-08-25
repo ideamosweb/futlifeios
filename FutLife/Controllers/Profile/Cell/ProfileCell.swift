@@ -15,6 +15,8 @@ class ProfileCell: CustomTableViewCell {
     @IBOutlet weak var gameYearLabel: UILabel!
     @IBOutlet weak var gameNumberLabel: UILabel!
     @IBOutlet weak var consolesView: UIView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var arrowImageView: UIImageView!
     
     let kConsoleImageWidth: CGFloat = 80.0
     let kConsoleImageHeight: CGFloat = 20.0
@@ -24,15 +26,28 @@ class ProfileCell: CustomTableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        //selected ? showDetails() : hideDetails()
+        selected ? showDetails() : hideDetails()
     }
     
-//    func hideDetails() {
-//        consolesView.fadeOut(duration: Constants.kDefaultAnimationDuration, closure: {()})
-//    }
+    private func hideDetails() {
+        let arrowCollapse = UIImage(named: "arrow_down_collapse")
+        arrowImageView.image = arrowCollapse
+        consolesView.fadeOut(duration: Constants.kDefaultAnimationDuration, alpha: 0, closure: {()})
+    }
     
-    func showDetails() {
+    private func showDetails() {
+        let arrowCollapse = UIImage(named: "arrow_down_expanded")
+        arrowImageView.image = arrowCollapse
         consolesView.fadeIn(duration: Constants.kDefaultAnimationDuration, alpha: 1.0, closure: {()})
+    }
+    
+    func hideYearLabel() {
+        topConstraint.constant = 14
+        gameYearLabel.isHidden = true
+    }
+    
+    func hideArrow() {
+        arrowImageView.isHidden = true
     }
     
     func setGameImage(name: String, gameName: String, gameYear: NSNumber?, gameNumber: String) {
@@ -50,47 +65,48 @@ class ProfileCell: CustomTableViewCell {
         gameNumberLabel.text = gameNumber
     }
     
-    func setConsoles(consoles: [ConsoleModel], width: CGFloat) {
-        var previousImage: UIImageView?
+    func setGames(games: [GameModel], width: CGFloat) {
+        var previousView: UIView?
         
         for subView: UIView in consolesView.subviews {
             subView.removeFromSuperview()
         }
         
-        for console: ConsoleModel in consoles {
-            if previousImage != nil {
-                let consoleImage: UIImageView = UIImageView(frame: CGRect(x: (previousImage?.frame.minX)! - kConsoleImageWidth - 5.0, y: 1.0, width: kConsoleImageWidth, height: kConsoleImageHeight))
-                if console.name == "XBOX ONE" {
-                    consoleImage.image = UIImage(named: "one_thumb2")
-                } else if (console.name == "XBOX 360") {
-                    consoleImage.image = UIImage(named: "360_thumb")
-                } else if (console.name == "PS3") {
-                    consoleImage.image = UIImage(named: "ps3_thumb")
-                } else {
-                    consoleImage.image = UIImage(named: "ps4_thumb")
+        for game: GameModel in games {
+            if previousView != nil {
+                let gameViewFrame = CGRect(x: (previousView?.frame.minX)! - (previousView?.frame.width)! - 5, y: (previousView?.frame.origin.y)!, width: (previousView?.frame.width)!, height: (previousView?.frame.height)!)
+                
+                let nextGameView: UIView = previousView?.mutableCopy() as! UIView
+                nextGameView.frame = gameViewFrame
+                for subview in nextGameView.subviews {
+                    if subview is UILabel {
+                        let temp: UILabel = subview as! UILabel
+                        temp.text = game.name
+                    }
                 }
                 
-                consoleImage.contentMode = .scaleAspectFit
+                previousView = nextGameView
+                consolesView.addSubview(nextGameView)
                 
-                previousImage = consoleImage
-                consolesView.addSubview(consoleImage)
             } else {
-                let consoleImage: UIImageView = UIImageView(frame: CGRect(x: width - kConsoleImageWidth - 5.0, y: 1.0, width: kConsoleImageWidth, height: kConsoleImageHeight))
+                let ballImage: UIImageView = UIImageView(image: UIImage(named: "ic_football"))
+                ballImage.frame = CGRect(x: 2, y: 2, width: 16, height: 16)
                 
-                if (console.name == "XBOX ONE") {
-                    consoleImage.image = UIImage(named: "one_thumb2")
-                } else if (console.name == "XBOX 360") {
-                    consoleImage.image = UIImage(named: "360_thumb")
-                } else if (console.name == "PS3") {
-                    consoleImage.image = UIImage(named: "ps3_thumb")
-                } else {
-                    consoleImage.image = UIImage(named: "ps4_thumb")
-                }
+                let gameName = game.name
+                let textSize = (gameName as NSString).size(attributes: [NSFontAttributeName : UIFont().bebasFont(size: 20)])
+                let label = UILabel(frame: CGRect(x: ballImage.frame.maxX + 2, y: 2, width: textSize.width, height: textSize.height))
+                label.textAlignment = .right
+                label.textColor = UIColor.black
+                label.font = UIFont().bebasFont(size: 20)
+                label.text = game.name
                 
-                consoleImage.contentMode = .scaleAspectFit
-                
-                previousImage = consoleImage
-                consolesView.addSubview(consoleImage)
+                let gameView: UIView = UIView(frame: CGRect(x: Utils.screenViewFrame().width - kConsoleImageWidth - 5.0, y: 2.0, width: label.intrinsicContentSize.width + 30, height: kConsoleImageHeight))
+                gameView.backgroundColor = UIColor().orange()
+                gameView.layer.cornerRadius = 5
+                gameView.addSubview(ballImage)
+                gameView.addSubview(label)
+                previousView = gameView
+                consolesView.addSubview(gameView)
             }
         }
     }

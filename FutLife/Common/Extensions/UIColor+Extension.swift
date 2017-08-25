@@ -29,7 +29,11 @@ extension UIColor {
         return UIColor.init(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1.0)
     }
     
-    func redColor() -> UIColor {
-        return UIColor.init(red: 255.0/255, green: 47.0/255, blue: 45.0/255, alpha: 1.0)
+    func orange() -> UIColor {
+        return UIColor.init(red: 246.0/255, green: 192.0/255, blue: 0.0/255, alpha: 1.0)
+    }
+    
+    func red() -> UIColor {
+        return UIColor.init(red: 190.0/255, green: 61.0/255, blue: 58.0/255, alpha: 1.0)
     }
 }

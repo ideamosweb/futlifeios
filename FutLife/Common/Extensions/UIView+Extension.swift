@@ -30,10 +30,11 @@ extension UIView {
         }
     }
     
-    func circularView() {
+    func circularView(borderColor: UIColor, stroke: CGFloat = 2.0) {
         self.layer.cornerRadius = self.frame.width / 2
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = stroke
         self.clipsToBounds = true
     }
     

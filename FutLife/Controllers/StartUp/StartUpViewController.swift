@@ -189,7 +189,7 @@ class StartUpViewController: ViewController {
     }
     
     private func showSuccessMessage() {
-        let alertController = UIAlertController(title: "Felicitaciones!", message: "El registro ha sido exitoso, bienvenido a Futlife.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "¡Felicitaciones!", message: "El registro ha sido exitoso, bienvenido a Futlife.", preferredStyle: UIAlertControllerStyle.alert)
         
         weak var weakSelf = self
         let okAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in

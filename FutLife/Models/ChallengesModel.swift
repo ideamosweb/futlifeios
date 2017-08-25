@@ -25,10 +25,10 @@ class Challenges: Model {
     var playerTwo: String?
     var scorePlayerOne: Int?
     var scorePlayerTwo: Int?
-    var consoleId: Int?
+    var consoleId: String?
     var gameId: Int?
-    var amountBet: Float?
-    var initialValue: Float?
+    var amountBet: String?
+    var initialValue: String?
     var deadLine: Date?
     var state: String?
     var read: Bool?

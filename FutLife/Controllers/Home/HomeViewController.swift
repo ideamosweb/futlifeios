@@ -101,9 +101,10 @@ class HomeViewController: TabsViewController {
                 if (errorModel?.success)! {
                     let playersListVC = PlayersListViewController(players: players)
                     let challengesVC = ChallengesViewController(players: players, challenges: challenges)
+                    let myChallengesVC = ChallengesViewController(players: players, challenges: [])
                     
                     strongSelf.tabsTitles = ["MIS RETOS", "JUGADORES", "¡ÚNETE!"]
-                    strongSelf.tabsViewControllers = [ViewController(), playersListVC, challengesVC]
+                    strongSelf.tabsViewControllers = [myChallengesVC, playersListVC, challengesVC]
                     
                     strongSelf.showTabDefault = 2
                     strongSelf.reloadTabs()

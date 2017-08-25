@@ -40,11 +40,11 @@ class NavMenuViewController: ViewController {
         userNameLb.text = player.userName
         emailLb.text = player.email
         
-        avatar.circularView()
-        let placeholderImage = UIImage(named: "loading_placeholder")!
+        avatar.circularView(borderColor: UIColor().greenDefault())
+        let placeholderImage = UIImage(named: "avatar_placeholder")!
         
-        if (player.avatar != "") {
-            avatar.af_setImage(withURL: URL(string: player.avatar)!, placeholderImage: placeholderImage)
+        if let avatar = LocalDataManager.avatar {
+            self.avatar.image = avatar
         } else {
             avatar.image = placeholderImage
         }
@@ -91,11 +91,11 @@ extension NavMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let keys = Array(menuItems!.keys)
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: CGFloat(kHeightForHeaderSections)))
-        headerView.backgroundColor = UIColor(red: 2.0/255.0, green: 14.0/255.0, blue: 23.0/255.0, alpha: 1.0)
+        headerView.backgroundColor = UIColor().darkBlue()
         let headerText = keys[section]
         let titleLabel = UILabel(frame: CGRect(x: 10.0, y: 5.0, width: tableView.frame.width - 10, height: CGFloat(kHeightForHeaderSections) - 5))
         titleLabel.font = UIFont(name: "Helvetica Neue", size: 20)
-        titleLabel.backgroundColor = UIColor(red: 2.0/255.0, green: 14.0/255.0, blue: 23.0/255.0, alpha: 1.0)
+        titleLabel.backgroundColor = UIColor().darkBlue()
         titleLabel.textColor = UIColor.lightGray
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 0
@@ -108,7 +108,7 @@ extension NavMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.backgroundColor = UIColor(red: 2.0/255.0, green: 14.0/255.0, blue: 23.0/255.0, alpha: 1.0)
+        cell.backgroundColor = UIColor().darkBlue()
         cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 16)

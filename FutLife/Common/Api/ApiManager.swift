@@ -74,21 +74,15 @@ class ApiManager {
     // POST: Upload avatar
     public static func uploadAvatarRequest(registerAvatarParameters: Parameters, imageData: Data, completion: @escaping (ErrorModel?) -> Void) {
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            //multipartFormData.append(imageData, withName: "avatar", fileName: "avatar_image.jpeg", mimeType: "image/jpeg")
+            multipartFormData.append(imageData, withName: "avatar", fileName: "avatar.jpeg", mimeType: "image/jpeg")
             
             for (key, value) in registerAvatarParameters {
                 multipartFormData.append((value as! String).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!, withName: key)
-            }
-            multipartFormData.append(imageData, withName: "avatar")
+            }            
         }, to:"\(Constants.queryURLPath)/user/avatar")
         { (result) in
             switch result {
             case .success(let upload, _, _):
-                
-                upload.uploadProgress(closure: { (progress) in
-                    //Print progress
-                })
-                
                 upload.responseJSON { response in
                     //print response.result
                     // Verify if exist an error an return a message
@@ -96,32 +90,19 @@ class ApiManager {
                     completion(errorModel)
                 }
                 
-            case .failure( _): break
-                //print encodingError.description
+            case .failure( _):
+                let errorModel: ErrorModel = ApiError.checkError(responseData: nil, statusCode: (500))
+                completion(errorModel)
             }
         }
-        
-        
-        
     }
     
-    // POST: Register
+    // POST: Create user
     public static func createUser(createUserParameters: Parameters, completion: @escaping (ErrorModel?) -> Void) {
         Alamofire.request(ApiRouter.registerPreferences(registerPreferencesParameters: createUserParameters)).responseObject { (response: DataResponse<RegisterCreateResponse>) in
-            //let registerResponse = response.result.value
             
             // Verify if exist an error an return a message
             let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
-            if errorModel.success! {
-                // Set response to Model constants
-//                RegisterModel.token = loginResponse?.token
-//                RegisterModel.success = loginResponse?.success
-//                RegisterModel.data = loginResponse?.data
-//                
-//                let user: User = (loginResponse?.data)!
-//                let userModel: UserModel = UserModel(id: user.id, name: user.name, userName: user.userName, email: user.email, avatar: user.avatar, thumbnail: user.thumbnail, social: user.social, active: user.active, createdAt: user.createdAt, updatedAt: user.updatedAt, cityName: user.cityName)
-//                LocalDataManager.user = userModel
-            }
             
             completion(errorModel)
         }

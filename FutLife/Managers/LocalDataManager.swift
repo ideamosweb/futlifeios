@@ -49,7 +49,7 @@ struct LocalDataManager {
             return UserDefaults().dataObjectForKey(key: kUserAvatar) as? UIImage
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue!, forKey: kUserAvatar)
+            UserDefaults().setDataObject(value: newValue, forKey: kUserAvatar)
         }
     }
     

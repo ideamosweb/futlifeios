@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>AlamofireNetworkActivityIndicator.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>AlamofireObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -30,11 +25,6 @@
 			<false/>
 		</dict>
 		<key>KeychainAccess.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -69,11 +59,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>pop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -82,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>115FA0D867E07C04838493890DBD8D29</key>
+		<key>2D35453C639ACC182A283A9E483B4AC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5ED879EE6467F0F9ECBEDCE958BD9081</key>
+		<key>5EB03AD2DEBB8284B23FBA5487671D75</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65F2C28ACA80A52D9D68767C98BA17F3</key>
+		<key>61586E5F11B5C2CDAE9A00F947C2EC0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85A67A0E6C7ACD92E5A482B11EDA5FB4</key>
+		<key>6FF31478B73F82EF7A2441AF750F3AA6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,22 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8747D5E9AAEE42B68507A587972072C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D52144DE9D7255DE912490FF5A806573</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D7A75F149082140741FC1E0B5B2863C8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F284C0BF55B33769CE16D5BC538FC0A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
