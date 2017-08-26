@@ -10,6 +10,7 @@ import UIKit
 
 class NavMenuViewController: ViewController {
     let kHeightForHeaderSections = 44.0
+    let kHeightRows: CGFloat = 60.0
     let kResuseIdentifierCell = "NavMainMenuCell"
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,6 +23,7 @@ class NavMenuViewController: ViewController {
     var menuItems: Dictionary<String, Any>? //Dictionary
     var items: [Dictionary<String, Any>]? //Array
     var navMenuDatasource: NSDictionary!
+    var menuManager: MenuManager
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,6 +33,8 @@ class NavMenuViewController: ViewController {
         self.player = player
         self.menuItems = menuItems
         self.items = menuItems?["Menu"] as? [Dictionary<String, Any>]
+        self.menuManager = MenuManager()
+        
         super.init(nibName: "NavMenuViewController", bundle: Bundle.main)
     }
 
@@ -46,18 +50,41 @@ class NavMenuViewController: ViewController {
         if let avatar = LocalDataManager.avatar {
             self.avatar.image = avatar
         } else {
-            avatar.image = placeholderImage
+            if let userAvatar = LocalDataManager.user?.avatar, !userAvatar.isEmpty  {
+                self.avatar.af_setImage(withURL: URL(string: userAvatar)!, placeholderImage: placeholderImage)
+            } else {
+                avatar.image = placeholderImage
+            }
         }
         
         tableView.tableHeaderView = headerView
         tableView.tableHeaderView?.autoresizesSubviews = true
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
     }
+    
+    func performMenu(selector: String) {
+        menuManager.perform(NSSelectorFromString(selector), with: nil)
+    }
 }
 
 //MARK: UITableViewDelegate
 extension NavMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemDict = items?[indexPath.row]
+        if let selector: String = itemDict?["selector"] as? String {
+            if menuManager.responds(to: NSSelectorFromString(selector)) {
+                if indexPath.row == ((items?.count)! - 1) {
+                    presentAlert(title: "FutLife", message: "Realmente quieres cerrar sesión?", style: .cancel, completion: { (close) in
+                        if close {
+                            self.performMenu(selector: selector)
+                        }
+                    })
+                } else {
+                    performMenu(selector: selector)
+                }
+                
+            }
+        }
         
     }
 }
@@ -85,7 +112,7 @@ extension NavMenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54
+        return kHeightRows
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -94,7 +121,7 @@ extension NavMenuViewController: UITableViewDataSource {
         headerView.backgroundColor = UIColor().darkBlue()
         let headerText = keys[section]
         let titleLabel = UILabel(frame: CGRect(x: 10.0, y: 5.0, width: tableView.frame.width - 10, height: CGFloat(kHeightForHeaderSections) - 5))
-        titleLabel.font = UIFont(name: "Helvetica Neue", size: 20)
+        titleLabel.font = UIFont(name: "Helvetica Neue", size: 15)
         titleLabel.backgroundColor = UIColor().darkBlue()
         titleLabel.textColor = UIColor.lightGray
         titleLabel.textAlignment = .left
@@ -112,6 +139,7 @@ extension NavMenuViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
+        cell.textLabel?.numberOfLines = 0
         
         let itemDict = items?[indexPath.row]
         if let text = itemDict?["title"] {

@@ -16,7 +16,6 @@ class HomeViewController: TabsViewController {
     var homeCompletion: () -> Void?
     var darkBgButton: UIButton?
     var playerOptionsView: PlayerOptionsView?
-    var isMenuOpen: Bool
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -27,8 +26,7 @@ class HomeViewController: TabsViewController {
     }
     
     init(completion: @escaping () -> Void?) {
-        homeCompletion = completion
-        isMenuOpen = false
+        homeCompletion = completion        
         super.init(nibName: "HomeViewController", bundle: Bundle.main)
     }
     
@@ -44,13 +42,7 @@ class HomeViewController: TabsViewController {
         iconTitleView.image = icon
         iconTitleView.contentMode = .scaleAspectFit
         parent?.navigationItem.titleView = iconTitleView
-        
-        let menuButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 17.0))
-        menuButton.setImage(UIImage(named: "slidingMenuButton"), for: .normal)
-        menuButton.addTarget(self, action: #selector(onMenuButtonTouch), for: .touchUpInside)
-        menuButton.accessibilityIdentifier = "Side_Menu_Button"
-        
-        parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
+        parent?.addLeftBarButtonWithImage(UIImage(named: "slidingMenuButton")!)
         
         navigationBar(show: true, backgroundColor: UIColor().darkBlue())
         
@@ -75,7 +67,7 @@ class HomeViewController: TabsViewController {
                     if (errorModel?.success)! {
                         strongSelf.getPlayersRequest(user: user!, challenges: challenges)
                     } else {
-                        strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
+                        strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     }
                 }
             }
@@ -86,17 +78,6 @@ class HomeViewController: TabsViewController {
         weak var weakSelf = self
         ApiManager.getPlayers(userId: user.id) { (errorModel, players) in
             if let strongSelf = weakSelf {
-                // Get left VC of navigationController for set the new one
-                var slideViewController: SlideMenuController?
-                for vc in (strongSelf.navigationController?.viewControllers)! {
-                    if vc is SlideMenuController {
-                        let menuItems: Dictionary = MenuManager.menuItemDefinition                        
-                        let navVC = NavMenuViewController(player: LocalDataManager.user!, menuItems: menuItems)
-                        slideViewController = vc as? SlideMenuController
-                        slideViewController?.changeLeftViewController(navVC, closeLeft: true)
-                    }
-                }
-                
                 AppDelegate.hidePKHUD()
                 if (errorModel?.success)! {
                     let playersListVC = PlayersListViewController(players: players)
@@ -109,20 +90,10 @@ class HomeViewController: TabsViewController {
                     strongSelf.showTabDefault = 2
                     strongSelf.reloadTabs()
                 } else {
-                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                 }
             }
         }
-    }
-    
-    func onMenuButtonTouch() {
-        if !isMenuOpen {
-            self.slideMenuController()?.openLeft()
-            isMenuOpen = true
-        } else {
-            self.slideMenuController()?.closeLeft()
-            isMenuOpen = false
-        }        
     }
     
     func hidePlayerOptions() {
@@ -131,7 +102,7 @@ class HomeViewController: TabsViewController {
             playerOptionsViewFrame?.origin.y = Utils.screenViewFrame().height + 20.0
             self.playerOptionsView?.frame = playerOptionsViewFrame!
         }) { (finished) in
-            self.darkBgButton?.fadeOut(duration: 0.3, alpha: 0.0, closure: {()})
+            self.darkBgButton?.fadeOut(duration: 0.3, alpha: 0.0, completion: nil)
         }        
     }
 }
@@ -145,7 +116,7 @@ extension HomeViewController: PlayerListProtocol {
         darkBgButton?.alpha = 0
         darkBgButton?.isUserInteractionEnabled = true
         darkBgButton?.addTarget(self, action: #selector(hidePlayerOptions), for: .touchUpInside)
-        darkBgButton?.fadeIn(duration: 0.3, alpha: 0.5, closure: {()})
+        darkBgButton?.fadeIn(duration: 0.3, alpha: 0.5, completion: nil)
         
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(darkBgButton!)

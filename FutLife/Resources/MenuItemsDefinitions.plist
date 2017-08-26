@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>selector</key>
-			<string>onProfileTouch(_:player:)</string>
+			<string>onProfileTouch:player:</string>
 			<key>slidingMenuImage</key>
 			<string>profile.leftMenuIcon</string>
 			<key>title</key>
@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onTopUpTouch(_:)</string>
+			<string>onTopUpTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>topUp.leftMenuIcon</string>
 			<key>title</key>
@@ -22,7 +22,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onCashOutTouch(_:)</string>
+			<string>onCashOutTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>cashOut.leftMenuIcon</string>
 			<key>title</key>
@@ -30,7 +30,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onChallengesOverTouch(_:)</string>
+			<string>onChallengesOverTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>challengesOver.leftMenuIcon</string>
 			<key>title</key>
@@ -38,7 +38,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onChallengesReportedTouch(_:)</string>
+			<string>onChallengesReportedTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>challengesReported.leftMenuIcon</string>
 			<key>title</key>
@@ -46,7 +46,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onSettingsTouch(_:)</string>
+			<string>onSettingsTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>settings.leftMenuIcon</string>
 			<key>title</key>
@@ -54,7 +54,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onIntroductionTouch(_:)</string>
+			<string>onIntroductionTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>intro.leftMenuIcon</string>
 			<key>title</key>
@@ -62,7 +62,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onWhoTouch(_:)</string>
+			<string>onWhoTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>aboutUs.leftMenuIcon</string>
 			<key>title</key>
@@ -70,7 +70,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onSuggestionTapped(_:)</string>
+			<string>onSuggestionTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>mail.leftMenuIcon</string>
 			<key>title</key>
@@ -78,7 +78,7 @@
 		</dict>
 		<dict>
 			<key>selector</key>
-			<string>onLogOutTapped(_:)</string>
+			<string>onLogOutTouch:</string>
 			<key>slidingMenuImage</key>
 			<string>logout.leftMenuIcon</string>
 			<key>title</key>

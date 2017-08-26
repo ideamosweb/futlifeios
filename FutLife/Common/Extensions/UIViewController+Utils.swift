@@ -16,7 +16,7 @@ enum alertStyle {
 
 
 extension UIViewController {
-    func presentAlert(title: String, message: String, style: alertStyle) {
+    func presentAlert(title: String, message: String, style: alertStyle, completion: ((Bool) -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         var actions: [UIAlertAction] = []
@@ -26,8 +26,13 @@ extension UIViewController {
             
             actions.append(okAction)
         case .cancel:
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
-            let cancelAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                completion!(true)
+                
+            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
+                completion!(false)
+            })
             
             actions.append(okAction)
             actions.append(cancelAction)
@@ -37,6 +42,8 @@ extension UIViewController {
             alertController.addAction(action)
         }
         
-        present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }

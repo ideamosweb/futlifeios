@@ -32,13 +32,13 @@ class ProfileCell: CustomTableViewCell {
     private func hideDetails() {
         let arrowCollapse = UIImage(named: "arrow_down_collapse")
         arrowImageView.image = arrowCollapse
-        consolesView.fadeOut(duration: Constants.kDefaultAnimationDuration, alpha: 0, closure: {()})
+        consolesView.fadeOut(duration: Constants.kDefaultAnimationDuration, alpha: 0, completion: nil)
     }
     
     private func showDetails() {
         let arrowCollapse = UIImage(named: "arrow_down_expanded")
         arrowImageView.image = arrowCollapse
-        consolesView.fadeIn(duration: Constants.kDefaultAnimationDuration, alpha: 1.0, closure: {()})
+        consolesView.fadeIn(duration: Constants.kDefaultAnimationDuration, alpha: 1.0, completion: nil)
     }
     
     func hideYearLabel() {

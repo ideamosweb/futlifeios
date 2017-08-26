@@ -35,17 +35,13 @@ class PreferencesModel: NSObject, NSCoding {
     let consoleId: Int?
     let playerId: Int?
     let active: Bool?
-    let console: Console?
-    let games: [Game]?
     
-    init(id: Int?, userId: Int?, consoleId: Int?, playerId: Int?, active: Bool?, console: Console?, games: [Game]?) {
+    init(id: Int?, userId: Int?, consoleId: Int?, playerId: Int?, active: Bool?) {
         self.id = id ?? 0
         self.userId = userId ?? 0
         self.consoleId = consoleId ?? 0
         self.playerId = playerId ?? 0
         self.active = active ?? false
-        self.console = console ?? Console(map: nil)
-        self.games = games ?? []
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,8 +50,6 @@ class PreferencesModel: NSObject, NSCoding {
         self.consoleId = aDecoder.decodeInteger(forKey: "consoleId")
         self.playerId = aDecoder.decodeInteger(forKey: "playerId")
         self.active = aDecoder.decodeBool(forKey: "active")
-        self.console = aDecoder.decodeObject(forKey: "userName") as? Console ?? Console(map: nil)
-        self.games = aDecoder.decodeObject(forKey: "userName") as? [Game] ?? []
     }
     
     func encode(with aCoder: NSCoder) {
@@ -63,8 +57,6 @@ class PreferencesModel: NSObject, NSCoding {
         aCoder.encode(userId, forKey: "userId")
         aCoder.encode(consoleId, forKey: "consoleId")
         aCoder.encode(playerId, forKey: "playerId")
-        aCoder.encode(active, forKey: "active")
-        aCoder.encode(console, forKey: "console")
-        aCoder.encode(games, forKey: "games")
+        aCoder.encode(active, forKey: "active")        
     }
 }

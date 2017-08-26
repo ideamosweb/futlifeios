@@ -76,26 +76,20 @@ class LoginViewController: FormViewController {
                 strongSelf.loginUser()
             }
         }) { (errorMessage) in
-            presentAlert(title: "Error", message: errorMessage, style: .formError)
+            presentAlert(title: "Error", message: errorMessage, style: .formError, completion: nil)
         }
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
-        let registerController = RegisterViewController(registerCompleted: {() in
-            self.chooseConsoleClosure()
-        })
-        
-        //let consoleVC = ChooseConsoleViewController(navBar: true, chooseConsoleCompleted: ())
-        
-        navigationController?.pushViewController(registerController, animated: true)
+        registerClosure()
     }
     
     @IBAction func onFacebookLoginButtonTouch(_ sender: Any) {
-        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError, completion: nil)
     }
     
     @IBAction func onforgetPasswordButtonTouch(_ sender: Any) {
-        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError)
+        presentAlert(title: "Estimado Jugador", message: "Funcionalidad en desarrollo", style: .formError, completion: nil)
     }
     
     func loginUser() {
@@ -107,12 +101,17 @@ class LoginViewController: FormViewController {
         
         AppDelegate.showPKHUD()
         LoginManager.login(params: params, success: {
-            AppDelegate.hidePKHUD()
+            //AppDelegate.hidePKHUD()
             print("Login success")
+            if let strongSelf = weakSelf {
+                // Login flag set true
+                LocalDataManager.logged = true
+                strongSelf.loginClosure()
+            }
         }) { (error) in
             AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
-                strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
+                strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError, completion: nil)
             }
         }
     }

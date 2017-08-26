@@ -20,4 +20,10 @@ struct LoginManager {
             }
         }
     }
+    
+    static func logOut(closure: @escaping () -> Void) {
+        AppDelegate.sharedInstance.removeLocalData()
+        SessionDataManager.isLogOut = true
+        closure()
+    }
 }

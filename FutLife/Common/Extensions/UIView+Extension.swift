@@ -9,24 +9,23 @@
 import Foundation
 
 extension UIView {
-    func fadeIn(duration: TimeInterval, alpha: CGFloat, closure: @escaping() -> Void?) {
+    func fadeIn(duration: TimeInterval, alpha: CGFloat, completion: (() -> Void)?) {
         UIView.animate(withDuration: duration, animations: {
             self.alpha = alpha
         }) { (finished) in
-            if closure() != nil {
-                closure()
+            if completion != nil {
+                completion!()
             }
         }
     }
     
-    func fadeOut(duration: TimeInterval, alpha: CGFloat, closure: @escaping () -> Swift.Void?) {
+    func fadeOut(duration: TimeInterval, alpha: CGFloat, completion: (() -> Void)?) {
         UIView.animate(withDuration: duration, animations: {
             self.alpha = alpha
         }) { (finished) in
-            if closure() != nil {
-                closure()
+            if completion != nil {
+                completion!()
             }
-            
         }
     }
     
@@ -45,7 +44,7 @@ extension UIView {
         let options: UIViewAnimationOptions = [.beginFromCurrentState, .transitionFlipFromRight]
         layoutIfNeeded()
         
-        fadeIn(duration: 0.5, alpha: 1.0, closure: {()})
+        fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
         
         UIView.transition(with: self, duration: 0.6, options: options, animations: {
             self.transform = CGAffineTransform(scaleX: 1, y: -1)

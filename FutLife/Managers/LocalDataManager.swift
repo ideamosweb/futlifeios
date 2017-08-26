@@ -12,6 +12,7 @@ struct LocalDataManager {
     static let kParameters = "Parameters"
     static let kRegisteredUser = "RegisteredUser"
     static let kUser = "User"
+    static let kPreferences = "Preferences"
     static let kToken = "Token"
     static let kUserAvatar = "Avatar";
     static let kChosenConsole = "ChosenConsole";
@@ -40,7 +41,7 @@ struct LocalDataManager {
             return UserDefaults().dataObjectForKey(key: kToken) as? String
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue!, forKey: kToken)
+            UserDefaults().setDataObject(value: newValue, forKey: kToken)
         }
     }
     
@@ -94,13 +95,22 @@ struct LocalDataManager {
             return UserDefaults().dataObjectForKey(key: kUser) as? UserModel
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue!, forKey: kUser)
+            UserDefaults().setDataObject(value: newValue, forKey: kUser)
         }
     }
     
-    static var parameters: ConfigurationParametersModel {
+    static var userPreferences: PreferencesModel? {
         get {
-            return UserDefaults().dataObjectForKey(key: kParameters) as! ConfigurationParametersModel
+            return UserDefaults().dataObjectForKey(key: kPreferences) as? PreferencesModel
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kPreferences)
+        }
+    }
+    
+    static var parameters: ConfigurationParametersModel? {
+        get {
+            return UserDefaults().dataObjectForKey(key: kParameters) as? ConfigurationParametersModel
         }
         set (newValue) {
             UserDefaults().setDataObject(value: newValue, forKey: kParameters)
@@ -112,7 +122,7 @@ struct LocalDataManager {
             return UserDefaults().dataObjectForKey(key: kConsoles) as? [ConsoleModel]
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue!, forKey: kConsoles)
+            UserDefaults().setDataObject(value: newValue, forKey: kConsoles)
         }
     }
     
@@ -121,7 +131,7 @@ struct LocalDataManager {
             return UserDefaults().dataObjectForKey(key: kGames) as? [GameModel]
         }
         set (newValue) {
-            UserDefaults().setDataObject(value: newValue!, forKey: kGames)
+            UserDefaults().setDataObject(value: newValue, forKey: kGames)
         }
     }
     

@@ -38,10 +38,37 @@ class ApiManager {
             // Verify if exist an error an return a message
             let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
             if errorModel.success! {
-                // Set response to Model constants
-                LoginModel.token = loginResponse?.token
-                LoginModel.success = loginResponse?.success
-                LoginModel.data = loginResponse?.data
+                // Save login data response
+                let user: User = (loginResponse?.data)!
+                let userModel: UserModel = UserModel(id: user.id, name: user.name, userName: user.userName, email: user.email, avatar: user.avatar, thumbnail: user.thumbnail, social: user.social, active: user.active, createdAt: user.createdAt, updatedAt: user.updatedAt, cityName: user.cityName)
+                
+                // Save user data
+                LocalDataManager.user = userModel
+                
+                let preferences: [Preferences] = user.preferences!
+                let preferencesModel: PreferencesModel = PreferencesModel(id: preferences[0].id, userId: preferences[0].userId, consoleId: preferences[0].consoleId, playerId: preferences[0].playerId, active: preferences[0].active)
+                
+                // Save user preferences
+                LocalDataManager.userPreferences = preferencesModel
+                
+                let console: Console = user.preferences![0].console!
+                let consoleModel: ConsoleModel = ConsoleModel(id: console.id, platformId: console.platformId, year: console.year, name: console.name, avatar: console.avatar, thumbnail: console.thumbnail, active: console.active, createdAt: console.createdAt, updatedAt: console.updatedAt)
+                
+                // Save console
+                LocalDataManager.consolesSelected = [consoleModel]
+                
+                let games: [Game] = user.preferences![0].games!
+                var gamesModels: [GameModel] = []
+                for game: Game in games {
+                    let gameModel: GameModel = GameModel(id: game.id, year: game.year, name: game.name, avatar: game.avatar, thumbnail: game.thumbnail, active: game.active, createdAt: game.createdAt, updatedAt: game.updatedAt)
+                    gamesModels.append(gameModel)
+                }
+                
+                // Save games
+                LocalDataManager.gamesSelected = gamesModels
+                
+                // Save token
+                LocalDataManager.token = loginResponse?.token
             }
             
             completion(errorModel)

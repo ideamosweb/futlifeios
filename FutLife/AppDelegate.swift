@@ -59,8 +59,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func goToHome(homeViewController: HomeViewController) {
-        let slideMenuController = SlideMenuController(mainViewController: homeViewController, leftMenuViewController: UIViewController())
-        AppDelegate.mainNavigationController.viewControllers = [slideMenuController]        
+        let menuItems: Dictionary = MenuManager.menuItemDefinition
+        let navVC = NavMenuViewController(player: LocalDataManager.user!, menuItems: menuItems)
+        
+        SlideMenuOptions.panGesturesEnabled = false        
+        let slideMenuController = SlideMenuController(mainViewController: homeViewController, leftMenuViewController: navVC)
+        AppDelegate.mainNavigationController.viewControllers = [slideMenuController]
+    }
+    
+    func removeLocalData() {
+        LocalDataManager.registeredUser = false
+        LocalDataManager.token = nil
+        LocalDataManager.avatar = nil
+        LocalDataManager.chosenConsole = false
+        LocalDataManager.chosenGame = false
+        LocalDataManager.completedRegister = false
+        LocalDataManager.logged = false
+        LocalDataManager.user = nil
+        LocalDataManager.userPreferences = nil
+        LocalDataManager.parameters = nil
+        LocalDataManager.consolesSelected = nil
+        LocalDataManager.gamesSelected = nil
     }
     
     static func showPKHUD() {

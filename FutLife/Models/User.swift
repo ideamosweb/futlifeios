@@ -22,6 +22,7 @@ class User: Model {
     var updatedAt: Date?
     var cityName: String?
     var challenges: [Challenges]?
+    var preferences: [Preferences]?
     
     
     override func mapping(map: Map) {
@@ -37,6 +38,7 @@ class User: Model {
         updatedAt <- (map["updated_at"], DateTransform())
         cityName <- map["city_name"]
         challenges <- map["challenges"]
+        preferences <- map["preferences"]
     }
 }
 

@@ -58,9 +58,7 @@ class StartUpViewController: ViewController {
                 if (error?.success)! {
                     // Go to time line if is logged or register completed
                     if LocalDataManager.completedRegister || LocalDataManager.logged {
-                        DispatchQueue.main.async {
-                            strongSelf.goToHome()
-                        }                        
+                        strongSelf.goToHome()                        
                     } else {
                         // Hide spinner PKHUD when not go to home (this is for avoid bug)
                         AppDelegate.hidePKHUD()
@@ -69,7 +67,7 @@ class StartUpViewController: ViewController {
                 } else {
                     // Hide spinner PKHUD when not go to home (this is for avoid bug)
                     AppDelegate.hidePKHUD()
-                    strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError)
+                    strongSelf.presentAlert(title: "Error", message: (error?.message)!, style: alertStyle.formError, completion: nil)
                 }
                 
             }            

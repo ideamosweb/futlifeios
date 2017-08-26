@@ -8,10 +8,11 @@
 
 import Foundation
 
-struct MenuManager {
+class MenuManager: NSObject {
     static var menuItemDefinition: Dictionary = MenuManager.loadMenuItemDefinitions()
-    
     static var currentViewController: ViewController?
+    
+    override init() { }
     
     static func loadMenuItemDefinitions() -> Dictionary<String, Any> {
         // Read menu items definition from .plist
@@ -27,43 +28,45 @@ struct MenuManager {
         return menuDefinitions!
     }
     
-    static func onProfileTouch(_ sender: Any, player: User) {
+    func onProfileTouch(_ sender: Any, player: User) {
         
     }
     
-    static func onTopUpTouch(_ sender: Any) {
+    func onTopUpTouch(_ sender: Any) {
         
     }
     
-    static func onCashOutTouch(_ sender: Any) {
+    func onCashOutTouch(_ sender: Any) {
         
     }
     
-    static func onChallengesOverTouch(_ sender: Any) {
+    func onChallengesOverTouch(_ sender: Any) {
         
     }
     
-    static func onChallengesReportedTouch(_ sender: Any) {
+    func onChallengesReportedTouch(_ sender: Any) {
         
     }
     
-    static func onIntroductionTouch(_ sender: Any) {
+    func onIntroductionTouch(_ sender: Any) {
         
     }
     
-    static func onSettingsTouch(_ sender: Any) {
+    func onSettingsTouch(_ sender: Any) {
         
     }
     
-    static func onSuggestionTouch(_ sender: Any) {
+    func onSuggestionTouch(_ sender: Any) {
         
     }
     
-    static func onWhoTouch(_ sender: Any) {
+    func onWhoTouch(_ sender: Any) {
         
     }
     
-    static func onLogOutTouch(_ sender: Any) {
-        
+    func onLogOutTouch(_ sender: Any) {
+        LoginManager.logOut {
+            AppDelegate.sharedInstance.openStartUp()
+        }
     }
 }

@@ -71,7 +71,7 @@ class RegisterViewController: FormViewController {
     }
     
     @IBAction func onFacebookButtonTouch(_ sender: Any) {
-        presentAlert(title: "Error", message: "Funcionalidad en desarrollo", style: .formError)
+        presentAlert(title: "Error", message: "Funcionalidad en desarrollo", style: .formError, completion: nil)
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
@@ -84,7 +84,7 @@ class RegisterViewController: FormViewController {
                 strongSelf.registerUser()
             }
         }) { (errorMessage) in
-            presentAlert(title: "Error", message: errorMessage, style: .formError)
+            presentAlert(title: "Error", message: errorMessage, style: .formError, completion: nil)
         }
     }
     
@@ -106,7 +106,7 @@ class RegisterViewController: FormViewController {
                 if (errorModel?.success)! {
                     strongSelf.registerCompleted()
                 } else {
-                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     
                 }
             }            

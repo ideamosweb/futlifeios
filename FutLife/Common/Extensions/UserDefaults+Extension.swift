@@ -17,9 +17,13 @@ extension UserDefaults {
         return UserDefaults.standard.object(forKey: key)
     }
     
-    func setObject(value: Any, forKey: String) {
-        UserDefaults.standard.set(value, forKey: forKey)
-        UserDefaults.standard.synchronize()
+    func setObject(value: Any?, forKey: String) {
+        if let val = value {
+            UserDefaults.standard.set(val, forKey: forKey)
+            UserDefaults.standard.synchronize()
+        } else {
+            remove(key: forKey)
+        }
     }
     
     func dataObjectForKey(key: String) -> Any? {

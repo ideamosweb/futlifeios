@@ -235,7 +235,7 @@ class ProfileViewController: ViewController {
                 if (errorModel?.success)! {
                     strongSelf.profileCompleted()
                 } else {
-                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError)
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     
                 }
             }
@@ -303,7 +303,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                             strongSelf.avatarImageView.image = image
                         } else {
                             DispatchQueue.main.async {
-                                strongSelf.presentAlert(title: "Error", message: "Error desconocido, intente mas tarde", style: alertStyle.formError)
+                                strongSelf.presentAlert(title: "Error", message: "Error desconocido, intente mas tarde", style: alertStyle.formError, completion: nil)
                             }
                         }
                     }
