@@ -36,6 +36,7 @@ target 'FutLife' do
   pod 'KeychainAccess'
   pod 'UrbanAirship-iOS-SDK'
   pod 'DateTools'
+  pod 'BLKFlexibleHeightBar'
   #pod 'PageMenu'
   pod 'SlideMenuControllerSwift'
 end
