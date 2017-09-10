@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>selector</key>
-			<string>onProfileTouch:player:</string>
+			<string>onProfileTouchWithPlayer:</string>
 			<key>slidingMenuImage</key>
 			<string>profile.leftMenuIcon</string>
 			<key>title</key>

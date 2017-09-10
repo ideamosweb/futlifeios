@@ -21,6 +21,10 @@ extension UIColor {
         return UIColor.init(red: 2.0/255, green: 14.0/255, blue: 25.0/255, alpha: 1.0)
     }
     
+    func navBarDarkBlue() -> UIColor {
+        return UIColor.init(red: 0.4/255, green: 21.0/255, blue: 35.0/255, alpha: 1.0)
+    }
+    
     func greenDefault() -> UIColor {
         return UIColor.init(red: 85.0/255, green: 164.0/255, blue: 36.0/255, alpha: 1.0)
     }

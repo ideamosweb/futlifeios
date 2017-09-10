@@ -28,8 +28,13 @@ class MenuManager: NSObject {
         return menuDefinitions!
     }
     
-    func onProfileTouch(_ sender: Any, player: User) {
-        
+    func onProfileTouch(player: UserModel) {
+        MenuManager.currentViewController = nil
+        if MenuManager.currentViewController == nil {
+            let nav = AppDelegate.mainNavigationController
+            MenuManager.currentViewController = ProfilePlayerViewController(player: LocalDataManager.user!, type: .GamesType, profileCompleted: nil)
+            nav.pushViewController(MenuManager.currentViewController!, animated: true)
+        }
     }
     
     func onTopUpTouch(_ sender: Any) {

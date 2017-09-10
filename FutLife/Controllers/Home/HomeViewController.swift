@@ -52,12 +52,6 @@ class HomeViewController: TabsViewController {
         getAllChallengeRequest()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
     private func getAllChallengeRequest() {
         let user: UserModel? = LocalDataManager.user!
         if user != nil {
@@ -108,8 +102,7 @@ class HomeViewController: TabsViewController {
 }
 
 extension HomeViewController: PlayerListProtocol {
-    func playerOptions(player: User) {
-        //homeCompletion = () -> Void?
+    func playerOptions(player: User) {        
         let darkBgViewFrame = CGRect(x: 0, y: 0, width: Utils.screenViewFrame().width, height: Utils.screenViewFrame().height)
         darkBgButton = UIButton(frame: darkBgViewFrame)
         darkBgButton?.backgroundColor = UIColor.black

@@ -9,6 +9,12 @@
 import Foundation
 import ObjectMapper
 
+enum PlayerProfileType: Int {
+    case GamesType
+    case InfoType
+    case HistoryType
+}
+
 class User: Model {
     var id: Int?
     var name: String?

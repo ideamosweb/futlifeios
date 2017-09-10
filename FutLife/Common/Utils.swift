@@ -32,4 +32,17 @@ class Utils: NSObject {
         
         return viewFrame
     }
+    
+    class func setAvatar(imageView: UIImageView) {
+        let placeholderImage = UIImage(named: "avatar_placeholder")!
+        if let avatar = LocalDataManager.avatar {
+            imageView.image = avatar
+        } else {
+            if let userAvatar = LocalDataManager.user?.avatar, !userAvatar.isEmpty  {
+                imageView.af_setImage(withURL: URL(string: userAvatar)!, placeholderImage: placeholderImage)
+            } else {
+                imageView.image = placeholderImage
+            }
+        }
+    }
 }

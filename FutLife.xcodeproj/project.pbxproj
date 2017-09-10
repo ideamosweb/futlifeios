@@ -54,6 +54,7 @@
 		1783C41B1F3ABE100065D797 /* PlayersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41A1F3ABE100065D797 /* PlayersListCell.swift */; };
 		1783C41D1F3ABE760065D797 /* PlayersListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783C41C1F3ABE760065D797 /* PlayersListCell.xib */; };
 		1783C41F1F3AC49F0065D797 /* PlayersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41E1F3AC49F0065D797 /* PlayersModel.swift */; };
+		178596471F64A9AA00EB493E /* ProfilePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178596461F64A9AA00EB493E /* ProfilePlayerViewController.swift */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -161,6 +162,7 @@
 		1783C41A1F3ABE100065D797 /* PlayersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListCell.swift; path = Controllers/PlayerList/Cell/PlayersListCell.swift; sourceTree = "<group>"; };
 		1783C41C1F3ABE760065D797 /* PlayersListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayersListCell.xib; path = Controllers/PlayerList/Cell/PlayersListCell.xib; sourceTree = "<group>"; };
 		1783C41E1F3AC49F0065D797 /* PlayersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersModel.swift; path = Models/PlayersModel.swift; sourceTree = "<group>"; };
+		178596461F64A9AA00EB493E /* ProfilePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePlayerViewController.swift; path = Controllers/Profile/ProfilePlayerViewController.swift; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				17001A0E1F0ADC1700BF44BD /* Cell */,
 				17399A441F0AB00F00B72EFB /* ProfileViewController.swift */,
 				17399A461F0AB05B00B72EFB /* ProfileViewController.xib */,
+				178596461F64A9AA00EB493E /* ProfilePlayerViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				17F327F51F3C15A3007223BE /* ChallengesCell.swift in Sources */,
 				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
+				178596471F64A9AA00EB493E /* ProfilePlayerViewController.swift in Sources */,
 				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,
 				17F327F21F3C13BF007223BE /* ChallengesViewController.swift in Sources */,
 				17363C8F1EF1FBA6006888EE /* FormViewController.swift in Sources */,
