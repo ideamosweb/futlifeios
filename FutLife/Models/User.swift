@@ -69,10 +69,10 @@ class UserModel: NSObject, NSCoding {
     let phone: String?
     let birthDate: Date?
     let challenges: [Challenges]?
-    let preferences: [Preferences]?
+    let preferences: [PreferencesModel]?
     let balance: Balance?
     
-    init(id: Int?, name: String?, userName: String?, email: String?, avatar: String?, thumbnail: String?, social: Bool?, active: Bool?, createdAt: Date?, updatedAt: Date?, cityName: String?, phone: String?, birthDate: Date?, challenges: [Challenges], preferences: [Preferences]?, balance: Balance?) {
+    init(id: Int?, name: String?, userName: String?, email: String?, avatar: String?, thumbnail: String?, social: Bool?, active: Bool?, createdAt: Date?, updatedAt: Date?, cityName: String?, phone: String?, birthDate: Date?, challenges: [Challenges], preferences: [PreferencesModel]?, balance: Balance?) {
         self.id = id ?? 0
         self.name = name ?? ""
         self.userName = userName ?? ""
@@ -106,7 +106,7 @@ class UserModel: NSObject, NSCoding {
         self.phone = aDecoder.decodeObject(forKey: "phone") as? String ?? ""
         self.birthDate = aDecoder.decodeObject(forKey: "birthDate") as? Date ?? Date()
         self.challenges = aDecoder.decodeObject(forKey: "challenges") as? [Challenges]
-        self.preferences = aDecoder.decodeObject(forKey: "preferences") as? [Preferences]
+        self.preferences = aDecoder.decodeObject(forKey: "preferences") as? [PreferencesModel]
         self.balance = aDecoder.decodeObject(forKey: "balance") as? Balance
     }
     

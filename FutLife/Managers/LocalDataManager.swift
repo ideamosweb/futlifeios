@@ -99,9 +99,9 @@ struct LocalDataManager {
         }
     }
     
-    static var userPreferences: PreferencesModel? {
+    static var userPreferences: [PreferencesModel]? {
         get {
-            return UserDefaults().dataObjectForKey(key: kPreferences) as? PreferencesModel
+            return UserDefaults().dataObjectForKey(key: kPreferences) as? [PreferencesModel]
         }
         set (newValue) {
             UserDefaults().setDataObject(value: newValue, forKey: kPreferences)

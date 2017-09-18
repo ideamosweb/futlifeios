@@ -2,6 +2,8 @@ PODS:
   - Alamofire (4.5.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
+  - AlamofireNetworkActivityLogger (2.2.0):
+    - Alamofire (~> 4.0)
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
@@ -16,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage (~> 3.1)
+  - AlamofireNetworkActivityLogger (~> 2.0)
   - AlamofireObjectMapper (~> 4.0)
   - BLKFlexibleHeightBar
   - DateTools
@@ -27,6 +30,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
@@ -36,6 +40,6 @@ SPEC CHECKSUMS:
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
   UrbanAirship-iOS-SDK: 51a0deb935d0be5905473654316ad1b6f09f3353
 
-PODFILE CHECKSUM: 5d6e0e8462f722349c308a5c289fee37c362a2d4
+PODFILE CHECKSUM: edc938d4b375e05f16278921a664b2a27705b687
 
 COCOAPODS: 1.2.1

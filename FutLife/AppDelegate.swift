@@ -9,6 +9,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import PKHUD
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
+        setUpNetworkLogger()
         openStartUp()
+        
         return true
     }
 
@@ -77,6 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }        
+    }
+    
+    func setUpNetworkLogger() {
+        NetworkActivityLogger.shared.startLogging()
+        // Level debug, change for distribution
+        NetworkActivityLogger.shared.level = .debug
     }
     
     func removeLocalData() {
