@@ -26,7 +26,7 @@ class Challenges: Model {
     var scorePlayerOne: Int?
     var scorePlayerTwo: Int?
     var consoleId: String?
-    var gameId: Int?
+    var gameId: String?
     var amountBet: String?
     var initialValue: String?
     var deadLine: Date?

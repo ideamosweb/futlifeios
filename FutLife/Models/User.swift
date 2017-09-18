@@ -27,8 +27,11 @@ class User: Model {
     var createdAt: Date?
     var updatedAt: Date?
     var cityName: String?
+    var phone: String?
+    var birthDate: Date?
     var challenges: [Challenges]?
     var preferences: [Preferences]?
+    var balance: Balance?
     
     
     override func mapping(map: Map) {
@@ -43,8 +46,11 @@ class User: Model {
         createdAt <- (map["created_at"], DateTransform())
         updatedAt <- (map["updated_at"], DateTransform())
         cityName <- map["city_name"]
+        phone <- map["telephone"]
+        birthDate <- (map["birthDate"], DateTransform())
         challenges <- map["challenges"]
         preferences <- map["preferences"]
+        balance <- map["balance"]
     }
 }
 
@@ -60,8 +66,13 @@ class UserModel: NSObject, NSCoding {
     let createdAt: Date
     let updatedAt: Date
     let cityName: String
+    let phone: String?
+    let birthDate: Date?
+    let challenges: [Challenges]?
+    let preferences: [Preferences]?
+    let balance: Balance?
     
-    init(id: Int?, name: String?, userName: String?, email: String?, avatar: String?, thumbnail: String?, social: Bool?, active: Bool?, createdAt: Date?, updatedAt: Date?, cityName: String?) {
+    init(id: Int?, name: String?, userName: String?, email: String?, avatar: String?, thumbnail: String?, social: Bool?, active: Bool?, createdAt: Date?, updatedAt: Date?, cityName: String?, phone: String?, birthDate: Date?, challenges: [Challenges], preferences: [Preferences]?, balance: Balance?) {
         self.id = id ?? 0
         self.name = name ?? ""
         self.userName = userName ?? ""
@@ -73,6 +84,11 @@ class UserModel: NSObject, NSCoding {
         self.createdAt = createdAt ?? Date()
         self.updatedAt = updatedAt ?? Date()
         self.cityName = cityName ?? ""
+        self.phone = phone
+        self.birthDate = birthDate ?? Date()
+        self.challenges = challenges
+        self.preferences = preferences
+        self.balance = balance
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -87,6 +103,11 @@ class UserModel: NSObject, NSCoding {
         self.createdAt = aDecoder.decodeObject(forKey: "createdAt") as? Date ?? Date()
         self.updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as? Date ?? Date()
         self.cityName = aDecoder.decodeObject(forKey: "cityName") as? String ?? ""
+        self.phone = aDecoder.decodeObject(forKey: "phone") as? String ?? ""
+        self.birthDate = aDecoder.decodeObject(forKey: "birthDate") as? Date ?? Date()
+        self.challenges = aDecoder.decodeObject(forKey: "challenges") as? [Challenges]
+        self.preferences = aDecoder.decodeObject(forKey: "preferences") as? [Preferences]
+        self.balance = aDecoder.decodeObject(forKey: "balance") as? Balance
     }
     
     func encode(with aCoder: NSCoder) {
@@ -101,5 +122,10 @@ class UserModel: NSObject, NSCoding {
         aCoder.encode(createdAt, forKey: "createdAt")
         aCoder.encode(updatedAt, forKey: "updatedAt")
         aCoder.encode(cityName, forKey: "cityName")
+        aCoder.encode(phone, forKey: "phone")
+        aCoder.encode(birthDate, forKey: "birthDate")
+        aCoder.encode(challenges, forKey: "challenges")
+        aCoder.encode(preferences, forKey: "preferences")
+        aCoder.encode(balance, forKey: "balance")
     }
 }

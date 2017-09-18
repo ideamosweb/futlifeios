@@ -348,7 +348,7 @@ extension ProfileViewController : UITableViewDelegate {
     
 }
 
-//MARK: UITableViewDelegate
+//MARK: UITableViewDataSource
 extension ProfileViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == consolesTableView {

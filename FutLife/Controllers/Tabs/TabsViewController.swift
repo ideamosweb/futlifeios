@@ -21,6 +21,9 @@ class TabsViewController: ViewController {
     var fontSize: CGFloat?
     var showTabDefault: Int?
     var selectorTabButtonView: UIView?
+    var tabsBellowView: UIView?
+    var insertInView: UIView?
+    var useDefaultViewHeight: Bool = false
     
     private var scrollView: UIScrollView?
     var buttonsView: UIView?
@@ -39,7 +42,7 @@ class TabsViewController: ViewController {
     }
     
     func configElementsOfView() {
-        let scrollViewHeight = Utils.screenViewFrame().size.height - tabsButtonsViewMinY - kTabsButtonsViewHeight
+        let scrollViewHeight = (!useDefaultViewHeight) ? Utils.screenViewFrame().size.height - tabsButtonsViewMinY - kTabsButtonsViewHeight : Utils.screenViewFrame().size.height
         
         buttonsView?.backgroundColor = UIColor().darkBlue()
         selectorTabButtonView = UIView(frame: CGRect(x: 0.0, y: (buttonsView?.frame.height)! - 2.0, width: (buttonsView?.frame.width)! / CGFloat(tabsCount!), height: 2.0))
@@ -49,9 +52,14 @@ class TabsViewController: ViewController {
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: (buttonsView?.frame.maxY)!, width: Utils.screenViewFrame().size.width, height: scrollViewHeight))
         scrollView?.delegate = self
         
+        if let insertView = insertInView {
+            insertView.addSubview(scrollView!)
+            insertView.addSubview(buttonsView!)            
+        } else {
+            view.addSubview(scrollView!)
+            view.addSubview(buttonsView!)
+        }
         
-        view.addSubview(scrollView!)
-        view.addSubview(buttonsView!)
     }
     
     func reloadTabs() {
@@ -70,6 +78,10 @@ class TabsViewController: ViewController {
             tabsButtonsViewMinY = sbViewFr.maxY
         }
         
+        if let bellowSV = tabsBellowView {
+            tabsButtonsViewMinY = bellowSV.frame.maxY
+        }
+        
         buttonsView = UIView(frame: CGRect(x: 0.0, y: tabsButtonsViewMinY, width: Utils.screenViewFrame().size.width, height: kTabsButtonsViewHeight))
         
         configElementsOfView()
@@ -78,7 +90,7 @@ class TabsViewController: ViewController {
         var previousVC: ViewController?
         
         var contentSizeWidth: CGFloat = 0
-        let contentSizeHeight = Utils.screenViewFrame().size.height - tabsButtonsViewMinY - kTabsButtonsViewHeight
+        let contentSizeHeight = (!useDefaultViewHeight) ? Utils.screenViewFrame().size.height - tabsButtonsViewMinY - kTabsButtonsViewHeight : Utils.screenViewFrame().size.height
         
         let fontSize = (self.fontSize != nil) ? self.fontSize : 20.0
         

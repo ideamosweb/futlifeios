@@ -34,6 +34,7 @@ class HomeViewController: TabsViewController {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = false
+        navigationBar(show: true, backgroundColor: UIColor().darkBlue())
         
         let navBarIconHeight = (navigationController?.navigationBar.bounds.size.height)! * 0.7
         let icon = UIImage(named: "futLife-logo-text")
@@ -44,12 +45,16 @@ class HomeViewController: TabsViewController {
         parent?.navigationItem.titleView = iconTitleView
         parent?.addLeftBarButtonWithImage(UIImage(named: "slidingMenuButton")!)
         
-        navigationBar(show: true, backgroundColor: UIColor().darkBlue())
-        
         balancelabel.font = UIFont().bebasFont(size: 14)
         balancelabel.text = "SALDO ACTUAL: $0"
         
         getAllChallengeRequest()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationBar(show: true, backgroundColor: UIColor().darkBlue())
     }
     
     private func getAllChallengeRequest() {

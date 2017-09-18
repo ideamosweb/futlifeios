@@ -49,12 +49,23 @@
 		17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17399A441F0AB00F00B72EFB /* ProfileViewController.swift */; };
 		17399A471F0AB05B00B72EFB /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17399A461F0AB05B00B72EFB /* ProfileViewController.xib */; };
 		173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173BDE7B1F12D9C60050D179 /* Preferences.swift */; };
+		17543EEA1F696F9D00998C50 /* PlayerConsolesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17543EE91F696F9D00998C50 /* PlayerConsolesCell.swift */; };
+		17543EEC1F696FBB00998C50 /* PlayerConsolesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17543EEB1F696FBB00998C50 /* PlayerConsolesCell.xib */; };
+		17543EF01F69B47600998C50 /* PlayerStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17543EEE1F69B47600998C50 /* PlayerStatisticsViewController.swift */; };
+		17543EF11F69B47600998C50 /* PlayerStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17543EEF1F69B47600998C50 /* PlayerStatisticsViewController.xib */; };
 		1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C4131F3ABA280065D797 /* PlayersListViewController.swift */; };
 		1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */; };
 		1783C41B1F3ABE100065D797 /* PlayersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41A1F3ABE100065D797 /* PlayersListCell.swift */; };
 		1783C41D1F3ABE760065D797 /* PlayersListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783C41C1F3ABE760065D797 /* PlayersListCell.xib */; };
 		1783C41F1F3AC49F0065D797 /* PlayersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41E1F3AC49F0065D797 /* PlayersModel.swift */; };
 		178596471F64A9AA00EB493E /* ProfilePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178596461F64A9AA00EB493E /* ProfilePlayerViewController.swift */; };
+		1785964B1F65B4E300EB493E /* PlayerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178596491F65B4E300EB493E /* PlayerInfoViewController.swift */; };
+		1785964C1F65B4E300EB493E /* PlayerInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1785964A1F65B4E300EB493E /* PlayerInfoViewController.xib */; };
+		1785964E1F65F12700EB493E /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785964D1F65F12700EB493E /* Balance.swift */; };
+		178596521F6787AC00EB493E /* PlayerConsolesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178596501F6787AC00EB493E /* PlayerConsolesViewController.swift */; };
+		178596531F6787AC00EB493E /* PlayerConsolesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178596511F6787AC00EB493E /* PlayerConsolesViewController.xib */; };
+		178596561F67B53000EB493E /* PlayerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178596551F67B53000EB493E /* PlayerTextView.swift */; };
+		178596581F67B54500EB493E /* PlayerTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178596571F67B54500EB493E /* PlayerTextView.xib */; };
 		179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961531EF61BCC00853DB7 /* FieldValidations.swift */; };
 		179961571EF6292A00853DB7 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961561EF6292A00853DB7 /* String+Utils.swift */; };
 		1799615A1EF6DAB600853DB7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179961591EF6DAB600853DB7 /* LoginViewController.swift */; };
@@ -157,12 +168,23 @@
 		17399A441F0AB00F00B72EFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		17399A461F0AB05B00B72EFB /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Controllers/Profile/ProfileViewController.xib; sourceTree = "<group>"; };
 		173BDE7B1F12D9C60050D179 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = Models/Preferences.swift; sourceTree = "<group>"; };
+		17543EE91F696F9D00998C50 /* PlayerConsolesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerConsolesCell.swift; path = Controllers/PlayerConsoles/Cell/PlayerConsolesCell.swift; sourceTree = "<group>"; };
+		17543EEB1F696FBB00998C50 /* PlayerConsolesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerConsolesCell.xib; path = Controllers/PlayerConsoles/Cell/PlayerConsolesCell.xib; sourceTree = "<group>"; };
+		17543EEE1F69B47600998C50 /* PlayerStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerStatisticsViewController.swift; path = Controllers/PlayerStatistics/PlayerStatisticsViewController.swift; sourceTree = "<group>"; };
+		17543EEF1F69B47600998C50 /* PlayerStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerStatisticsViewController.xib; path = Controllers/PlayerStatistics/PlayerStatisticsViewController.xib; sourceTree = "<group>"; };
 		1783C4131F3ABA280065D797 /* PlayersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListViewController.swift; path = Controllers/PlayerList/PlayersListViewController.swift; sourceTree = "<group>"; };
 		1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayersListViewController.xib; path = Controllers/PlayerList/PlayersListViewController.xib; sourceTree = "<group>"; };
 		1783C41A1F3ABE100065D797 /* PlayersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListCell.swift; path = Controllers/PlayerList/Cell/PlayersListCell.swift; sourceTree = "<group>"; };
 		1783C41C1F3ABE760065D797 /* PlayersListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayersListCell.xib; path = Controllers/PlayerList/Cell/PlayersListCell.xib; sourceTree = "<group>"; };
 		1783C41E1F3AC49F0065D797 /* PlayersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersModel.swift; path = Models/PlayersModel.swift; sourceTree = "<group>"; };
 		178596461F64A9AA00EB493E /* ProfilePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePlayerViewController.swift; path = Controllers/Profile/ProfilePlayerViewController.swift; sourceTree = "<group>"; };
+		178596491F65B4E300EB493E /* PlayerInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerInfoViewController.swift; path = Controllers/PlayerInfo/PlayerInfoViewController.swift; sourceTree = "<group>"; };
+		1785964A1F65B4E300EB493E /* PlayerInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerInfoViewController.xib; path = Controllers/PlayerInfo/PlayerInfoViewController.xib; sourceTree = "<group>"; };
+		1785964D1F65F12700EB493E /* Balance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Balance.swift; path = Models/Balance.swift; sourceTree = "<group>"; };
+		178596501F6787AC00EB493E /* PlayerConsolesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerConsolesViewController.swift; path = Controllers/PlayerConsoles/PlayerConsolesViewController.swift; sourceTree = "<group>"; };
+		178596511F6787AC00EB493E /* PlayerConsolesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerConsolesViewController.xib; path = Controllers/PlayerConsoles/PlayerConsolesViewController.xib; sourceTree = "<group>"; };
+		178596551F67B53000EB493E /* PlayerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerTextView.swift; path = Views/PlayerInfo/PlayerTextView.swift; sourceTree = "<group>"; };
+		178596571F67B54500EB493E /* PlayerTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerTextView.xib; path = Views/PlayerInfo/PlayerTextView.xib; sourceTree = "<group>"; };
 		179961531EF61BCC00853DB7 /* FieldValidations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FieldValidations.swift; path = Common/Form/FieldValidations.swift; sourceTree = "<group>"; };
 		179961561EF6292A00853DB7 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Utils.swift"; path = "Common/Extensions/String+Utils.swift"; sourceTree = "<group>"; };
 		179961591EF6DAB600853DB7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +301,7 @@
 				173BDE7B1F12D9C60050D179 /* Preferences.swift */,
 				17F51E4A1F391D9300935687 /* ChallengesModel.swift */,
 				1783C41E1F3AC49F0065D797 /* PlayersModel.swift */,
+				1785964D1F65F12700EB493E /* Balance.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -286,6 +309,7 @@
 		1701044B1EC0203E002E6767 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				178596541F67B50700EB493E /* PlayerInfo */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -435,6 +459,24 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		17543EE81F696F4C00998C50 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				17543EE91F696F9D00998C50 /* PlayerConsolesCell.swift */,
+				17543EEB1F696FBB00998C50 /* PlayerConsolesCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		17543EED1F69B3FD00998C50 /* PlayerStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				17543EEE1F69B47600998C50 /* PlayerStatisticsViewController.swift */,
+				17543EEF1F69B47600998C50 /* PlayerStatisticsViewController.xib */,
+			);
+			name = PlayerStatistics;
+			sourceTree = "<group>";
+		};
 		1783C4121F3AB9C30065D797 /* PlayerList */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +497,34 @@
 				1783C41A1F3ABE100065D797 /* PlayersListCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		178596481F65B40500EB493E /* PlayerInfo */ = {
+			isa = PBXGroup;
+			children = (
+				178596491F65B4E300EB493E /* PlayerInfoViewController.swift */,
+				1785964A1F65B4E300EB493E /* PlayerInfoViewController.xib */,
+			);
+			name = PlayerInfo;
+			sourceTree = "<group>";
+		};
+		1785964F1F67876000EB493E /* PlayerConsoles */ = {
+			isa = PBXGroup;
+			children = (
+				17543EE81F696F4C00998C50 /* Cell */,
+				178596501F6787AC00EB493E /* PlayerConsolesViewController.swift */,
+				178596511F6787AC00EB493E /* PlayerConsolesViewController.xib */,
+			);
+			name = PlayerConsoles;
+			sourceTree = "<group>";
+		};
+		178596541F67B50700EB493E /* PlayerInfo */ = {
+			isa = PBXGroup;
+			children = (
+				178596551F67B53000EB493E /* PlayerTextView.swift */,
+				178596571F67B54500EB493E /* PlayerTextView.xib */,
+			);
+			name = PlayerInfo;
 			sourceTree = "<group>";
 		};
 		179961551EF6286200853DB7 /* Extensions */ = {
@@ -501,6 +571,9 @@
 		17E60A7A1E7359F5007D7CCD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17543EED1F69B3FD00998C50 /* PlayerStatistics */,
+				1785964F1F67876000EB493E /* PlayerConsoles */,
+				178596481F65B40500EB493E /* PlayerInfo */,
 				17CA01371F4DE63900F3DA35 /* NavMenu */,
 				17F327F01F3C1341007223BE /* Challenges */,
 				1783C4121F3AB9C30065D797 /* PlayerList */,
@@ -748,6 +821,8 @@
 				17CA01361F4DE23400F3DA35 /* MenuItemsDefinitions.plist in Resources */,
 				17E678AE1EF6E5C20001B9FB /* StartUpViewController.xib in Resources */,
 				17399A3F1F09D18700B72EFB /* BebasNeue Thin.ttf in Resources */,
+				17543EF11F69B47600998C50 /* PlayerStatisticsViewController.xib in Resources */,
+				1785964C1F65B4E300EB493E /* PlayerInfoViewController.xib in Resources */,
 				17E678AC1EF6E4860001B9FB /* LaunchScreen.storyboard in Resources */,
 				17399A3E1F09D18300B72EFB /* BebasNeue Regular.ttf in Resources */,
 				17BFB05D1EF86177002A994E /* RegisterViewController.xib in Resources */,
@@ -765,10 +840,13 @@
 				17399A2B1F04C14800B72EFB /* ChooseGameViewController.xib in Resources */,
 				17CA01321F4CF1E900F3DA35 /* PlayerOptionsView.xib in Resources */,
 				17E678AA1EF6E43C0001B9FB /* Assets.xcassets in Resources */,
+				178596531F6787AC00EB493E /* PlayerConsolesViewController.xib in Resources */,
 				17E678A91EF6E41F0001B9FB /* Images.xcassets in Resources */,
 				17001A101F0ADC2C00BF44BD /* ProfileCell.xib in Resources */,
+				178596581F67B54500EB493E /* PlayerTextView.xib in Resources */,
 				17CA013B1F4DE6D800F3DA35 /* NavMenuViewController.xib in Resources */,
 				17399A471F0AB05B00B72EFB /* ProfileViewController.xib in Resources */,
+				17543EEC1F696FBB00998C50 /* PlayerConsolesCell.xib in Resources */,
 				17399A2C1F09A92E00B72EFB /* BEBAS___.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,8 +941,10 @@
 				17001A121F0ADC5800BF44BD /* ProfileCell.swift in Sources */,
 				1701045C1EC2BC91002E6767 /* Game.swift in Sources */,
 				1701045E1EC2C01C002E6767 /* ApiManager.swift in Sources */,
+				17543EF01F69B47600998C50 /* PlayerStatisticsViewController.swift in Sources */,
 				173BDE7C1F12D9C60050D179 /* Preferences.swift in Sources */,
 				17399A081F00295200B72EFB /* iCarousel.m in Sources */,
+				178596561F67B53000EB493E /* PlayerTextView.swift in Sources */,
 				17F51E4B1F391D9300935687 /* ChallengesModel.swift in Sources */,
 				17399A451F0AB00F00B72EFB /* ProfileViewController.swift in Sources */,
 				179961541EF61BCC00853DB7 /* FieldValidations.swift in Sources */,
@@ -882,6 +962,7 @@
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
 				17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */,
+				17543EEA1F696F9D00998C50 /* PlayerConsolesCell.swift in Sources */,
 				1783C41F1F3AC49F0065D797 /* PlayersModel.swift in Sources */,
 				17399A141F0367AD00B72EFB /* UIFont+Utils.swift in Sources */,
 				17399A0C1F003CA200B72EFB /* ChooseConsoleViewController.swift in Sources */,
@@ -900,12 +981,15 @@
 				17CA01341F4DDF8800F3DA35 /* MenuManager.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
 				1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */,
+				1785964E1F65F12700EB493E /* Balance.swift in Sources */,
 				17001A051F0AC15B00BF44BD /* UIView+Extension.swift in Sources */,
 				179961571EF6292A00853DB7 /* String+Utils.swift in Sources */,
 				170104531EC02398002E6767 /* Config.swift in Sources */,
 				17F51E441F381D3500935687 /* UIColor+Extension.swift in Sources */,
 				17F327F51F3C15A3007223BE /* ChallengesCell.swift in Sources */,
+				178596521F6787AC00EB493E /* PlayerConsolesViewController.swift in Sources */,
 				17399A291F04C11F00B72EFB /* ChooseGameViewController.swift in Sources */,
+				1785964B1F65B4E300EB493E /* PlayerInfoViewController.swift in Sources */,
 				173419291EC5676D003B2909 /* User.swift in Sources */,
 				178596471F64A9AA00EB493E /* ProfilePlayerViewController.swift in Sources */,
 				17399A421F0A015F00B72EFB /* SessionDataManager.swift in Sources */,

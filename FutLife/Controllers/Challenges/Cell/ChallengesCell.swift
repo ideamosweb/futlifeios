@@ -29,12 +29,13 @@ class ChallengesCell: CustomTableViewCell {
             amountLabel.textColor = UIColor().greenDefault()
             let intValue: Float = Float(challenge.initialValue!)!
             amountLabel.text = "$\(intValue)"
-            gameImageView.image = setGameImage(consoleId: challenge.consoleId!)
+            gameImageView.image = setGameImage(gameId: challenge.gameId!)
             
             let placeholderImage = UIImage(named: "avatar_placeholder")!
             if let p1 = players.playerOne {
                 defiantAvatar.circularView(borderColor: UIColor().greenDefault())
                 defiantNameLabel.text = !(p1.userName?.isEmpty)! ? players.playerOne?.userName : "¡UNETE!"
+                defiantConsoleLb.text = setConsole(consoleId: "\(challenge.consoleId ?? "")")
                 if (p1.avatar != nil) {
                     defiantAvatar.af_setImage(withURL: URL(string: (p1.avatar)!)!, placeholderImage: placeholderImage)
                 } else {
@@ -47,9 +48,11 @@ class ChallengesCell: CustomTableViewCell {
             }
             
             
+            
             if let p2 = players.playerTwo {
                 rivalAvatar.circularView(borderColor: UIColor().greenDefault())
                 rivalNameLabel.text = !(p2.userName?.isEmpty)! ? p2.userName : "¡UNETE!"
+                rivalConsoleLb.text = setConsole(consoleId: "\(challenge.consoleId ?? "")")
                 if (p2.avatar != nil) {
                     rivalAvatar.af_setImage(withURL: URL(string: (p2.avatar)!)!, placeholderImage: placeholderImage)
                 } else {
@@ -79,9 +82,9 @@ class ChallengesCell: CustomTableViewCell {
         return (playerOneMatch, playerTwoMatch)
     }
     
-    private func setGameImage(consoleId: String) -> UIImage {
+    private func setGameImage(gameId: String) -> UIImage {
         var gameName: String
-        switch consoleId {
+        switch gameId {
         case "1":
             gameName = "fifa16_mini"
         case "2":
@@ -95,5 +98,23 @@ class ChallengesCell: CustomTableViewCell {
         }
         
         return UIImage(named: gameName)!
+    }
+    
+    private func setConsole(consoleId: String) -> String {
+        var consoleName: String
+        switch consoleId {
+        case "1":
+            consoleName = "XBOX 360"
+        case "2":
+            consoleName = "XBOX ONE"
+        case "1":
+            consoleName = "PS3"
+        case "1":
+            consoleName = "PS4"
+        default:
+            consoleName = "PS4"
+        }
+        
+        return consoleName
     }
 }

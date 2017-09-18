@@ -13,6 +13,7 @@ target 'FutLife' do
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'AlamofireImage', '~> 3.1'
   pod 'PKHUD', '~> 4.0'
+  pod 'AlamofireNetworkActivityLogger', '~> 2.0',
   #pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
   #pod 'SDWebImage', '~>3.8'
   #pod 'Mantle'

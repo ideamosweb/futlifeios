@@ -1,22 +1,18 @@
 //
-//  ProfileCell.swift
+//  PlayerConsolesCell.swift
 //  FutLife
 //
-//  Created by Rene Santis on 7/3/17.
+//  Created by Rene Santis on 9/13/17.
 //  Copyright © 2017 IdeamosWeb S.A.S. All rights reserved.
 //
 
 import UIKit
 
-class ProfileCell: CustomTableViewCell {
-
-    @IBOutlet weak var gameImageView: UIImageView!
-    @IBOutlet weak var gameNameLabel: UILabel!
-    @IBOutlet weak var gameYearLabel: UILabel!
-    @IBOutlet weak var gameNumberLabel: UILabel!
-    @IBOutlet weak var consolesView: UIView!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var arrowImageView: UIImageView!    
+class PlayerConsolesCell: CustomTableViewCell {
+    @IBOutlet weak var consoleImage: UIImageView!
+    @IBOutlet weak var consoleName: UILabel!
+    @IBOutlet weak var consoleModel: UILabel!
+    @IBOutlet weak var gamesView: UIView!
     
     let kConsoleImageWidth: CGFloat = 80.0
     let kConsoleImageHeight: CGFloat = 20.0
@@ -25,54 +21,22 @@ class ProfileCell: CustomTableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        selected ? showDetails() : hideDetails()
-    }
-    
-    private func hideDetails() {
-        let arrowCollapse = UIImage(named: "arrow_down_collapse")
-        arrowImageView.image = arrowCollapse
-        consolesView.fadeOut(duration: Constants.kDefaultAnimationDuration, alpha: 0, completion: nil)
-    }
-    
-    private func showDetails() {
-        let arrowCollapse = UIImage(named: "arrow_down_expanded")
-        arrowImageView.image = arrowCollapse
-        consolesView.fadeIn(duration: Constants.kDefaultAnimationDuration, alpha: 1.0, completion: nil)
-    }
-    
-    func hideYearLabel() {
-        topConstraint.constant = 14
-        gameYearLabel.isHidden = true
-    }
-    
-    func hideArrow() {
-        arrowImageView.isHidden = true
-    }
-    
-    func setBg(color: UIColor) {
-        backgroundColor = color
-    }
-    
-    func setGameImage(name: String, gameName: String, gameYear: NSNumber?, gameNumber: String) {
+    func setGameImage(name: String, gameName: String) {
         let imageUrl = URL(string: name)!
         let placeholderImage = UIImage(named: "loading_placeholder")!
-        gameImageView.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
+        consoleImage.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
         
-        if gameYear != nil {
-            gameYearLabel.text = "\(gameYear!)"
-        } else {
-            gameYearLabel.isHidden = true
-        }
+        consoleName.font = UIFont().bebasBoldFont(size: 16)
+        consoleName.text = gameName
         
-        gameNameLabel.text = gameName
-        gameNumberLabel.text = gameNumber
+        consoleModel.font = UIFont().bebasBoldFont(size: 20)
+        consoleModel.text = gameName
     }
     
     func setGames(games: [GameModel], width: CGFloat) {
         var previousView: UIView?
         
-        for subView: UIView in consolesView.subviews {
+        for subView: UIView in gamesView.subviews {
             subView.removeFromSuperview()
         }
         
@@ -90,7 +54,7 @@ class ProfileCell: CustomTableViewCell {
                 }
                 
                 previousView = nextGameView
-                consolesView.addSubview(nextGameView)
+                gamesView.addSubview(nextGameView)
                 
             } else {
                 let ballImage: UIImageView = UIImageView(image: UIImage(named: "ic_football"))
@@ -110,7 +74,7 @@ class ProfileCell: CustomTableViewCell {
                 gameView.addSubview(ballImage)
                 gameView.addSubview(label)
                 previousView = gameView
-                consolesView.addSubview(gameView)
+                gamesView.addSubview(gameView)
             }
         }
     }

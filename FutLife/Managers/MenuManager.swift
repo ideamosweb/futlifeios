@@ -33,6 +33,7 @@ class MenuManager: NSObject {
         if MenuManager.currentViewController == nil {
             let nav = AppDelegate.mainNavigationController
             MenuManager.currentViewController = ProfilePlayerViewController(player: LocalDataManager.user!, type: .GamesType, profileCompleted: nil)
+            AppDelegate().closeLeftMenu()
             nav.pushViewController(MenuManager.currentViewController!, animated: true)
         }
     }

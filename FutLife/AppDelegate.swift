@@ -67,6 +67,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.mainNavigationController.viewControllers = [slideMenuController]
     }
     
+    func closeLeftMenu() {
+        let viewControllers = AppDelegate.mainNavigationController.viewControllers
+        if viewControllers.count > 0 {
+            for vc in viewControllers {
+                if vc is SlideMenuControllerSwift.SlideMenuController {
+                    let slideVC: SlideMenuController = vc as! SlideMenuControllerSwift.SlideMenuController
+                    slideVC.closeLeft()
+                }
+            }
+        }        
+    }
+    
     func removeLocalData() {
         LocalDataManager.registeredUser = false
         LocalDataManager.token = nil

@@ -40,7 +40,7 @@ class ApiManager {
             if errorModel.success! {
                 // Save login data response
                 let user: User = (loginResponse?.data)!
-                let userModel: UserModel = UserModel(id: user.id, name: user.name, userName: user.userName, email: user.email, avatar: user.avatar, thumbnail: user.thumbnail, social: user.social, active: user.active, createdAt: user.createdAt, updatedAt: user.updatedAt, cityName: user.cityName)
+                let userModel: UserModel = UserModel(id: user.id, name: user.name, userName: user.userName, email: user.email, avatar: user.avatar, thumbnail: user.thumbnail, social: user.social, active: user.active, createdAt: user.createdAt, updatedAt: user.updatedAt, cityName: user.cityName, phone: user.phone, birthDate: user.birthDate, challenges: user.challenges!, preferences: user.preferences, balance: user.balance)
                 
                 // Save user data
                 LocalDataManager.user = userModel
@@ -89,7 +89,7 @@ class ApiManager {
                 RegisterModel.data = loginResponse?.data
                 
                 let user: User = (loginResponse?.data)!
-                let userModel: UserModel = UserModel(id: user.id, name: user.name, userName: user.userName, email: user.email, avatar: user.avatar, thumbnail: user.thumbnail, social: user.social, active: user.active, createdAt: user.createdAt, updatedAt: user.updatedAt, cityName: user.cityName)
+                let userModel: UserModel = UserModel(id: user.id, name: user.name, userName: user.userName, email: user.email, avatar: user.avatar, thumbnail: user.thumbnail, social: user.social, active: user.active, createdAt: user.createdAt, updatedAt: user.updatedAt, cityName: user.cityName, phone: user.phone, birthDate: user.birthDate, challenges: user.challenges!, preferences: user.preferences, balance: user.balance)
                 LocalDataManager.user = userModel
                 LocalDataManager.token = RegisterModel.token
             }
@@ -104,23 +104,22 @@ class ApiManager {
             multipartFormData.append(imageData, withName: "avatar", fileName: "avatar.jpeg", mimeType: "image/jpeg")
             
             for (key, value) in registerAvatarParameters {
-                multipartFormData.append((value as! String).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!, withName: key)
-            }            
-        }, to:"\(Constants.queryURLPath)/user/avatar")
-        { (result) in
-            switch result {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    //print response.result
-                    // Verify if exist an error an return a message
-                    let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (200))
+            multipartFormData.append((value as! String).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!, withName: key)
+            }
+        }, usingThreshold: UInt64.init(), to: "\(Constants.baseURLPath)\(Constants.queryURLPath)/user/avatar", method: .post, headers: ["Authorization" : "Bearer \(LocalDataManager.token!)"]) { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        //print response.result
+                        // Verify if exist an error an return a message
+                        let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (200))
+                        completion(errorModel)
+                    }
+                    
+                case .failure( _):
+                    let errorModel: ErrorModel = ApiError.checkError(responseData: nil, statusCode: (500))
                     completion(errorModel)
                 }
-                
-            case .failure( _):
-                let errorModel: ErrorModel = ApiError.checkError(responseData: nil, statusCode: (500))
-                completion(errorModel)
-            }
         }
     }
     
