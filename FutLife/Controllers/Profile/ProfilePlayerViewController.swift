@@ -18,6 +18,9 @@ class ProfilePlayerViewController: TabsViewController {
     var games: [GameModel]!
     var selectedButtonView: UIView!
     var userInfoButton: UIButton!
+    var editButton: UIButton?
+    var infoEditButton: UIButton?
+    var consoleEditButton: UIButton?
     
     var statisticsTable: UITableView!
     var consolesTableView: UITableView!
@@ -27,9 +30,12 @@ class ProfilePlayerViewController: TabsViewController {
     var playerAvatar: UIImageView!
     var avatarSet: Bool = false
     var profileCompleted: (() -> Void?)?
+    var isOpenEditButtons: Bool = false
     
     let kProfileCellIdentifier = "ProfileCell"
     let kFlexibleBarHeight: CGFloat = 280.0
+    let kEditButtonSide = 60.0
+    let kInfoEditButtonSide = 40.0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -217,6 +223,7 @@ class ProfilePlayerViewController: TabsViewController {
         // Finally add myBar to main view
         scrollView.addSubview(myBar)
         
+        // Config tabs
         useDefaultViewHeight = true
         tabsBellowView = bgBarImageView
         insertInView = scrollView
@@ -224,16 +231,97 @@ class ProfilePlayerViewController: TabsViewController {
         configPlayerViews()
         
         scrollView.didMoveToSuperview()
+        
+        addEditButtons()
+    }
+    
+    func addEditButtons() {
+        let editButtonFrame = CGRect(x: Utils.screenViewFrame().width - 20 - CGFloat(kEditButtonSide), y: Utils.screenViewFrame().height - 5 - CGFloat(kEditButtonSide), width: CGFloat(kEditButtonSide), height: CGFloat(kEditButtonSide))
+        editButton = UIButton(frame: editButtonFrame)
+        editButton?.setImage(UIImage(named: "ic_edit_info"), for: .normal)
+        editButton?.backgroundColor = UIColor().greenDefault()
+        editButton?.layer.shadowColor = UIColor.black.cgColor
+        editButton?.layer.shadowOpacity = 1
+        editButton?.layer.shadowOffset = CGSize.zero
+        editButton?.layer.shadowRadius = 50.0
+        editButton?.circularView(borderColor: UIColor.clear)
+        
+        editButton?.addTarget(self, action: #selector(onEditButtonTouch), for: .touchUpInside)
+        
+        view.addSubview(editButton!)
+        
+        let infoEditButtonFrame = CGRect(x: (editButton?.frame.midX)! - (CGFloat(kInfoEditButtonSide) / 2), y: (editButton?.frame.midY)! - (CGFloat(kInfoEditButtonSide) / 2), width: CGFloat(kInfoEditButtonSide), height: CGFloat(kInfoEditButtonSide))
+        infoEditButton = UIButton(frame: infoEditButtonFrame)
+        let infoEditImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        infoEditImageView.image = UIImage(named: "ic_information")
+        infoEditButton?.setImage(infoEditImageView.image, for: .normal)
+        infoEditButton?.backgroundColor = UIColor(red: 50/255, green: 112/255, blue: 211/255, alpha: 1.0)
+        infoEditButton?.circularView(borderColor: UIColor.clear)
+        //infoEditButton?.addTarget(self, action: #selector(onEditButtonTouch), for: .touchUpInside)
+        infoEditButton?.alpha = 0.0
+        
+        view.addSubview(infoEditButton!)
+        
+        let consoleEditButtonFrame = CGRect(x: (editButton?.frame.midX)! - (CGFloat(kInfoEditButtonSide) / 2), y: (editButton?.frame.midY)! - (CGFloat(kInfoEditButtonSide) / 2), width: CGFloat(kInfoEditButtonSide), height: CGFloat(kInfoEditButtonSide))
+        consoleEditButton = UIButton(frame: consoleEditButtonFrame)
+        let consoleEditImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        consoleEditImageView.image = UIImage(named: "ic_preferences")
+        consoleEditButton?.setImage(consoleEditImageView.image, for: .normal)
+        consoleEditButton?.backgroundColor = UIColor(red: 187/255, green: 62/255, blue: 62/255, alpha: 1.0)
+        consoleEditButton?.circularView(borderColor: UIColor.clear)
+        //infoEditButton?.addTarget(self, action: #selector(onEditButtonTouch), for: .touchUpInside)
+        consoleEditButton?.alpha = 0.0
+        
+        view.addSubview(consoleEditButton!)
+    }
+    
+    func openEditAnimation() {
+        editButton?.rotateAnimation(degrees: 50, duration: 0.5)
+        
+        infoEditButton?.fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            self.infoEditButton?.frame.origin.y = (self.infoEditButton?.frame.minY)! - 60
+        }
+        
+        consoleEditButton?.fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            self.consoleEditButton?.frame.origin.y = (self.consoleEditButton?.frame.minY)! - 108
+        }
+    }
+    
+    func closeEditAnimation() {
+        editButton?.rotateAnimation(degrees: 50, duration: 0.5)
+        
+        infoEditButton?.fadeIn(duration: 0.5, alpha: 0.0, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            self.infoEditButton?.frame.origin.y = (self.editButton?.frame.midY)! - (CGFloat(self.kInfoEditButtonSide) / 2)
+        }
+        
+        consoleEditButton?.fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            self.consoleEditButton?.frame.origin.y = (self.editButton?.frame.midY)! - (CGFloat(self.kInfoEditButtonSide) / 2)
+        }
     }
     
     func configPlayerViews() {
-        let playerConsolesVC = PlayerConsolesViewController(consoles: LocalDataManager.consolesSelected!)
+        let consolesSelected: [ConsoleModel] = Utils.retrieveConsoles()
+        let gamesSelected: [GameModel] = Utils.retrieveGames()
+        
+        let playerConsolesVC = PlayerConsolesViewController(consoles: consolesSelected, games: gamesSelected)
         let playerInfoVC = PlayerInfoViewController()
         let playerStatisticsVC = PlayerStatisticsViewController()
         
         tabsTitles = ["CONSOLAS", "INFORMACIÓN", "ESTADISTICAS"]
         tabsViewControllers = [playerConsolesVC, playerInfoVC, playerStatisticsVC]
         reloadTabs()
+    }
+    
+    func onEditButtonTouch() {
+        if !isOpenEditButtons {
+            openEditAnimation()
+        } else {
+            closeEditAnimation()
+        }
     }
     
     

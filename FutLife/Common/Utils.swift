@@ -87,4 +87,30 @@ class Utils: NSObject {
         
         return gamesModel
     }
+    
+    class func retrieveConsoles() -> [ConsoleModel] {
+        var consolesSelected: [ConsoleModel] = []
+        if let preferences = LocalDataManager.user?.preferences {
+            for preference: PreferencesModel in preferences {
+                if let console = preference.console {
+                    consolesSelected.append(console)
+                }
+            }
+        }
+        
+        return consolesSelected
+    }
+    
+    class func retrieveGames() -> [GameModel] {
+        var gamesSelected: [GameModel] = []
+        if let preferences = LocalDataManager.user?.preferences {
+            for preference: PreferencesModel in preferences {
+                if let games = preference.games {
+                    gamesSelected = games
+                }
+            }
+        }
+        
+        return gamesSelected
+    }
 }
