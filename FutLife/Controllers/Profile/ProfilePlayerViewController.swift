@@ -287,20 +287,24 @@ class ProfilePlayerViewController: TabsViewController {
         UIView.animate(withDuration: 0.5) {
             self.consoleEditButton?.frame.origin.y = (self.consoleEditButton?.frame.minY)! - 108
         }
+        
+        isOpenEditButtons = true
     }
     
     func closeEditAnimation() {
         editButton?.rotateAnimation(degrees: 50, duration: 0.5)
         
-        infoEditButton?.fadeIn(duration: 0.5, alpha: 0.0, completion: nil)
+        infoEditButton?.fadeOut(duration: 0.5, alpha: 0.0, completion: nil)
         UIView.animate(withDuration: 0.5) {
             self.infoEditButton?.frame.origin.y = (self.editButton?.frame.midY)! - (CGFloat(self.kInfoEditButtonSide) / 2)
         }
         
-        consoleEditButton?.fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
+        consoleEditButton?.fadeOut(duration: 0.5, alpha: 0.0, completion: nil)
         UIView.animate(withDuration: 0.5) {
             self.consoleEditButton?.frame.origin.y = (self.editButton?.frame.midY)! - (CGFloat(self.kInfoEditButtonSide) / 2)
         }
+        
+        isOpenEditButtons = false
     }
     
     func configPlayerViews() {

@@ -44,11 +44,11 @@ class FormViewController: ViewController {
     }
     
     func registerForKeyboardNotifications() {
-        let keyboardWillShow = Notification.Name("UIKeyboardWillShow")
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(notification:)), name: keyboardWillShow, object: nil)
+        //let keyboardWillShow = Notification.Name("UIKeyboardWillShow")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(notification:)), name: .UIKeyboardWillShow, object: nil)
         
-        let keyboardWillHide = Notification.Name("UIKeyboardWillHide")
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: keyboardWillHide, object: nil)
+        //let keyboardWillHide = Notification.Name("UIKeyboardWillHide")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     deinit {
@@ -76,15 +76,18 @@ class FormViewController: ViewController {
             formScrollView.scrollIndicatorInsets = contentInsets
             
             let currentInputFrame = inputsFormManager.currentInputField?.frame
-            let currentInputSuperView = inputsFormManager.currentInputField?.superview?.superview
+            var fieldSuperView = inputsFormManager.currentInputField?.superview
+            repeat {
+                fieldSuperView = fieldSuperView?.superview
+            } while fieldSuperView is UIScrollView
             
             // Get the frame of the input field in the scroll view.
-            let inputFieldRect = formScrollView.convert(currentInputFrame!, from: currentInputSuperView)
+            let inputFieldRect = formScrollView.convert(currentInputFrame!, from: fieldSuperView)
             
             let scrollPointY = inputFieldRect.minY - Constants.kFormTopScrollPadding
             
             if scrollPointY > 0 {
-                let scrollPoint = CGPoint(x: 0, y: scrollPointY)
+                let scrollPoint = CGPoint(x: 0, y: scrollPointY + keyboardSize.height)
                 
                 weak var weakSelf = self
                 

@@ -149,4 +149,14 @@ class ApiManager {
             completion(errorModel, (players?.data)!)
         }
     }
+    
+    // POST: Update user info
+    public static func updateUserInfo(userId: Int, updateInfo: Parameters, completion: @escaping (ErrorModel?) -> Void) {
+        Alamofire.request(ApiRouter.editInformation(userId: "\(userId)", parameters: updateInfo)).responseObject { (response: DataResponse<UpdateUserResponse>) in
+            // Verify if exist an error an return a message
+            let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+            
+            completion(errorModel)
+        }       
+    }
 }

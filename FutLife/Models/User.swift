@@ -129,3 +129,13 @@ class UserModel: NSObject, NSCoding {
         aCoder.encode(balance, forKey: "balance")
     }
 }
+
+class UpdateUserResponse: Model {
+    var message: String?
+    var success: Bool?
+    
+    override func mapping(map: Map) {
+        message <- map["message"]        
+        success <- map["success"]
+    }
+}
