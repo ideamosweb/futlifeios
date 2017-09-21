@@ -15,6 +15,7 @@ class PlayerInfoViewController: FormViewController {
     
     let numberOfFields: Int = 6
     let images: [String] = ["profile.username", "profile.username", "profile.location", "profile.email", "profile.telephone", "profile.birthday"]
+    let descTextFields: [String] = ["username", "name", "ubication", "email", "telephone", "birthdate"]
     let playerInfo: [String]!
     
     var player: UserModel
@@ -87,23 +88,7 @@ class PlayerInfoViewController: FormViewController {
             var params: Parameters = [:]
             for index in stride(from: 0, to: textFields.count, by: 1) {
                 let textField: TextField = textFields[index]
-                switch index {
-                case 0:
-                    params["username"] = textField.text
-                case 1:
-                    params["name"] = textField.text
-                case 2:
-                    params["ubication"] = textField.text
-                case 3:
-                    params["email"] = textField.text
-                case 4:
-                    params["telephone"] = textField.text
-                case 5:
-                    params["birthdate"] = textField.text
-                default:
-                    break
-                }
-                
+                params[descTextFields[index]] = textField.text               
             }
             
             weak var weakSelf = self

@@ -56,18 +56,18 @@ class User: Model {
 
 class UserModel: NSObject, NSCoding {
     let id: Int
-    let name: String
-    let userName: String
-    let email: String
+    var name: String
+    var userName: String
+    var email: String
     let avatar: String
     let thumbnail: String
     let social: Bool
     let active: Bool
     let createdAt: Date
     let updatedAt: Date
-    let cityName: String
-    let phone: String?
-    let birthDate: Date?
+    var cityName: String
+    var phone: String?
+    var birthDate: Date?
     let challenges: [Challenges]?
     let preferences: [PreferencesModel]?
     let balance: Balance?
@@ -130,12 +130,32 @@ class UserModel: NSObject, NSCoding {
     }
 }
 
+class UserUpdate: Model {
+    var email: String?
+    var userName: String?
+    var telephone: String?
+    var name: String?
+    var birthDate: String?
+    var ubication: String?
+    
+    override func mapping(map: Map) {
+        email <- map["email"]
+        userName <- map["username"]
+        telephone <- map["telephone"]
+        name <- map["name"]
+        birthDate <- map["birthdate"]
+        ubication <- map["ubication"]
+    }
+}
+
 class UpdateUserResponse: Model {
     var message: String?
     var success: Bool?
+    var userUpdate: UserUpdate?
     
     override func mapping(map: Map) {
         message <- map["message"]        
         success <- map["success"]
+        userUpdate <- map["user_update"]
     }
 }

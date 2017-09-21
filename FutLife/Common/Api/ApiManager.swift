@@ -155,6 +155,18 @@ class ApiManager {
         Alamofire.request(ApiRouter.editInformation(userId: "\(userId)", parameters: updateInfo)).responseObject { (response: DataResponse<UpdateUserResponse>) in
             // Verify if exist an error an return a message
             let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+            if errorModel.success! {
+                
+                let userUpdate: UserUpdate = (response.result.value?.userUpdate)!                
+                
+                let userModel: UserModel = UserModel(id: LocalDataManager.user?.id, name: userUpdate.name, userName: userUpdate.userName, email: userUpdate.email, avatar: LocalDataManager.user?.avatar, thumbnail: LocalDataManager.user?.thumbnail, social: LocalDataManager.user?.social, active: LocalDataManager.user?.active, createdAt: LocalDataManager.user?.createdAt, updatedAt: LocalDataManager.user?.updatedAt, cityName: userUpdate.ubication, phone: userUpdate.telephone, birthDate: Date(), challenges: (LocalDataManager.user?.challenges!)!, preferences: LocalDataManager.user?.preferences, balance: LocalDataManager.user?.balance)
+                
+                if LocalDataManager.user != nil {
+                    LocalDataManager.user = nil
+                }
+                
+                LocalDataManager.user = userModel
+            }
             
             completion(errorModel)
         }       

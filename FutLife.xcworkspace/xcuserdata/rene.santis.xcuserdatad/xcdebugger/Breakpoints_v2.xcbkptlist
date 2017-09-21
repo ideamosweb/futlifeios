@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-            timestampString = "527576299.362989"
+            timestampString = "527641531.832282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "onAcceptButtonTouch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-            timestampString = "527576283.284508"
+            timestampString = "527641531.832282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "onAcceptButtonTouch()"
             landmarkType = "7">
             <Locations>
@@ -250,12 +250,12 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rene.santis/Apps/iOS/futlifeios/FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-                  timestampString = "527576870.906638"
+                  timestampString = "527645244.232659"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "4508">
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1478">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -265,12 +265,12 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rene.santis/Apps/iOS/futlifeios/FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-                  timestampString = "527576870.909235"
+                  timestampString = "527645244.234424"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "4756">
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1726">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -280,11 +280,11 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rene.santis/Apps/iOS/futlifeios/FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-                  timestampString = "527576870.911355"
+                  timestampString = "527645244.236186"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
                   offsetFromSymbolStart = "94">
                </Location>
             </Locations>
@@ -297,11 +297,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-            timestampString = "527576527.719557"
+            timestampString = "527641531.832282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "onAcceptButtonTouch()"
             landmarkType = "7">
             <Locations>
@@ -313,11 +313,11 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rene.santis/Apps/iOS/futlifeios/FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-                  timestampString = "527576870.917764"
+                  timestampString = "527645244.246993"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
                   offsetFromSymbolStart = "216">
                </Location>
                <Location
@@ -328,14 +328,46 @@
                   moduleName = "FutLife"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rene.santis/Apps/iOS/futlifeios/FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
-                  timestampString = "527576870.920242"
+                  timestampString = "527645244.248576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
                   offsetFromSymbolStart = "633">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FutLife/Controllers/PlayerInfo/PlayerInfoViewController.swift"
+            timestampString = "527643454.697281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FutLife/Common/Api/ApiManager.swift"
+            timestampString = "527645244.114826"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "updateUserInfo(userId:updateInfo:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
