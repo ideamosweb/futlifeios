@@ -101,6 +101,8 @@
 		17F7B6581E73474D00578042 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6571E73474D00578042 /* AppDelegate.swift */; };
 		17F7B66D1E73474D00578042 /* FutLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B66C1E73474D00578042 /* FutLifeTests.swift */; };
 		17F7B6781E73474D00578042 /* FutLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6771E73474D00578042 /* FutLifeUITests.swift */; };
+		4008A4971F734D8F009D152D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008A4961F734D8F009D152D /* Cities.swift */; };
+		4008A49A1F737B2D009D152D /* CitiesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008A4991F737B2D009D152D /* CitiesProtocol.swift */; };
 		B3DDC6BD67F21EAE4AC4C6F4 /* Pods_FutLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E972938F4543AFEC752E34 /* Pods_FutLife.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +227,8 @@
 		17F7B6771E73474D00578042 /* FutLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutLifeUITests.swift; sourceTree = "<group>"; };
 		17F7B6791E73474D00578042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C32FB6C87B21B8000DA6626 /* Pods-FutLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife/Pods-FutLife.release.xcconfig"; sourceTree = "<group>"; };
+		4008A4961F734D8F009D152D /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cities.swift; path = Models/Cities.swift; sourceTree = "<group>"; };
+		4008A4991F737B2D009D152D /* CitiesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CitiesProtocol.swift; path = Common/Protocols/CitiesProtocol.swift; sourceTree = "<group>"; };
 		54E972938F4543AFEC752E34 /* Pods_FutLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79140749D98EEF1DD7D66E57 /* Pods-FutLife Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife Swift/Pods-FutLife Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		8EAB5FABE53C032C619AD16D /* Pods_FutLife_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutLife_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +306,7 @@
 				17F51E4A1F391D9300935687 /* ChallengesModel.swift */,
 				1783C41E1F3AC49F0065D797 /* PlayersModel.swift */,
 				1785964D1F65F12700EB493E /* Balance.swift */,
+				4008A4961F734D8F009D152D /* Cities.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 		1701044F1EC022D9002E6767 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4008A4981F737AF5009D152D /* Protocols */,
 				17001A0B1F0ADB0E00BF44BD /* Views */,
 				173999FD1EFF1F6900B72EFB /* Carousel */,
 				179961551EF6286200853DB7 /* Extensions */,
@@ -691,6 +697,14 @@
 			path = FutLifeUITests;
 			sourceTree = "<group>";
 		};
+		4008A4981F737AF5009D152D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4008A4991F737B2D009D152D /* CitiesProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		7275184320D6405A87373ADF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -959,7 +973,9 @@
 				17F51E421F380D7700935687 /* TabsViewController.swift in Sources */,
 				17E60A7F1E735FD2007D7CCD /* StartUpViewController.swift in Sources */,
 				17363C951EF3B3A4006888EE /* Utils.swift in Sources */,
+				4008A4971F734D8F009D152D /* Cities.swift in Sources */,
 				1701045A1EC2BC80002E6767 /* Console.swift in Sources */,
+				4008A49A1F737B2D009D152D /* CitiesProtocol.swift in Sources */,
 				170104551EC2A8CC002E6767 /* ConfigurationParameters.swift in Sources */,
 				17399A241F04A4B200B72EFB /* LocalDataManager.swift in Sources */,
 				17543EEA1F696F9D00998C50 /* PlayerConsolesCell.swift in Sources */,

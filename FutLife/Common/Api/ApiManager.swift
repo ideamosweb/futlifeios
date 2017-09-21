@@ -156,9 +156,8 @@ class ApiManager {
             // Verify if exist an error an return a message
             let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
             if errorModel.success! {
-                
-                let userUpdate: UserUpdate = (response.result.value?.userUpdate)!                
-                
+                // Let's clean user local data and update it
+                let userUpdate: UserUpdate = (response.result.value?.userUpdate)!
                 let userModel: UserModel = UserModel(id: LocalDataManager.user?.id, name: userUpdate.name, userName: userUpdate.userName, email: userUpdate.email, avatar: LocalDataManager.user?.avatar, thumbnail: LocalDataManager.user?.thumbnail, social: LocalDataManager.user?.social, active: LocalDataManager.user?.active, createdAt: LocalDataManager.user?.createdAt, updatedAt: LocalDataManager.user?.updatedAt, cityName: userUpdate.ubication, phone: userUpdate.telephone, birthDate: Date(), challenges: (LocalDataManager.user?.challenges!)!, preferences: LocalDataManager.user?.preferences, balance: LocalDataManager.user?.balance)
                 
                 if LocalDataManager.user != nil {
@@ -170,5 +169,21 @@ class ApiManager {
             
             completion(errorModel)
         }       
+    }
+    
+    // GET: Cities
+    static func getCities(keyword: String, completion: @escaping (ErrorModel?, _ cities: [City]) -> Void) {
+        Alamofire.request(ApiRouter.cities(keyword: keyword)).responseObject { (response: DataResponse<Cities>) in
+            let cities = response.result.value
+            
+            // Verify if exist an error an return a message
+            if let ct = cities {
+                var errorModel = ErrorModel()
+                DispatchQueue.main.async {
+                    errorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+                }
+                completion(errorModel, (ct.cities)!)
+            }
+        }
     }
 }

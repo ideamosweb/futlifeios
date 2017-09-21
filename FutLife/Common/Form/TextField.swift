@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextField: UITextField {
+class TextField: UITextField, CitiesProtocol {
     
     // Validation properties
     var isRequired = false
@@ -18,6 +18,8 @@ class TextField: UITextField {
     var fixedLength: Int?
     var isEmail = false
     var isOnlyNumbers = false
+    var autoCompleteTable: UITableView?
+    private var _autoCompleteOptions: [City]?
     
     var beforeTextValidation: String?
     
@@ -32,11 +34,43 @@ class TextField: UITextField {
         }
     }
     
+    var isAutoCompleted: Bool {
+        get {
+            return self.isAutoCompleted
+        }
+        
+        set {
+            if newValue {
+                addAutoCompleteTable()
+            }
+        }
+    }
+    
     override var text: String? {
         didSet {
             beforeTextValidation = text
         }
     }
+    
+    var cities: [City]? {
+        get {
+            if let options = _autoCompleteOptions {
+                return options
+            }
+            
+            return []
+        }
+        
+        set {
+            _autoCompleteOptions = newValue
+            if let tableView = autoCompleteTable {
+                tableView.isHidden = false
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    var citySelected: City?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -148,6 +182,26 @@ class TextField: UITextField {
         }       
     }
     
+    private func addAutoCompleteTable() {
+        let tableViewFrame = CGRect(x: self.frame.maxX - 200, y: self.frame.minY - 20, width: 200, height: 55)
+        
+        autoCompleteTable = UITableView(frame: tableViewFrame)
+        autoCompleteTable?.delegate = self
+        autoCompleteTable?.dataSource = self
+        autoCompleteTable?.isHidden = true
+        autoCompleteTable?.isUserInteractionEnabled = true
+        autoCompleteTable?.layer.borderWidth = 1.0
+        autoCompleteTable?.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.superview?.addSubview(autoCompleteTable!)
+        self.superview?.bringSubview(toFront: autoCompleteTable!)
+    }
+    
+    func hideAutoCompleteTable() {
+        cities = []
+        autoCompleteTable?.isHidden = true
+    }
+    
     override func draw(_ rect: CGRect) {
         layer.cornerRadius = 0.0
         layer.borderWidth = 0.0
@@ -162,5 +216,43 @@ class TextField: UITextField {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
         leftView = paddingView
         leftViewMode = .always
+    }
+}
+
+extension TextField: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let option: City = (cities?[indexPath.row])!
+        self.text = ""
+        self.text = option.name
+        citySelected = option
+        
+        hideAutoCompleteTable()
+    }
+}
+
+extension TextField: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (cities?.count)! > 0 {
+            return cities!.count
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let option = cities?[indexPath.row]
+        
+        cell.textLabel?.textColor = UIColor.black
+        cell.textLabel?.font = UIFont().bebasFont(size: 18.0)
+        cell.textLabel?.text = option?.name
+        
+        cell.isUserInteractionEnabled = true
+        
+        return cell
     }
 }

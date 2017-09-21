@@ -12,6 +12,7 @@ import Alamofire
 class PlayerInfoViewController: FormViewController {
     @IBOutlet weak var playerTextField: UIView!
     @IBOutlet weak var textFieldImage: UIImageView!
+    var datePicker: UIDatePicker?
     
     let numberOfFields: Int = 6
     let images: [String] = ["profile.username", "profile.username", "profile.location", "profile.email", "profile.telephone", "profile.birthday"]
@@ -20,6 +21,7 @@ class PlayerInfoViewController: FormViewController {
     
     var player: UserModel
     var textFields: [TextField] = []
+    var dateTextField: TextField?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -34,7 +36,6 @@ class PlayerInfoViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         var previousPlayerView: PlayerTextView?
         for index in stride(from: 0, to: numberOfFields, by: 1) {
             if let prevPlayerView = previousPlayerView {
@@ -45,6 +46,11 @@ class PlayerInfoViewController: FormViewController {
                 playerTextView?.configView(text: playerInfo[index], imageName: images[index])
                 playerTextView?.frame = nextFrame
                 playerTextView?.playerTextField.delegate = self
+                playerTextView?.playerTextField.tag = index
+                if index == 2 {
+                    playerTextView?.playerTextField.isAutoCompleted = true
+                    playerTextView?.playerTextField.autocorrectionType = .no
+                }
                 textFields.append((playerTextView?.playerTextField)!)
                 
                 previousPlayerView = playerTextView
@@ -52,6 +58,7 @@ class PlayerInfoViewController: FormViewController {
                 let playerTextView = Bundle.main.loadNibNamed("PlayerTextView", owner: self, options: nil)?.first as? PlayerTextView
                 playerTextView?.configView(text: playerInfo[index], imageName: images[index])
                 playerTextView?.playerTextField.delegate = self
+                playerTextView?.playerTextField.tag = index
                 textFields.append((playerTextView?.playerTextField)!)
                 
                 previousPlayerView = playerTextView
@@ -88,18 +95,72 @@ class PlayerInfoViewController: FormViewController {
             var params: Parameters = [:]
             for index in stride(from: 0, to: textFields.count, by: 1) {
                 let textField: TextField = textFields[index]
-                params[descTextFields[index]] = textField.text               
+                if textField.tag == 2 {
+                    if let city = textField.citySelected {
+                        params[descTextFields[index]] = city.countryId
+                    }
+                } else {
+                    params[descTextFields[index]] = textField.text
+                }
             }
             
             weak var weakSelf = self
             ApiManager.updateUserInfo(userId: (user?.id)!, updateInfo: params, completion: { (errorModel) in
                 if let strongSelf = weakSelf {
                     if (errorModel?.success)! {
-                        
-                        
+                        strongSelf.presentAlert(title: "¡Felicitaciones!", message: "Jugador actualizado con exito", style: alertStyle.formError, completion: nil)
+                    } else {
+                        strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     }
                 }
             })
+        }
+    }
+    
+    func configDatePicker() {
+        datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().width, height: 300))
+        datePicker?.datePickerMode = .date
+    }
+    
+    func datePickerValueChanged(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        
+        dateTextField?.text = dateFormatter.string(from: sender.date)
+    }
+}
+
+extension PlayerInfoViewController: UITextViewDelegate {
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard (inputsFormManager.inputFields?.contains(textField as! TextField))! else {
+            return false
+        }
+        
+        let txtFld: TextField = (textField as? TextField)!
+        if txtFld.tag == 2 {
+            let keyWord = (txtFld.text! != "") ? txtFld.text! : string
+            ApiManager.getCities(keyword: keyWord, completion: { (errorModel, cities) in
+                if cities.count > 0 && string != "" {
+                    txtFld.cities = cities
+                } else {
+                    txtFld.hideAutoCompleteTable()                    
+                }
+            })
+        }
+        
+        return true
+    }
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Let the input field manager know what text field is the one with focus.
+        inputsFormManager.currentInputField = textField
+        
+        if textField.tag == 5 {
+            dateTextField = textField as? TextField
+            configDatePicker()
+            textField.inputView = datePicker
+            datePicker?.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         }
     }
 }
