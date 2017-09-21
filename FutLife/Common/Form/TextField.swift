@@ -183,7 +183,7 @@ class TextField: UITextField, CitiesProtocol {
     }
     
     private func addAutoCompleteTable() {
-        let tableViewFrame = CGRect(x: self.frame.maxX - 200, y: self.frame.minY - 20, width: 200, height: 55)
+        let tableViewFrame = CGRect(x: self.frame.maxX - 200, y: self.frame.minY - 10, width: 200, height: 55)
         
         autoCompleteTable = UITableView(frame: tableViewFrame)
         autoCompleteTable?.delegate = self

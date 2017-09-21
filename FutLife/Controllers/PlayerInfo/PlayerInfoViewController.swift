@@ -118,7 +118,7 @@ class PlayerInfoViewController: FormViewController {
     }
     
     func configDatePicker() {
-        datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().width, height: 300))
+        datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
     }
     
