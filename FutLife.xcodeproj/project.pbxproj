@@ -53,6 +53,7 @@
 		17543EEC1F696FBB00998C50 /* PlayerConsolesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17543EEB1F696FBB00998C50 /* PlayerConsolesCell.xib */; };
 		17543EF01F69B47600998C50 /* PlayerStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17543EEE1F69B47600998C50 /* PlayerStatisticsViewController.swift */; };
 		17543EF11F69B47600998C50 /* PlayerStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17543EEF1F69B47600998C50 /* PlayerStatisticsViewController.xib */; };
+		176EBC661F76D3B800F126D6 /* FormScrollViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EBC651F76D3B800F126D6 /* FormScrollViewProtocol.swift */; };
 		1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C4131F3ABA280065D797 /* PlayersListViewController.swift */; };
 		1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */; };
 		1783C41B1F3ABE100065D797 /* PlayersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1783C41A1F3ABE100065D797 /* PlayersListCell.swift */; };
@@ -174,6 +175,7 @@
 		17543EEB1F696FBB00998C50 /* PlayerConsolesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerConsolesCell.xib; path = Controllers/PlayerConsoles/Cell/PlayerConsolesCell.xib; sourceTree = "<group>"; };
 		17543EEE1F69B47600998C50 /* PlayerStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerStatisticsViewController.swift; path = Controllers/PlayerStatistics/PlayerStatisticsViewController.swift; sourceTree = "<group>"; };
 		17543EEF1F69B47600998C50 /* PlayerStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerStatisticsViewController.xib; path = Controllers/PlayerStatistics/PlayerStatisticsViewController.xib; sourceTree = "<group>"; };
+		176EBC651F76D3B800F126D6 /* FormScrollViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormScrollViewProtocol.swift; path = Common/Protocols/FormScrollViewProtocol.swift; sourceTree = "<group>"; };
 		1783C4131F3ABA280065D797 /* PlayersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListViewController.swift; path = Controllers/PlayerList/PlayersListViewController.swift; sourceTree = "<group>"; };
 		1783C4151F3ABAE80065D797 /* PlayersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayersListViewController.xib; path = Controllers/PlayerList/PlayersListViewController.xib; sourceTree = "<group>"; };
 		1783C41A1F3ABE100065D797 /* PlayersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersListCell.swift; path = Controllers/PlayerList/Cell/PlayersListCell.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				4008A4991F737B2D009D152D /* CitiesProtocol.swift */,
+				176EBC651F76D3B800F126D6 /* FormScrollViewProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -988,6 +991,7 @@
 				17BFB0581EF838C0002A994E /* Error.swift in Sources */,
 				170104511EC0232C002E6767 /* ApiRouter.swift in Sources */,
 				17F51E471F38C7D600935687 /* HomeViewController.swift in Sources */,
+				176EBC661F76D3B800F126D6 /* FormScrollViewProtocol.swift in Sources */,
 				17001A0D1F0ADB3B00BF44BD /* CustomTableViewCell.swift in Sources */,
 				17399A261F04A7F600B72EFB /* UserDefaults+Extension.swift in Sources */,
 				17297FCF1EFA20B100E2FCE4 /* LoginManager.swift in Sources */,

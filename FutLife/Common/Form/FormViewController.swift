@@ -82,12 +82,13 @@ class FormViewController: ViewController {
             } while fieldSuperView is UIScrollView
             
             // Get the frame of the input field in the scroll view.
-            let inputFieldRect = formScrollView.convert(currentInputFrame!, from: fieldSuperView)
+            let inputFieldRect = formScrollView.convert(currentInputFrame!, from: inputsFormManager.currentInputField)
             
+            let visibleHeight = formScrollView.bounds.size.height - keyboardSize.height
             let scrollPointY = inputFieldRect.minY - Constants.kFormTopScrollPadding
             
-            if scrollPointY > 0 {
-                let scrollPoint = CGPoint(x: 0, y: scrollPointY + keyboardSize.height)
+            if scrollPointY > visibleHeight {
+                let scrollPoint = CGPoint(x: 0, y: keyboardSize.height - (scrollPointY - visibleHeight))
                 
                 weak var weakSelf = self
                 
@@ -149,6 +150,8 @@ extension FormViewController : UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         // In case the input field is not within the form, we don't want to let the user edit it.
         // Example: when the field is hidden.
+        // Let the input field manager know what text field is the one with focus.
+        inputsFormManager.currentInputField = textField
         return (inputsFormManager.inputFields?.contains(textField as! TextField))!
     }
     

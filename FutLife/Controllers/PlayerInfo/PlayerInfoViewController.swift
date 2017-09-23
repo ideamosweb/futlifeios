@@ -22,6 +22,7 @@ class PlayerInfoViewController: FormViewController {
     var player: UserModel
     var textFields: [TextField] = []
     var dateTextField: TextField?
+    var formScrollViewDelegate: FormScrollViewProtocol?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,6 +36,10 @@ class PlayerInfoViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let formScrollViewDelegate = formScrollViewDelegate {
+            formScrollView = formScrollViewDelegate.getFormScrollView()
+        }
         
         var previousPlayerView: PlayerTextView?
         for index in stride(from: 0, to: numberOfFields, by: 1) {
@@ -64,7 +69,7 @@ class PlayerInfoViewController: FormViewController {
                 previousPlayerView = playerTextView
             }
             
-            formScrollView.addSubview(previousPlayerView!)
+            view.addSubview(previousPlayerView!)
         }
         
         let cancelButton = UIButton(frame: CGRect(x: 30, y: (previousPlayerView?.frame.maxY)! + 20, width: (Utils.screenViewFrame().width / 2 - 40), height: 30))
@@ -82,8 +87,8 @@ class PlayerInfoViewController: FormViewController {
         acceptButton.layer.cornerRadius = 10
         acceptButton.addTarget(self, action: #selector(onAcceptButtonTouch), for: .touchUpInside)
         
-        formScrollView.addSubview(cancelButton)
-        formScrollView.addSubview(acceptButton)
+        view.addSubview(cancelButton)
+        view.addSubview(acceptButton)
         
         // Let's pass the fields to inputsFormManager
         inputsFormManager.inputFields = textFields

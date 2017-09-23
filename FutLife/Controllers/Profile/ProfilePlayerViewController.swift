@@ -23,6 +23,7 @@ class ProfilePlayerViewController: TabsViewController {
     var editButton: UIButton?
     var infoEditButton: UIButton?
     var consoleEditButton: UIButton?
+    var scrollView: UIScrollView?
     
     var statisticsTable: UITableView!
     var consolesTableView: UITableView!
@@ -73,17 +74,17 @@ class ProfilePlayerViewController: TabsViewController {
     
     func configFlexibleHeader() {
         let navBarHeight = CGFloat(Constants.kStatusBarDefaultHeight) + CGFloat(Constants.kNavigationBarDefaultHeight)
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height + navBarHeight))
-        scrollView.contentSize = CGSize(width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height + kFlexibleBarHeight - CGFloat(Constants.kNavigationBarDefaultHeight) - 20)
-        view.addSubview(scrollView)
-        scrollView.bounces = false
+        scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height + navBarHeight))
+        scrollView?.contentSize = CGSize(width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height + kFlexibleBarHeight - CGFloat(Constants.kNavigationBarDefaultHeight) - 20)
+        view.addSubview(scrollView!)
+        scrollView?.bounces = false
         
         /*** FLEXIBLE NAV-BAR ***/
         let myBar: BLKFlexibleHeightBar = BLKFlexibleHeightBar(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().size.width, height: kFlexibleBarHeight))
         myBar.minimumBarHeight = navBarHeight
         myBar.behaviorDefiner = SquareCashStyleBehaviorDefiner()
         
-        scrollView.delegate = myBar.behaviorDefiner as UIScrollViewDelegate
+        scrollView?.delegate = myBar.behaviorDefiner as UIScrollViewDelegate
         
         /*** BACKGROUND BAR IMAGE ***/
         let bgBarImage = UIImage(named: "headerFlexNavBg")
@@ -226,7 +227,7 @@ class ProfilePlayerViewController: TabsViewController {
         nameLb.add(finalLayoutAttributesForName, forProgress: 1.0)
         
         // Finally add myBar to main view
-        scrollView.addSubview(myBar)
+        scrollView?.addSubview(myBar)
         
         // Config tabs
         useDefaultViewHeight = true
@@ -235,7 +236,7 @@ class ProfilePlayerViewController: TabsViewController {
         showTabDefault = 1
         configPlayerViews()
         
-        scrollView.didMoveToSuperview()
+        scrollView?.didMoveToSuperview()
         
         addEditButtons()
     }
@@ -318,6 +319,7 @@ class ProfilePlayerViewController: TabsViewController {
         
         let playerConsolesVC = PlayerConsolesViewController(consoles: consolesSelected, games: gamesSelected)
         let playerInfoVC = PlayerInfoViewController()
+        playerInfoVC.formScrollViewDelegate = self
         let playerStatisticsVC = PlayerStatisticsViewController()
         
         tabsTitles = ["CONSOLAS", "INFORMACIÓN", "ESTADISTICAS"]
@@ -432,5 +434,15 @@ extension ProfilePlayerViewController: UIImagePickerControllerDelegate, UINaviga
                 })
             }
         }
+    }
+}
+
+extension ProfilePlayerViewController: FormScrollViewProtocol {
+    func getFormScrollView() -> UIScrollView {
+        if let scrollView = scrollView {
+            return scrollView
+        }
+        
+        return UIScrollView()
     }
 }
