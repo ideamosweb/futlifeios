@@ -44,10 +44,7 @@ class FormViewController: ViewController {
     }
     
     func registerForKeyboardNotifications() {
-        //let keyboardWillShow = Notification.Name("UIKeyboardWillShow")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown(notification:)), name: .UIKeyboardWillShow, object: nil)
-        
-        //let keyboardWillHide = Notification.Name("UIKeyboardWillHide")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
     
@@ -75,38 +72,39 @@ class FormViewController: ViewController {
             formScrollView.contentInset = contentInsets
             formScrollView.scrollIndicatorInsets = contentInsets
             
-            let currentInputFrame = inputsFormManager.currentInputField?.frame
-            var fieldSuperView = inputsFormManager.currentInputField?.superview
-            repeat {
-                fieldSuperView = fieldSuperView?.superview
-            } while fieldSuperView is UIScrollView
-            
-            // Get the frame of the input field in the scroll view.
-            let inputFieldRect = formScrollView.convert(currentInputFrame!, from: inputsFormManager.currentInputField)
-            
-            let visibleHeight = formScrollView.bounds.size.height - keyboardSize.height
-            let scrollPointY = inputFieldRect.minY - Constants.kFormTopScrollPadding
-            
-            if scrollPointY > visibleHeight {
-                let scrollPoint = CGPoint(x: 0, y: keyboardSize.height - (scrollPointY - visibleHeight))
+            // Avoid crash. For some reason currentInputField is sometimes nil
+            if let currentInput = inputsFormManager.currentInputField {
+                let currentInputFrame = currentInput.frame
+                var fieldSuperView = currentInput.superview
+                repeat {
+                    fieldSuperView = fieldSuperView?.superview
+                } while fieldSuperView is UIScrollView
                 
-                weak var weakSelf = self
+                // Get the frame of the input field in the scroll view.
+                let inputFieldRect = formScrollView.convert(currentInputFrame, from: currentInput)
                 
-                UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIViewAnimationOptions(rawValue: UInt(animationCurve)), animations: {
-                    if let strongSelf = weakSelf {
-                        strongSelf.formScrollView.setContentOffset(scrollPoint, animated: false)
-                    }
+                let visibleHeight = formScrollView.bounds.size.height - keyboardSize.height
+                let scrollPointY = inputFieldRect.minY - Constants.kFormTopScrollPadding
+                
+                if scrollPointY > visibleHeight {
+                    let scrollPoint = CGPoint(x: 0, y: keyboardSize.height - (scrollPointY - visibleHeight))
                     
-                }, completion: { (finished) in
-                    // Prevent scrolling when editing the form.
-                    if let strongSelf = weakSelf {
-                        strongSelf.formScrollView.isScrollEnabled = false
-                    }
-                })
+                    weak var weakSelf = self
+                    
+                    UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIViewAnimationOptions(rawValue: UInt(animationCurve)), animations: {
+                        if let strongSelf = weakSelf {
+                            strongSelf.formScrollView.setContentOffset(scrollPoint, animated: false)
+                        }
+                        
+                    }, completion: { (finished) in
+                        // Prevent scrolling when editing the form.
+                        if let strongSelf = weakSelf {
+                            strongSelf.formScrollView.isScrollEnabled = false
+                        }
+                    })
+                }
             }
-            
         }
-        
     }
     
     func keyboardWillBeHidden(notification: NSNotification) {

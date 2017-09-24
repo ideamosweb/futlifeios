@@ -62,16 +62,6 @@ class ProfilePlayerViewController: TabsViewController {
         configFlexibleHeader()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
-    }
-    
     func configFlexibleHeader() {
         let navBarHeight = CGFloat(Constants.kStatusBarDefaultHeight) + CGFloat(Constants.kNavigationBarDefaultHeight)
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height + navBarHeight))
