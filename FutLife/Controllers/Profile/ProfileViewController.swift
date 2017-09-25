@@ -31,7 +31,7 @@ class ProfileViewController: ViewController {
     
     var isConfirmButton: Bool
     var isNavBar: Bool
-    var profileCompleted: () -> Void
+    var profileCompleted: (() -> Void)?
     
     let kTableViewHeight: CGFloat = 480.0
     let kProfileCellHeight: CGFloat = 54.0
@@ -44,7 +44,7 @@ class ProfileViewController: ViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(navBar: Bool, confirmButton: Bool, profileCompleted: @escaping () -> Void) {
+    init(navBar: Bool, confirmButton: Bool, profileCompleted: (() -> Void)?) {
         self.profileCompleted = profileCompleted
         isConfirmButton = confirmButton
         isNavBar = navBar
@@ -225,7 +225,8 @@ class ProfileViewController: ViewController {
         }
         
         let params: [String: Any] = ["user_id": "\(user?.id ?? 0)",
-                                     "preferences": strDict ?? ""
+                                     "preferences": strDict ?? "",
+                                     "edit": "0"
         ]
         
         AppDelegate.showPKHUD()
@@ -233,7 +234,7 @@ class ProfileViewController: ViewController {
             AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
-                    strongSelf.profileCompleted()
+                    strongSelf.profileCompleted!()
                 } else {
                     strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     

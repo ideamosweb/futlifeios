@@ -154,10 +154,12 @@ extension PlayerInfoViewController: UITextViewDelegate {
         if txtFld.tag == 2 {
             let keyWord = (txtFld.text! != "") ? txtFld.text! : string
             ApiManager.getCities(keyword: keyWord, completion: { (errorModel, cities) in
-                if cities.count > 0 && string != "" {
-                    txtFld.cities = cities
-                } else {
-                    txtFld.hideAutoCompleteTable()                    
+                if let cities = cities {
+                    if cities.count > 0 && string != "" {
+                        txtFld.cities = cities
+                    } else {
+                        txtFld.hideAutoCompleteTable()
+                    }
                 }
             })
         }

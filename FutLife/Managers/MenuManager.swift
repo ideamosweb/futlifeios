@@ -70,6 +70,29 @@ class MenuManager: NSObject {
         
     }
     
+    func onEditConsoleTouch(currentViewController: ViewController) {
+        MenuManager.currentViewController = nil
+        if MenuManager.currentViewController == nil {
+            MenuManager.currentViewController = currentViewController
+            let nav = AppDelegate.mainNavigationController
+            let consolesVC = ChooseConsoleViewController(navBar: true, chooseConsoleCompleted: { (consoles) in
+                let chooseGameVC = ChooseGameViewController(navBar: true) { (games) in
+                    if MenuManager.currentViewController != nil {
+                        nav.pushViewController(MenuManager.currentViewController!, animated: true)
+                    }
+                }
+                
+                nav.pushViewController(chooseGameVC, animated: true)
+            })
+            
+            nav.pushViewController(consolesVC, animated: true)
+        }
+    }
+    
+    func onEditGamesTouch() {
+        
+    }
+    
     func onLogOutTouch(_ sender: Any) {
         LoginManager.logOut {
             AppDelegate.sharedInstance.openStartUp()

@@ -24,18 +24,18 @@ class ChallengesCell: CustomTableViewCell {
         super.awakeFromNib()
     }
     
-    public func setUpView(challenge: Challenges, players: [User]) {
-        if let players = matchPlayer(challenge: challenge, players: players) {
+    public func setUpView(challenge: Challenges?, players: [User]?) {
+        if let players = matchPlayer(challenge: challenge!, players: players!) {
             amountLabel.textColor = UIColor().greenDefault()
-            let intValue: Float = Float(challenge.initialValue!)!
+            let intValue: Float = Float(challenge!.initialValue!)!
             amountLabel.text = "$\(intValue)"
-            gameImageView.image = setGameImage(gameId: challenge.gameId!)
+            gameImageView.image = setGameImage(gameId: (challenge?.gameId!)!)
             
             let placeholderImage = UIImage(named: "avatar_placeholder")!
             if let p1 = players.playerOne {
                 defiantAvatar.circularView(borderColor: UIColor().greenDefault())
                 defiantNameLabel.text = !(p1.userName?.isEmpty)! ? players.playerOne?.userName : "¡UNETE!"
-                defiantConsoleLb.text = setConsole(consoleId: "\(challenge.consoleId ?? "")")
+                defiantConsoleLb.text = setConsole(consoleId: "\(challenge?.consoleId ?? "")")
                 if (p1.avatar != nil) {
                     defiantAvatar.af_setImage(withURL: URL(string: (p1.avatar)!)!, placeholderImage: placeholderImage)
                 } else {
@@ -52,7 +52,7 @@ class ChallengesCell: CustomTableViewCell {
             if let p2 = players.playerTwo {
                 rivalAvatar.circularView(borderColor: UIColor().greenDefault())
                 rivalNameLabel.text = !(p2.userName?.isEmpty)! ? p2.userName : "¡UNETE!"
-                rivalConsoleLb.text = setConsole(consoleId: "\(challenge.consoleId ?? "")")
+                rivalConsoleLb.text = setConsole(consoleId: "\(challenge?.consoleId ?? "")")
                 if (p2.avatar != nil) {
                     rivalAvatar.af_setImage(withURL: URL(string: (p2.avatar)!)!, placeholderImage: placeholderImage)
                 } else {

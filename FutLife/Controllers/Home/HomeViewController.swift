@@ -13,7 +13,7 @@ class HomeViewController: TabsViewController {
     @IBOutlet weak var balancelabel: UILabel!
     var users: [UserModel] = []
     var darkBackgroundButton: UIButton = UIButton()
-    var homeCompletion: () -> Void?
+    var homeCompletion: (() -> Void)?
     var darkBgButton: UIButton?
     var playerOptionsView: PlayerOptionsView?
     
@@ -25,7 +25,7 @@ class HomeViewController: TabsViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(completion: @escaping () -> Void?) {
+    init(completion: (() -> Void)?) {
         homeCompletion = completion        
         super.init(nibName: "HomeViewController", bundle: Bundle.main)
     }
@@ -48,7 +48,11 @@ class HomeViewController: TabsViewController {
         balancelabel.font = UIFont().bebasFont(size: 14)
         balancelabel.text = "SALDO ACTUAL: $0"
         
-        getAllChallengeRequest()
+        let user: UserModel? = LocalDataManager.user!
+        if user != nil {
+            getAllChallengeRequest(user: user!)
+            //getPlayersRequest(user: user!, challenges: [])
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,23 +61,21 @@ class HomeViewController: TabsViewController {
         navigationBar(show: true, backgroundColor: UIColor().darkBlue())
     }
     
-    private func getAllChallengeRequest() {
-        let user: UserModel? = LocalDataManager.user!
-        if user != nil {
-            weak var weakSelf = self            
-            ApiManager.getChallenges(userId: (user?.id)!) { (errorModel, challenges) in
-                if let strongSelf = weakSelf {
-                    if (errorModel?.success)! {
-                        strongSelf.getPlayersRequest(user: user!, challenges: challenges)
-                    } else {
-                        strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
-                    }
+    private func getAllChallengeRequest(user: UserModel) {
+        weak var weakSelf = self
+        ApiManager.getChallenges(userId: user.id) { (errorModel, challenges) in
+            if let strongSelf = weakSelf {
+                if (errorModel?.success)! {
+                    strongSelf.getPlayersRequest(user: user, challenges: challenges)
+                } else {
+                    AppDelegate.hidePKHUD()
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                 }
             }
         }
     }
     
-    private func getPlayersRequest(user: UserModel, challenges: [Challenges]) {
+    private func getPlayersRequest(user: UserModel, challenges: [Challenges]?) {
         weak var weakSelf = self
         ApiManager.getPlayers(userId: user.id) { (errorModel, players) in
             if let strongSelf = weakSelf {

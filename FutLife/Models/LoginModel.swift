@@ -36,3 +36,13 @@ struct LoginModel {
     static var success: Bool?
     static var data: User?    
 }
+
+class LogoutResponse: Model {
+    var success: Bool?
+    var message: String?
+    
+    override func mapping(map: Map) {
+        success <- map["success"]
+        message <- map["message"]
+    }
+}

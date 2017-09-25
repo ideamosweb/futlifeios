@@ -28,6 +28,7 @@ struct ApiError {
         case badRequest = 400
         case unAuthorized = 401
         case serverError = 500
+        case notFound = 404
     }
     
     static func checkError(responseData: Data?, statusCode: Int) -> ErrorModel {
@@ -35,7 +36,7 @@ struct ApiError {
         var errorModel = ErrorModel()
         errorModel.success = true
         
-        if error == ApiError.ApiErrorCode.badRequest.rawValue || error == ApiError.ApiErrorCode.unAuthorized.rawValue || error == ApiError.ApiErrorCode.serverError.rawValue {
+        if error == ApiError.ApiErrorCode.badRequest.rawValue || error == ApiError.ApiErrorCode.unAuthorized.rawValue || error == ApiError.ApiErrorCode.serverError.rawValue || error == ApiError.ApiErrorCode.notFound.rawValue {
             if let data = responseData {
                 let errorStr = String(data: data, encoding: String.Encoding.utf8)!
                 let dict = Utils.convertToDictionary(text: errorStr)

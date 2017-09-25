@@ -19,6 +19,7 @@
                 <outlet property="chooseMoreThanOneLable" destination="d9j-vF-xBc" id="kAS-sg-Llc"/>
                 <outlet property="gameCarousel" destination="XUl-BG-7NR" id="34W-UM-XuN"/>
                 <outlet property="nextButton" destination="oGO-GH-cE8" id="tgG-u0-yIL"/>
+                <outlet property="topOnstraint" destination="BRe-Nt-tkS" id="qv8-zN-A6J"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="nbo-xp-WNl"/>
             </connections>
         </placeholder>
@@ -76,6 +77,7 @@
             <constraints>
                 <constraint firstItem="XUl-BG-7NR" firstAttribute="top" secondItem="d9j-vF-xBc" secondAttribute="bottom" constant="42" id="27e-Ip-juv"/>
                 <constraint firstAttribute="bottom" secondItem="oGO-GH-cE8" secondAttribute="bottom" constant="20" id="3o7-br-yvz"/>
+                <constraint firstItem="97V-Rf-iGJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="106.5" id="BRe-Nt-tkS"/>
                 <constraint firstItem="97V-Rf-iGJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bbh-rL-ldG"/>
                 <constraint firstItem="XUl-BG-7NR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="DJs-yZ-g7w"/>
                 <constraint firstItem="XUl-BG-7NR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K3o-AC-CaU"/>

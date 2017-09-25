@@ -16,10 +16,10 @@ class ChooseConsoleViewController: CarouselViewController {
     @IBOutlet weak var chooseMoreThanOneLable: UILabel!
     
     var consoles: [Console]?
-    var selectedConsoles = [Console]()
+    var selectedConsoles: [ConsoleModel] = []
     var selectedConsolesTable: UITableView?
     var isNavBar: Bool?
-    var chooseConsoleCompleted: ([ConsoleModel]) -> Void?
+    var chooseConsoleCompleted: (([ConsoleModel]) -> Void)?
     
     let VIEW_ITEM_WIDTH: CGFloat = 240
     let VIEW_ITEM_HEIGHT: CGFloat = 220
@@ -28,7 +28,7 @@ class ChooseConsoleViewController: CarouselViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(navBar: Bool, chooseConsoleCompleted: @escaping ([ConsoleModel]) -> Void?) {
+    init(navBar: Bool, chooseConsoleCompleted: (([ConsoleModel]) -> Void)?) {
         self.chooseConsoleCompleted = chooseConsoleCompleted
         super.init(nibName: "ChooseConsoleViewController", bundle: Bundle.main)
         isNavBar = navBar
@@ -41,6 +41,17 @@ class ChooseConsoleViewController: CarouselViewController {
         chooseMoreThanOneLable.font = UIFont().bebasFont(size: 18)
         
         nextButton.isEnabled = false
+        
+        // Check if there selected consoles
+        let preferences = LocalDataManager.user?.preferences
+        guard let pref = preferences else {
+            return
+        }
+        
+        for preference in pref {
+            selectedConsoles.append(preference.console!)
+            nextButton.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +70,15 @@ class ChooseConsoleViewController: CarouselViewController {
         let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselItemNotification)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectCarouselItem(_:)), name: selectedCarouselItem, object: nil)
         
+        addSelectedConsoles()
+        
         selectedConsolesTable?.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        addSelectedConsoles()
+        
     }
     
     deinit {
@@ -77,17 +90,21 @@ class ChooseConsoleViewController: CarouselViewController {
         nextButton.isEnabled = indexSelectedItems.count > 0
         
         if let index = notification.userInfo?["index"] as? Int {
-            let console: Console = consoles![index]
+            let consoleModel: ConsoleModel
+            if selectedConsoles.count > 0 {
+                consoleModel = selectedConsoles[index]
+            } else {
+                let console: Console = consoles![index]
+                consoleModel = ConsoleModel(id: console.id, platformId: console.platformId, year: console.year, name: console.name, avatar: console.avatar, thumbnail: console.thumbnail, active: console.active, createdAt: console.createdAt, updatedAt: console.updatedAt)
+            }
             
-            
-            if let indexObject = selectedConsoles.index(where: {$0 === console}) {
+            if let indexObject = selectedConsoles.index(where: {$0 === consoleModel}) {
                 selectedConsoles.remove(at: indexObject)
             } else {
-                selectedConsoles.append(console)
+                selectedConsoles.append(consoleModel)
             }
             
             selectedConsolesTable?.reloadData()
-            
         }
     }
     
@@ -101,7 +118,7 @@ class ChooseConsoleViewController: CarouselViewController {
         }
         
         LocalDataManager.consolesSelected = consoles
-        chooseConsoleCompleted(consoles)
+        chooseConsoleCompleted!(consoles)
     }
     
     private func addSelectedConsoles() {
@@ -139,6 +156,9 @@ class ChooseConsoleViewController: CarouselViewController {
     
     private func configCarouselsItemsViews(consoles: [Console]) -> [UIView] {
         var carouselItemsViews = [UIImageView]()
+        let preferences = LocalDataManager.user?.preferences
+        
+        var index = 0
         for console in consoles {
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: VIEW_ITEM_WIDTH, height: VIEW_ITEM_HEIGHT))
             let imageUrl = URL(string: console.avatar!)!
@@ -146,7 +166,23 @@ class ChooseConsoleViewController: CarouselViewController {
             
             imageView.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
             
+            if let preferences = preferences {
+                for preference in preferences {
+                    if preference.consoleId == "\(console.id ?? 0)" {
+                        // Set yellow shadow to itemView
+                        imageView.layer.shadowColor = UIColor.yellow.cgColor
+                        imageView.layer.shadowOpacity = 1
+                        imageView.layer.shadowOffset = CGSize.zero
+                        imageView.layer.shadowRadius = 10
+                        
+                        indexSelectedItems.append(index + 1)
+                        selectedItems.append(index)
+                    }
+                }
+            }
+            
             carouselItemsViews.append(imageView)
+            index += 1
         }
         
         return carouselItemsViews
@@ -172,13 +208,13 @@ extension ChooseConsoleViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        let console = selectedConsoles[indexPath.row]
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.font = UIFont().bebasFont(size: 18.0)
-        cell.textLabel?.text = "\(console.name ?? "")"
-        
         cell.isUserInteractionEnabled = false
+        
+        let console = selectedConsoles[indexPath.row]
+        cell.textLabel?.text = console.name
         
         return cell
     }

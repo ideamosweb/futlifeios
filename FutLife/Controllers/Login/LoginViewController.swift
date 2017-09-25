@@ -14,15 +14,15 @@ class LoginViewController: FormViewController {
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var registerButton: UIButton!
     
-    var registerClosure: () -> Void?
-    var loginClosure: () -> Void?
-    var chooseConsoleClosure: () -> Void?
+    var registerClosure: (() -> Void)?
+    var loginClosure: (() -> Void)?
+    var chooseConsoleClosure: (() -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(registerClosure: @escaping () -> Void?, loginClosure: @escaping () -> Void?, chooseConsoleClosure: @escaping () -> Void?) {
+    init(registerClosure: (() -> Void)?, loginClosure: (() -> Void)?, chooseConsoleClosure: (() -> Void)?) {
         self.registerClosure = registerClosure
         self.loginClosure = loginClosure
         self.chooseConsoleClosure = chooseConsoleClosure
@@ -81,7 +81,7 @@ class LoginViewController: FormViewController {
     }
     
     @IBAction func onRegisterButtonTouch(_ sender: Any) {
-        registerClosure()
+        registerClosure!()
     }
     
     @IBAction func onFacebookLoginButtonTouch(_ sender: Any) {
@@ -106,7 +106,7 @@ class LoginViewController: FormViewController {
             if let strongSelf = weakSelf {
                 // Login flag set true
                 LocalDataManager.logged = true
-                strongSelf.loginClosure()
+                strongSelf.loginClosure!()
             }
         }) { (error) in
             AppDelegate.hidePKHUD()

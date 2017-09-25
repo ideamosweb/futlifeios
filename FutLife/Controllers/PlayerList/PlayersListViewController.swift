@@ -14,13 +14,13 @@ class PlayersListViewController: ViewController {
     
     @IBOutlet weak var tableView: UITableView!    
     
-    var players: [User]
+    var players: [User]?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(players: [User]) {
+    init(players: [User]?) {
         self.players = players
         super.init(nibName: "PlayersListViewController", bundle: Bundle.main)
     }
@@ -54,14 +54,21 @@ extension PlayersListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        if let players = players {
+            return players.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PlayersListCell = tableView.dequeueReusableCell(withIdentifier: kPlayersCellIdentifier) as! PlayersListCell
-        let user = players[indexPath.row]
-        cell.delegate = parent as! HomeViewController
-        cell.setUpCell(user: user)
+        if let players = players {
+            let user = players[indexPath.row]
+            cell.delegate = parent as! HomeViewController
+            cell.setUpCell(user: user)
+        }
+        
         cell.selectionStyle = .none
         
         return cell

@@ -92,7 +92,6 @@ class ApiManager {
                 switch result {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        //print response.result
                         // Verify if exist an error an return a message
                         let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (200))
                         completion(errorModel)
@@ -108,6 +107,17 @@ class ApiManager {
     // POST: Create user
     public static func createUser(createUserParameters: Parameters, completion: @escaping (ErrorModel?) -> Void) {
         Alamofire.request(ApiRouter.registerPreferences(registerPreferencesParameters: createUserParameters)).responseObject { (response: DataResponse<RegisterCreateResponse>) in
+            let preferences = response.result.value
+            
+            if LocalDataManager.user != nil {
+                let user = LocalDataManager.user
+                let preferencesModel = Utils.savePreferencesModel(preferences: preferences?.preferences)
+                
+                let userModel: UserModel = UserModel(id: user!.id, name: user!.name, userName: user!.userName, email: user!.email, avatar: user!.avatar, thumbnail: user!.thumbnail, social: user!.social, active: user!.active, createdAt: user!.createdAt, updatedAt: user!.updatedAt, cityName: user!.cityName, phone: user!.phone, birthDate: user!.birthDate, challenges: user!.challenges!, preferences: preferencesModel, balance: user!.balance)
+                
+                LocalDataManager.user = nil
+                LocalDataManager.user = userModel
+            }           
             
             // Verify if exist an error an return a message
             let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
@@ -117,7 +127,7 @@ class ApiManager {
     }
     
     // GET: Challenges
-    static func getChallenges(userId: Int, completion: @escaping (ErrorModel?, _ challenges: [Challenges]) -> Void) {
+    static func getChallenges(userId: Int, completion: @escaping (ErrorModel?, _ challenges: [Challenges]?) -> Void) {
         Alamofire.request(ApiRouter.challenges(userId: "\(userId)")).responseObject { (response: DataResponse<ChallengesResponse>) in
             let challenges = response.result.value
             
@@ -129,12 +139,12 @@ class ApiManager {
                 ChallengesModel.success = challenges?.success
             }
             
-            completion(errorModel, (challenges?.data)!)
+            completion(errorModel, challenges?.data)
         }
     }
     
     // GET: Players
-    static func getPlayers(userId: Int, completion: @escaping (ErrorModel?, _ players: [User]) -> Void) {
+    static func getPlayers(userId: Int, completion: @escaping (ErrorModel?, _ players: [User]?) -> Void) {
         Alamofire.request(ApiRouter.players(userId: "\(userId)")).responseObject { (response: DataResponse<PlayersResponse>) in
             let players = response.result.value
             
@@ -146,7 +156,7 @@ class ApiManager {
                 PlayersModel.success = players?.success
             }
             
-            completion(errorModel, (players?.data)!)
+            completion(errorModel, players?.data)
         }
     }
     
@@ -172,18 +182,26 @@ class ApiManager {
     }
     
     // GET: Cities
-    static func getCities(keyword: String, completion: @escaping (ErrorModel?, _ cities: [City]) -> Void) {
+    static func getCities(keyword: String, completion: @escaping (ErrorModel?, _ cities: [City]?) -> Void) {
         Alamofire.request(ApiRouter.cities(keyword: keyword)).responseObject { (response: DataResponse<Cities>) in
             let cities = response.result.value
             
             // Verify if exist an error an return a message
-            if let ct = cities {
-                var errorModel = ErrorModel()
-                DispatchQueue.main.async {
-                    errorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
-                }
-                completion(errorModel, (ct.cities)!)
+            var errorModel = ErrorModel()
+            DispatchQueue.main.async {
+                errorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
             }
+            
+            completion(errorModel, cities?.cities)
+        }
+    }
+    
+    // GET: Logout
+    static func logout(completion: @escaping (ErrorModel?) -> Void) {
+        Alamofire.request(ApiRouter.logout).responseObject { (response: DataResponse<LogoutResponse>) in
+            // Verify if exist an error an return a message
+            let errorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+            completion(errorModel)
         }
     }
 }

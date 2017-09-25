@@ -18,6 +18,7 @@ enum ApiRouter: URLRequestConvertible {
     case games
     case consoles
     case login(loginParameters: Parameters)
+    case logout
     case challenges(userId: String)
     case players(userId: String)
     case allUsers
@@ -28,7 +29,7 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         case .register, .registerPreferences, .registerAvatar, .login:
                 return .post
-            case .parameters, .consoles, .games, .allUsers, .challenges, .players, .cities:
+            case .parameters, .consoles, .games, .allUsers, .challenges, .players, .cities, .logout:
                 return .get
             case .editInformation:
                 return .put
@@ -61,6 +62,8 @@ enum ApiRouter: URLRequestConvertible {
                 return "\(Constants.queryURLPath)/user"
             case .cities:
                 return "\(Constants.queryURLPath)/cities"
+            case .logout:
+                return "\(Constants.queryURLPath)/logout"
         }
     }
     
@@ -98,6 +101,8 @@ enum ApiRouter: URLRequestConvertible {
         case .cities(let keyword):
             // Override URL for set userId get param
             request.url = URL(string: Constants.baseURLPath + path + "?keyword=\(keyword)")
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
+        case .logout:
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
         default:
             request = try URLEncoding.default.encode(request, with: [:])

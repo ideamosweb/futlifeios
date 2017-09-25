@@ -36,7 +36,7 @@ class PreferencesModel: NSObject, NSCoding {
     let playerId: Int
     let active: Bool
     let console: ConsoleModel?
-    let games: [GameModel]?
+    var games: [GameModel]?
     
     init(id: Int?, userId: String?, consoleId: String?, playerId: Int?, active: Bool?, console: ConsoleModel?, games: [GameModel]?) {
         self.id = id!

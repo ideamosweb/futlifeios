@@ -11,8 +11,8 @@ import UIKit
 class ChallengesViewController: ViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noNotiLabel: UILabel!
-    var players: [User]
-    var challenges: [Challenges]
+    var players: [User]?
+    var challenges: [Challenges]?
     let kChallengesCellHeight: CGFloat = 84.0
     let kChallengesCellIdentifier = "ChallengesCell"
     
@@ -20,9 +20,9 @@ class ChallengesViewController: ViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(players: [User], challenges: [Challenges]) {
+    init(players: [User]?, challenges: [Challenges]?) {
         self.players = players
-        self.challenges = challenges
+        self.challenges = challenges!
         super.init(nibName: "ChallengesViewController", bundle: Bundle.main)
     }
 
@@ -31,7 +31,12 @@ class ChallengesViewController: ViewController {
 
         tableView.register(ChallengesCell.nib(kChallengesCellIdentifier), forCellReuseIdentifier: kChallengesCellIdentifier)
         
-        noNotiLabel.isHidden = (challenges.count > 0)
+        var hidden = true
+        if let challenges = challenges {
+            hidden = (challenges.count > 0)
+        }
+        
+        noNotiLabel.isHidden = hidden
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,14 +56,20 @@ extension ChallengesViewController: UITableViewDelegate {
 //MARK: UITableViewDataSource
 extension ChallengesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenges.count
+        if let challenges = challenges {
+            return challenges.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ChallengesCell = tableView.dequeueReusableCell(withIdentifier: kChallengesCellIdentifier) as! ChallengesCell
-        let challenge = challenges[indexPath.row]
+        if let challenges = challenges {
+            let challenge = challenges[indexPath.row]
+            cell.setUpView(challenge: challenge, players: players)
+        }
         
-        cell.setUpView(challenge: challenge, players: players)
         cell.selectionStyle = .none
         
         return cell

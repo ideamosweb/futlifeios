@@ -68,7 +68,7 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
         return nil
     }
     
-    private func checkSelected(item: Int) -> Bool {
+    func checkSelected(item: Int) -> Bool {
         if ((selectedItems.index(where: {$0 == item})) != nil) {
             return false
         }
@@ -128,7 +128,7 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
         }
         
         // Post notification to notify selection of an item
-        let itemSelected: [String: Int] = ["index": index]
+        let itemSelected: [String: Int] = ["index": index, "carousel": carousel.tag]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidSelectCarouselItemNotification), object: nil, userInfo: itemSelected)
         
     }

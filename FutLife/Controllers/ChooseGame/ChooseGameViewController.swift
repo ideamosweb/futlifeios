@@ -15,10 +15,11 @@ class ChooseGameViewController: CarouselViewController {
     @IBOutlet weak var chooseMoreThanOneLable: UILabel!
     
     var games: [Game]?
-    var selectedGames = [Game]()
+    var selectedConsoles = [PreferencesModel]()
+    var selectedGames = [GameModel]()
     var selectedGamesTable: UITableView?
     var isNavBar: Bool?
-    var chooseGameCompleted: ([GameModel]) -> Void?
+    var chooseGameCompleted: (([GameModel]) -> Void)?
     
     let VIEW_ITEM_WIDTH: CGFloat = 225
     let VIEW_ITEM_HEIGHT: CGFloat = 282
@@ -27,7 +28,7 @@ class ChooseGameViewController: CarouselViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(navBar: Bool, chooseGameCompleted: @escaping ([GameModel]) -> Void?) {
+    init(navBar: Bool, chooseGameCompleted: (([GameModel]) -> Void)?) {
         self.chooseGameCompleted = chooseGameCompleted
         super.init(nibName: "ChooseGameViewController", bundle: Bundle.main)
         isNavBar = navBar
@@ -37,7 +38,19 @@ class ChooseGameViewController: CarouselViewController {
         super.viewDidLoad()
         
         chooseGameLabel.font = UIFont().bebasBoldFont(size: 38)
-        chooseMoreThanOneLable.font = UIFont().bebasFont(size: 18)        
+        chooseMoreThanOneLable.font = UIFont().bebasFont(size: 18)
+        
+        // Check if there selected games
+        let preferences = LocalDataManager.user?.preferences
+        guard let pref = preferences else {
+            return
+        }
+        
+        selectedConsoles = pref
+        
+        if pref.count > 0 {
+            nextButton.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +62,17 @@ class ChooseGameViewController: CarouselViewController {
         gameCarousel.bounceDistance = 0.3
         gameCarousel.scrollSpeed = 0.3
         
+        carousels = [iCarousel]()
+        carousels.append(gameCarousel)
         // Let's add carousels items
-        carousels = [gameCarousel]
+        let consoles = LocalDataManager.consolesSelected
+        if let consoles = consoles {
+            if consoles.count > 0 {
+                let carousel = iCarousel(frame: CGRect(x: gameCarousel.frame.minX, y: gameCarousel.frame.maxY + 20, width: gameCarousel.frame.width, height: gameCarousel.frame.height))
+                carousels.append(carousel)
+            }
+        }
+        //carousels = [gameCarousel]
         
         getGames()
         
@@ -72,18 +94,37 @@ class ChooseGameViewController: CarouselViewController {
     func didSelectCarouselItem(_ notification: NSNotification) {
         nextButton.isEnabled = indexSelectedItems.count > 0
         
-        if let index = notification.userInfo?["index"] as? Int {
-            let game: Game = games![index]
-            
-            
-            if let indexObject = selectedGames.index(where: {$0 === game}) {
-                selectedGames.remove(at: indexObject)
-            } else {
-                selectedGames.append(game)
+        if let indexCarousel = notification.userInfo?["index"] as? Int {
+            if let index = notification.userInfo?["index"] as? Int {
+                let preference: PreferencesModel
+                let gameModel: GameModel
+                if selectedConsoles.count > 0 {
+                    preference = selectedConsoles[indexCarousel]
+                    selectedGames = preference.games!
+                    if selectedGames.count > 0 {
+                        gameModel = selectedGames[index]
+                        if let indexObject = selectedGames.index(where: {$0 === gameModel}) {
+                            selectedGames.remove(at: indexObject)
+                        } else {
+                            selectedGames.append(gameModel)
+                        }
+                    } else {
+                        let game = games?[index]
+                        let newGameModel = GameModel(id: game?.id, year: game?.year, name: game?.name, avatar: game?.avatar, thumbnail: game?.thumbnail, active: game?.active, createdAt: game?.createdAt, updatedAt: game?.updatedAt)
+                        if let indexObject = selectedGames.index(where: {$0 === newGameModel}) {
+                            selectedGames.remove(at: indexObject)
+                        } else {
+                            selectedGames.append(newGameModel)
+                        }
+                        
+                        selectedConsoles[indexCarousel].games = selectedGames
+                    }
+                    
+                }
+                
+                selectedGamesTable?.reloadData()
+                
             }
-            
-            selectedGamesTable?.reloadData()
-            
         }
     }
     
@@ -96,7 +137,7 @@ class ChooseGameViewController: CarouselViewController {
         }
         
         LocalDataManager.gamesSelected = games
-        chooseGameCompleted(games)
+        chooseGameCompleted!(games)
     }
     
     private func addSelectedGames() {
@@ -122,8 +163,13 @@ class ChooseGameViewController: CarouselViewController {
     private func getGames() {
         if let games: [Game] = ConfigurationParametersModel.games {
             if games.count > 0 {
-                let carouselItems = configCarouselsItemsViews(games: games)
-                items.append(carouselItems)
+                if let consoles = LocalDataManager.consolesSelected {
+                    for index in stride(from: 0, to: consoles.count, by: 1) {
+                        let carouselItems = configCarouselsItemsViews(games: games)
+                        items.append(carouselItems)
+                    }
+                }
+                
                 self.games = games
             }
         }

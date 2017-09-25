@@ -95,28 +95,22 @@ class StartUpViewController: ViewController {
     
     private func goToLogin() {
         weak var weakSelf = self
-        let loginVC = LoginViewController(registerClosure: { () -> Void? in
+        let loginVC = LoginViewController(registerClosure: { () in
             // Go to Register
             if let strongSelf = weakSelf {
                 strongSelf.goToRegister()
             }
-            
-            return ()
-        }, loginClosure: { () -> Void? in
+        }, loginClosure: { () in
             // Go to dashboard!!
             if let strongSelf = weakSelf {
                 strongSelf.goToHome()
             }
-            
-            return ()
-        }, chooseConsoleClosure: { () -> Void? in
+        }, chooseConsoleClosure: { () in
             // Go to chooseConsole
             if let strongSelf = weakSelf {
                 LocalDataManager.registeredUser = true
                 strongSelf.goToChooseConsole(navBar: true)
             }
-            
-            return ()
         })
         
         AppDelegate.mainNavigationController.pushViewController(loginVC, animated: false)
@@ -124,13 +118,11 @@ class StartUpViewController: ViewController {
     
     private func goToRegister() {
         weak var weakSelf = self
-        let registerVC = RegisterViewController { () -> Void? in
+        let registerVC = RegisterViewController { () in
             if let strongSelf = weakSelf {
                 LocalDataManager.registeredUser = true
                 strongSelf.goToChooseConsole(navBar: true)
             }
-            
-            return ()
         }
         
         AppDelegate.mainNavigationController.pushViewController(registerVC, animated: true)
@@ -138,27 +130,23 @@ class StartUpViewController: ViewController {
     
     private func goToChooseConsole(navBar: Bool) {
         weak var weakSelf = self
-        let chooseConsoleVC = ChooseConsoleViewController(navBar: navBar, chooseConsoleCompleted: { (consoles) -> Void? in
+        let chooseConsoleVC = ChooseConsoleViewController(navBar: navBar) { (consoles) in
             if let strongSelf = weakSelf {
                 LocalDataManager.chosenConsole = true
                 strongSelf.goToChooseGame(navBar: true)
             }
-            
-            return ()
-        })
+        }       
         
         AppDelegate.mainNavigationController.pushViewController(chooseConsoleVC, animated: true)
     }
     
     private func goToChooseGame(navBar: Bool) {
         weak var weakSelf = self
-        let chooseGameVC = ChooseGameViewController(navBar: navBar) { (games) -> Void? in
+        let chooseGameVC = ChooseGameViewController(navBar: navBar) { (games) in
             if let strongSelf = weakSelf {
                 LocalDataManager.chosenGame = true
                 strongSelf.goToUserProfile(navBar: true, confirmButton: true)
             }
-            
-            return ()
         }
         
         AppDelegate.mainNavigationController.pushViewController(chooseGameVC, animated: true)
@@ -171,17 +159,13 @@ class StartUpViewController: ViewController {
                 LocalDataManager.completedRegister = true
                 strongSelf.showSuccessMessage()
             }
-            
-            return ()
         }
         
         AppDelegate.mainNavigationController.pushViewController(profileVC, animated: true)
     }
     
     private func goToHome() {
-        let homeVC = HomeViewController { () -> Void? in
-            return ()
-        }
+        let homeVC = HomeViewController(completion: nil)
         
         AppDelegate.sharedInstance.goToHome(homeViewController: homeVC)
     }

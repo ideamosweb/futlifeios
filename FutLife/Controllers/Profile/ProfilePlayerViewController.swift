@@ -265,7 +265,7 @@ class ProfilePlayerViewController: TabsViewController {
         consoleEditButton?.setImage(consoleEditImageView.image, for: .normal)
         consoleEditButton?.backgroundColor = UIColor(red: 187/255, green: 62/255, blue: 62/255, alpha: 1.0)
         consoleEditButton?.circularView(borderColor: UIColor.clear)
-        //infoEditButton?.addTarget(self, action: #selector(onEditButtonTouch), for: .touchUpInside)
+        consoleEditButton?.addTarget(self, action: #selector(onEditConsoleTouch), for: .touchUpInside)
         consoleEditButton?.alpha = 0.0
         
         view.addSubview(consoleEditButton!)
@@ -303,6 +303,18 @@ class ProfilePlayerViewController: TabsViewController {
         isOpenEditButtons = false
     }
     
+    func onEditButtonTouch() {
+        if !isOpenEditButtons {
+            openEditAnimation()
+        } else {
+            closeEditAnimation()
+        }
+    }
+    
+    func onEditConsoleTouch() {
+        MenuManager().onEditConsoleTouch(currentViewController: self)
+    }
+    
     func configPlayerViews() {
         let consolesSelected: [ConsoleModel] = Utils.retrieveConsoles()
         let gamesSelected: [GameModel] = Utils.retrieveGames()
@@ -316,15 +328,6 @@ class ProfilePlayerViewController: TabsViewController {
         tabsViewControllers = [playerConsolesVC, playerInfoVC, playerStatisticsVC]
         reloadTabs()
     }
-    
-    func onEditButtonTouch() {
-        if !isOpenEditButtons {
-            openEditAnimation()
-        } else {
-            closeEditAnimation()
-        }
-    }
-    
     
     func onUserAvatarButtonTouch() {
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -427,6 +430,7 @@ extension ProfilePlayerViewController: UIImagePickerControllerDelegate, UINaviga
     }
 }
 
+//MARK: FormScrollViewProtocol
 extension ProfilePlayerViewController: FormScrollViewProtocol {
     func getFormScrollView() -> UIScrollView {
         if let scrollView = scrollView {

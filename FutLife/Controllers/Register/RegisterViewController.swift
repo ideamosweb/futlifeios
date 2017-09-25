@@ -16,17 +16,15 @@ class RegisterViewController: FormViewController {
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     
-    var registerCompleted: () -> Void?
+    var registerCompleted: (() -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(registerCompleted: @escaping () -> Void?) {
+    init(registerCompleted: (() -> Void)?) {
         self.registerCompleted = registerCompleted
-        super.init(nibName: "RegisterViewController", bundle: Bundle.main)
-        
-        
+        super.init(nibName: "RegisterViewController", bundle: Bundle.main)        
     }
     
     override func viewDidLoad() {
@@ -104,7 +102,7 @@ class RegisterViewController: FormViewController {
             AppDelegate.hidePKHUD()
             if let strongSelf = weakSelf {
                 if (errorModel?.success)! {
-                    strongSelf.registerCompleted()
+                    strongSelf.registerCompleted!()
                 } else {
                     strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     
