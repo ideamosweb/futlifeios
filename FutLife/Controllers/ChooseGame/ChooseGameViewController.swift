@@ -23,6 +23,11 @@ class ChooseGameViewController: CarouselViewController {
     
     let VIEW_ITEM_WIDTH: CGFloat = 225
     let VIEW_ITEM_HEIGHT: CGFloat = 282
+    let carousels_margin_top: CGFloat = 10
+    let carousels_padding: CGFloat = 0
+    let carousels_height: CGFloat = 330
+    
+    let enableMultipleCarousels: Bool = true
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -176,6 +181,45 @@ class ChooseGameViewController: CarouselViewController {
         
         gameCarousel.type = .custom
         carouselsReloadData()
+    }
+    
+    private func createCarousels(withItems: [Game]) {
+        var carousels = [iCarousel]()
+        var previousCarousel: iCarousel?
+        let numberOfCarousels = (!enableMultipleCarousels) ? 1 : selectedConsoles.count
+        for index in stride(from: 0, to: numberOfCarousels, by: 1) {
+            if previousCarousel != nil {
+                let carousel = iCarousel(frame: CGRect(x: 0, y: (previousCarousel?.frame.maxY)! + carousels_padding, width: Utils.screenViewFrame().width, height: carousels_height))
+                carousel.type = .custom
+                carousel.delegate = self
+                carousel.dataSource = self
+                carousel.bounceDistance = 0.3
+                carousel.scrollSpeed = 0.3
+                carousel.tag = index
+                let viewItems: [UIView] = configCarouselsItemsViews(games: withItems)
+                items[carousel.tag] = viewItems
+                
+                previousCarousel = carousel
+                carousels.append(carousel)
+                scrollView?.addSubview(carousel)
+            } else {
+                let carousel = iCarousel(frame: CGRect(x: 0, y: carousels_margin_top, width: Utils.screenViewFrame().width, height: carousels_height))
+                carousel.type = .custom
+                carousel.delegate = self
+                carousel.dataSource = self
+                carousel.bounceDistance = 0.3
+                carousel.scrollSpeed = 0.3
+                carousel.tag = index
+                let viewItems: [UIView] = configCarouselsItemsViews(games: withItems)
+                items[carousel.tag] = viewItems
+                
+                previousCarousel = carousel
+                carousels.append(carousel)
+                scrollView?.addSubview(carousel)
+            }
+        }
+        
+        self.carousels = carousels
     }
     
     private func configCarouselsItemsViews(games: [Game]) -> [UIView] {
