@@ -16,7 +16,10 @@ class FormViewController: ViewController {
     
     // The ScrollView for form View controller, it's needs to link in
     // interface builder or link programatically
-     @IBOutlet var formScrollView: UIScrollView!
+    @IBOutlet var formScrollView: UIScrollView!
+    
+    let keyboardWidth: CGFloat = Utils.screenViewFrame().width
+    let keyboardHeight: CGFloat = 216.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +67,9 @@ class FormViewController: ViewController {
     func keyboardWillBeShown(notification: NSNotification) {
         // In this method the scrollView adjust from the selected field
         // animating the scroll and showing keyboard
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
-            let animationCurve = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? TimeInterval),
+        if let animationCurve = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? TimeInterval),
             let animationDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval) {
-            
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardHeight, right: 0.0)
             formScrollView.contentInset = contentInsets
             formScrollView.scrollIndicatorInsets = contentInsets
             
@@ -83,19 +84,17 @@ class FormViewController: ViewController {
                 // Get the frame of the input field in the scroll view.
                 let inputFieldRect = formScrollView.convert(currentInputFrame, from: currentInput)
                 
-                let visibleHeight = formScrollView.bounds.size.height - keyboardSize.height
+                let visibleHeight = formScrollView.bounds.size.height - keyboardHeight
                 let scrollPointY = inputFieldRect.minY - Constants.kFormTopScrollPadding
                 
                 if scrollPointY > visibleHeight {
-                    let scrollPoint = CGPoint(x: 0, y: keyboardSize.height - (scrollPointY - visibleHeight))
+                    let scrollPoint = CGPoint(x: 0, y: keyboardHeight - (scrollPointY - visibleHeight))
                     
                     weak var weakSelf = self
-                    
                     UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIViewAnimationOptions(rawValue: UInt(animationCurve)), animations: {
                         if let strongSelf = weakSelf {
                             strongSelf.formScrollView.setContentOffset(scrollPoint, animated: false)
                         }
-                        
                     }, completion: { (finished) in
                         // Prevent scrolling when editing the form.
                         if let strongSelf = weakSelf {

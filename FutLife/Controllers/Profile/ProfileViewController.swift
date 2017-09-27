@@ -25,7 +25,7 @@ class ProfileViewController: ViewController {
     var gamesTableView: UITableView?
     var user: UserModel?
     
-    var games = [GameModel]()
+    var games = [[GameModel]]()
     var gamesStr = [Any]()
     var consoles = [ConsoleModel]()
     
@@ -56,20 +56,7 @@ class ProfileViewController: ViewController {
         
         games = LocalDataManager.gamesSelected!
         
-        for game: GameModel in games {
-            let gamesObj = [
-                "game_id": "\(game.id)",
-                "year": "\(game.year)",
-                "name": "\(game.name)",
-                "avatar": "\(game.avatar)",
-                "thumbnail": "\(game.thumbnail)",
-                "active": "\(game.active)",
-                "created_at": "\(game.createdAt)",
-                "updated_at": "\(game.updatedAt)"
-            ]
-            
-            gamesStr.append(gamesObj)
-        }
+        
         consoles = LocalDataManager.consolesSelected!
         user = LocalDataManager.user!
         if user != nil {
@@ -198,14 +185,36 @@ class ProfileViewController: ViewController {
     @IBAction func onCompletedButtonTouch(_ sender: Any) {
         weak var weakSelf = self
         
-        let console = consoles[0]
-        let preferences: [String : Any] = [
-            "console_id": "\(console.id)",
-            "active": true,
-            "games": gamesStr]
+        var preferences = [[String : Any]]()
+        var index = 0
+        for console: ConsoleModel in consoles {
+            let games: [GameModel] = LocalDataManager.gamesSelected![index]
+            for game: GameModel in games {
+                let gamesObj = [
+                    "game_id": "\(game.id)",
+                    "year": "\(game.year)",
+                    "name": "\(game.name)",
+                    "avatar": "\(game.avatar)",
+                    "thumbnail": "\(game.thumbnail)",
+                    "active": "\(game.active)",
+                    "created_at": "\(game.createdAt)",
+                    "updated_at": "\(game.updatedAt)"
+                ]
+                
+                gamesStr.append(gamesObj)
+            }
+            
+            let preference: [String : Any] = [
+                "console_id": "\(console.id)",
+                "active": true,
+                "games": gamesStr]
+            
+            preferences.append(preference)
+            index += 1
+        }
         
         var preferencesObj = [[String: Any]]()
-        preferencesObj = [preferences]
+        preferencesObj = preferences
         var jsonData: Data?
         var strDict: String?
         do {
@@ -357,7 +366,7 @@ extension ProfileViewController : UITableViewDataSource {
                 return consoles.count
             }
         } else {
-            if let games: [GameModel] = LocalDataManager.gamesSelected {
+            if let games: [GameModel] = LocalDataManager.gamesSelected?[section] {
                 return games.count
             }
         }
@@ -373,7 +382,7 @@ extension ProfileViewController : UITableViewDataSource {
                 let console = consoles[indexPath.row]
                 
                 profileCell.setGameImage(name: console.avatar, gameName: console.name, gameYear: console.year as NSNumber, gameNumber: "\(indexPath.row + 1)")
-                if let games: [GameModel] = LocalDataManager.gamesSelected {
+                if let games: [GameModel] = LocalDataManager.gamesSelected?[indexPath.row] {
                     profileCell.setGames(games: games, width: profileCell.frame.width)
                 }
                 
@@ -381,7 +390,7 @@ extension ProfileViewController : UITableViewDataSource {
                 profileCell.hideYearLabel()
             }
         } else {
-            if let games: [GameModel] = LocalDataManager.gamesSelected {
+            if let games: [GameModel] = LocalDataManager.gamesSelected?[indexPath.section] {
                 let game = games[indexPath.row]
                 
                 profileCell.setGameImage(name: game.avatar, gameName: game.name, gameYear: game.year as NSNumber, gameNumber: "\(indexPath.row + 1)")

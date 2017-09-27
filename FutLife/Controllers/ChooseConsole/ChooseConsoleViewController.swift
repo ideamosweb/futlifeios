@@ -91,7 +91,7 @@ class ChooseConsoleViewController: CarouselViewController {
         
         if let index = notification.userInfo?["index"] as? Int {
             let consoleModel: ConsoleModel
-            if selectedConsoles.count > 0 {
+            if selectedConsoles.count > 0 && index < selectedConsoles.count {
                 consoleModel = selectedConsoles[index]
             } else {
                 let console: Console = consoles![index]
@@ -118,6 +118,7 @@ class ChooseConsoleViewController: CarouselViewController {
         }
         
         LocalDataManager.consolesSelected = consoles
+        //LocalDataManager.user?.preferences = preferences
         chooseConsoleCompleted!(consoles)
     }
     

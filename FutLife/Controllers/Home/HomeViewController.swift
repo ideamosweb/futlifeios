@@ -50,8 +50,8 @@ class HomeViewController: TabsViewController {
         
         let user: UserModel? = LocalDataManager.user!
         if user != nil {
-            getAllChallengeRequest(user: user!)
-            //getPlayersRequest(user: user!, challenges: [])
+            //getAllChallengeRequest(user: user!)
+            getPlayersRequest(user: user!, challenges: [])
         }
     }
     

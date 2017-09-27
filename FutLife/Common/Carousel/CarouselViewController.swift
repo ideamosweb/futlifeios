@@ -10,13 +10,13 @@ import UIKit
 
 class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet weak var topOnstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var carousels: [iCarousel]!
     var carouselType: iCarouselType?
     var items = [[UIView]]()
     var selectedItems = [Int]()
     var indexSelectedItems = [Int]()
-    var scrollView: UIScrollView?
     var contentView: UIView?    
     
     override func viewDidAppear(_ animated: Bool) {

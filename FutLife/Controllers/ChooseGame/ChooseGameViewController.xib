@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,8 +17,8 @@
             <connections>
                 <outlet property="chooseGameLabel" destination="97V-Rf-iGJ" id="wch-OQ-9ss"/>
                 <outlet property="chooseMoreThanOneLable" destination="d9j-vF-xBc" id="kAS-sg-Llc"/>
-                <outlet property="gameCarousel" destination="XUl-BG-7NR" id="34W-UM-XuN"/>
                 <outlet property="nextButton" destination="oGO-GH-cE8" id="tgG-u0-yIL"/>
+                <outlet property="scrollView" destination="5px-Ph-82w" id="yEb-m0-uHc"/>
                 <outlet property="topOnstraint" destination="BRe-Nt-tkS" id="qv8-zN-A6J"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="nbo-xp-WNl"/>
             </connections>
@@ -51,16 +51,9 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-BG-7NR" customClass="iCarousel">
-                    <rect key="frame" x="0.0" y="213.5" width="375" height="240"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="240" id="KyH-l4-hKM"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="V63-Zk-hhX"/>
-                        <outlet property="delegate" destination="-1" id="emr-UH-XmT"/>
-                    </connections>
-                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5px-Ph-82w">
+                    <rect key="frame" x="0.0" y="180" width="375" height="487"/>
+                </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGO-GH-cE8">
                     <rect key="frame" x="297" y="597" width="50" height="50"/>
                     <constraints>
@@ -75,22 +68,22 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="XUl-BG-7NR" firstAttribute="top" secondItem="d9j-vF-xBc" secondAttribute="bottom" constant="42" id="27e-Ip-juv"/>
                 <constraint firstAttribute="bottom" secondItem="oGO-GH-cE8" secondAttribute="bottom" constant="20" id="3o7-br-yvz"/>
                 <constraint firstItem="97V-Rf-iGJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="106.5" id="BRe-Nt-tkS"/>
                 <constraint firstItem="97V-Rf-iGJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bbh-rL-ldG"/>
-                <constraint firstItem="XUl-BG-7NR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="DJs-yZ-g7w"/>
-                <constraint firstItem="XUl-BG-7NR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K3o-AC-CaU"/>
+                <constraint firstAttribute="bottom" secondItem="5px-Ph-82w" secondAttribute="bottom" id="LPg-HX-Pcp"/>
+                <constraint firstAttribute="trailing" secondItem="5px-Ph-82w" secondAttribute="trailing" id="UUh-cP-EXY"/>
                 <constraint firstAttribute="trailing" secondItem="Won-Rh-Vxb" secondAttribute="trailing" id="WuE-cQ-H1L"/>
                 <constraint firstItem="d9j-vF-xBc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XYC-At-wXw"/>
                 <constraint firstAttribute="bottom" secondItem="Won-Rh-Vxb" secondAttribute="bottom" id="YnO-4q-ktF"/>
-                <constraint firstItem="XUl-BG-7NR" firstAttribute="leading" secondItem="Won-Rh-Vxb" secondAttribute="leading" id="dAq-TR-sLX"/>
+                <constraint firstItem="5px-Ph-82w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aWK-2b-f8c"/>
                 <constraint firstItem="d9j-vF-xBc" firstAttribute="top" secondItem="97V-Rf-iGJ" secondAttribute="bottom" constant="2" id="n5t-Wl-uP4"/>
                 <constraint firstAttribute="trailing" secondItem="oGO-GH-cE8" secondAttribute="trailing" constant="28" id="rxf-NX-1zz"/>
                 <constraint firstItem="Won-Rh-Vxb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sxZ-O6-ody"/>
                 <constraint firstItem="Won-Rh-Vxb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w9U-fu-Dh2"/>
+                <constraint firstItem="5px-Ph-82w" firstAttribute="top" secondItem="d9j-vF-xBc" secondAttribute="bottom" constant="9" id="zOJ-5N-OGY"/>
             </constraints>
-            <point key="canvasLocation" x="-1335" y="89"/>
+            <point key="canvasLocation" x="-1477" y="-82"/>
         </view>
     </objects>
     <resources>

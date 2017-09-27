@@ -44,17 +44,25 @@ class PlayerConsolesCell: CustomTableViewCell {
             if previousView != nil {
                 let gameViewFrame = CGRect(x: (previousView?.frame.minX)! - (previousView?.frame.width)! - 5, y: (previousView?.frame.origin.y)!, width: (previousView?.frame.width)!, height: (previousView?.frame.height)!)
                 
-                let nextGameView: UIView = previousView?.mutableCopy() as! UIView
-                nextGameView.frame = gameViewFrame
-                for subview in nextGameView.subviews {
-                    if subview is UILabel {
-                        let temp: UILabel = subview as! UILabel
-                        temp.text = game.name
-                    }
-                }
+                let ballImage: UIImageView = UIImageView(image: UIImage(named: "ic_football"))
+                ballImage.frame = CGRect(x: 2, y: 2, width: 16, height: 16)
                 
-                previousView = nextGameView
-                gamesView.addSubview(nextGameView)
+                let gameName = game.name
+                let textSize = (gameName as NSString).size(attributes: [NSFontAttributeName : UIFont().bebasFont(size: 20)])
+                let label = UILabel(frame: CGRect(x: ballImage.frame.maxX + 2, y: 2, width: textSize.width, height: textSize.height))
+                label.textAlignment = .right
+                label.textColor = UIColor.black
+                label.font = UIFont().bebasFont(size: 20)
+                label.text = game.name
+                
+                let gameView: UIView = UIView(frame: gameViewFrame)
+                gameView.backgroundColor = UIColor().orange()
+                gameView.layer.cornerRadius = 5
+                gameView.addSubview(ballImage)
+                gameView.addSubview(label)               
+                
+                previousView = gameView
+                gamesView.addSubview(gameView)
                 
             } else {
                 let ballImage: UIImageView = UIImageView(image: UIImage(named: "ic_football"))

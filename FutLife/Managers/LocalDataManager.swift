@@ -126,9 +126,9 @@ struct LocalDataManager {
         }
     }
     
-    static var gamesSelected: [GameModel]? {
+    static var gamesSelected: [[GameModel]]? {
         get {
-            return UserDefaults().dataObjectForKey(key: kGames) as? [GameModel]
+            return UserDefaults().dataObjectForKey(key: kGames) as? [[GameModel]]
         }
         set (newValue) {
             UserDefaults().setDataObject(value: newValue, forKey: kGames)
