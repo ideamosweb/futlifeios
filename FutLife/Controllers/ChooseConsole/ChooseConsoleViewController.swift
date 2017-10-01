@@ -16,7 +16,6 @@ class ChooseConsoleViewController: CarouselViewController {
     @IBOutlet weak var chooseMoreThanOneLable: UILabel!
     
     var consoles: [Console]?
-    var selectedConsoles: [ConsoleModel] = []
     var selectedConsolesTable: UITableView?
     var isNavBar: Bool?
     var chooseConsoleCompleted: (([ConsoleModel]) -> Void)?
@@ -42,16 +41,7 @@ class ChooseConsoleViewController: CarouselViewController {
         
         nextButton.isEnabled = false
         
-        // Check if there selected consoles
-        let preferences = LocalDataManager.user?.preferences
-        guard let pref = preferences else {
-            return
-        }
         
-        for preference in pref {
-            selectedConsoles.append(preference.console!)
-            nextButton.isEnabled = true
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,15 +60,31 @@ class ChooseConsoleViewController: CarouselViewController {
         let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselItemNotification)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectCarouselItem(_:)), name: selectedCarouselItem, object: nil)
         
+        // Check if there selected consoles
+        let consolesSelected = LocalDataManager.consolesSelected
+        guard let consolesSel = consolesSelected else {
+            return
+        }
+        
+        if consolesSel.count > 0 {
+            var index = 0
+            for console: Console in consoles! {
+                for consoleSel: ConsoleModel in consolesSel {
+                    if console.id == consoleSel.id {
+                        selectedItems.append(index)
+                    }
+                }
+                
+                index += 1
+            }
+            
+            carouselsReloadData()
+            nextButton.isEnabled = true
+        }
+        
         addSelectedConsoles()
         
         selectedConsolesTable?.reloadData()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
     }
     
     deinit {
@@ -87,25 +93,15 @@ class ChooseConsoleViewController: CarouselViewController {
     }
     
     func didSelectCarouselItem(_ notification: NSNotification) {
-        nextButton.isEnabled = indexSelectedItems.count > 0
-        
-        if let index = notification.userInfo?["index"] as? Int {
-            let consoleModel: ConsoleModel
-            if selectedConsoles.count > 0 && index < selectedConsoles.count {
-                consoleModel = selectedConsoles[index]
-            } else {
-                let console: Console = consoles![index]
-                consoleModel = ConsoleModel(id: console.id, platformId: console.platformId, year: console.year, name: console.name, avatar: console.avatar, thumbnail: console.thumbnail, active: console.active, createdAt: console.createdAt, updatedAt: console.updatedAt)
-            }
+        if indexSelectedItems.count > 0 {
+            nextButton.isEnabled = true
+            selectedConsolesTable?.isHidden = false
             
-            if let indexObject = selectedConsoles.index(where: {$0 === consoleModel}) {
-                selectedConsoles.remove(at: indexObject)
-            } else {
-                selectedConsoles.append(consoleModel)
-            }
-            
-            selectedConsolesTable?.reloadData()
+        } else {
+            selectedConsolesTable?.isHidden = true
         }
+        
+        selectedConsolesTable?.reloadData()
     }
     
     @IBAction func onNextButtonTouch(_ sender: Any) {
@@ -123,23 +119,25 @@ class ChooseConsoleViewController: CarouselViewController {
     }
     
     private func addSelectedConsoles() {
-        let selectedConsolesLabel = UILabel(frame: CGRect(x: 10.0, y: consoleCarousel.frame.maxY + 40.0, width: Utils.screenViewFrame().size.width, height: 20.0))
-        selectedConsolesLabel.text = "CONSOLAS SELECCIONADAS:"
-        selectedConsolesLabel.font = UIFont().bebasBoldFont(size: 20.0)
-        selectedConsolesLabel.textColor = UIColor.white
-        selectedConsolesLabel.textAlignment = .left
-        
-        let selectedConsolesTableFrame = CGRect(x: 0, y: selectedConsolesLabel.frame.maxY + 10.0, width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height - selectedConsolesLabel.frame.maxY + 10.0)
-        selectedConsolesTable = UITableView(frame: selectedConsolesTableFrame)
-        selectedConsolesTable?.delegate = self
-        selectedConsolesTable?.dataSource = self
-        selectedConsolesTable?.isScrollEnabled = false
-        selectedConsolesTable?.separatorStyle = .none
-        selectedConsolesTable?.backgroundColor = UIColor.clear
-        selectedConsolesTable?.clipsToBounds = false
-        
-        view.insertSubview(selectedConsolesLabel, belowSubview: nextButton)
-        view.insertSubview(selectedConsolesTable!, belowSubview: nextButton)
+        if selectedConsolesTable == nil {
+            let selectedConsolesLabel = UILabel(frame: CGRect(x: 10.0, y: consoleCarousel.frame.maxY + 40.0, width: Utils.screenViewFrame().size.width, height: 20.0))
+            selectedConsolesLabel.text = "CONSOLAS SELECCIONADAS:"
+            selectedConsolesLabel.font = UIFont().bebasBoldFont(size: 20.0)
+            selectedConsolesLabel.textColor = UIColor.white
+            selectedConsolesLabel.textAlignment = .left
+            
+            let selectedConsolesTableFrame = CGRect(x: 0, y: selectedConsolesLabel.frame.maxY + 10.0, width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height - selectedConsolesLabel.frame.maxY + 10.0)
+            selectedConsolesTable = UITableView(frame: selectedConsolesTableFrame)
+            selectedConsolesTable?.delegate = self
+            selectedConsolesTable?.dataSource = self
+            selectedConsolesTable?.isScrollEnabled = false
+            selectedConsolesTable?.separatorStyle = .none
+            selectedConsolesTable?.backgroundColor = UIColor.clear
+            selectedConsolesTable?.clipsToBounds = false
+            
+            view.insertSubview(selectedConsolesLabel, belowSubview: nextButton)
+            view.insertSubview(selectedConsolesTable!, belowSubview: nextButton)
+        }
     }
     
     private func getConsoles() {       
@@ -200,8 +198,8 @@ extension ChooseConsoleViewController: UITableViewDelegate {
 // MARK: UITableViewDataSource methods
 extension ChooseConsoleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedConsoles.count > 0 {
-            return selectedConsoles.count
+        if indexSelectedItems.count > 0 {
+            return indexSelectedItems.count
         }
         
         return 0
@@ -214,8 +212,8 @@ extension ChooseConsoleViewController: UITableViewDataSource {
         cell.textLabel?.font = UIFont().bebasFont(size: 18.0)
         cell.isUserInteractionEnabled = false
         
-        let console = selectedConsoles[indexPath.row]
-        cell.textLabel?.text = console.name
+        let console = consoles?[indexSelectedItems[indexPath.row] - 1]
+        cell.textLabel?.text = console?.name
         
         return cell
     }
