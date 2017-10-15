@@ -101,16 +101,42 @@ class Utils: NSObject {
         return consolesSelected
     }
     
-    class func retrieveGames() -> [GameModel] {
-        var gamesSelected: [GameModel] = []
+    class func retrieveGames() -> [[GameModel]] {
+        var gamesSelected: [[GameModel]]?
         if let preferences = LocalDataManager.user?.preferences {
+            gamesSelected = ([[GameModel?]?](repeating: [], count: preferences.count) as? [[GameModel]])!
+            var index = 0
             for preference: PreferencesModel in preferences {
                 if let games = preference.games {
-                    gamesSelected = games
+                    gamesSelected?[index] = games
+                }
+                
+                index += 1
+            }
+        }
+        
+        return gamesSelected!
+    }
+    
+    class func retrieveGames(consoles: [ConsoleModel]?) -> [[GameModel]] {
+        var gamesSelected: [[GameModel]]?
+        if let preferences = LocalDataManager.user?.preferences {
+            if let consoles = consoles {
+                gamesSelected = ([[GameModel?]?](repeating: [], count: consoles.count) as? [[GameModel]])!
+                var index = 0
+                for preference: PreferencesModel in preferences {
+                    for consoleModel: ConsoleModel in consoles {
+                        if preference.consoleId == "\(consoleModel.id)" {
+                            if let games = preference.games {
+                                gamesSelected?[index] = games
+                                index += 1
+                            }
+                        }
+                    }
                 }
             }
         }
         
-        return gamesSelected
+        return gamesSelected!
     }
 }

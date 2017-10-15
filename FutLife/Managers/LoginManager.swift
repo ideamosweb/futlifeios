@@ -16,14 +16,21 @@ struct LoginManager {
             if error?.success == false {
                 failure(error)
             } else {
+                LocalDataManager.loginUsed = true
                 success()
             }
         }
     }
     
-    static func logOut(closure: @escaping () -> Void) {
-        AppDelegate.sharedInstance.removeLocalData()
-        SessionDataManager.isLogOut = true
-        closure()
+    static func logOut(closure: (() -> Void)?, failure: ((ErrorModel) -> Void)?) {
+        ApiManager.logout { (error) in
+            if error?.success == false {
+                failure!(error!)
+            } else {
+                AppDelegate.sharedInstance.removeLocalData()
+                SessionDataManager.isLogOut = true
+                closure!()
+            }
+        }        
     }
 }

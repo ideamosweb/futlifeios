@@ -7,6 +7,10 @@
 //
 
 import UIKit
+enum CarouselSource {
+    case consoles
+    case games
+}
 
 class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet weak var topOnstraint: NSLayoutConstraint!
@@ -16,8 +20,10 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
     var carouselType: iCarouselType?
     var items = [[UIView]]()
     var selectedItems = [Int]()
-    var indexSelectedItems = [Int]()
-    var contentView: UIView?    
+    var indexSelectedItems = [[Int]]()
+    var selectedItemsRecorded: [[Bool]]?
+    var contentView: UIView?
+    var carouselSource: CarouselSource?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -68,10 +74,13 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
         return nil
     }
     
-    func checkSelected(item: Int) -> Bool {
-        if ((selectedItems.index(where: {$0 == item})) != nil) {
-            return false
-        }
+    func checkSelected(item: Int, carousel: Int) -> Bool {
+        if indexSelectedItems.count > 0 {
+            let items = indexSelectedItems[carousel]
+            if ((items.index(where: {$0 == item})) != nil) {
+                return false
+            }
+        }        
         
         return true
     }
@@ -97,25 +106,49 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
         
         guard let view = view else {
             itemView = items[current.tag][index]
+            if let selectedItemsRec = selectedItemsRecorded {
+                if selectedItemsRec[current.tag].count > 0 {
+                    if selectedItemsRec[current.tag][index] {
+                        // Set yellow shadow to itemView
+                        itemView.layer.shadowColor = UIColor.yellow.cgColor
+                        itemView.layer.shadowOpacity = 1
+                        itemView.layer.shadowOffset = CGSize.zero
+                        itemView.layer.shadowRadius = 10
+                    }
+                }
+            }
+            
             return itemView
         }
         
         itemView = view
+        if (selectedItemsRecorded?.count)! > 0 {
+            if (selectedItemsRecorded?[current.tag][index])! {
+                // Set yellow shadow to itemView
+                itemView.layer.shadowColor = UIColor.yellow.cgColor
+                itemView.layer.shadowOpacity = 1
+                itemView.layer.shadowOffset = CGSize.zero
+                itemView.layer.shadowRadius = 10
+            }
+            
+        }
         
         return itemView
     }
     
     func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
         let itemView = carousel.itemView(at: index)
-        if checkSelected(item: index) {
+        let isSelected: Bool
+        if checkSelected(item: index, carousel: carousel.tag) {
             // Set yellow shadow to itemView
             itemView?.layer.shadowColor = UIColor.yellow.cgColor
             itemView?.layer.shadowOpacity = 1
             itemView?.layer.shadowOffset = CGSize.zero
             itemView?.layer.shadowRadius = 10
             
-            indexSelectedItems.append(index + 1)
+            indexSelectedItems[carousel.tag].append(index)
             selectedItems.append(index)
+            isSelected = true
         } else {
             // Back to "normal" state
             itemView?.layer.shadowColor = UIColor.clear.cgColor
@@ -124,13 +157,21 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
             itemView?.layer.shadowRadius = 0
             
             selectedItems.remove(object: index)
-            indexSelectedItems.remove(object: index + 1)
+            indexSelectedItems[carousel.tag].remove(object: index)
+            isSelected = false
         }
         
         // Post notification to notify selection of an item
-        let itemSelected: [String: Int] = ["index": index, "carousel": carousel.tag]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidSelectCarouselItemNotification), object: nil, userInfo: itemSelected)
-        
+        let itemSelected: [String: Int] = ["index": index, "carousel": carousel.tag, "isSelected": Int(NSNumber(value: isSelected))]
+        if indexSelectedItems.count > 1 {
+            if let crslSource = carouselSource {
+                if crslSource == .games {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidSelectCarouselsItemNotification), object: nil, userInfo: itemSelected)
+                } else {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidSelectCarouselItemNotification), object: nil, userInfo: itemSelected)
+                }
+            }            
+        }
     }
     
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {

@@ -20,7 +20,7 @@ enum ApiRouter: URLRequestConvertible {
     case login(loginParameters: Parameters)
     case logout
     case challenges(userId: String)
-    case players(userId: String)
+    case players(userId: String, skip: String)
     case allUsers
     case editInformation(userId: String, parameters: Parameters)
     case cities(keyword: String)
@@ -89,9 +89,9 @@ enum ApiRouter: URLRequestConvertible {
             // Override URL for set userId get param
             request.url = URL(string: Constants.baseURLPath + path + "/\(userId)/get")
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
-        case .players(let userId):
+        case .players(let userId, let skip):
             // Override URL for set userId get param
-            request.url = URL(string: Constants.baseURLPath + path + "/\(userId)")
+            request.url = URL(string: Constants.baseURLPath + path + "/\(userId)/\(skip)")
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
         case .editInformation(let userId, let parameters):
             // Override URL for set userId get param

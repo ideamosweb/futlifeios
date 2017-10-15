@@ -76,7 +76,7 @@ class MenuManager: NSObject {
             MenuManager.currentViewController = currentViewController
             let nav = AppDelegate.mainNavigationController
             let consolesVC = ChooseConsoleViewController(navBar: true, chooseConsoleCompleted: { (consoles) in
-                let chooseGameVC = ChooseGameViewController(navBar: true) { (games) in
+                let chooseGameVC = ChooseGameViewController(navBar: true, isUpdate: true) { (games) in
                     if MenuManager.currentViewController != nil {
                         nav.pushViewController(MenuManager.currentViewController!, animated: true)
                     }
@@ -94,8 +94,10 @@ class MenuManager: NSObject {
     }
     
     func onLogOutTouch(_ sender: Any) {
-        LoginManager.logOut {
+        LoginManager.logOut(closure: {
             AppDelegate.sharedInstance.openStartUp()
+        }) { (error) in
+            // TODO:
         }
     }
 }

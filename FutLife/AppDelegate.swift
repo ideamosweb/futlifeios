@@ -101,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocalDataManager.parameters = nil
         LocalDataManager.consolesSelected = nil
         LocalDataManager.gamesSelected = nil
+        LocalDataManager.loginUsed = false
     }
     
     static func showPKHUD() {

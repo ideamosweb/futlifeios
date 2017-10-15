@@ -317,7 +317,7 @@ class ProfilePlayerViewController: TabsViewController {
     
     func configPlayerViews() {
         let consolesSelected: [ConsoleModel] = Utils.retrieveConsoles()
-        let gamesSelected: [GameModel] = Utils.retrieveGames()
+        let gamesSelected: [[GameModel]] = Utils.retrieveGames()
         
         let playerConsolesVC = PlayerConsolesViewController(consoles: consolesSelected, games: gamesSelected)
         let playerInfoVC = PlayerInfoViewController()
@@ -402,7 +402,6 @@ extension ProfilePlayerViewController: UIImagePickerControllerDelegate, UINaviga
             dismiss(animated: true)
             return
         }
-        
         
         // TODO: Move to other side
         if player != nil {

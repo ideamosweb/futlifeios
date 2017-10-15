@@ -19,6 +19,7 @@ struct LocalDataManager {
     static let kChosenGame = "ChosenGame";
     static let kCompletedRegister = "CompletedRegister";
     static let kLogged = "Logged";
+    static let kLoginUsed = "LoginUsed";
     static let kConsoles = "Consoles";
     static let kAllConsoles = "AllConsoles";
     static let kGames = "Games";
@@ -87,6 +88,15 @@ struct LocalDataManager {
         }
         set (newValue) {
             UserDefaults().set(newValue, forKey: kLogged)
+        }
+    }
+    
+    static var loginUsed: Bool {
+        get {
+            return UserDefaults().bool(forKey: kLoginUsed)
+        }
+        set (newValue) {
+            UserDefaults().set(newValue, forKey: kLoginUsed)
         }
     }
     

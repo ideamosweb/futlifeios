@@ -9,17 +9,19 @@
 import UIKit
 
 class ChooseGameViewController: CarouselViewController {
-    //@IBOutlet weak var gameCarousel: iCarousel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var chooseGameLabel: UILabel!
     @IBOutlet weak var chooseMoreThanOneLable: UILabel!
     
     var games: [Game]?
+    var consoles: [Console]?
     var selectedConsoles = [ConsoleModel]()
     var selectedGames: [[GameModel]]?
-    var selectedGamesTable: UITableView?
     var isNavBar: Bool?
+    var isUpdate: Bool?
     var chooseGameCompleted: (([[GameModel]]) -> Void)?
+    var gamesStr = [Any]()
+    var user: UserModel?
     
     let VIEW_ITEM_WIDTH: CGFloat = 225
     let VIEW_ITEM_HEIGHT: CGFloat = 282
@@ -33,60 +35,38 @@ class ChooseGameViewController: CarouselViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(navBar: Bool, chooseGameCompleted: (([[GameModel]]) -> Void)?) {
+    init(navBar: Bool, isUpdate: Bool, chooseGameCompleted: (([[GameModel]]) -> Void)?) {
         self.chooseGameCompleted = chooseGameCompleted
         super.init(nibName: "ChooseGameViewController", bundle: Bundle.main)
         isNavBar = navBar
+        self.isUpdate = isUpdate
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        carouselSource = .games
+        
         chooseGameLabel.font = UIFont().bebasBoldFont(size: 38)
         chooseMoreThanOneLable.font = UIFont().bebasFont(size: 18)
-        
-        // Check if there selected games
-        let preferences = LocalDataManager.user?.preferences
-        if (preferences?.count)! > 0 {
-            selectedConsoles = Utils.retrieveConsoles()
-            nextButton.isEnabled = true
-        } else {
-            selectedConsoles = LocalDataManager.consolesSelected!
-        }
-        
-        selectedGames = [[GameModel?]?](repeating: [], count: selectedConsoles.count) as? [[GameModel]]
+        nextButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationBar(show: isNavBar!)
-        nextButton.isEnabled = false
-        
-        // Let's add carousels items
-//        let consoles = LocalDataManager.consolesSelected
-//        if let consoles = consoles {
-//            if consoles.count > 0 {
-//                let carousel = iCarousel(frame: CGRect(x: gameCarousel.frame.minX, y: gameCarousel.frame.maxY + 20, width: gameCarousel.frame.width, height: gameCarousel.frame.height))
-//                carousels.append(carousel)
-//            }
-//        }
-        //carousels = [gameCarousel]
         
         getGames()
         
-        let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselItemNotification)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSelectCarouselItem(_:)), name: selectedCarouselItem, object: nil)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+        NotificationCenter.default.removeObserver(self)
         
-        //addSelectedGames()
+        let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselsItemNotification)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectCarouselsItem(_:)), name: selectedCarouselItem, object: nil)
     }
     
     deinit {
-        let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselItemNotification)
+        let selectedCarouselItem = Notification.Name(Constants.kDidSelectCarouselsItemNotification)
         NotificationCenter.default.removeObserver(self, name: selectedCarouselItem, object: nil)
     }
     
@@ -155,6 +135,13 @@ class ChooseGameViewController: CarouselViewController {
     }
     
     private func getGames() {
+        var isSelectedConsoles = false
+        if (LocalDataManager.consolesSelected?.count)! > 0 {
+            selectedConsoles = LocalDataManager.consolesSelected!
+            selectedGames = [[GameModel?]?](repeating: [], count: selectedConsoles.count) as? [[GameModel]]
+            isSelectedConsoles = true
+        }
+        
         if let games: [Game] = ConfigurationParametersModel.games {
             if games.count > 0 {
                 createCarousels(withItems: games)
@@ -163,6 +150,49 @@ class ChooseGameViewController: CarouselViewController {
             
             carouselsReloadData()
         }
+        
+        indexSelectedItems = ([[Int?]?](repeating: [], count: selectedConsoles.count) as? [[Int]])!
+        
+        if selectedConsoles.count > 0 && isSelectedConsoles {
+            if let consoles: [Console] = ConfigurationParametersModel.consoles {
+                if consoles.count > 0 {
+                    self.consoles = consoles
+                }
+            }
+            
+            var indexCrsl = 0
+            let gamesSelected: [[GameModel]] = Utils.retrieveGames(consoles: selectedConsoles)
+            selectedItemsRecorded = ([[Bool?]?](repeating: [], count: selectedConsoles.count) as? [[Bool]])!
+            for gameModel: [GameModel] in gamesSelected {
+                var index = 0
+                selectedItems.removeAll()
+                for games in self.games! {
+                    selectedItemsRecorded?[indexCrsl].append(false)
+                    for gmMdl in gameModel {
+                        if games.id == gmMdl.id {
+                            selectedItems.append(index)
+                            selectedItemsRecorded?[indexCrsl][index] = true
+                        }
+                    }
+                    
+                    index += 1
+                }
+                
+                // Add consoles to first carousel
+                indexSelectedItems[indexCrsl] = selectedItems
+                carouselsReloadData()
+                indexCrsl += 1
+            }
+        }
+        
+        var enableButton: Bool = true
+        for items in indexSelectedItems {
+            if items.count <= 0 {
+                enableButton = false
+            }
+        }
+        
+        nextButton.isEnabled = enableButton
     }
     
     private func configCarouselsItemsViews(games: [Game]) -> [UIView] {
@@ -181,81 +211,129 @@ class ChooseGameViewController: CarouselViewController {
     }
     
     //MARK: iCarousel delegate methods
-    func didSelectCarouselItem(_ notification: NSNotification) {
-        nextButton.isEnabled = indexSelectedItems.count > 0
+    func didSelectCarouselsItem(_ notification: NSNotification) {
+        var enableButton: Bool = true
+        for items in indexSelectedItems {
+            if items.count <= 0 {
+                enableButton = false
+            }
+        }
         
-        if let indexCarousel = notification.userInfo?["carousel"] as? Int {
-            if let index = notification.userInfo?["index"] as? Int {
-                //let consoleModel: ConsoleModel
-                let gameModel: GameModel
-                if selectedConsoles.count > 0 {
-                    //consoleModel = selectedConsoles[indexCarousel]
-                    if (selectedGames?[indexCarousel].count)! > 0 && index < (selectedGames?[indexCarousel].count)! {
-                        gameModel = (selectedGames?[indexCarousel][index])!
-                        if let indexObject = selectedGames?[indexCarousel].index(where: {$0 === gameModel}) {
-                            selectedGames?[indexCarousel].remove(at: indexObject)
-                        } else {
-                            selectedGames?[indexCarousel].append(gameModel)
-                        }
-                    } else {
-                        let game = games?[index]
-                        let newGameModel = GameModel(id: game?.id, year: game?.year, name: game?.name, avatar: game?.avatar, thumbnail: game?.thumbnail, active: game?.active, createdAt: game?.createdAt, updatedAt: game?.updatedAt)
-                        if let indexObject = selectedGames?[indexCarousel].index(where: {$0 === newGameModel}) {
-                            selectedGames?[indexCarousel].remove(at: indexObject)
-                        } else {
-                            selectedGames?[indexCarousel].append(newGameModel)
-                        }
-                        
-                        //selectedConsoles[indexCarousel].games = selectedGames
-                    }
+        nextButton.isEnabled = enableButton
+    }
+    
+    func updatePreferences() {
+        weak var weakSelf = self
+        
+        var preferences = [[String : Any]]()
+        var index = 0
+        for console: ConsoleModel in selectedConsoles {
+            let games: [GameModel] = LocalDataManager.gamesSelected![index]
+            gamesStr = [Any]()
+            for game: GameModel in games {
+                let gamesObj = [
+                    "game_id": "\(game.id)",
+                    "year": "\(game.year)",
+                    "name": "\(game.name)",
+                    "avatar": "\(game.avatar)",
+                    "thumbnail": "\(game.thumbnail)",
+                    "active": "\(game.active)",
+                    "created_at": "\(game.createdAt)",
+                    "updated_at": "\(game.updatedAt)"
+                ]
+                
+                gamesStr.append(gamesObj)
+            }
+            
+            let preference: [String : Any] = [
+                "console_id": "\(console.id)",
+                "active": true,
+                "games": gamesStr]
+            
+            preferences.append(preference)
+            index += 1
+        }
+        
+        var preferencesObj = [[String: Any]]()
+        preferencesObj = preferences
+        var jsonData: Data?
+        var strDict: String?
+        do {
+            jsonData = try JSONSerialization.data(withJSONObject: preferencesObj, options: .prettyPrinted)
+            
+            let decoded = try JSONSerialization.jsonObject(with: jsonData!, options: [])
+            // here "decoded" is of type `Any`, decoded from JSON data
+            
+            strDict = NSString(data: jsonData!, encoding: String.Encoding.utf8.rawValue)! as String
+            // you can now cast it with the right type
+            if let dictFromJSON = decoded as? [String:String] {
+                // use dictFromJSON
+                strDict = "\(dictFromJSON)"
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        let params: [String: Any] = ["user_id": "\(user?.id ?? 0)",
+            "preferences": strDict ?? "",
+            "edit": "0"
+        ]
+        
+        AppDelegate.showPKHUD()
+        ApiManager.createUser(createUserParameters: params) { (errorModel) in
+            AppDelegate.hidePKHUD()
+            if let strongSelf = weakSelf {
+                if (errorModel?.success)! {
+                    strongSelf.showSuccessMessage()
+                } else {
+                    strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
                     
                 }
-                
-                selectedGamesTable?.reloadData()
-                
             }
         }
     }
     
+    func showSuccessMessage() {
+        let alertController = UIAlertController(title: "¡Felicitaciones!", message: "Tus preferencias se han actualizado con exito!.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        weak var weakSelf = self
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
+            if let strongSelf = weakSelf {
+                AppDelegate.showPKHUD()
+                strongSelf.goToHome()
+            }
+        }
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func goToHome() {
+        let homeVC = HomeViewController(completion: nil)
+        
+        AppDelegate.sharedInstance.goToHome(homeViewController: homeVC)
+    }
+    
     @IBAction func onNextButtonTouch(_ sender: Any) {
-        LocalDataManager.gamesSelected = selectedGames
-        chooseGameCompleted!(selectedGames!)
-    }
-    
-
-    
-    
-    
-    
-}
-
-// MARK: UITableViewDelegate
-extension ChooseGameViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 25
-    }
-}
-
-// MARK: UITableViewDatasource
-extension ChooseGameViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (selectedGames?.count)! > 0 {
-            return selectedGames!.count
+        var index = 0
+        for items in indexSelectedItems {
+            for item in items {
+                let game = games?[item]
+                let newGameModel = GameModel(id: game?.id, year: game?.year, name: game?.name, avatar: game?.avatar, thumbnail: game?.thumbnail, active: game?.active, createdAt: game?.createdAt, updatedAt: game?.updatedAt)
+                selectedGames?[index].append(newGameModel)
+            }
+            
+            index += 1
         }
         
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        //let game = selectedGames?[indexPath.row]
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.font = UIFont().bebasFont(size: 18.0)
-        //cell.textLabel?.text = "\(game.name ?? "")"
+        LocalDataManager.gamesSelected = selectedGames
         
-        cell.isUserInteractionEnabled = false
-        
-        return cell
+        if !isUpdate! {
+            chooseGameCompleted!(selectedGames!)
+        } else {
+            user = LocalDataManager.user!
+            updatePreferences()
+        }
     }
 }
+

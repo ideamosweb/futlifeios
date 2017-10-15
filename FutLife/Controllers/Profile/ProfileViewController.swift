@@ -56,7 +56,6 @@ class ProfileViewController: ViewController {
         
         games = LocalDataManager.gamesSelected!
         
-        
         consoles = LocalDataManager.consolesSelected!
         user = LocalDataManager.user!
         if user != nil {
@@ -189,6 +188,7 @@ class ProfileViewController: ViewController {
         var index = 0
         for console: ConsoleModel in consoles {
             let games: [GameModel] = LocalDataManager.gamesSelected![index]
+            gamesStr = [Any]()
             for game: GameModel in games {
                 let gamesObj = [
                     "game_id": "\(game.id)",
@@ -360,6 +360,16 @@ extension ProfileViewController : UITableViewDelegate {
 
 //MARK: UITableViewDataSource
 extension ProfileViewController : UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView == gamesTableView {
+            if let gamesSelected = LocalDataManager.gamesSelected {
+                return gamesSelected.count
+            }
+        }
+        
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == consolesTableView {
             if let consoles: [ConsoleModel] = LocalDataManager.consolesSelected {

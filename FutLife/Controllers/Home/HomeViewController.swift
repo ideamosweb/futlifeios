@@ -77,7 +77,7 @@ class HomeViewController: TabsViewController {
     
     private func getPlayersRequest(user: UserModel, challenges: [Challenges]?) {
         weak var weakSelf = self
-        ApiManager.getPlayers(userId: user.id) { (errorModel, players) in
+        ApiManager.getPlayers(userId: user.id, skip: "0") { (errorModel, players) in
             if let strongSelf = weakSelf {
                 AppDelegate.hidePKHUD()
                 if (errorModel?.success)! {

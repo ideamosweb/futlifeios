@@ -144,8 +144,8 @@ class ApiManager {
     }
     
     // GET: Players
-    static func getPlayers(userId: Int, completion: @escaping (ErrorModel?, _ players: [User]?) -> Void) {
-        Alamofire.request(ApiRouter.players(userId: "\(userId)")).responseObject { (response: DataResponse<PlayersResponse>) in
+    static func getPlayers(userId: Int, skip: String, completion: @escaping (ErrorModel?, _ players: [User]?) -> Void) {
+        Alamofire.request(ApiRouter.players(userId: "\(userId)", skip: skip)).responseObject { (response: DataResponse<PlayersResponse>) in
             let players = response.result.value
             
             // Verify if exist an error an return a message

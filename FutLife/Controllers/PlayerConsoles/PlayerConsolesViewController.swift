@@ -12,14 +12,14 @@ class PlayerConsolesViewController: ViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var consoles: [ConsoleModel]?
-    var games:[GameModel]?
+    var games:[[GameModel]]?
     let kProfileCellIdentifier = "PlayerConsolesCell"
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(consoles: [ConsoleModel], games: [GameModel]) {
+    init(consoles: [ConsoleModel], games: [[GameModel]]) {
         self.consoles = consoles
         self.games = games
         
@@ -49,8 +49,8 @@ extension PlayerConsolesViewController : UITableViewDataSource {
         let console = consoles?[indexPath.row]
         
         profileCell.setGameImage(name: (console?.avatar)!, gameName: (console?.name)!)
-        if let games: [GameModel] = games {
-            profileCell.setGames(games: games, width: profileCell.frame.width)
+        if let games = games {
+            profileCell.setGames(games: games[indexPath.row], width: profileCell.frame.width)
         }
         
         profileCell.isUserInteractionEnabled = false        

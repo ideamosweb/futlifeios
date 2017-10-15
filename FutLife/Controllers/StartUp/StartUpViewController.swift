@@ -94,7 +94,7 @@ class StartUpViewController: ViewController {
                 let chooseGameVC = prepareChooseGameVC(navBar: true)
                 AppDelegate.mainNavigationController.pushViewController(chooseGameVC, animated: false)
                 
-                goToUserProfile(navBar: false, confirmButton: true)
+                goToUserProfile(navBar: true, confirmButton: true)
             } else {
                 goToHome()
             }
@@ -168,7 +168,7 @@ class StartUpViewController: ViewController {
     
     private func prepareChooseGameVC(navBar: Bool) -> ChooseGameViewController {
         weak var weakSelf = self
-        let chooseGameVC = ChooseGameViewController(navBar: navBar) { (games) in
+        let chooseGameVC = ChooseGameViewController(navBar: navBar, isUpdate: false) { (games) in
             if let strongSelf = weakSelf {
                 LocalDataManager.chosenGame = true
                 strongSelf.goToUserProfile(navBar: true, confirmButton: true)
