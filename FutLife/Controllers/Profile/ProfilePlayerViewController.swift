@@ -35,6 +35,7 @@ class ProfilePlayerViewController: TabsViewController {
     var avatarSet: Bool = false
     var profileCompleted: (() -> Void?)?
     var isOpenEditButtons: Bool = false
+    var playerInfoVC: PlayerInfoViewController?
     
     let kProfileCellIdentifier = "ProfileCell"
     let kFlexibleBarHeight: CGFloat = 280.0
@@ -253,7 +254,7 @@ class ProfilePlayerViewController: TabsViewController {
         infoEditButton?.setImage(infoEditImageView.image, for: .normal)
         infoEditButton?.backgroundColor = UIColor(red: 50/255, green: 112/255, blue: 211/255, alpha: 1.0)
         infoEditButton?.circularView(borderColor: UIColor.clear)
-        //infoEditButton?.addTarget(self, action: #selector(onEditButtonTouch), for: .touchUpInside)
+        infoEditButton?.addTarget(self, action: #selector(onEditInfoButtonTouch), for: .touchUpInside)
         infoEditButton?.alpha = 0.0
         
         view.addSubview(infoEditButton!)
@@ -315,17 +316,56 @@ class ProfilePlayerViewController: TabsViewController {
         MenuManager().onEditConsoleTouch(currentViewController: self)
     }
     
+    func onEditInfoButtonTouch() {
+        scrollToTab(tab: 2)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(onCancelBarItemTouch))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onDoneBarItemmTouch))
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidEditInfoItemNotification), object: nil, userInfo: nil)
+    }
+    
+    func onCancelBarItemTouch() {
+        removeNavBarButtons()
+        view.endEditing(true)
+    }
+    
+    func onDoneBarItemmTouch() {
+        let user: UserModel? = LocalDataManager.user!
+        if user != nil {
+            if let playerInfoVC = playerInfoVC {
+                let params: Parameters = playerInfoVC.retriveFieldsValues()
+                
+                weak var weakSelf = self
+                ApiManager.updateUserInfo(userId: (user?.id)!, updateInfo: params, completion: { (errorModel) in
+                    if let strongSelf = weakSelf {
+                        if (errorModel?.success)! {
+                            strongSelf.presentAlert(title: "¡Felicitaciones!", message: "Jugador actualizado con exito", style: alertStyle.formError, completion: nil)
+                        } else {
+                            strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    func removeNavBarButtons() {
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.leftBarButtonItem = nil
+        addBackButton()
+    }
+    
     func configPlayerViews() {
         let consolesSelected: [ConsoleModel] = Utils.retrieveConsoles()
         let gamesSelected: [[GameModel]] = Utils.retrieveGames()
         
         let playerConsolesVC = PlayerConsolesViewController(consoles: consolesSelected, games: gamesSelected)
-        let playerInfoVC = PlayerInfoViewController()
-        playerInfoVC.formScrollViewDelegate = self
+        playerInfoVC = PlayerInfoViewController()
+        playerInfoVC?.formScrollViewDelegate = self
         let playerStatisticsVC = PlayerStatisticsViewController()
         
         tabsTitles = ["CONSOLAS", "INFORMACIÓN", "ESTADISTICAS"]
-        tabsViewControllers = [playerConsolesVC, playerInfoVC, playerStatisticsVC]
+        tabsViewControllers = [playerConsolesVC, playerInfoVC!, playerStatisticsVC]
         reloadTabs()
     }
     

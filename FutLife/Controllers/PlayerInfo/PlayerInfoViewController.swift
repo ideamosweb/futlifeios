@@ -72,27 +72,17 @@ class PlayerInfoViewController: FormViewController {
             view.addSubview(previousPlayerView!)
         }
         
-        let cancelButton = UIButton(frame: CGRect(x: 30, y: (previousPlayerView?.frame.maxY)! + 20, width: (Utils.screenViewFrame().width / 2 - 40), height: 30))
-        cancelButton.titleLabel?.font = UIFont().bebasBoldFont(size: 18)
-        cancelButton.setTitle("Cancelar", for: .normal)
-        cancelButton.setTitleColor(UIColor.white, for: .normal)
-        cancelButton.backgroundColor = UIColor().red()
-        cancelButton.layer.cornerRadius = 10
-        
-        let acceptButton = UIButton(frame: CGRect(x: Utils.screenViewFrame().width - cancelButton.frame.width - 30, y: (previousPlayerView?.frame.maxY)! + 20, width: (Utils.screenViewFrame().width / 2 - 40), height: 30))
-        acceptButton.titleLabel?.font = UIFont().bebasBoldFont(size: 18)
-        acceptButton.setTitle("Aceptar", for: .normal)
-        acceptButton.setTitleColor(UIColor.white, for: .normal)
-        acceptButton.backgroundColor = UIColor().greenDefault()
-        acceptButton.layer.cornerRadius = 10
-        acceptButton.addTarget(self, action: #selector(onAcceptButtonTouch), for: .touchUpInside)
-        
-        view.addSubview(cancelButton)
-        view.addSubview(acceptButton)
-        
         // Let's pass the fields to inputsFormManager
         inputsFormManager.inputFields = textFields
-    }    
+        
+        let editInfoNoti = Notification.Name(Constants.kDidEditInfoItemNotification)
+        NotificationCenter.default.addObserver(self, selector: #selector(focusFirstTextView), name: editInfoNoti, object: nil)
+    }
+    
+    deinit {
+        let editInfoNoti = Notification.Name(Constants.kDidEditInfoItemNotification)
+        NotificationCenter.default.removeObserver(self, name: editInfoNoti, object: nil)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -102,37 +92,39 @@ class PlayerInfoViewController: FormViewController {
         formScrollView.contentInset = edgeInsets
     }
     
-    func onAcceptButtonTouch() {
-        let user: UserModel? = LocalDataManager.user!
-        if user != nil {
-            var params: Parameters = [:]
-            for index in stride(from: 0, to: textFields.count, by: 1) {
-                let textField: TextField = textFields[index]
-                if textField.tag == 2 {
-                    if let city = textField.citySelected {
-                        params[descTextFields[index]] = city.countryId
-                    }
-                } else {
-                    params[descTextFields[index]] = textField.text
-                }
-            }
-            
-            weak var weakSelf = self
-            ApiManager.updateUserInfo(userId: (user?.id)!, updateInfo: params, completion: { (errorModel) in
-                if let strongSelf = weakSelf {
-                    if (errorModel?.success)! {
-                        strongSelf.presentAlert(title: "¡Felicitaciones!", message: "Jugador actualizado con exito", style: alertStyle.formError, completion: nil)
-                    } else {
-                        strongSelf.presentAlert(title: "Error", message: (errorModel?.message)!, style: alertStyle.formError, completion: nil)
-                    }
-                }
-            })
+    func focusFirstTextView() {
+        if textFields.count > 0 {
+            let textField = textFields.first
+            textField?.becomeFirstResponder()
         }
+    }
+    
+    func retriveFieldsValues() -> Parameters {
+        var params: Parameters = [:]
+        for index in stride(from: 0, to: textFields.count, by: 1) {
+            let textField: TextField = textFields[index]
+            if textField.tag == 2 {
+                if let city = textField.citySelected {
+                    params[descTextFields[index]] = city.countryId
+                }
+            } else {
+                params[descTextFields[index]] = textField.text
+            }
+        }
+        
+        return params
     }
     
     func configDatePicker() {
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
+        
+        // Min date 19 years before from now
+        let now = Date()
+        let minDate = now.addingTimeInterval(-(60*60*24*30*12*19))
+        
+        datePicker?.minimumDate = minDate
+        datePicker?.maximumDate = Date()
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {

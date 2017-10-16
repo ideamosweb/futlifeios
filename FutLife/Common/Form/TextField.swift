@@ -123,7 +123,7 @@ class TextField: UITextField, CitiesProtocol {
     
 
     
-    override func becomeFirstResponder() -> Bool {
+    @discardableResult override func becomeFirstResponder() -> Bool {
         super.becomeFirstResponder()
         validationError = false
         

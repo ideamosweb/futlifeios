@@ -38,18 +38,18 @@ class ViewController: UIViewController {
         }
     }
     
-    private func addBackButton() {
-        let backButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 12.5, height: 23.0))
-        backButton.setImage(UIImage(named: "NavigationBarBackButton"), for: .normal)
-        backButton.addTarget(self, action: #selector(onBackButtonTouch), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-    }
-    
     private func hideBackButton() {
         navigationItem.hidesBackButton = true
     }
     
     //MARK: Public methods
+    func addBackButton() {
+        let backButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 12.5, height: 23.0))
+        backButton.setImage(UIImage(named: "NavigationBarBackButton"), for: .normal)
+        backButton.addTarget(self, action: #selector(onBackButtonTouch), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }   
+    
     func onBackButtonTouch() {
         navigationController?.popViewController(animated: true)
     }    

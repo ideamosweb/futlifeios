@@ -104,6 +104,8 @@
 		17F7B6781E73474D00578042 /* FutLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6771E73474D00578042 /* FutLifeUITests.swift */; };
 		4008A4971F734D8F009D152D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008A4961F734D8F009D152D /* Cities.swift */; };
 		4008A49A1F737B2D009D152D /* CitiesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008A4991F737B2D009D152D /* CitiesProtocol.swift */; };
+		40DBA4CD1F94531100AD9794 /* PlayerStatisticsLatestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBA4CC1F94531100AD9794 /* PlayerStatisticsLatestCell.swift */; };
+		40DBA4CF1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBA4CE1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift */; };
 		B3DDC6BD67F21EAE4AC4C6F4 /* Pods_FutLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E972938F4543AFEC752E34 /* Pods_FutLife.framework */; };
 /* End PBXBuildFile section */
 
@@ -231,6 +233,8 @@
 		1C32FB6C87B21B8000DA6626 /* Pods-FutLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife/Pods-FutLife.release.xcconfig"; sourceTree = "<group>"; };
 		4008A4961F734D8F009D152D /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cities.swift; path = Models/Cities.swift; sourceTree = "<group>"; };
 		4008A4991F737B2D009D152D /* CitiesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CitiesProtocol.swift; path = Common/Protocols/CitiesProtocol.swift; sourceTree = "<group>"; };
+		40DBA4CC1F94531100AD9794 /* PlayerStatisticsLatestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerStatisticsLatestCell.swift; path = Controllers/PlayerStatistics/Cells/PlayerStatisticsLatestCell.swift; sourceTree = "<group>"; };
+		40DBA4CE1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerStatisticsPointsCell.swift; path = Controllers/PlayerStatistics/Cells/PlayerStatisticsPointsCell.swift; sourceTree = "<group>"; };
 		54E972938F4543AFEC752E34 /* Pods_FutLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79140749D98EEF1DD7D66E57 /* Pods-FutLife Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife Swift/Pods-FutLife Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		8EAB5FABE53C032C619AD16D /* Pods_FutLife_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FutLife_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,6 +483,7 @@
 		17543EED1F69B3FD00998C50 /* PlayerStatistics */ = {
 			isa = PBXGroup;
 			children = (
+				40DBA4CB1F94527300AD9794 /* Cells */,
 				17543EEE1F69B47600998C50 /* PlayerStatisticsViewController.swift */,
 				17543EEF1F69B47600998C50 /* PlayerStatisticsViewController.xib */,
 			);
@@ -706,6 +711,15 @@
 				176EBC651F76D3B800F126D6 /* FormScrollViewProtocol.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		40DBA4CB1F94527300AD9794 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				40DBA4CC1F94531100AD9794 /* PlayerStatisticsLatestCell.swift */,
+				40DBA4CE1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		7275184320D6405A87373ADF /* Frameworks */ = {
@@ -954,6 +968,7 @@
 			files = (
 				170104581EC2BAC3002E6767 /* Platform.swift in Sources */,
 				17E678B01EF6E6320001B9FB /* ViewController.swift in Sources */,
+				40DBA4CD1F94531100AD9794 /* PlayerStatisticsLatestCell.swift in Sources */,
 				17BFB0561EF8377F002A994E /* UIViewController+Utils.swift in Sources */,
 				17001A121F0ADC5800BF44BD /* ProfileCell.swift in Sources */,
 				1701045C1EC2BC91002E6767 /* Game.swift in Sources */,
@@ -999,6 +1014,7 @@
 				17CA01301F4CF1C800F3DA35 /* PlayerOptionsView.swift in Sources */,
 				17001A141F0B2B9800BF44BD /* RegisterAvatar.swift in Sources */,
 				17CA01341F4DDF8800F3DA35 /* MenuManager.swift in Sources */,
+				40DBA4CF1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
 				1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */,
 				1785964E1F65F12700EB493E /* Balance.swift in Sources */,

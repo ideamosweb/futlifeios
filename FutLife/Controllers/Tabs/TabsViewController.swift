@@ -13,7 +13,7 @@ class TabsViewController: ViewController {
     let kTabsButtonsViewHeight: CGFloat = 44.0
     
     var tabsButtonsViewMinY: CGFloat = 0.0
-    var scrollPage: Int = 0
+    var scrollToPage: Int = 0
     var previousOffset: CGFloat = 0
     var tabsViewControllers: [ViewController]?
     var tabsViews: [UIView] = []
@@ -171,27 +171,29 @@ class TabsViewController: ViewController {
         scrollView?.isScrollEnabled = true
         
         if let tabDefault = showTabDefault {
-            scrollPage = tabDefault - 1
-            let vc = tabsViewControllers?[tabDefault - 1]
-            let viewFrame: CGRect = (vc?.view.frame)!
-            
-            let point = CGPoint(x: (viewFrame.minX), y: 0.0)
-            scrollView?.setContentOffset(point, animated: false)
-            
-            let buttonTab: UIButton = self.buttonsView?.subviews[tabDefault] as! UIButton
-            buttonTab.setTitleColor(UIColor.white, for: .normal)
-            var selectedButtonViewFrame = self.selectorTabButtonView?.frame
-            selectedButtonViewFrame?.origin.x = (buttonTab.frame.minX)
-            self.selectorTabButtonView?.frame = selectedButtonViewFrame!
-            previousOffset = (scrollView?.frame.minX)!
+            scrollToTab(tab: tabDefault)            
         }
+    }
+    
+    func scrollToTab(tab: Int) {
+        scrollToPage = tab - 1
+        let vc = tabsViewControllers?[tab - 1]
+        let viewFrame: CGRect = (vc?.view.frame)!
         
+        let point = CGPoint(x: (viewFrame.minX), y: 0.0)
+        scrollView?.setContentOffset(point, animated: false)
         
+        let buttonTab: UIButton = self.buttonsView?.subviews[tab] as! UIButton
+        buttonTab.setTitleColor(UIColor.white, for: .normal)
+        var selectedButtonViewFrame = self.selectorTabButtonView?.frame
+        selectedButtonViewFrame?.origin.x = (buttonTab.frame.minX)
+        self.selectorTabButtonView?.frame = selectedButtonViewFrame!
+        previousOffset = (scrollView?.frame.minX)!
     }
     
     func onButtonTabTouch(sender: AnyObject) {
         let button = sender as! UIButton
-        scrollPage = button.tag - 1
+        scrollToPage = button.tag - 1
         var viewFrame: CGRect?
         
         if (tabsViewControllers?.count)! > 0 {
@@ -232,14 +234,14 @@ extension TabsViewController : UIScrollViewDelegate {
         }
         
         previousOffset = scrollView.contentOffset.x
-        scrollPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
+        scrollToPage = Int(scrollView.contentOffset.x / Utils.screenViewFrame().size.width)
         
-        let buttonTab = self.buttonsView?.subviews[scrollPage + 1] as! UIButton
+        let buttonTab = self.buttonsView?.subviews[scrollToPage + 1] as! UIButton
         buttonTab.setTitleColor(UIColor.white, for: .normal)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page: Int = (scrollView.contentOffset.x < previousOffset && scrollPage > 0) ? scrollPage - 1 : scrollPage + 1
+        let page: Int = (scrollView.contentOffset.x < previousOffset && scrollToPage > 0) ? scrollToPage - 1 : scrollToPage + 1
         UIView.animate(withDuration: 0.2) {
             let buttonTab = self.buttonsView?.subviews[page]
             var selectedButtonViewFrame = self.selectorTabButtonView?.frame

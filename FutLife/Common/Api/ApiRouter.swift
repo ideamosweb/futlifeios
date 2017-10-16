@@ -20,6 +20,7 @@ enum ApiRouter: URLRequestConvertible {
     case login(loginParameters: Parameters)
     case logout
     case challenges(userId: String)
+    case challengesByUser(userId: String)
     case players(userId: String, skip: String)
     case allUsers
     case editInformation(userId: String, parameters: Parameters)
@@ -29,7 +30,7 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         case .register, .registerPreferences, .registerAvatar, .login:
                 return .post
-            case .parameters, .consoles, .games, .allUsers, .challenges, .players, .cities, .logout:
+            case .parameters, .consoles, .games, .allUsers, .challenges, .challengesByUser, .players, .cities, .logout:
                 return .get
             case .editInformation:
                 return .put
@@ -53,6 +54,8 @@ enum ApiRouter: URLRequestConvertible {
             case .login:
                 return "\(Constants.queryURLPath)/login"
             case .challenges:
+                return "\(Constants.queryURLPath)/challenge"
+            case .challengesByUser:
                 return "\(Constants.queryURLPath)/challenge"
             case .players:
                 return "\(Constants.queryURLPath)/players"
@@ -88,6 +91,10 @@ enum ApiRouter: URLRequestConvertible {
         case .challenges(let userId):
             // Override URL for set userId get param
             request.url = URL(string: Constants.baseURLPath + path + "/\(userId)/get")
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
+        case .challengesByUser(let userId):
+            // Override URL for set userId get param
+            request.url = URL(string: Constants.baseURLPath + path + "/\(userId)/show")
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
         case .players(let userId, let skip):
             // Override URL for set userId get param

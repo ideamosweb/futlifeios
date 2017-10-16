@@ -23,6 +23,7 @@ struct Constants {
     static let platform = "iOS"
     static let kDidSelectCarouselItemNotification = "DidSelectCarouselItemNotification"
     static let kDidSelectCarouselsItemNotification = "DidSelectCarouselsItemNotification"
+    static let kDidEditInfoItemNotification = "DidEditInfoItemNotification"
     static let kDefaultAnimationDuration = 0.3
     static let kNavigationBarDefaultHeight = 44.0
     static let kStatusBarDefaultHeight = 20

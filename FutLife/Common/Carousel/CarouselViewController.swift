@@ -163,7 +163,7 @@ class CarouselViewController: ViewController, iCarouselDataSource, iCarouselDele
         
         // Post notification to notify selection of an item
         let itemSelected: [String: Int] = ["index": index, "carousel": carousel.tag, "isSelected": Int(NSNumber(value: isSelected))]
-        if indexSelectedItems.count > 1 {
+        if indexSelectedItems.count >= 1 {
             if let crslSource = carouselSource {
                 if crslSource == .games {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidSelectCarouselsItemNotification), object: nil, userInfo: itemSelected)
