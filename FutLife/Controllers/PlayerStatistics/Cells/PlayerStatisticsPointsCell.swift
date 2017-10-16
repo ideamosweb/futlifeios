@@ -9,13 +9,21 @@
 import UIKit
 
 class PlayerStatisticsPointsCell: CustomTableViewCell {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var gamesPlayedLb: UILabel!
+    @IBOutlet weak var gamesWonLb: UILabel!
+    @IBOutlet weak var gamesLoseLb: UILabel!
+    @IBOutlet weak var goalsInFavor: UILabel!
+    @IBOutlet weak var goalsAgainst: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
-    */
 
+    func setUpView() {
+        gamesPlayedLb.text = "5"
+        gamesWonLb.text = "3"
+        gamesLoseLb.text = "2"
+        goalsInFavor.text = "7"
+        goalsAgainst.text = "4"
+    }
 }
