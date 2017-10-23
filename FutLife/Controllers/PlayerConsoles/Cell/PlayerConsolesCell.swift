@@ -21,7 +21,7 @@ class PlayerConsolesCell: CustomTableViewCell {
         super.awakeFromNib()
     }
     
-    func setGameImage(name: String, gameName: String) {
+    func setUpConsole(name: String, gameName: String, playerId: String) {
         let imageUrl = URL(string: name)!
         let placeholderImage = UIImage(named: "loading_placeholder")!
         consoleImage.af_setImage(withURL: imageUrl, placeholderImage: placeholderImage)
@@ -30,7 +30,7 @@ class PlayerConsolesCell: CustomTableViewCell {
         consoleName.text = gameName
         
         consoleModel.font = UIFont().bebasBoldFont(size: 20)
-        consoleModel.text = gameName
+        consoleModel.text = (playerId.isEmpty) ? gameName : playerId
     }
     
     func setGames(games: [GameModel], width: CGFloat) {

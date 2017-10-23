@@ -48,7 +48,7 @@ extension PlayerConsolesViewController : UITableViewDataSource {
         let profileCell: PlayerConsolesCell = tableView.dequeueReusableCell(withIdentifier: kProfileCellIdentifier) as! PlayerConsolesCell
         let console = consoles?[indexPath.row]
         
-        profileCell.setGameImage(name: (console?.avatar)!, gameName: (console?.name)!)
+        profileCell.setUpConsole(name: (console?.avatar)!, gameName: (console?.name)!, playerId: "")
         if let games = games {
             profileCell.setGames(games: games[indexPath.row], width: profileCell.frame.width)
         }

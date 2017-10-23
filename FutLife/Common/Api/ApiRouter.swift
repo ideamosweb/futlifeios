@@ -25,14 +25,15 @@ enum ApiRouter: URLRequestConvertible {
     case allUsers
     case editInformation(userId: String, parameters: Parameters)
     case cities(keyword: String)
+    case consolePlayerId(preferenceId: String)
     
     var method: HTTPMethod {
         switch self {
-        case .register, .registerPreferences, .registerAvatar, .login:
+            case .register, .registerPreferences, .registerAvatar, .login:
                 return .post
             case .parameters, .consoles, .games, .allUsers, .challenges, .challengesByUser, .players, .cities, .logout:
                 return .get
-            case .editInformation:
+            case .editInformation, .consolePlayerId:
                 return .put
         }
     }
@@ -67,6 +68,8 @@ enum ApiRouter: URLRequestConvertible {
                 return "\(Constants.queryURLPath)/cities"
             case .logout:
                 return "\(Constants.queryURLPath)/logout"
+            case .consolePlayerId:
+                return "\(Constants.queryURLPath)/update"
         }
     }
     
@@ -108,6 +111,10 @@ enum ApiRouter: URLRequestConvertible {
         case .cities(let keyword):
             // Override URL for set userId get param
             request.url = URL(string: Constants.baseURLPath + path + "?keyword=\(keyword)")
+            request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
+        case .consolePlayerId(let preferenceId):
+            // Override URL for set preferenceId
+            request.url = URL(string: Constants.baseURLPath + path + "/\(preferenceId)/player-id")
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")
         case .logout:
             request.addValue("Bearer \(LocalDataManager.token!)", forHTTPHeaderField: "Authorization")

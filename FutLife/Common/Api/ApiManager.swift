@@ -160,7 +160,7 @@ class ApiManager {
         }
     }
     
-    // POST: Update user info
+    // PUT: Update user info
     public static func updateUserInfo(userId: Int, updateInfo: Parameters, completion: @escaping (ErrorModel?) -> Void) {
         Alamofire.request(ApiRouter.editInformation(userId: "\(userId)", parameters: updateInfo)).responseObject { (response: DataResponse<UpdateUserResponse>) in
             // Verify if exist an error an return a message
@@ -194,6 +194,18 @@ class ApiManager {
             
             completion(errorModel, cities?.cities)
         }
+    }
+    
+    // PUT: Console PlayerId
+    public static func consolePlayerId(preferenceId: Int, completion: @escaping (ErrorModel?) -> Void) {
+        Alamofire.request(ApiRouter.consolePlayerId(preferenceId: "\(preferenceId)")).responseObject { (response: DataResponse<ConsolePlayerIdResponse>) in
+            // Verify if exist an error an return a message
+            let errorModel: ErrorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+            if errorModel.success! {
+            }
+            
+            completion(errorModel)
+        }        
     }
     
     // GET: Logout

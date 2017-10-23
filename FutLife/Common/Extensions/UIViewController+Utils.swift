@@ -22,16 +22,24 @@ extension UIViewController {
         var actions: [UIAlertAction] = []
         switch style {
         case .formError:
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
+                if let completion = completion {
+                    completion(true)
+                }
+            })
             
             actions.append(okAction)
         case .cancel:
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                completion!(true)
+                if let completion = completion {
+                    completion(true)
+                }
                 
             })
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
-                completion!(false)
+                if let completion = completion {
+                    completion(false)
+                }
             })
             
             actions.append(okAction)

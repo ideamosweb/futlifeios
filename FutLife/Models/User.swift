@@ -159,3 +159,13 @@ class UpdateUserResponse: Model {
         userUpdate <- map["user_update"]
     }
 }
+
+class ConsolePlayerIdResponse: Model {
+    var message: String?
+    var success: Bool?
+    
+    override func mapping(map: Map) {
+        message <- map["message"]
+        success <- map["success"]
+    }
+}

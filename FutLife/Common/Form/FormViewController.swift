@@ -20,6 +20,7 @@ class FormViewController: ViewController {
     
     let keyboardWidth: CGFloat = Utils.screenViewFrame().width
     let keyboardHeight: CGFloat = 216.0
+    var tap: UITapGestureRecognizer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,8 @@ class FormViewController: ViewController {
         // Hide Keyboard when lost field focus
         // https://stackoverflow.com/a/27079103
         // Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap!)
     }
     
     override func viewWillAppear(_ animated: Bool) {

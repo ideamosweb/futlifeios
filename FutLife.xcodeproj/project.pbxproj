@@ -104,6 +104,8 @@
 		17F7B6781E73474D00578042 /* FutLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B6771E73474D00578042 /* FutLifeUITests.swift */; };
 		4008A4971F734D8F009D152D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008A4961F734D8F009D152D /* Cities.swift */; };
 		4008A49A1F737B2D009D152D /* CitiesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008A4991F737B2D009D152D /* CitiesProtocol.swift */; };
+		405B64E51F9D1D5D00622752 /* PlayerIdAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B64E41F9D1D5D00622752 /* PlayerIdAlertView.swift */; };
+		405B64E71F9D1D6F00622752 /* PlayerIdAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405B64E61F9D1D6F00622752 /* PlayerIdAlertView.xib */; };
 		40DBA4CD1F94531100AD9794 /* PlayerStatisticsLatestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBA4CC1F94531100AD9794 /* PlayerStatisticsLatestCell.swift */; };
 		40DBA4CF1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBA4CE1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift */; };
 		40DBA4D31F94690D00AD9794 /* PlayerStatisticsLatestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40DBA4D21F94690D00AD9794 /* PlayerStatisticsLatestCell.xib */; };
@@ -237,6 +239,8 @@
 		1C32FB6C87B21B8000DA6626 /* Pods-FutLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-FutLife/Pods-FutLife.release.xcconfig"; sourceTree = "<group>"; };
 		4008A4961F734D8F009D152D /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cities.swift; path = Models/Cities.swift; sourceTree = "<group>"; };
 		4008A4991F737B2D009D152D /* CitiesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CitiesProtocol.swift; path = Common/Protocols/CitiesProtocol.swift; sourceTree = "<group>"; };
+		405B64E41F9D1D5D00622752 /* PlayerIdAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerIdAlertView.swift; path = Views/PlayerInfo/PlayerIdAlertView.swift; sourceTree = "<group>"; };
+		405B64E61F9D1D6F00622752 /* PlayerIdAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerIdAlertView.xib; path = Views/PlayerInfo/PlayerIdAlertView.xib; sourceTree = "<group>"; };
 		40DBA4CC1F94531100AD9794 /* PlayerStatisticsLatestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerStatisticsLatestCell.swift; path = Controllers/PlayerStatistics/Cells/PlayerStatisticsLatestCell.swift; sourceTree = "<group>"; };
 		40DBA4CE1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerStatisticsPointsCell.swift; path = Controllers/PlayerStatistics/Cells/PlayerStatisticsPointsCell.swift; sourceTree = "<group>"; };
 		40DBA4D21F94690D00AD9794 /* PlayerStatisticsLatestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerStatisticsLatestCell.xib; path = Controllers/PlayerStatistics/Cells/PlayerStatisticsLatestCell.xib; sourceTree = "<group>"; };
@@ -544,6 +548,8 @@
 			children = (
 				178596551F67B53000EB493E /* PlayerTextView.swift */,
 				178596571F67B54500EB493E /* PlayerTextView.xib */,
+				405B64E41F9D1D5D00622752 /* PlayerIdAlertView.swift */,
+				405B64E61F9D1D6F00622752 /* PlayerIdAlertView.xib */,
 			);
 			name = PlayerInfo;
 			sourceTree = "<group>";
@@ -878,6 +884,7 @@
 				17399A3D1F09D17F00B72EFB /* BebasNeue Light.otf in Resources */,
 				17399A3C1F09D17C00B72EFB /* BebasNeue Book.ttf in Resources */,
 				17F51E491F38CF1F00935687 /* HomeViewController.xib in Resources */,
+				405B64E71F9D1D6F00622752 /* PlayerIdAlertView.xib in Resources */,
 				1783C4161F3ABAE80065D797 /* PlayersListViewController.xib in Resources */,
 				17F327F91F3C1870007223BE /* ChallengesCell.xib in Resources */,
 				40DBA4D31F94690D00AD9794 /* PlayerStatisticsLatestCell.xib in Resources */,
@@ -1060,6 +1067,7 @@
 				17CA01341F4DDF8800F3DA35 /* MenuManager.swift in Sources */,
 				40DBA4CF1F9453F900AD9794 /* PlayerStatisticsPointsCell.swift in Sources */,
 				17BFB0541EF762A3002A994E /* Constants.swift in Sources */,
+				405B64E51F9D1D5D00622752 /* PlayerIdAlertView.swift in Sources */,
 				1783C4141F3ABA280065D797 /* PlayersListViewController.swift in Sources */,
 				1785964E1F65F12700EB493E /* Balance.swift in Sources */,
 				17001A051F0AC15B00BF44BD /* UIView+Extension.swift in Sources */,

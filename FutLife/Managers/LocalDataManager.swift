@@ -25,6 +25,7 @@ struct LocalDataManager {
     static let kGames = "Games";
     static let kAllGames = "AllGames";
     static let kSessionToken = "SessionToken";
+    static let kPlayeId = "PlayeId";
     
     init() { }
     
@@ -142,6 +143,15 @@ struct LocalDataManager {
         }
         set (newValue) {
             UserDefaults().setDataObject(value: newValue, forKey: kGames)
+        }
+    }
+    
+    static var playerIds: [String: String]? {
+        get {
+            return UserDefaults().dataObjectForKey(key: kPlayeId) as? [String: String]
+        }
+        set (newValue) {
+            UserDefaults().setDataObject(value: newValue, forKey: kPlayeId)
         }
     }
     

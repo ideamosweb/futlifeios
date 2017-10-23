@@ -326,6 +326,9 @@ class ProfilePlayerViewController: TabsViewController {
     
     func onCancelBarItemTouch() {
         removeNavBarButtons()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidCancelInfoItemNotification), object: nil, userInfo: nil)
+        
         view.endEditing(true)
     }
     
@@ -360,7 +363,7 @@ class ProfilePlayerViewController: TabsViewController {
         let gamesSelected: [[GameModel]] = Utils.retrieveGames()
         
         let playerConsolesVC = PlayerConsolesViewController(consoles: consolesSelected, games: gamesSelected)
-        playerInfoVC = PlayerInfoViewController()
+        playerInfoVC = PlayerInfoViewController(consoles: consolesSelected)
         playerInfoVC?.formScrollViewDelegate = self
         let playerStatisticsVC = PlayerStatisticsViewController()
         
