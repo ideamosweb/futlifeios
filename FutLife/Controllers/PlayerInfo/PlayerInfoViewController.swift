@@ -17,6 +17,7 @@ class PlayerInfoViewController: FormViewController {
     let numberOfFields: Int = 6
     let images: [String] = ["profile.username", "profile.username", "profile.location", "profile.email", "profile.telephone", "profile.birthday"]
     let descTextFields: [String] = ["username", "name", "ubication", "email", "telephone", "birthdate"]
+    let placeholderFields: [String] = ["Usuario", "Nombre Completo", "Ciudad", "Correo", "Teléfono", "Fecha de nacimiento"]
     let playerInfo: [String]!
     let kProfileCellIdentifier = "PlayerConsolesCell"
     let playerConsoleHeight = 86
@@ -35,7 +36,12 @@ class PlayerInfoViewController: FormViewController {
     
     init(consoles: [ConsoleModel]) {
         player = LocalDataManager.user!
-        playerInfo = [player.userName, player.name, player.cityName, player.email, player.phone!, ""]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        let strDate = dateFormatter.string(from: player.birthDate!)
+        
+        playerInfo = [player.userName, player.name, player.cityName, player.email, player.phone!, strDate]
         self.consoles = consoles
         
         super.init(nibName: "PlayerInfoViewController", bundle: Bundle.main)
@@ -63,12 +69,13 @@ class PlayerInfoViewController: FormViewController {
                 playerTextView?.frame = nextFrame
                 playerTextView?.playerTextField.delegate = self
                 playerTextView?.playerTextField.tag = index
+                playerTextView?.playerTextField.isEnabled = false
                 if index == 2 {
                     playerTextView?.playerTextField.isAutoCompleted = true
                     playerTextView?.playerTextField.autocorrectionType = .no
                 }
+                playerTextView?.playerTextField.placeholder = placeholderFields[index]
                 
-                playerTextView?.playerTextField.isEnabled = false
                 textFields.append((playerTextView?.playerTextField)!)
                 
                 previousPlayerView = playerTextView
@@ -78,6 +85,7 @@ class PlayerInfoViewController: FormViewController {
                 playerTextView?.playerTextField.delegate = self
                 playerTextView?.playerTextField.tag = index
                 playerTextView?.playerTextField.isEnabled = false
+                playerTextView?.playerTextField.placeholder = placeholderFields[index]
                 
                 textFields.append((playerTextView?.playerTextField)!)
                 
@@ -116,7 +124,7 @@ class PlayerInfoViewController: FormViewController {
         view.addSubview(playerIdTableView!)
         
         let editInfoNoti = Notification.Name(Constants.kDidEditInfoItemNotification)
-        NotificationCenter.default.addObserver(self, selector: #selector(focusFirstTextView), name: editInfoNoti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editForm), name: editInfoNoti, object: nil)
         
         let cancelInfoNoti = Notification.Name(Constants.kDidCancelInfoItemNotification)
         NotificationCenter.default.addObserver(self, selector: #selector(disableTextFields), name: cancelInfoNoti, object: nil)
@@ -147,12 +155,14 @@ class PlayerInfoViewController: FormViewController {
         return height
     }
     
-    func focusFirstTextView() {
+    func editForm() {
         if textFields.count > 0 {
             for txtFld in textFields {
                 txtFld.isEnabled = true
+                txtFld.delegate = self
             }
             
+            // Focus first textField
             let textField = textFields.first
             textField?.becomeFirstResponder()
         }
@@ -188,10 +198,9 @@ class PlayerInfoViewController: FormViewController {
         
         // Min date 19 years before from now
         let now = Date()
-        let minDate = now.addingTimeInterval(-(60*60*24*30*12*19))
+        let maxDate = now.addingTimeInterval(-(60*60*24*30*12*19))        
         
-        datePicker?.minimumDate = minDate
-        datePicker?.maximumDate = Date()
+        datePicker?.maximumDate = maxDate
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {
@@ -246,6 +255,7 @@ extension PlayerInfoViewController: UITextViewDelegate {
         
         let txtFld: TextField = (textField as? TextField)!
         if txtFld.tag == 2 {
+            txtFld.addAutoCompleteTable()
             let keyWord = (txtFld.text! != "") ? txtFld.text! : string
             ApiManager.getCities(keyword: keyWord, completion: { (errorModel, cities) in
                 if let cities = cities {

@@ -58,7 +58,7 @@ class ProfilePlayerViewController: TabsViewController {
         super.viewDidLoad()
 
         navigationBar(show: true)
-        view.backgroundColor = UIColor().darkBlue()
+        view.backgroundColor = UIColor.white
         
         configFlexibleHeader()
     }
@@ -276,12 +276,12 @@ class ProfilePlayerViewController: TabsViewController {
         editButton?.rotateAnimation(degrees: 50, duration: 0.5)
         
         infoEditButton?.fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.infoEditButton?.frame.origin.y = (self.infoEditButton?.frame.minY)! - 60
         }
         
         consoleEditButton?.fadeIn(duration: 0.5, alpha: 1.0, completion: nil)
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.consoleEditButton?.frame.origin.y = (self.consoleEditButton?.frame.minY)! - 108
         }
         
@@ -292,12 +292,12 @@ class ProfilePlayerViewController: TabsViewController {
         editButton?.rotateAnimation(degrees: 50, duration: 0.5)
         
         infoEditButton?.fadeOut(duration: 0.5, alpha: 0.0, completion: nil)
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.infoEditButton?.frame.origin.y = (self.editButton?.frame.midY)! - (CGFloat(self.kInfoEditButtonSide) / 2)
         }
         
         consoleEditButton?.fadeOut(duration: 0.5, alpha: 0.0, completion: nil)
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.consoleEditButton?.frame.origin.y = (self.editButton?.frame.midY)! - (CGFloat(self.kInfoEditButtonSide) / 2)
         }
         
@@ -318,6 +318,9 @@ class ProfilePlayerViewController: TabsViewController {
     
     func onEditInfoButtonTouch() {
         scrollToTab(tab: 2)
+        addDarkBg()
+        tabs(enabled: false)
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(onCancelBarItemTouch))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onDoneBarItemmTouch))
         
@@ -326,6 +329,9 @@ class ProfilePlayerViewController: TabsViewController {
     
     func onCancelBarItemTouch() {
         removeNavBarButtons()
+        removeDarkBg()
+        closeEditAnimation()
+        tabs(enabled: true)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.kDidCancelInfoItemNotification), object: nil, userInfo: nil)
         
@@ -333,6 +339,11 @@ class ProfilePlayerViewController: TabsViewController {
     }
     
     func onDoneBarItemmTouch() {
+        removeNavBarButtons()
+        removeDarkBg()
+        closeEditAnimation()
+        tabs(enabled: true)
+        
         let user: UserModel? = LocalDataManager.user!
         if user != nil {
             if let playerInfoVC = playerInfoVC {
@@ -356,6 +367,22 @@ class ProfilePlayerViewController: TabsViewController {
         navigationItem.rightBarButtonItem = nil
         navigationItem.leftBarButtonItem = nil
         addBackButton()
+    }
+    
+    func addDarkBg() {
+        let darkBg = UIView(frame: CGRect(x: 0, y: 0, width: Utils.screenViewFrame().size.width, height: Utils.screenViewFrame().size.height))
+        darkBg.backgroundColor = UIColor.black
+        darkBg.alpha = 0.7
+        darkBg.tag = -1
+        scrollView?.insertSubview(darkBg, at: 1)
+    }
+    
+    func removeDarkBg() {
+        for view in (scrollView?.subviews)! {
+            if view.tag == -1 {
+                view.removeFromSuperview()
+            }
+        }
     }
     
     func configPlayerViews() {

@@ -41,7 +41,7 @@ class TextField: UITextField, CitiesProtocol {
         
         set {
             if newValue {
-                addAutoCompleteTable()
+                createAutoCompleteTable()
             }
         }
     }
@@ -182,19 +182,25 @@ class TextField: UITextField, CitiesProtocol {
         }       
     }
     
-    private func addAutoCompleteTable() {
-        let tableViewFrame = CGRect(x: self.frame.maxX - 200, y: self.frame.minY - 10, width: 200, height: 55)
-        
-        autoCompleteTable = UITableView(frame: tableViewFrame)
+    private func createAutoCompleteTable() {
+        autoCompleteTable = UITableView()
         autoCompleteTable?.delegate = self
         autoCompleteTable?.dataSource = self
         autoCompleteTable?.isHidden = true
         autoCompleteTable?.isUserInteractionEnabled = true
         autoCompleteTable?.layer.borderWidth = 1.0
         autoCompleteTable?.layer.borderColor = UIColor.lightGray.cgColor
+        autoCompleteTable?.tag = 1000
+    }
+    
+    func addAutoCompleteTable() {
+        let superview = self.superview?.superview?.superview?.superview?.superview?.superview
+        let frame = superview?.convert(self.frame, from: self.superview?.superview?.superview)
+        let tableViewFrame = CGRect(x: self.frame.maxX - 200, y: (frame?.maxY)! + 64, width: 200, height: 135)
+        autoCompleteTable?.frame = tableViewFrame
         
-        self.superview?.addSubview(autoCompleteTable!)
-        self.superview?.bringSubview(toFront: autoCompleteTable!)
+        superview?.insertSubview(autoCompleteTable!, at: 0)
+        superview?.bringSubview(toFront: autoCompleteTable!)
     }
     
     func hideAutoCompleteTable() {

@@ -79,7 +79,7 @@ class TabsViewController: ViewController {
         }
         
         if let bellowSV = tabsBellowView {
-            tabsButtonsViewMinY = bellowSV.frame.maxY
+            tabsButtonsViewMinY = bellowSV.frame.maxY - 5
         }
         
         buttonsView = UIView(frame: CGRect(x: 0.0, y: tabsButtonsViewMinY, width: Utils.screenViewFrame().size.width, height: kTabsButtonsViewHeight))
@@ -220,6 +220,22 @@ class TabsViewController: ViewController {
             var selectedButtonViewFrame = self.selectorTabButtonView?.frame
             selectedButtonViewFrame?.origin.x = buttonTab.frame.minX
             self.selectorTabButtonView?.frame = selectedButtonViewFrame!
+        }
+    }
+    
+    func tabs(enabled: Bool) {
+        for view in (buttonsView?.subviews)! {
+            if view is UIButton {
+                let btn = view as? UIButton
+                if !enabled {
+                    btn?.setTitleColor(UIColor.lightGray, for: .normal)
+                } else {
+                    if btn?.tag == 2 {
+                        btn?.setTitleColor(UIColor.white, for: .normal)
+                    }
+                }
+                btn?.isEnabled = enabled
+            }
         }
     }
 }

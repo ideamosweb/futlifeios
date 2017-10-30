@@ -168,7 +168,11 @@ class ApiManager {
             if errorModel.success! {
                 // Let's clean user local data and update it
                 let userUpdate: UserUpdate = (response.result.value?.userUpdate)!
-                let userModel: UserModel = UserModel(id: LocalDataManager.user?.id, name: userUpdate.name, userName: userUpdate.userName, email: userUpdate.email, avatar: LocalDataManager.user?.avatar, thumbnail: LocalDataManager.user?.thumbnail, social: LocalDataManager.user?.social, active: LocalDataManager.user?.active, createdAt: LocalDataManager.user?.createdAt, updatedAt: LocalDataManager.user?.updatedAt, cityName: userUpdate.ubication, phone: userUpdate.telephone, birthDate: Date(), challenges: (LocalDataManager.user?.challenges!)!, preferences: LocalDataManager.user?.preferences, balance: LocalDataManager.user?.balance)
+                let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                formatter.timeStyle = .none
+                
+                let userModel: UserModel = UserModel(id: LocalDataManager.user?.id, name: userUpdate.name, userName: userUpdate.userName, email: userUpdate.email, avatar: LocalDataManager.user?.avatar, thumbnail: LocalDataManager.user?.thumbnail, social: LocalDataManager.user?.social, active: LocalDataManager.user?.active, createdAt: LocalDataManager.user?.createdAt, updatedAt: LocalDataManager.user?.updatedAt, cityName: userUpdate.ubication, phone: userUpdate.telephone, birthDate: formatter.date(from: userUpdate.birthDate!), challenges: (LocalDataManager.user?.challenges!)!, preferences: LocalDataManager.user?.preferences, balance: LocalDataManager.user?.balance)
                 
                 if LocalDataManager.user != nil {
                     LocalDataManager.user = nil
@@ -189,7 +193,9 @@ class ApiManager {
             // Verify if exist an error an return a message
             var errorModel = ErrorModel()
             DispatchQueue.main.async {
-                errorModel = ApiError.checkError(responseData: response.data, statusCode: (response.response?.statusCode)!)
+                if let resp = response.response {
+                    errorModel = ApiError.checkError(responseData: response.data, statusCode: resp.statusCode)
+                }                
             }
             
             completion(errorModel, cities?.cities)
